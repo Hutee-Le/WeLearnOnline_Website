@@ -1,0 +1,323 @@
+.courses {
+    width: 90%;
+    margin: auto;
+    border-bottom: 1px solid;
+    margin-bottom: 20px;
+}
+
+#people {
+    width: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#people>p {
+    color: gray;
+    font-size: 13px;
+}
+
+/* #ctitle {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+  */
+
+
+.switch-tab-demo {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.btn-box {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn-box button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    margin-right: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--black-70);
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 2% auto;
+    position: absolute;
+    transform: translateX(100%);
+    transition: .3s;
+}
+.content-left,
+.content-right {
+    flex-basis: 50%;
+}
+#content1 {
+    transform: translateX(0px);
+}
+.card-wrapper {
+    width: 100%;
+    height: 100%;
+}
+.bg-red {
+    background-color: yellow;
+}
+.card-item {
+    background-color: var(--white);
+    border-radius: 10px;
+    border: 1px solid red;
+}
+.card-item .image-box {
+    width: 100%;
+}
+.card-item .image-box img {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+.card-item .profile-details {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    padding: 15px;
+}
+.card .profile-details .name {
+    font-size: 15px;
+    font-weight: 500;
+}
+.card .profile-details .job {
+    font-size: 12px;
+    font-weight: 500;
+    color: #4d4d4d;
+}
+.card-item .profile-details img {
+    height: 40px;
+    width:  40px;
+    border-radius: 50%;
+}
+
+.jsslide,
+#alsolrDiv,
+#topjsc {
+    width: 90%;
+    margin: auto;
+}
+
+#alsolearn {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+}
+
+#alsolearn>div {
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid lightgray;
+}
+
+#filter {
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#filter>div {
+    width: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+#filter>div>h4,
+#filter>div>div {
+    border: 1px solid black;
+    padding: 10px 20px;
+}
+
+#filter>div>div>select {
+    border: none;
+    height: 100%;
+}
+
+#sortbox {
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+#sortfilter {
+    width: 25%;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+.checkrating {
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.checkrating>img {
+    height: 20px;
+    width: 80px;
+}
+
+#sortfilter>h3 {
+    border-top: 1px solid #777;
+}
+
+#hour>input {
+    margin: 10px auto;
+}
+
+#sortitem {
+    width: 80%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#sortitem>div {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#sortitem>div>div {
+    display: flex;
+
+}
+
+#sortitem>div>div>div>div {
+    display: flex;
+    align-items: center
+}
+
+#sortitem>div>div>img {
+    padding: 23px;
+    padding-left: 40px;
+
+}
+
+#sortitem>div>div>div>h5 {
+    font-weight: lighter;
+    font-size: 15px;
+    margin-top: -15px;
+    width: 400px;
+}
+
+#sortitem>div>div>div>p {
+    color: #777;
+    font-size: 14px;
+    margin-top: -15px;
+}
+
+#sortitem>div>div>div>div {
+    margin-top: -20px;
+}
+
+#sortitem>div>div>div>div>h4 {
+    color: coral;
+}
+
+#add {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgray;
+}
+
+#add>div {
+    display: flex;
+    align-items: center;
+    width: 25%;
+}
+
+#add>div>i {
+    font-size: 20px;
+    background-color: lightgray;
+    border-radius: 50%;
+    padding: 12px;
+    margin: 10px;
+}
+
+#minutelearn {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+#minutelearn>div {
+    border: 1px solid lightgray;
+    padding: 20px;
+}
+
+#minutelearn>div>i {
+    color: aliceblue;
+    background-color: black;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 20px;
+}
+
+#freelearn {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    text-align: justify;
+}
+
+#freelearn>div {
+    width: 55%;
+}
+
+#freelearn>div>p {
+    font-size: 18px;
+    font-weight: lighter;
+    color: #1C1D1F;
+}
+
+#freelearn>div>h2 {
+    font-size: 32px;
+}
+
+#freelearn>div>h3 {
+    font-size: 24px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 16px;
+}
+
+#freelearn>div>h5 {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+#freelearn>div>h3+h5 {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.checkrating+button {
+    padding: 5px 20px;
+    border: none;
+    background-color: lightgrey;
+
+}

@@ -1,0 +1,124 @@
+﻿@* @model IEnumerable<WeLearnOnine_Website.Models.Course>
+ *@
+@{
+    ViewData["Title"] = "ListCourse";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Dashboard Home</h1>
+@* 
+<p>
+    <a asp-action="Create" class="btn rounded-pill btn-primary text-white">
+        Create New
+    </a>
+</p>
+
+@* <button type="button" class="btn rounded-pill btn-primary">Primary</button> *@
+@* 
+<div class="card">
+    <h5 class="card-header">Courses Table</h5>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> <b style="font-size: 20px">#</b></th>
+                        <th>
+                            <b>No.</b> StaffId
+                        </th>
+                        <th>
+                            Level
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            ShortDescription
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Required
+                        </th>
+                        <th>
+                            ImageCourseUrl
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            DiscountPrice
+                        </th>
+                        <th>
+                            PreviewUrl
+                        </th>
+                        <th>
+                            Count
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                            Language
+                        </th>
+                        <th>
+                            TimeTotal
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <i class="fab fa-bootstrap fa-lg text-primary me-3"></i>
+                                <span class="fw-medium">@Html.DisplayNameFor(model => model.CourseId)</span>
+                            </td>
+                            <td>@Html.DisplayNameFor(model => model.StaffId)</td>
+                            <td>@Html.DisplayNameFor(model => model.LevelId)</td>
+                            <td class="hidetext">
+                                <p>@Html.DisplayFor(modelItem => item.Title)</p>
+                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
+                            </td>
+                            <td class="hidetext">
+                                <p>@Html.DisplayFor(modelItem => item.ShortDescription)</p>
+                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
+                            </td>
+                            <td class="hidetext">
+                                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
+                            </td>
+                            <td class="hidetext">
+                                <p>@Html.DisplayFor(modelItem => item.Required)</p>
+                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
+                            </td>
+                            <td>
+                                <img src="@Html.DisplayFor(modelItem => item.ImageCourseUrl)" width="150" height="100" />
+                            </td>
+                            <td>@Html.DisplayNameFor(model => model.Price)</td>
+                            <td>@Html.DisplayNameFor(model => model.DiscountPrice)</td>
+                            <td>
+                                <video src="@Html.DisplayFor(modelitem => item.PreviewUrl)" width="200" height="100" muted="muted"></video>
+                            </td>
+                            <td><span class="badge me-1 bg-label-success" style="">@Html.DisplayFor(modelItem => item.Status)</span></td>
+                            <td>@Html.DisplayNameFor(model => model.Count)</td>
+                            <td>@Html.DisplayNameFor(model => model.Rating)</td>
+                            <td>@Html.DisplayNameFor(model => model.Language)</td>
+                            <td>@Html.DisplayNameFor(model => model.TimeTotal)</td>
+                            <td>
+                                <a class="dropdown-item mb-2" asp-action="Delete" asp-route-id="@item.CourseId" style="color: #ff3e1d; background-color:#ffe0db; border-color: #ffc5bb; padding: 5px 8px; border-radius: 5px; cursor:pointer"><i class="bx bx-edit-alt me-1"></i> Delete</a>
+                                <a class="dropdown-item mb-2" asp-action="Edit" asp-route-id="@item.CourseId" style="color: #03c3ec; background-color:#d7f5fc; border-color: #b3edf9; padding: 5px 8px; border-radius: 5px;cursor:pointer"><i class="bx bx-trash me-1"></i> Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ *@

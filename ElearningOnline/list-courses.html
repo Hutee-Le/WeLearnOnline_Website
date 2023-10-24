@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title> Twstudy </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- font awsome icon -->
+  <link rel="stylesheet" href="css/font-awesome.css">
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- swiperJS CSS -->
+  <link rel="stylesheet" href="css/swiper-bundle.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/list-courses.css">
+
+  <!-- color Theme -->
+  <link rel="stylesheet" href="css/colors/color-1.css">
+
+  <!-- bootstrap icon cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body class="t-dark">
+  <!-- main wrapper start -->
+  <div class="main-wrapper">
+
+    <!-- header start -->
+    <header class="header">
+      <div class="container-xxl">
+        <div class="header-main d-flex justify-content-between align-items-center">
+          <div class="header-logo">
+            <a href="index.html"><span>tws</span>tudy</a>
+          </div>
+
+          <button type="button" class="header-hamburger-btn js-header-menu-toggler">
+            <span></span>
+          </button>
+          <div class="header-backdrop js-header-backdrop"></div>
+
+
+          <div class="menu-item pe-4"><span>categories</span></div>
+          <div class="search-input">
+            <span><i class="fas fa-search"></i></span>
+            <input type="text" placeholder="Search for anything">
+          </div>
+          <nav class="header-menu js-header-menu">
+            <button type="button" class="header-close-btn js-header-menu-toggler">
+              <i class="fas fa-times"></i>
+            </button>
+            <ul class="menu h-100">
+              <li class="menu-item menu-item-has-children">
+                <a href="#" class="js-toggle-sub-menu">courses<i class="fas fa-chevron-down"></i></a>
+                <ul class="sub-menu js-sub-menu">
+                  <li class="sub-menu-item"><a href="courses.html">courses</a></li>
+                  <li class="sub-menu-item"><a href="course-details.html">my courses</a></li>
+                  <li class="sub-menu-item"><a href="courses-test.html">courses-test</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a href="contact.html">contact</a></li>
+              <li class="menu-item icon-color-theme"><a href="#"><i class="far fa-heart"></i></a></li>
+              <li class="menu-item"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+              <li class="menu-item"><a href="#"><i class="far fa-bell"></i></a></li>
+            </ul>
+          </nav>
+
+          <!-- <div class="menu-item btn-login overflow-hidden"><a class="fw-bold" href="log-in.html ">Login</a></div>
+          <div class="menu-item btn-signup overflow-hidden"><a class="fw-bold" href="sign-up.html">Sign Up</a></div> -->
+
+          <div class="menu-item user-profile">
+            <div class="img-user-profile">
+              <img src="img/instructor/1.png" alt="img profile" class="user-pic" onclick="menuToggle()">
+            </div>
+
+            <div class="sub-menu-box" id="subMenuUser">
+              <div class="sub-menu-user">
+                <div class="user-info">
+                  <img src="img/instructor/1.png">
+                  <div class="info-name">
+                    <h3>Joe Doe</h3><span>JoeDoe123@gmail.com</span>
+                  </div>
+                </div>
+                <hr>
+                <a href="user-profile.html" class="sub-menu-links">
+                  <i class="bi bi-person-circle"></i>
+                  <p>Edit Profile</p><span>></span>
+                </a>
+                <a href="#" class="sub-menu-links">
+                  <i class="bi bi-gear"></i>
+                  <p>Setting</p><span>></span>
+                </a>
+                <a href="#" class="sub-menu-links">
+                  <i class="bi bi-question-circle"></i>
+                  <p>Help</p><span>></span>
+                </a>
+                <a href="#" class="sub-menu-links">
+                  <i class="bi bi-box-arrow-left"></i>
+                  <p>Log Out</p><span>></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+    <!-- header end -->
+
+
+    <section class="courses mt-5">
+      <h1>JavaScript Courses</h1>
+      <h3 style="color: #777;">JavaScript relates to <span style="color:var(--main-color)">Development, IT & Software
+          Development</span></h3>
+      <div id="people">
+        <i class="fa-solid fa-user-group" style="font-size: 13px;margin-right: 3px;"></i>
+        <p>12,707,375&nbsp;learners</p>
+      </div>
+      <h2>Courses to get you started</h2>
+
+      <div class="row">
+        <div class="switch-tab-demo">
+          <div class="btn-box">
+            <button id="btn1" style="color: var(--black-90);" onclick="openSlide1()">Most popular</button>
+            <button id="btn2" style="color: var(--black-90);" onclick="openSlide2()">New</button>
+            <button id="btn3" style="color: var(--black-90);" onclick="openSlide3()">beginner Favorites</button>
+          </div>
+          <div class="group">
+            <div class="content" id="content1">
+              <div class="card-wrapper swiper-wrapper">
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="content" id="content2">
+              <div class="card-wrapper swiper-wrapper">
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+                <!-- courses item start -->
+                <div class="courses-item swiper-slide">
+                  <a href="course-details.html" class="link">
+                    <div class="courses-item-inner">
+                      <div class="img-box">
+                        <img src="img/courses/web-development/python.jpg" alt="course img">
+                      </div>
+                      <h3 class="title">HTML for beginner</h3>
+                      <div class="instructor">
+                        <img src="img/instructor/1.png" alt="instructor img">
+                        <span class="instructor-name">Joe Doe</span>
+                      </div>
+                      <div class="rating">
+                        <span class="average-rating">(4.5)</span>
+                        <span class="average-stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="reviews">(230)</span>
+                      </div>
+                      <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                      <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                    </div>
+                  </a>
+                </div>
+                <!-- courses item end -->
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="content" id="content3">
+              <div class="content-left">
+                <h1>Learn Reactjs</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, atque unde quae reiciendis eaque
+                  ad
+                  nobis quo? Natus numquam rerum quibusdam, repudiandae, nobis dolorem nulla nihil dicta omnis ut
+                  consectetur.</p>
+              </div>
+              <div class="content-right">
+                xin chao 3
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let content1 = document.getElementById("content1");
+      let content2 = document.getElementById("content2");
+      let content3 = document.getElementById("content3");
+      let btn1 = document.getElementById("btn1");
+      let btn2 = document.getElementById("btn2");
+      let btn3 = document.getElementById("btn3");
+
+      function openSlide1() {
+        content1.style.transform = "translateX(0)";
+        content2.style.transform = "translateX(100%)";
+        content3.style.transform = "translateX(100%)";
+        btn1.style.color = "var(--main-color)";
+        btn2.style.color = "var(--black-90)";
+        btn3.style.color = "var(--black-90)";
+      }
+      function openSlide2() {
+        content1.style.transform = "translateX(100%)";
+        content2.style.transform = "translateX(0)";
+        content3.style.transform = "translateX(100%)";
+        btn1.style.color = "var(--black-90)";
+        btn2.style.color = "var(--main-color)";
+        btn3.style.color = "var(--black-90)";
+      }
+      function openSlide3() {
+        content1.style.transform = "translateX(100%)";
+        content2.style.transform = "translateX(100%)";
+        content3.style.transform = "translateX(0)";
+        btn1.style.color = "var(--black-90)";
+        btn2.style.color = "var(--black-90)";
+        btn3.style.color = "var(--main-color)";
+      }
+    </script>
+
+    <div id="CateSlide">
+      <h2>JavaScript students also learn</h2>
+      <div class="slide-content">
+        <div id="alsolearn">
+          <div class="cate-item">Web Development</div>
+          <div class="cate-item">React</div>
+          <div class="cate-item">Mongo DB</div>
+          <div class="cate-item">Python</div>
+          <div class="cate-item">Vue JS</div>
+          <div class="cate-item">Node JS</div>
+          <div class="cate-item">CSS</div>
+          <div class="cate-item">HTML</div>
+          <div class="cate-item">Front End Web</div>
+          <div class="cate-item">PHP</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="topjsc" class="mt-5">
+      <h2>Top courses in Javascript and <span style="color:var(--main-color)">Front End Development</span></h2>
+      <div id="jstop">
+        <div id="topjsslider">
+          <div id="prev4"><i class="fa-solid fa-circle-chevron-left"></i></div>
+          <div id=topjssliderbox></div>
+          <div id="next4"><i class="fa-solid fa-circle-chevron-right"></i></div>
+        </div>
+      </div>
+      <div>
+        <h2>All JavaScript courses</h2>
+        <p>Join more than 12 million learners and train up on JavaScript on Udemy. Choose from a wide range of top-rated
+          JavaScript courses. From back-end development to app or website building, we’ve got you covered. Our
+          real-world experts can lead you through hands-on projects to apply your skills.</p>
+        <h3><span><i class="fa-solid fa-circle-exclamation"></i></span>&nbsp;&nbsp;Not sure? All courses have a 30-day
+          money-back guarantee</h3>
+      </div>
+    </div>
+
+    <div id="filter">
+      <div>
+        <div class="sortField d-flex align-items-center"><span><i class="fa fa-filter"></i></span> Filter</div>
+        <div class="sortField">
+          <span>Sort by</span>
+          <select class="form-select sortdropdown">
+            <option value="1" selected>Most Popular</option>
+            <option value="2">High Rated</option>
+            <option value="3">Newest</option>
+          </select>
+        </div>
+      </div>
+      <h4>1,222 results</h4>
+    </div>
+
+    <div id="sortbox" class="mb-5">
+      <div id="sortfilter">
+        <h3>Ratings</h3>
+
+        <div class="checkrating">
+          <input type="radio" name="star">
+          <span class="average-stars ps-2">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </span>
+          <p>&nbsp;&nbsp;4.7 & Up&nbsp;&nbsp;(413)</p>
+        </div>
+        <div class="checkrating">
+          <input type="radio" name="star">
+          <span class="average-stars ps-2">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          <p>&nbsp;&nbsp;4.5 & Up&nbsp;&nbsp;(789)</p>
+        </div>
+        <div class="checkrating">
+          <input type="radio" name="star">
+          <span class="average-stars ps-2">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          <p>&nbsp;&nbsp;4.0 & Up&nbsp;&nbsp;(654)</p>
+        </div>
+
+        <button id="clearfilter">Clear Filters</button>
+
+        <div class="side-bar-filter">
+          <div class="menu-filter">
+            <div class="item">
+              <a class="sub-btn"><span class="title">Video Duration</span> </h3> <i
+                  class="fas fa-angle-up dropdown"></i></a>
+              <div class="sub-menu">
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    0-1 Hour
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    1-2 Hours
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    2-3 Hours
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <a class="sub-btn"><span class="title">Topic</span> <i class="fas fa-angle-up dropdown"></i></a>
+              <div class="sub-menu">
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Javascript
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Python
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    C#
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <a class="sub-btn"><span class="title">Level</span> <i class="fas fa-angle-up dropdown"></i></a>
+              <div class="sub-menu">
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    All Levels
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Beginner
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Intermediate
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Expert
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <a class="sub-btn"><span class="title">Subcategory</span> <i class="fas fa-angle-up dropdown"></i></a>
+              <div class="sub-menu">
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Web Developer
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Mobile Developer
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Data Science
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <a class="sub-btn"><span class="title">Language</span> <i class="fas fa-angle-up dropdown"></i></a>
+              <div class="sub-menu">
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Vietnamese
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    English
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <a class="sub-btn"><span class="title">Price</span> <i class="fas fa-angle-up dropdown"></i></a>
+              <div class="sub-menu">
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Paid
+                  </label>
+                </div>
+                <div class="form-check sub-item">
+                  <input class="form-check-input" type="checkbox" value="">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Free
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <script type="text/javascript">
+          $(document).ready(function () {
+            // jquery for toggle sub menu
+            $('.sub-btn').click(function () {
+              $(this).next('.sub-menu').slideToggle();
+              $(this).find('.dropdown').toggleClass('rotate');
+            });
+          });
+        </script>
+      </div>
+      <div id="filter-course">
+        <div class="course-card mb-4">
+          <div class="course-card--img">
+            <img src="img/courses/web-development/CSS.png" alt="">
+          </div>
+          <div class="course-card-content">
+            <div class="card-content--title">
+              <a href="#">
+                <h4>The Web Developer Bootcamp 2023</h4>
+              </a>
+            </div>
+            <div class="card-content--desc">
+              <div class="desc--headline">
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius tempore voluptatibus, vero illo nam nobis excepturi distinctio eveniet deserunt, iste repudiandae. Hic voluptatibus assumenda aliquam, optio et veniam iure mollitia.</span>
+              </div>
+              <div class="desc--auth">
+                <span>Dr.Angela Yu</span>
+              </div>
+              <div class="rating">
+                <span class="average-rating">(4.5)</span>
+                <span class="average-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                <span class="reviews">(230)</span>
+              </div>
+              <div class="desc--details">
+                <span>74 <span>total hours</span></span>
+                <span>150 <span>lectures</span></span>
+                <span>All Levels</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-content-price">
+            <span>&#8363;</span> 1,690,000
+          </div>
+        </div>
+        <div class="course-card mb-4">
+          <div class="course-card--img">
+            <img src="img/courses/web-development/CSS.png" alt="">
+          </div>
+          <div class="course-card-content">
+            <div class="card-content--title">
+              <a href="#">
+                <h4>The Web Developer Bootcamp 2023</h4>
+              </a>
+            </div>
+            <div class="card-content--desc">
+              <div class="desc--headline">
+                <span>10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React,
+                  Node, MongoDB and More!</span>
+              </div>
+              <div class="desc--auth">
+                <span>Dr.Angela Yu</span>
+              </div>
+              <div class="rating">
+                <span class="average-rating">(4.5)</span>
+                <span class="average-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                <span class="reviews">(230)</span>
+              </div>
+              <div class="desc--details">
+                <span>74 <span>total hours</span></span>
+                <span>150 <span>lectures</span></span>
+                <span>All Levels</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-content-price">
+            <span>&#8363;</span> 1,690,000
+          </div>
+        </div>
+        <div class="course-card mb-4">
+          <div class="course-card--img">
+            <img src="img/courses/web-development/CSS.png" alt="">
+          </div>
+          <div class="course-card-content">
+            <div class="card-content--title">
+              <a href="#">
+                <h4>The Web Developer Bootcamp 2023</h4>
+              </a>
+            </div>
+            <div class="card-content--desc">
+              <div class="desc--headline">
+                <span>10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React,
+                  Node, MongoDB and More!</span>
+              </div>
+              <div class="desc--auth">
+                <span>Dr.Angela Yu</span>
+              </div>
+              <div class="rating">
+                <span class="average-rating">(4.5)</span>
+                <span class="average-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                <span class="reviews">(230)</span>
+              </div>
+              <div class="desc--details">
+                <span>74 <span>total hours</span></span>
+                <span>150 <span>lectures</span></span>
+                <span>All Levels</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-content-price">
+            <span>&#8363;</span> 1,690,000
+          </div>
+        </div>
+        <div class="course-card mb-4">
+          <div class="course-card--img">
+            <img src="img/courses/web-development/CSS.png" alt="">
+          </div>
+          <div class="course-card-content">
+            <div class="card-content--title">
+              <a href="#">
+                <h4>The Web Developer Bootcamp 2023</h4>
+              </a>
+            </div>
+            <div class="card-content--desc">
+              <div class="desc--headline">
+                <span>10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React,
+                  Node, MongoDB and More!</span>
+              </div>
+              <div class="desc--auth">
+                <span>Dr.Angela Yu</span>
+              </div>
+              <div class="rating">
+                <span class="average-rating">(4.5)</span>
+                <span class="average-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                <span class="reviews">(230)</span>
+              </div>
+              <div class="desc--details">
+                <span>74 <span>total hours</span></span>
+                <span>150 <span>lectures</span></span>
+                <span>All Levels</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-content-price">
+            <span>&#8363;</span> 1,690,000
+          </div>
+        </div>
+
+        <nav aria-label="..." class="d-flex justify-content-center mt-5">
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+
+    <!-- footer start -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3><span class="footer-logo">tws</span>tudy</h3>
+                <ul>
+                  <li><a href="#">about</a></li>
+                  <li><a href="#">what we offer</a></li>
+                  <li><a href="#">careers</a></li>
+                  <li><a href="#">certificates</a></li>
+                  <li><a href="#">blog</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3>learning</h3>
+                <ul>
+                  <li><a href="#">get the app</a></li>
+                  <li><a href="#">testimonials</a></li>
+                  <li><a href="#">pricing</a></li>
+                  <li><a href="#">faq</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3>more</h3>
+                <ul>
+                  <li><a href="#">affiliates</a></li>
+                  <li><a href="#">become a course creator</a></li>
+                  <li><a href="#">training webinars</a></li>
+                  <li><a href="#">free personality test</a></li>
+                  <li><a href="#">help and support</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3>get in touch</h3>
+                <ul>
+                  <li><a href="#"><i class="fab fa-facebook social-icon"></i> facebook</a></li>
+                  <li><a href="#"><i class="fab fa-twitter social-icon"></i> twitter</a></li>
+                  <li><a href="#"><i class="fab fa-instagram social-icon"></i> instagram</a></li>
+                  <li><a href="#"><i class="fab fa-youtube social-icon"></i> youtube</a></li>
+                  <li><a href="#"><i class="fab fa-linkedin social-icon"></i> linkedin</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="mt-0 py-4 text-center">Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> Education IT
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end -->
+  </div>
+
+  <!-- style switcher start -->
+  <div class="style-switcher js-style-switcher">
+    <div class="style-switcher-toggler js-style-switcher-toggler">
+      <i class="fas fa-cog"></i>
+    </div>
+    <h3>Style Switcher</h3>
+    <div class="style-switcher-item">
+      <p class="mb-2">Theme Colors</p>
+      <!-- theme color -->
+      <div class="theme-colors js-theme-colors">
+        <button type="button" data-js-theme-color="color-1" class="js-theme-color-item color-1"></button>
+        <button type="button" data-js-theme-color="color-2" class="js-theme-color-item color-2"></button>
+        <button type="button" data-js-theme-color="color-3" class="js-theme-color-item color-3"></button>
+        <button type="button" data-js-theme-color="color-4" class="js-theme-color-item color-4"></button>
+        <button type="button" data-js-theme-color="color-5" class="js-theme-color-item color-5"></button>
+      </div>
+    </div>
+    <div class="style-switcher-item">
+      <div class="form-check form-switch">
+        <input class="form-check-input js-dark-mode" type="checkbox" role="switch" id="dark-mode">
+        <label class="form-check-label" for="dark-mode">Dark Mode</label>
+      </div>
+    </div>
+  </div>
+  <!-- style switcher end -->
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

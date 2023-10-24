@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- font awsome icon -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+      <!-- color Theme -->
+  <link rel="stylesheet" href="css/courses-test.css">
+  <title>Menu Filter with Bootstrap 5</title>
+</head>
+<body>
+
+      <div class="side-bar-filter">
+        <div class="menu-filter">
+          <div class="item"><a href="#"><i class="fas fa-desktop"></i>Dashboard</a></div>
+          <div class="item">
+            <a class="sub-btn"><i class="fas fa-table"></i>Table <i class="fas fa-angle-up dropdown"></i></a>
+            <div class="sub-menu">
+              <a href="#" class="sub-item">Sub Item 01</a>
+              <a href="#" class="sub-item">Sub Item 02</a>
+              <a href="#" class="sub-item">Sub Item 03</a>
+            </div>
+          </div>
+          <div class="item">
+            <a class="sub-btn"><i class="fas fa-th"></i>Forms <i class="fas fa-angle-up dropdown"></i></a>
+            <div class="sub-menu">
+              <a href="#" class="sub-item">Sub Item 05</a>
+              <a href="#" class="sub-item">Sub Item 06</a>
+              <a href="#" class="sub-item">Sub Item 07</a>
+            </div>
+          </div>
+          <div class="item"><a href="#"><i class="fas fa-cogs"></i>Setting</a></div>
+          <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About</a></div>
+        </div>
+      </div>
+
+      
+      <script type="text/javascript">
+        $(document).ready(function(){
+          // jquery for toggle sub menu
+          $('.sub-btn').click(function(){
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+          });
+        });
+      </script>
+    </body>
+</html>

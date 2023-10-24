@@ -1,0 +1,341 @@
+.courses {
+    width: 90%;
+    margin: auto;
+    border-bottom: 1px solid;
+    margin-bottom: 20px;
+}
+
+#people {
+    width: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#people>p {
+    color: gray;
+    font-size: 13px;
+}
+
+/* #ctitle {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+  */
+
+.switch-tab-demo {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.btn-box {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn-box button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    margin-right: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--black-70);
+}
+
+ .content {
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    /* text-align: center; */
+    margin: 2% auto;
+    position: absolute;
+    transform: translateX(100%);
+    transition: .3s;
+}
+
+
+#CateSlide,
+#topjsc {
+    width: 90%;
+    margin: auto;
+}
+.cate-item {
+    display: flex;
+}
+
+#alsolearn {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+}
+
+#alsolearn>div {
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid lightgray;
+}
+
+#filter {
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+#filter .sortField {
+    height: 70px;
+    margin: 0 10px;
+}
+#filter .sortField:first-child span {
+    margin-right: 10px;
+}
+#filter .sortField:first-child {
+    font-weight: bold;
+}
+#filter .sortField span i{
+    font-size: 22px;
+}
+#filter .sortField:first-child {
+    width: 150px;
+}
+#filter .sortField span {
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+}
+#filter .sortdropdown {
+    background-color: transparent;
+    height: fit-content;
+    box-shadow: none !important;
+    width: 150px;
+    padding: 5px 0 5px 0;
+}
+
+#filter>div {
+    width: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+#filter>div>h4,
+#filter>div>div {
+    border: 1px solid var(--black-70);
+    padding: 10px;
+}
+
+#filter>div>div>select {
+    border: none;
+    outline: none;
+    height: 100%;
+    color: var(--black-70);
+}
+
+#sortbox {
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+#sortfilter {
+    width: 25%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#filter-course {
+    width: 100%;
+    padding-top: 20px;
+    box-sizing: border-box;
+    /* background-color: #ccc; */
+}
+#filter-course .course-card {
+    height: 200px;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+#filter-course .course-card .course-card--img img {
+    height: 180px;
+    width: 200px;
+}
+#filter-course .course-card-content {
+    margin-left: 20px;
+    width: 65%;
+}
+#filter-course .course-card-content > * div{
+    padding: 2px 0;
+}
+#filter-course .course-card-content .desc--headline span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+#filter-course .card-content--desc .desc--auth,
+#filter-course .card-content--desc .reviews,
+#filter-course .card-content--desc .desc--details {
+    font-size: 13px;
+    opacity: .93;
+    font-weight: 500;
+}
+#filter-course .card-content--desc .average-stars,
+.average-stars {
+    color: #b4690e;
+}
+#filter-course .card-content--desc .desc--details span {
+    padding-right: 10px;
+}
+#filter-course .card-content-price {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+
+.checkrating {
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.checkrating>img {
+    height: 20px;
+    width: 80px;
+}
+
+#sortfilter>h3 {
+    border-top: 1px solid #777;
+}
+
+#hour>input {
+    margin: 10px auto;
+}
+
+#sortitem {
+    width: 80%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#sortitem>div {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#sortitem>div>div {
+    display: flex;
+
+}
+
+#sortitem>div>div>div>div {
+    display: flex;
+    align-items: center
+}
+
+#sortitem>div>div>img {
+    padding: 23px;
+    padding-left: 40px;
+
+}
+
+#sortitem>div>div>div>h5 {
+    font-weight: lighter;
+    font-size: 15px;
+    margin-top: -15px;
+    width: 400px;
+}
+
+#sortitem>div>div>div>p {
+    color: #777;
+    font-size: 14px;
+    margin-top: -15px;
+}
+
+#sortitem>div>div>div>div {
+    margin-top: -20px;
+}
+
+#sortitem>div>div>div>div>h4 {
+    color: coral;
+}
+
+.side-bar-filter {
+    /* background-color: cadetblue; */
+    /* backdrop-filter: blur(15px); */
+    width: 100%;
+    height: 100vh;
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: hidden; */
+}
+.side-bar-filter .menu-filter {
+    width: 100%;
+    padding-top: 20px;
+}
+.side-bar-filter .menu-filter .item {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid var(--black-70);
+}
+.side-bar-filter .menu-filter .item a {
+    color: var(--black-90);
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    padding: 5px 30px;
+    line-height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+.side-bar-filter .menu-filter .item .sub-item {
+    line-height: 40px;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+    font-size: 18px;
+    /* padding: 5px 30px; */
+    display: flex;
+    align-items: center;
+}
+.side-bar-filter .menu-filter .item .sub-item input {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+}
+
+.side-bar-filter .menu-filter .item .title {
+   font-size: 24px;
+   font-weight: 600;
+}
+.side-bar-filter .menu-filter .item a:hover {
+    color: var(--main-color);
+    transition: .3s ease;
+}
+    /* .side-bar-filter .menu-filter .item i {
+        margin-right: 15px;
+    } */
+.side-bar-filter .menu-filter .item a .dropdown {
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    transition: .3s ease;
+}
+.side-bar-filter .menu-filter .item .sub-menu {
+    /* background-color: brown; */
+    display: none;
+}
+.side-bar-filter .menu-filter .item .sub-menu .sub-item {
+    padding-left: 80px;
+}
+.rotate {
+    transform: rotate(180deg);
+}
