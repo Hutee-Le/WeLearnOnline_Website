@@ -47,7 +47,12 @@ namespace WeLearnOnine_Website.Controllers
 
             return View("Index",courses);
         }
+        public IActionResult Search(string keyword)
+        {
+            List<Course> course = _courseRepository.Search(keyword);
 
+            return View(course);
+        }
         public IActionResult Details(int id)
         {
             var course = _courseRepository.FindCourseByID(id);

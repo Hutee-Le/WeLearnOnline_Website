@@ -22,7 +22,10 @@ namespace WeLearnOnine_Website.Repositories
 
             return courses;
         }
-
+        public List<Course> Search(string keyword)
+        {
+            return _ctx.Courses.Where(c => c.Title.Contains(keyword)).ToList();
+        }
         public bool Add(Course course)
         {
             _ctx.Courses.Add(course);
