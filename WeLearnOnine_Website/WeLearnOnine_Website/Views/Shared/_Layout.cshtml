@@ -84,10 +84,10 @@
                         </ul>
                     </div>
 
-                    <div class="search-input">
+                    <form asp-controller="Course" asp-action="Search" asp-for="keyword" method="post" class="search-input">
                         <span><i class="fas fa-search"></i></span>
-                        <input type="text" placeholder="Search for anything">
-                    </div>
+                        <input type="text" name="keyword" placeholder="Search for anything">
+                    </form>
                     <nav class="header-menu js-header-menu">
                         <button type="button" class="header-close-btn js-header-menu-toggler">
                             <i class="fas fa-times"></i>

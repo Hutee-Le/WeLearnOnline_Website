@@ -13,5 +13,6 @@
         List<Course> GetCoursesByCategoryId(int categoryId);
 
         //List<Course> GetAllCoursesWithStaff();
+        List<Course> Search(string keyword);
     }
 }
