@@ -11109,19 +11109,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
+      "projectUniqueName": "D:\\DO_AN_CHUYEN_NGANH_A\\Main_2510\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
       "projectName": "WeLearnOnine_Website",
-      "projectPath": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\",
+      "projectPath": "D:\\DO_AN_CHUYEN_NGANH_A\\Main_2510\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "D:\\DO_AN_CHUYEN_NGANH_A\\Main_2510\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11129,7 +11129,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11186,7 +11185,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
