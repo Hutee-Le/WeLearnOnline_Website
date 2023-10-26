@@ -5,8 +5,8 @@ namespace WeLearnOnine_Website.Repositories
 {
     public class FavListRepository: IFavListRepository
     {
-        private StWelearnContext _ctx;
-        public FavListRepository(StWelearnContext ctx) 
+        private DerekmodeWeLearnSystemContext _ctx;
+        public FavListRepository(DerekmodeWeLearnSystemContext ctx) 
         {
             _ctx = ctx;
         }

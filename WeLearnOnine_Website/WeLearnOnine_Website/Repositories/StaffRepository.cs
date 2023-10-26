@@ -5,9 +5,9 @@ namespace WeLearnOnine_Website.Repositories
 {
     public class StaffRepository : IStaffRepository
         {
-            private readonly StWelearnContext _context;
+            private readonly DerekmodeWeLearnSystemContext _context;
 
-            public StaffRepository(StWelearnContext context)
+            public StaffRepository(DerekmodeWeLearnSystemContext context)
             {
                 _context = context;
             }

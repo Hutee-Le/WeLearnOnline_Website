@@ -4,9 +4,9 @@ namespace WeLearnOnine_Website.Repositories
 {
 	public class LessonRepository : ILessonRepository
 	{
-		public StWelearnContext _context;
+		public DerekmodeWeLearnSystemContext _context;
 
-		public LessonRepository(StWelearnContext context)
+		public LessonRepository(DerekmodeWeLearnSystemContext context)
 		{
 			_context = context;
 		}

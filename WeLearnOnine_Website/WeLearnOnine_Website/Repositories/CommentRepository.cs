@@ -5,9 +5,9 @@ namespace WeLearnOnine_Website.Repositories
 {
     public class CommentRepository : ICommentRepository
     {
-        private StWelearnContext _ctx;
+        private DerekmodeWeLearnSystemContext _ctx;
 
-        public CommentRepository(StWelearnContext ctx)
+        public CommentRepository(DerekmodeWeLearnSystemContext ctx)
         {
             _ctx = ctx;
         }
