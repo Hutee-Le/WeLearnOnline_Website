@@ -6,7 +6,8 @@
         bool Update(Staff staff);
         bool Delete(string id);
         void DeleteAll();   
-        //Course FindStaffByID(string id);
         List<Staff> GetAllStaffs();
+        Staff FindStaffByID(string id);
+        List<Staff> Search(string keyword);
     }
 }

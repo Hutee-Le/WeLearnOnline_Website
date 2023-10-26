@@ -1,0 +1,220 @@
+﻿@model IEnumerable<WeLearnOnine_Website.Models.Staff>
+
+@{
+    ViewData["Title"] = "ListStaff";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4 class="py-3 mb-4"><span class="text-muted fw-light">Staff /</span> Staff Table</h4>
+
+<p>
+    <a asp-action="CreateStaff" class="btn rounded-pill btn-primary text-white">
+        Create New
+    </a>
+</p>
+
+<div class="card">
+    <h5 class="card-header">Staffs Table</h5>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> <b style="font-size: 20px">#</b></th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Password
+                        </th>
+                        <th>
+                            PhoneNumber
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Experience
+                        </th>
+                        <th>
+                            AvatarUrl
+                        </th>                                        
+                        <th>
+                            FacebookUrl
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @{
+                                string staffClass = "bg-label-secondary";
+
+                                if (item.Role == "Instructor")
+                                {
+                                    staffClass = "bg-label-info";
+                                }
+                                else if (item.Role == "Đào Tạo")
+                                {
+                                    staffClass = "bg-label-primary";
+                                }
+                                else if (item.Role == "Admin")
+                                {
+                                    staffClass = "bg-label-danger";
+                                }
+                            }
+                            <td>
+                                <i class="fab fa-bootstrap fa-lg text-primary me-3"></i>
+                                <span class="fw-medium">@item.StaffId</span>
+                            </td>
+                            <td><span>@item.StaffName</span></td>
+                            <td>
+                                <span class="badge me-1 @staffClass">
+                                    @item.Role
+                                </span>
+                            </td>
+                            <td>@item.Email</td>
+                            <td>@item.Password</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.Rating</td>
+                            <td>@item.Address</td>
+                            <td class="hidetext">
+                                <p class="content">@item.Desciption</p>
+                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
+                            </td>
+                            <td class="hidetext">
+                                <p>@item.Experience</p>
+                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
+                            </td>
+                            <td>
+                                <img src="@item.AvatarUrl" width="200" height="100" />
+                            </td>
+                            <td class="hidetext">
+                                <p>@item.FacebookUrl</p>
+                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
+                            </td>
+                            <td>
+                                <a class="dropdown-item mb-2" asp-action="EditCourse" asp-route-id="@item.StaffId" style="color: #03c3ec; background-color:#d7f5fc; border-color: #b3edf9; padding: 5px 8px; border-radius: 5px;cursor:pointer"><i class="bx bx-trash me-1"></i> Edit</a>
+                                <a class="dropdown-item mb-2" data-bs-toggle="modal" data-bs-target="#smallModal" style="color: #ff3e1d; background-color:#ffe0db; border-color: #ffc5bb; padding: 5px 8px; border-radius: 5px; cursor:pointer"><i class="bx bx-edit-alt me-1"></i> Delete</a>
+                                @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModal">
+                            Delete
+                            </button> *@
+                            </td>
+                        </tr>
+
+                        <div class="modal fade" id="smallModal" tabindex="-1" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col mb-3">
+                                                <h3>Do you want to delete?</h3>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.StaffId">Detele</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- Hiển thị danh sách các khóa học -->
+        <!-- ... -->
+        @{
+            var pageNumber = ViewBag.PageNumber ?? 1;
+            var pageSize = ViewBag.PageSize ?? 5;
+            var totalItems = ViewBag.TotalItems ?? 0;
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            var showEllipsis = totalPages > 5;
+        }
+
+        <!-- Hiển thị phân trang -->
+        <nav aria-label="Page navigation" class="d-flex justify-content-center">
+            <ul class="pagination">
+                @if (pageNumber > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = pageNumber - 1 })" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                }
+
+                @for (int j = 1; j <= 2 && j <= totalPages; j++)
+                {
+                    if (j == pageNumber)
+                    {
+                        <li class="page-item active"><a class="page-link" href="#">@j</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@Url.Action("Index", new { page = j })">@j</a></li>
+                    }
+                }
+
+                @if (pageNumber > 3 && showEllipsis)
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link">...</a>
+                    </li>
+                }
+
+                @for (int j = Math.Max(pageNumber - 2, 3); j <= Math.Min(pageNumber + 2, totalPages); j++)
+                {
+                    if (j == pageNumber)
+                    {
+                        <li class="page-item active"><a class="page-link" href="#">@j</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@Url.Action("Index", new { page = j })">@j</a></li>
+                    }
+                }
+
+                @if (pageNumber < totalPages - 2 && showEllipsis)
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link">...</a>
+                    </li>
+                }
+
+                @if (pageNumber < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = pageNumber + 1 })" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
