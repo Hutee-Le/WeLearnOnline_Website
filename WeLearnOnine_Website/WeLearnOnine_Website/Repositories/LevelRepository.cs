@@ -5,9 +5,9 @@ namespace WeLearnOnine_Website.Repositories
 {
     public class LevelRepository : ILevelRepository
     {
-        private readonly StWelearnContext _context;
+        private readonly DerekmodeWeLearnSystemContext _context;
 
-        public LevelRepository(StWelearnContext context)
+        public LevelRepository(DerekmodeWeLearnSystemContext context)
         {
             _context = context;
         }

@@ -5,9 +5,9 @@ namespace WeLearnOnine_Website.Repositories
 {
     public class CourseRepository : ICourseRepository
     {
-        private readonly StWelearnContext _ctx;
+        private readonly DerekmodeWeLearnSystemContext _ctx;
 
-        public CourseRepository(StWelearnContext ctx)
+        public CourseRepository(DerekmodeWeLearnSystemContext ctx)
         {
             _ctx = ctx;
         }

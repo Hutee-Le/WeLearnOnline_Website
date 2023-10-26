@@ -4,9 +4,9 @@ namespace WeLearnOnine_Website.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private StWelearnContext _ctx;
+        private DerekmodeWeLearnSystemContext _ctx;
 
-        public CategoryRepository (StWelearnContext ctx)
+        public CategoryRepository (DerekmodeWeLearnSystemContext ctx)
         {
             _ctx = ctx;
         }

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WeLearnOnine_Website.Models;
 
-public partial class StWelearnContext : DbContext
+public partial class DerekmodeWeLearnSystemContext : DbContext
 {
-    public StWelearnContext()
+    public DerekmodeWeLearnSystemContext()
     {
     }
 
-    public StWelearnContext(DbContextOptions<StWelearnContext> options)
+    public DerekmodeWeLearnSystemContext(DbContextOptions<DerekmodeWeLearnSystemContext> options)
         : base(options)
     {
     }
@@ -50,8 +50,7 @@ public partial class StWelearnContext : DbContext
     public virtual DbSet<UserLesson> UserLessons { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-KLNMKR8\\LINH;uid=sa;password=1;database=ST_WELEARN;Encrypt=true;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=sql.bsite.net\\MSSQL2016;uid=derekmode_WeLearn_System;password=123456;database=derekmode_WeLearn_System;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -3,13 +3,13 @@ using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("System_Welearn");
+var connectionString = builder.Configuration.GetConnectionString("ST_Welearn");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 //Dependency Injection
-builder.Services.AddDbContext<StWelearnContext>(options =>
+builder.Services.AddDbContext<DerekmodeWeLearnSystemContext>(options =>
 {
 	options.UseSqlServer(connectionString);
 });

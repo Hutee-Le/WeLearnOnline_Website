@@ -8,11 +8,11 @@ namespace WeLearnOnine_Website.Controllers
     {
         private readonly ICourseRepository _courseRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly StWelearnContext _context;
+        private readonly DerekmodeWeLearnSystemContext _context;
 
 
 
-        public CourseController(ICourseRepository courseRepository,StWelearnContext context)
+        public CourseController(ICourseRepository courseRepository, DerekmodeWeLearnSystemContext context)
         {
             _courseRepository = courseRepository;
             _context = context;
