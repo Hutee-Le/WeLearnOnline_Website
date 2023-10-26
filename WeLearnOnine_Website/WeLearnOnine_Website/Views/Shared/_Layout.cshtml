@@ -56,30 +56,30 @@
                         <ul class="menu-multi">
                             <li>
                                 categories
-                                    <ul class="submenu-multi">
+                                <ul class="submenu-multi">
                                     @foreach (var item in service.GetRootCategories())
                                     {
                                         <li>
                                             <a asp-action="CourseByCategory" asp-controller="Course" asp-route-categoryId="@item.CategoriesId">@item.CategoryName</a>
                                             <i class="bi bi-chevron-right"></i>
                                             <ul class="submenu-multi2">
-                                            @foreach (var subitem_multi2 in service.GetSecondLevelCategories(item.CategoriesId))
-                                            {
-                                                <li class="inline-block">
-                                                     <a asp-action="CourseByCategory" asp-controller="Course" asp-route-categoryId="@subitem_multi2.CategoriesId">@subitem_multi2.CategoryName</a>
-                                                    <i class="bi bi-chevron-right"></i>
-                                                    <ul class="submenu-multi3">
-                                                    @foreach (var subitem_multi3 in service.GetThirdLevelCategories(subitem_multi2.CategoriesId))
-                                                    {
+                                                @foreach (var subitem_multi2 in service.GetSecondLevelCategories(item.CategoriesId))
+                                                {
+                                                    <li class="inline-block">
+                                                        <a asp-action="CourseByCategory" asp-controller="Course" asp-route-categoryId="@subitem_multi2.CategoriesId">@subitem_multi2.CategoryName</a>
+                                                        <i class="bi bi-chevron-right"></i>
+                                                        <ul class="submenu-multi3">
+                                                            @foreach (var subitem_multi3 in service.GetThirdLevelCategories(subitem_multi2.CategoriesId))
+                                                            {
                                                                 <li><a asp-action="CourseByCategory" asp-controller="Course" asp-route-categoryId="@subitem_multi3.CategoriesId">@subitem_multi3.CategoryName</a></li>
-                                                    }
-                                                     </ul>
-                                                </li>     
-                                            }
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                }
                                             </ul>
                                         </li>
                                     }
-                                    </ul>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -101,7 +101,7 @@
                                     <li class="sub-menu-item"><a asp-action="Details" asp-controller="Course">Details Course</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-item"><a href="contact.html">My learning</a></li>
+                            <li class="menu-item"><a asp-action="Index" asp-controller="Mylearn">My learning</a></li>
                             <li class="menu-item icon-color-theme"><a href="#"><i class="far fa-heart"></i></a></li>
                             <li class="menu-item"><a asp-action="Index" asp-controller="Cart"><i class="fas fa-shopping-cart"></i></a></li>
                             <li class="menu-item"><a href="#"><i class="far fa-bell"></i></a></li>
@@ -153,8 +153,7 @@
             </div>
         </header>
         <!-- header end -->
-
-       @RenderBody()
+        @RenderBody()
 
         <!-- footer start -->
         <footer class="footer">
@@ -256,7 +255,7 @@
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/swiper-bundle.min.js"></script>
     <script src="~/js/main.js"></script>
-    
+
 </body>
 
 </html>
