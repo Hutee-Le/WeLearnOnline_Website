@@ -1054,6 +1054,18 @@ select.form-control:focus option {
     overflow: hidden;
 }
 
+.img-box {
+    position: relative;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 1.5rem; /* Adjust the size as needed */
+}
+
 .courses-item {
     min-width: 270px;
     width: 100%;
@@ -1072,11 +1084,17 @@ select.form-control:focus option {
     position: relative;
 }
 
-    .course-popover:hover .card-popover {
+.course-popover:hover .card-popover {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(100%);
+}
+
+.course-popover:last-child:hover .card-popover {
         visibility: visible;
         opacity: 1;
-        transform: translateX(100%);
-    }
+        transform: translateX(-100%);
+}
 
 .card-popover {
     position: absolute;
@@ -1253,6 +1271,7 @@ select.form-control:focus option {
     .courses-item .price span {
         font-size: 26px;
         padding-right: 5px;
+        margin-top: 5px;
     }
 
 .courses-item .seller span {
