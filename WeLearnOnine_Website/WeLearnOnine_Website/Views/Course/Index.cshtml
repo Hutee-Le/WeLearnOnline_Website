@@ -402,7 +402,7 @@
     </div>
 </section>
 
-<script>
+@* <script>
     let content1 = document.getElementById("content1");
     let content2 = document.getElementById("content2");
     let content3 = document.getElementById("content3");
@@ -434,7 +434,7 @@
         btn2.style.color = "var(--black-90)";
         btn3.style.color = "var(--main-color)";
     }
-</script>
+</script> *@
 
 <div id="CateSlide">
     <h2>JavaScript students also learn</h2>
@@ -726,6 +726,13 @@
             <div class="card-content-price">
                 <span>&#8363;</span> @item.Price
             </div>
+                <div class="popover-course">
+                    <a href="#" class="title">@item.Title</a>
+                    <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
+                    <!-- Add other popover content here -->
+                    <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
+                    <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
+                </div>
         </div>
         }
 
