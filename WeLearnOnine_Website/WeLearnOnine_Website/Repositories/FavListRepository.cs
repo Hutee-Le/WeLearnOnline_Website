@@ -55,7 +55,11 @@ namespace WeLearnOnine_Website.Repositories
 
         public List<FavList> GetAllByUserId(int userid)
         {
-            return _ctx.FavLists.Where(f => f.UserId == userid).Include("Course").ToList();
+            return _ctx.FavLists
+                .Where(f => f.UserId == userid)
+                .Include(f => f.Course)
+                .ThenInclude(c => c.Staff)
+                .ToList();
         }
     }
 }
