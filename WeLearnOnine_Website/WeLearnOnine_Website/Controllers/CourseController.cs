@@ -7,7 +7,6 @@ namespace WeLearnOnine_Website.Controllers
     public class CourseController : Controller
     {
         private readonly ICourseRepository _courseRepository;
-        private readonly ICategoryRepository _categoryRepository;
         private readonly DerekmodeWeLearnSystemContext _context;
 
 
@@ -45,7 +44,7 @@ namespace WeLearnOnine_Website.Controllers
                 }
             }
 
-            return View("Index",courses);
+            return View("Index", courses);
         }
         public IActionResult Search(string keyword)
         {
@@ -53,6 +52,7 @@ namespace WeLearnOnine_Website.Controllers
 
             return View(course);
         }
+
         public IActionResult Details(int id)
         {
             var course = _courseRepository.FindCourseByID(id);

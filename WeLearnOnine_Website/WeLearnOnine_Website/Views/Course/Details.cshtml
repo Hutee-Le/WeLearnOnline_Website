@@ -4,8 +4,8 @@
     <div class="container-xxl">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="courses.html">Courses</a></li>
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Course">Course</a></li>
                 <li class="breadcrumb-item active text-white" aria-current="page">Course Details</li>
             </ol>
         </nav>
@@ -38,7 +38,7 @@
                     </div>
                     <ul>
                         <li>enrolled students - <span>2200</span></li>
-                        <li>created by - <span><a href="#">@Model.StaffId</a></span></li>
+                       @*  <li>created by - <span><a href="#">@Model.Staff.StaffName</a></span></li> *@
                         <li>last updated - <span>29/09/2023</span></li>
                         <li>language - <span>@Model.Language</span></li>
                     </ul>
@@ -91,26 +91,20 @@
                                          data-bs-parent="#accordion">
                                         <div class="accordion-body">
                                             <ul>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Lexical structure
-                                                    <span>06:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Values
-                                                    <span>07:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Types
-                                                    <span>02:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Variables
-                                                    <span>05:00</span>
-                                                </li>
+                                                @foreach (var l in Model.Lessons)
+                                                {
+
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="fas fa-play-circle"></i>
+                                                            @l.Title
+                                                            <span>@l.Time minutes</span>
+                                                        </a>
+
+                                                        @*  <a asp-controller="Course" asp-action="GetLessons" asp-route-courseId="@Model.CourseId" class="link">Lexical structure</a> *@
+                                                    </li>
+                                                }
+
                                             </ul>
                                         </div>
                                     </div>
@@ -222,10 +216,9 @@
                          aria-labelledby="course-description-tab" tabindex="0">
                         <div class="course-description box">
                             <h3 class="text-capitalize mb-4">description</h3>
+
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
-                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
-                                cupiditate, iure quod nostrum a?
+                                @Model.Description
                             </p>
                             <h4>For who is this course designed ?</h4>
                             <p>
@@ -233,11 +226,9 @@
                                 cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
                                 cupiditate, iure quod nostrum a?
                             </p>
-                            <h4>Why should you take this course ?</h4>
+                            <h4>Required</h4>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
-                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
-                                cupiditate, iure quod nostrum a?
+                                @Model.Required
                             </p>
                         </div>
                     </div>
@@ -255,9 +246,9 @@
                                         </div>
                                     </div>
                                     <div class="right-box">
-                                        <h4>john doe <span>(web development)</span></h4>
+                                        <h4>@Model.Staff.StaffName <span>(web development)</span></h4>
                                         <ul>
-                                            <li><i class="fas fa-star"></i> 4.5 Rating</li>
+                                            <li><i class="fas fa-star"></i> @Model.Rating</li>
                                             <li><i class="fas fa-play-circle"></i> 10 Courses</li>
                                             <li><i class="fas fa-certificate"></i> 3000 Reviews</li>
                                         </ul>
@@ -265,11 +256,7 @@
                                 </div>
                                 <div class="text">
                                     <p class="mb-0">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quidem commodi
-                                        quos asperiores in voluptas officia, neque rem quisquam soluta enim fugiat dolor, illum tempore
-                                        consequuntur veritatis? Molestias, minus, maiores atque aspernatur laboriosam beatae nobis
-                                        labore corrupti quaerat alias neque reprehenderit repellendus eius pariatur, ratione repellat
-                                        blanditiis temporibus sit nihil?
+                                        @Model.Staff.Desciption
                                     </p>
                                 </div>
                             </div>
@@ -440,8 +427,17 @@
                         <p class="text-center">Course Preview</p>
                     </div>
                     <div class="price mb-3">
-                        <p class="price-old"><span>&#8363;</span> @Model.Price</p>
-                        <span class="price-new"><span>&#8363;</span> @Model.DiscountPrice</span>
+                        @if (Model.DiscountPrice > 0)
+                        {
+                            <p class="price-old"><span>&#8363;</span> @Model.Price.ToString("N0")</p>
+                            <span class="price-new"><span>&#8363;</span> @Model.DiscountPrice.ToString()</span>
+                        }
+                        else
+                        {
+                            @* <p class="price-old"><span>&#8363;</span> @Model.Price</p> *@
+                            <span class="price-new"><span>&#8363;</span> @Model.Price.ToString("N0")</span>
+                        }
+
                         <span class="price-discount">@Model.Count Off</span>
                     </div>
                     <h3 class="mb-3">Course Features</h3>
@@ -462,7 +458,6 @@
     </div>
 </section>
 <!-- course details section end -->
-
 <!-- course preview modal start -->
 <!-- Modal -->
 <div class="modal fade video-modal js-course-preview-modal" id="video-modal" tabindex="-1"
