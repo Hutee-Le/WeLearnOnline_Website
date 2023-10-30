@@ -22,9 +22,14 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th> <b style="font-size: 20px">#</b></th>
                         <th>
+                            Image
+                        </th>
+     @*                    <th>
                             <b>No.</b> StaffId
+                        </th> *@
+                        <th>
+                            Staff Name
                         </th>
                         <th>
                             Level
@@ -32,17 +37,14 @@
                         <th>
                             Title
                         </th>
-                        <th>
+                       @*  <th>
                             ShortDescription
                         </th>
                         <th>
                             Description
-                        </th>
+                        </th> *@
                         <th>
                             Required
-                        </th>
-                        <th>
-                            ImageCourseUrl
                         </th>
                         <th>
                             Price
@@ -50,21 +52,21 @@
                         <th>
                             DiscountPrice
                         </th>
-                        <th>
+                      @*   <th>
                             PreviewUrl
-                        </th>
+                        </th> *@
                         <th>
                             Status
                         </th>
                         <th>
                             Count
                         </th>
-                        <th>
+                       @*  <th>
                             Rating
                         </th>
                         <th>
                             Language
-                        </th>
+                        </th> *@
                         <th>
                             TimeTotal
                         </th>
@@ -91,9 +93,12 @@
                                     levelClass = "bg-label-danger";
                                 }
                             }
-                            <td>
+                @*             <td>
                                 <i class="fab fa-bootstrap fa-lg text-primary me-3"></i>
                                 <span class="fw-medium">@item.CourseId</span>
+                            </td> *@
+                            <td>
+                                <img src="@item.ImageCourseUrl" width="150" height="100" />
                             </td>
                             @* <td>
                                 @if (item.Staff != null)
@@ -110,36 +115,29 @@
 
                             <td class="hidetext">
                                 <p class="content">@item.Title</p>
-                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
                             </td>
-                            <td class="hidetext">
+                           @*  <td class="hidetext">
                                 <p>@item.ShortDescription</p>
-                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
                             </td>
                             <td class="hidetext">
                                 <p>@item.Description</p>
-                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
-                            </td>
+                            </td> *@
                             <td class="hidetext">
                                 <p>@item.Required</p>
-                                <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
-                            </td>
-                            <td>
-                                <img src="@item.ImageCourseUrl" width="150" height="100" />
                             </td>
                             <td>@item.Price</td>
                             <td>@item.DiscountPrice</td>
-                            <td>
+                            @* <td>
                                 <img src="@item.PreviewUrl" width="200" height="100"/>
-                            </td>
+                            </td> *@
                             <td>
                                 <span class="badge me-1 @(item.Status ? "bg-label-success" : "bg-label-warning")">
                                     @item.Status
                                 </span>
                             </td>
                             <td>@item.Count</td>
-                            <td>@item.Rating</td>
-                            <td>@item.Language</td>
+                         @*    <td>@item.Rating</td>
+                            <td>@item.Language</td> *@
                             <td>@item.TimeTotal</td>
                             <td>
                                 <a class="dropdown-item mb-2" asp-action="EditCourse" asp-route-id="@item.CourseId" style="color: #03c3ec; background-color:#d7f5fc; border-color: #b3edf9; padding: 5px 8px; border-radius: 5px;cursor:pointer"><i class="bx bx-trash me-1"></i> Edit</a>

@@ -83,7 +83,9 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             //ViewBag.LevelId = list1.ToList();
 
             var levellst = _levelRepository.GetAllLevels();
+            var stafflst = _staffRepository.GetAllStaffs();
             ViewBag.LevelId = new SelectList(levellst, "LevelId", "Name");
+            ViewBag.StaffId = new SelectList(stafflst, "StaffId", "StaffName");
             return View("EditCourse", _courseRepository.FindCourseByID(id));
         }
     
