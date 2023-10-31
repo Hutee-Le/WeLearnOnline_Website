@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 
@@ -19,30 +20,33 @@ namespace WeLearnOnine_Website.Controllers
 
         public IActionResult Index()
         {
-            var courses = _courseRepository.GetAllCourses();
+            //var courses = _courseRepository.GetAllCourses();
 
-            // Lặp qua danh sách khóa học và lấy Name của Staff thông qua StaffId
-            foreach (var course in courses)
-            {
-                if (course.StaffId != null)
-                {
-                    var staff = _context.Staff.FirstOrDefault(s => s.StaffId == course.StaffId);
-                    if (staff != null)
-                    {
-                        course.StaffId = staff.StaffName;
-                    }
-                }
+            //// Lặp qua danh sách khóa học và lấy Name của Staff thông qua StaffId
+            //foreach (var course in courses)
+            //{
+            //    if (course.StaffId != null)
+            //    {
+            //        var staff = _context.Staff.FirstOrDefault(s => s.StaffId == course.StaffId);
+            //        if (staff != null)
+            //        {
+            //            course.StaffId = staff.StaffName;
+            //        }
+            //    }
 
-                // Lấy Name của Level thông qua LevelId (giống như trước)
-                if (course.LevelId != null)
-                {
-                    var level = _context.Levels.FirstOrDefault(l => l.LevelId == course.LevelId);
-                    if (level != null)
-                    {
-                        course.Level.Name = level.Name;
-                    }
-                }
-            }
+            //    // Lấy Name của Level thông qua LevelId (giống như trước)
+            //    if (course.LevelId != null)
+            //    {
+            //        var level = _context.Levels.FirstOrDefault(l => l.LevelId == course.LevelId);
+            //        if (level != null)
+            //        {
+            //            course.Level.Name = level.Name;
+            //        }
+            //    }
+            //}
+
+            int userId = 1;
+            var courses = _courseRepository.GetCoursesWithFavoriteStatus(userId);
 
             return View("Index", courses);
         }

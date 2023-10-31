@@ -1,4 +1,5 @@
-﻿@model List<WeLearnOnine_Website.Models.Course>
+﻿@model List<WeLearnOnine_Website.Models.CourseViewModel>
+
 
 <section class="courses mt-5">
     <h1>JavaScript Courses</h1>
@@ -402,40 +403,6 @@
     </div>
 </section>
 
-@* <script>
-    let content1 = document.getElementById("content1");
-    let content2 = document.getElementById("content2");
-    let content3 = document.getElementById("content3");
-    let btn1 = document.getElementById("btn1");
-    let btn2 = document.getElementById("btn2");
-    let btn3 = document.getElementById("btn3");
-
-    function openSlide1() {
-        content1.style.transform = "translateX(0)";
-        content2.style.transform = "translateX(100%)";
-        content3.style.transform = "translateX(100%)";
-        btn1.style.color = "var(--main-color)";
-        btn2.style.color = "var(--black-90)";
-        btn3.style.color = "var(--black-90)";
-    }
-    function openSlide2() {
-        content1.style.transform = "translateX(100%)";
-        content2.style.transform = "translateX(0)";
-        content3.style.transform = "translateX(100%)";
-        btn1.style.color = "var(--black-90)";
-        btn2.style.color = "var(--main-color)";
-        btn3.style.color = "var(--black-90)";
-    }
-    function openSlide3() {
-        content1.style.transform = "translateX(100%)";
-        content2.style.transform = "translateX(100%)";
-        content3.style.transform = "translateX(0)";
-        btn1.style.color = "var(--black-90)";
-        btn2.style.color = "var(--black-90)";
-        btn3.style.color = "var(--main-color)";
-    }
-</script> *@
-
 <div id="CateSlide">
     <h2>JavaScript students also learn</h2>
     <div class="slide-content">
@@ -688,22 +655,22 @@
         {  
             <div class="course-card mb-4">
             <div class="course-card--img">
-                <img src="@item.ImageCourseUrl" alt="">
+                    <img src="@item.Course.ImageCourseUrl" alt="">
             </div>
             <div class="course-card-content">
                 <div class="card-content--title">
-                        <a asp-action="Details" asp-controller="Course" asp-route-id="@item.CourseId">
-                        <h4>@item.Title</h4>
+                        <a asp-action="Details" asp-controller="Course" asp-route-id="@item.Course.CourseId">
+                        <h4>@item.Course.Title</h4>
                     </a>
                 </div>
                 <div class="card-content--desc">
                     <div class="desc--headline">
                         <span>
-                           @item.Description
+                            @item.Course.Description
                         </span>
                     </div>
                     <div class="desc--auth">
-                        <span>@item.StaffId</span>
+                            <span>@item.StaffName</span>
                     </div>
                     <div class="rating">
                         <span class="average-rating">(4.5)</span>
@@ -717,21 +684,37 @@
                         <span class="reviews">(230)</span>
                     </div>
                     <div class="desc--details">
-                        <span>@item.TimeTotal <span>total hours</span></span>
+                        <span>@item.Course.TimeTotal <span>total hours</span></span>
                         <span>150 <span>lectures</span></span>
-                        <span>@item.Level.Name</span>
+                            <span>@item.LevelName</span>
                     </div>
                 </div>
             </div>
             <div class="card-content-price">
-                <span>&#8363;</span> @item.Price
+                <span>&#8363;</span> @item.Course.Price
             </div>
                 <div class="popover-course">
-                    <a href="#" class="title">@item.Title</a>
+                    <a href="#" class="title">@item.Course.Title</a>
                     <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
-                    <!-- Add other popover content here -->
-                    <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
-                    <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
+                    <div class="popover-course-btn">
+                        <form asp-action="AddToCart" asp-controller="Course" class="inline-form">
+                            <input type="hidden" name="courseId" value="@item.Course.CourseId" />
+                            <button type="submit" class="btn-addCart">Add to cart</button>
+                        </form>
+                        <form asp-action="AddToFavorites" asp-controller="Course" class="inline-form">
+                            <input type="hidden" name="courseId" value="@item.Course.CourseId" />
+                            <button type="submit" class="btn-favor">
+                                @if (item.IsInFavorites)
+                                {
+                                    <i class="bi bi-heart-fill"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-heart"></i>
+                                }
+                            </button>
+                        </form>
+                    </div>
                 </div>
         </div>
         }

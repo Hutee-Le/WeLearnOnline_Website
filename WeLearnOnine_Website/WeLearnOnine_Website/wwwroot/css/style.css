@@ -2629,7 +2629,7 @@ List Course
 
 .popover-course {
     position: absolute;
-    top: -15%; /* Đặt top ban đầu là 100% để nó nằm dưới */
+    top: -15%; 
     left: 20%;
     width: 40%;
     background-color: var(--white);
@@ -2645,7 +2645,7 @@ List Course
 .course-card:hover .popover-course {
     visibility: visible;
     opacity: 1;
-    transform: translateY(-100%); /* Dịch chuyển lên 10px để tạo hiệu ứng dịch chuyển từ dưới lên */
+    transform: translateY(-100%); /* Dịch chuyển lên -100px để tạo hiệu ứng dịch chuyển từ dưới lên */
 }
 
 .popover-course::before {
@@ -2682,16 +2682,21 @@ List Course
         margin-right: 10px;
     }
 
-    .popover-course .btn-addCart {
-        background-color: var(--main-color);
-        border: none;
-        color: var(--WHITE);
-        padding: 12px 0;
-        width: 75%;
-        border-radius: 5px;
-        margin-right: 20px;
-        transition: 0.73s ease;
-    }
+
+.inline-form {
+    display: inline-block;
+}
+
+
+.popover-course .btn-addCart {
+    background-color: var(--main-color);
+    border: none;
+    color: var(--WHITE);
+    width: 300px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    transition: 0.73s ease;
+}
 
     .popover-course .btn-favor {
         background-color: var(--main-color);
@@ -2711,7 +2716,7 @@ List Course
         .popover-course .btn-addCart:hover {
             opacity: .73;
         }
-    
+
 
     #filter-course .course-card {
         height: 200px;
