@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿    using Microsoft.EntityFrameworkCore;
 using WeLearnOnine_Website.Models;
 
 namespace WeLearnOnine_Website.Repositories
@@ -68,6 +68,23 @@ namespace WeLearnOnine_Website.Repositories
         {
             Course c = _ctx.Courses.Where(x => x.CourseId == id).FirstOrDefault();
             return c;
+        }
+
+        public List<CourseViewModel> GetCoursesWithFavoriteStatus(int userId)
+        {
+            var courses = _ctx.Courses
+                .Include(c => c.Level)
+                .Include(c => c.Staff)
+                .Select(course => new CourseViewModel
+                {
+                    Course = course,
+                    LevelName = course.Level.Name,
+                    StaffName = course.Staff.StaffName,
+                    IsInFavorites = _ctx.FavLists.Any(f => f.UserId == userId && f.CourseId == course.CourseId)
+                })
+                .ToList();
+
+            return courses;
         }
     }
 }
