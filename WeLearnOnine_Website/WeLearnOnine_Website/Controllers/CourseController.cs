@@ -18,36 +18,24 @@ namespace WeLearnOnine_Website.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            //var courses = _courseRepository.GetAllCourses();
+            int pageSize = 5; // Số hàng trên mỗi trang
+            int pageNumber = page ?? 1; // Trang mặc định
+            int totalItems = _courseRepository.GetAllCourses().Count(); // Tổng số mục
 
-            //// Lặp qua danh sách khóa học và lấy Name của Staff thông qua StaffId
-            //foreach (var course in courses)
-            //{
-            //    if (course.StaffId != null)
-            //    {
-            //        var staff = _context.Staff.FirstOrDefault(s => s.StaffId == course.StaffId);
-            //        if (staff != null)
-            //        {
-            //            course.StaffId = staff.StaffName;
-            //        }
-            //    }
+            // Đưa các giá trị vào ViewBag
+            ViewBag.PageNumber = pageNumber;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalItems = totalItems;
 
-            //    // Lấy Name của Level thông qua LevelId (giống như trước)
-            //    if (course.LevelId != null)
-            //    {
-            //        var level = _context.Levels.FirstOrDefault(l => l.LevelId == course.LevelId);
-            //        if (level != null)
-            //        {
-            //            course.Level.Name = level.Name;
-            //        }
-            //    }
-            //}
-
+            var displayedCourses = _courseRepository.GetAllCourses()
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+            ViewBag.Display=displayedCourses;
             int userId = 1;
             var courses = _courseRepository.GetCoursesWithFavoriteStatus(userId);
-
             return View("Index", courses);
         }
         public IActionResult Search(string keyword)
