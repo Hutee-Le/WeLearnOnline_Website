@@ -17,5 +17,6 @@
 
         //List<Course> GetAllCoursesWithStaff();
         List<Course> Search(string keyword);
+        //List<Course> GetCoursesFavoriteStatus(int userId);
     }
 }
