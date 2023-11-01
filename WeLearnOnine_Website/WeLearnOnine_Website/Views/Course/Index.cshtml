@@ -1,6 +1,4 @@
 ﻿@model List<WeLearnOnine_Website.Models.CourseViewModel>
-
-
     
 <section class="courses mt-5">
     <h1>JavaScript Courses</h1>
@@ -719,22 +717,17 @@
                 </div>
         </div>
         }
-       
-        @* <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 200px">
+
+        <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
             </ul>
-        </nav> *@
+        </nav>
         <!-- Hiển thị phân trang -->
        
     </div>
@@ -746,7 +739,7 @@
         var showEllipsis = totalPages > 5;
     }
 
-    <nav aria-label="Page navigation" class="d-flex justify-content-center">
+    @* <nav aria-label="Page navigation" class="d-flex justify-content-center">
         <ul class="pagination">
             @if (pageNumber > 1)
             {
@@ -806,6 +799,6 @@
                 </li>
             }
         </ul>
-    </nav>
+    </nav> *@
 
     </div>

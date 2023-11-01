@@ -70,7 +70,7 @@ namespace WeLearnOnine_Website.Repositories
             return c;
         }
 
-        public List<CourseViewModel> GetCoursesWithFavoriteStatus(int userId)
+        public List<CourseViewModel> GetAllCoursesWithDetails(int userId)
         {
             var courses = _ctx.Courses
                 .Include(c => c.Level)
@@ -87,21 +87,21 @@ namespace WeLearnOnine_Website.Repositories
             return courses;
         }
 
-        //public List<Course> GetCoursesFavoriteStatus(int userId)
-        //{
-        //    var courses = _ctx.Courses
-        //        .Include(c => c.Level)
-        //        .Include(c => c.Staff)
-        //        .Select(course => new CourseViewModel
-        //        {
-        //            Course = course,
-        //            LevelName = course.Level.Name,
-        //            StaffName = course.Staff.StaffName,
-        //            IsInFavorites = _ctx.FavLists.Any(f => f.UserId == userId && f.CourseId == course.CourseId)
-        //        })
-        //        .ToList();
+        public List<CourseViewModel> GetAllCoursesWithDetails()
+        {
+            var courses = _ctx.Courses
+        .Include(c => c.Level)
+        .Include(c => c.Staff)
+        .Select(course => new CourseViewModel
+        {
+            Course = course,
+            LevelName = course.Level.Name,
+            StaffName = course.Staff.StaffName,
+            IsInFavorites = false 
+        })
+        .ToList();
 
-        //    return courses;
-        //}
+            return courses;
+        }
     }
 }
