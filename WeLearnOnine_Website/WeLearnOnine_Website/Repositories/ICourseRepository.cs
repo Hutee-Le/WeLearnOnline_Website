@@ -7,6 +7,10 @@
         bool Delete(int id);
         void DeleteAll();
         Course FindCourseByID(int id);
+
+        Task<bool> AddToFavorites(int userId, int courseId);
+
+        Task<bool> RemoveFromFavorites(int userId, int courseId);
         List<Course> GetAllCourses();
 
         // Retrieve all courses by category id
@@ -17,7 +21,7 @@
         // Retrieve all courses with favorite status
         List<CourseViewModel> GetAllCoursesWithDetails(int userId);
 
-        //List<Course> GetAllCoursesWithStaff();
+
         List<Course> Search(string keyword);
        
     }

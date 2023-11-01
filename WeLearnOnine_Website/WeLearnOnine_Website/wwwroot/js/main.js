@@ -1,5 +1,5 @@
 // Đường dẫn mặc định cho CSS
-const defaultCssPath = "/css/colors/color-1.css";
+const defaultCssPath = "~/css/colors/color-1.css";
 
 // Tìm phần tử <link> với đường dẫn CSS mặc định
 const link = document.querySelector(`link[href="${defaultCssPath}"]`);
@@ -340,11 +340,4 @@ function openSlide3() {
     btn2.style.color = "var(--black-90)";
     btn3.style.color = "var(--main-color)";
 }
-
-
-
-
-
-
-
 
