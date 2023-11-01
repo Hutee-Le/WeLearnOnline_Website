@@ -8,9 +8,9 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
     [Area("Admin")]
     public class StaffController : Controller
     {
-        private IStaffRepository _staffRepository;
+        private ISkillRepository _staffRepository;
 
-        public StaffController(IStaffRepository staffRepository)
+        public StaffController(ISkillRepository staffRepository)
         {
             _staffRepository = staffRepository;
         }

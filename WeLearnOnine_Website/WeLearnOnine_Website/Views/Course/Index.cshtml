@@ -1,5 +1,6 @@
-﻿@model List<WeLearnOnine_Website.Models.CourseViewModel>
+﻿@* @model List<WeLearnOnine_Website.Models.CourseViewModel> *@
 
+@model IEnumerable<WeLearnOnine_Website.Models.Course>
 
 <section class="courses mt-5">
     <h1>JavaScript Courses</h1>
@@ -655,22 +656,22 @@
         {  
             <div class="course-card mb-4">
             <div class="course-card--img">
-                    <img src="@item.Course.ImageCourseUrl" alt="">
+                    <img src="@item.ImageCourseUrl" alt="">
             </div>
             <div class="course-card-content">
                 <div class="card-content--title">
-                        <a asp-action="Details" asp-controller="Course" asp-route-id="@item.Course.CourseId">
-                        <h4>@item.Course.Title</h4>
+                        <a asp-action="Details" asp-controller="Course" asp-route-id="@item.CourseId">
+                        <h4>@item.Title</h4>
                     </a>
                 </div>
                 <div class="card-content--desc">
                     <div class="desc--headline">
                         <span>
-                            @item.Course.Description
+                            @item.Description
                         </span>
                     </div>
                     <div class="desc--auth">
-                            <span>@item.StaffName</span>
+                            <span>@item.Staff.StaffName</span>
                     </div>
                     <div class="rating">
                         <span class="average-rating">(4.5)</span>
@@ -684,42 +685,48 @@
                         <span class="reviews">(230)</span>
                     </div>
                     <div class="desc--details">
-                        <span>@item.Course.TimeTotal <span>total hours</span></span>
+                        <span>@item.TimeTotal <span>total hours</span></span>
                         <span>150 <span>lectures</span></span>
-                            <span>@item.LevelName</span>
+                            <span>@item.Level.Name</span>
                     </div>
                 </div>
             </div>
             <div class="card-content-price">
-                <span>&#8363;</span> @item.Course.Price
+                <span>&#8363;</span> @item.Price
             </div>
                 <div class="popover-course">
-                    <a href="#" class="title">@item.Course.Title</a>
+                    <a href="#" class="title">@item.Title</a>
                     <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
                     <div class="popover-course-btn">
                         <form asp-action="AddToCart" asp-controller="Course" class="inline-form">
-                            <input type="hidden" name="courseId" value="@item.Course.CourseId" />
+                            <input type="hidden" name="courseId" value="@item.CourseId" />
                             <button type="submit" class="btn-addCart">Add to cart</button>
                         </form>
                         <form asp-action="AddToFavorites" asp-controller="Course" class="inline-form">
-                            <input type="hidden" name="courseId" value="@item.Course.CourseId" />
+                            <input type="hidden" name="courseId" value="@item.CourseId" />
                             <button type="submit" class="btn-favor">
-                                @if (item.IsInFavorites)
+                               @*  @if (@item.IsInFavorites)
                                 {
                                     <i class="bi bi-heart-fill"></i>
                                 }
                                 else
                                 {
                                     <i class="bi bi-heart"></i>
-                                }
+                                } *@
                             </button>
                         </form>
                     </div>
                 </div>
         </div>
         }
-
-        <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 200px">
+        @{
+            var pageNumber = ViewBag.PageNumber ?? 1;
+            var pageSize = ViewBag.PageSize ?? 5;
+            var totalItems = ViewBag.TotalItems ?? 0;
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            var showEllipsis = totalPages > 5;
+        }
+        @* <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 200px">
             <ul class="pagination">
                 <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -732,6 +739,68 @@
                 <li class="page-item">
                     <a class="page-link" href="#">Next</a>
                 </li>
+            </ul>
+        </nav> *@
+        <!-- Hiển thị phân trang -->
+        <nav aria-label="Page navigation" class="d-flex justify-content-center">
+            <ul class="pagination">
+                @if (pageNumber > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = pageNumber - 1 })" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                }
+
+                @for (int j = 1; j <= 2 && j <= totalPages; j++)
+                {
+                    if (j == pageNumber)
+                    {
+                        <li class="page-item active"><a class="page-link" href="#">@j</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@Url.Action("Index", new { page = j })">@j</a></li>
+                    }
+                }
+
+                @if (pageNumber > 3 && showEllipsis)
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link">...</a>
+                    </li>
+                }
+
+                @for (int j = Math.Max(pageNumber - 2, 3); j <= Math.Min(pageNumber + 2, totalPages); j++)
+                {
+                    if (j == pageNumber)
+                    {
+                        <li class="page-item active"><a class="page-link" href="#">@j</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@Url.Action("Index", new { page = j })">@j</a></li>
+                    }
+                }
+
+                @if (pageNumber < totalPages - 2 && showEllipsis)
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link">...</a>
+                    </li>
+                }
+
+                @if (pageNumber < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = pageNumber + 1 })" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                }
             </ul>
         </nav>
     </div>

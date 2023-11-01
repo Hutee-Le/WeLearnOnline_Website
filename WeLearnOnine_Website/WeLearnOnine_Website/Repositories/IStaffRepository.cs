@@ -1,6 +1,6 @@
 ﻿namespace WeLearnOnine_Website.Models
 {
-    public interface IStaffRepository
+    public interface ISkillRepository
     {
         bool Add(Staff staff);
         bool Update(Staff staff);

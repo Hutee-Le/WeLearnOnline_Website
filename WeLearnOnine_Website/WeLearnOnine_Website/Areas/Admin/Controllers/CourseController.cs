@@ -13,9 +13,9 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         private ILessonRepository _lessonRepository;
         private ICategoryRepository _categoryRepository;
         private ILevelRepository _levelRepository;
-        private IStaffRepository _staffRepository;
+        private ISkillRepository _staffRepository;
 
-        public CourseController(ICourseRepository courseRepository, ICategoryRepository categoryRepository, ILevelRepository levelRepository, IStaffRepository staffRepository)
+        public CourseController(ICourseRepository courseRepository, ICategoryRepository categoryRepository, ILevelRepository levelRepository, ISkillRepository staffRepository)
         {
             _courseRepository = courseRepository;
             _categoryRepository = categoryRepository;
