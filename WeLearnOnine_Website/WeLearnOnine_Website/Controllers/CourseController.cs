@@ -20,23 +20,29 @@ namespace WeLearnOnine_Website.Controllers
 
         public IActionResult Index(int? page)
         {
-            int pageSize = 5; // Số hàng trên mỗi trang
-            int pageNumber = page ?? 1; // Trang mặc định
-            int totalItems = _courseRepository.GetAllCourses().Count(); // Tổng số mục
+            
+            int userId = 0; // Hoặc lấy userId từ đâu đó nếu cần
+            int pageSize = 4; // Số lượng mục trên mỗi trang
+            int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 
-            // Đưa các giá trị vào ViewBag
-            ViewBag.PageNumber = pageNumber;
-            ViewBag.PageSize = pageSize;
-            ViewBag.TotalItems = totalItems;
+            List<CourseViewModel> courses;
 
-            var displayedCourses = _courseRepository.GetAllCourses()
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-            ViewBag.Display=displayedCourses;
-            int userId = 1;
-            var courses = _courseRepository.GetCoursesWithFavoriteStatus(userId);
-            return View("Index", courses);
+            if (userId != 0)
+            {
+                courses = _courseRepository.GetAllCoursesWithDetails(userId);
+            }
+            else
+            {
+                // Nếu người dùng chưa đăng nhập, hiển thị danh sách khoá học mặc định
+                courses = _courseRepository.GetAllCoursesWithDetails();
+            }
+
+            var paginatedCourses = courses.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)courses.Count() / pageSize);
+
+            return View("Index", paginatedCourses);
         }
         public IActionResult Search(string keyword)
         {
