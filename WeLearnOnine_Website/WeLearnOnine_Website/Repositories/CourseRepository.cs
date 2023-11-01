@@ -103,5 +103,43 @@ namespace WeLearnOnine_Website.Repositories
 
             return courses;
         }
+
+        public async Task<bool> AddToFavorites(int userId, int courseId)
+        {
+            var existingFavorite = await _ctx.FavLists
+                                                 .FirstOrDefaultAsync(f => f.UserId == userId && f.CourseId == courseId);
+            if (existingFavorite != null)
+            {
+                // Khóa học đã có trong danh sách yêu thích
+                return false;
+            }
+
+            var favorite = new FavList
+            {
+                UserId = userId,
+                CourseId = courseId
+            };
+
+            _ctx.FavLists.Add(favorite);
+            await _ctx.SaveChangesAsync();
+            return true;
+        }
+
+
+        public async Task<bool> RemoveFromFavorites(int userId, int courseId)
+        {
+            var favorite = await _ctx.FavLists
+                                         .FirstOrDefaultAsync(f => f.UserId == userId && f.CourseId == courseId);
+            if (favorite == null)
+            {
+                // Khóa học không có trong danh sách yêu thích
+                return false;
+            }
+
+            _ctx.FavLists.Remove(favorite);
+            await _ctx.SaveChangesAsync();
+            return true;
+        }
+
     }
 }

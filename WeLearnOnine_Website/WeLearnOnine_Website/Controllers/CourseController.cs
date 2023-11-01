@@ -21,7 +21,7 @@ namespace WeLearnOnine_Website.Controllers
         public IActionResult Index(int? page)
         {
             
-            int userId = 0; // Hoặc lấy userId từ đâu đó nếu cần
+            int userId = 1; // Hoặc lấy userId từ đâu đó nếu cần
             int pageSize = 4; // Số lượng mục trên mỗi trang
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 
@@ -71,5 +71,30 @@ namespace WeLearnOnine_Website.Controllers
             // Truyền danh sách khóa học đến view
             return View("CourseByCategory", courses);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddToFavorites(int courseId)
+        {
+            int userId = 2; // Lấy ID người dùng từ session hoặc cookie
+            if (userId == 0)
+            {
+                return Json(new { success = false, message = "Bạn cần đăng nhập để thực hiện chức năng này." });
+            }
+            bool result = await _courseRepository.AddToFavorites(userId, courseId);
+            return Json(new { success = result });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromFavorites(int courseId)
+        {
+            int userId = 2 ; // Lấy ID người dùng từ session hoặc cookie
+            if (userId == 0)
+            {
+                return Json(new { success = false, message = "Bạn cần đăng nhập để thực hiện chức năng này." });
+            }
+            bool result = await _courseRepository.RemoveFromFavorites(userId, courseId);
+            return Json(new { success = result });
+        }
+
     }
 }

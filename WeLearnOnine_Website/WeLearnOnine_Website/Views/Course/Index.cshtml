@@ -647,7 +647,31 @@
                     $(this).find('.dropdown').toggleClass('rotate');
                 });
             });
+
+            $(document).ready(function () {
+                $('.btn-favor').click(function (e) {
+                    e.preventDefault();
+                    var button = $(this);
+                    var courseId = button.siblings('input[name="courseId"]').val();
+                    var isInFavorites = button.hasClass('favorited');
+                    var url = isInFavorites ? '/Course/RemoveFromFavorites' : '/Course/AddToFavorites';
+
+                    $.post(url, { courseId: courseId }, function (data) {
+                        if (data.success) {
+                            button.toggleClass('favorited');
+                            var icon = button.find('i');
+                            icon.toggleClass('bi-heart');
+                            icon.toggleClass('bi-heart-fill');
+                        } else {
+                            alert(data.message);
+                        }
+                    });
+                });
+            });
         </script>
+
+
+
     </div>
     <div id="filter-course">
         @foreach(var item in Model)
@@ -700,17 +724,10 @@
                             <input type="hidden" name="courseId" value="@item.Course.CourseId" />
                             <button type="submit" class="btn-addCart">Add to cart</button>
                         </form>
-                        <form asp-action="AddToFavorites" asp-controller="Course" class="inline-form">
+                        <form class="inline-form">
                             <input type="hidden" name="courseId" value="@item.Course.CourseId" />
-                            <button type="submit" class="btn-favor">
-                                @if (@item.IsInFavorites)
-                                {
-                                    <i class="bi bi-heart-fill"></i>
-                                }
-                                else
-                                {
-                                    <i class="bi bi-heart"></i>
-                                }
+                            <button type="submit" class="btn-favor @(item.IsInFavorites ? "favorited" : "")">
+                                <i class="bi @(item.IsInFavorites ? "bi-heart-fill" : "bi-heart")"></i>
                             </button>
                         </form>
                     </div>
