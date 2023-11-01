@@ -3,7 +3,7 @@ using WeLearnOnine_Website.Models;
 
 namespace WeLearnOnine_Website.Repositories
 {
-    public class StaffRepository : IStaffRepository
+    public class StaffRepository : ISkillRepository
     {
         private readonly DerekmodeWeLearnSystemContext _ctx;
 

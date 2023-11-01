@@ -21,7 +21,7 @@ builder.Services.AddTransient<ILessonRepository, LessonRepository>();
 builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ILevelRepository, LevelRepository>();
-builder.Services.AddTransient<IStaffRepository, StaffRepository>();
+builder.Services.AddTransient<ISkillRepository, StaffRepository>();
 
 var app = builder.Build();
 
