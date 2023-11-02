@@ -1,0 +1,103 @@
+﻿@model WeLearnOnine_Website.Models.Staff
+
+@{
+    ViewData["Title"] = "CreateStaff";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fuild flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Staff/</span>Edit</h4>
+    <form asp-action="UpdateStaff">
+        <div class="row">
+            <div class="col-xl">
+                <div class="card">
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="i-input" placeholder="STF001" aria-label="Username" aria-describedby="basic-addon11" asp-for="StaffId">
+                        <script>
+                            document.getElementById("i-input").style.display = "none";
+                        </script>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon11">Name</span>
+                            <input type="text" class="form-control" placeholder="Nguyen Van A" aria-label="Username" aria-describedby="basic-addon11" asp-for="StaffName">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon11">Role</span>
+                            <input type="text" class="form-control" placeholder="Staff" aria-label="Username" aria-describedby="basic-addon11" asp-for="Role">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label" asp-for="Experience"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Experience" asp-validation-for="Experience"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label" asp-for="Desciption"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" asp-for="Desciption" asp-validation-for="Description"></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-text">Rating</span>
+                            <input type="text" class="form-control" placeholder="4.5" asp-for="Rating">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl">
+                <div class="card">
+                    <div class="card-body">
+                        <label class="form-label" for="basic-default-password32">Email</label>
+                        <div class="input-group input-group-merge mb-3">
+                            <input type="text" class="form-control" placeholder="user123" aria-label="Recipient's username" aria-describedby="basic-addon33" asp-for="Email">
+                            <span class="input-group-text" id="basic-addon33">gmail.com</span>
+                        </div>
+
+                        <div class="form-password-toggle mb-3">
+                            <label class="form-label" for="basic-default-password32">Password</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control" id="basic-default-password32" placeholder="············" aria-describedby="basic-default-password" asp-for="Password">
+                                <span class="input-group-text cursor-pointer" id="basic-default-password"><i class="bx bx-hide"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="html5-tel-input" class="col-md-2 col-form-label">Phone</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="tel" placeholder="90-(164)-188-556" id="html5-tel-input" asp-for="PhoneNumber">
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon14">Image URL</span>
+                            <input type="text" class="form-control" placeholder="URL" id="basic-url1" aria-describedby="basic-addon14" asp-for="AvatarUrl">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon14">Facebook URL</span>
+                            <input type="text" class="form-control" placeholder="URL" id="basic-url1" aria-describedby="basic-addon14" asp-for="FacebookUrl">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Address</span>
+                            <textarea class="form-control" aria-label="With textarea" placeholder="Việt Nam" asp-for="Address"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple="">
+                        </div>
+
+                        <div class="input-group mt-3 d-flex justify-content-end">
+                            <input class="btn btn-primary mx-3" value="Update" type="submit">
+
+                            <a asp-action="Index" class="btn btn-outline-secondary
+                                        <span class="bx me-1">Cancel</span>
+                                    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -18,21 +18,65 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         //View All Table Staff
         public IActionResult Index(int? page)
         {
-            int pageSize = 5; // Số hàng trên mỗi trang
-            int pageNumber = page ?? 1; // Trang mặc định
-            int totalItems = _staffRepository.GetAllStaffs().Count(); // Tổng số mục
+            int pageSize = 4; // Số lượng mục trên mỗi trang
+            int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị
 
-            // Đưa các giá trị vào ViewBag
-            ViewBag.PageNumber = pageNumber;
-            ViewBag.PageSize = pageSize;
-            ViewBag.TotalItems = totalItems;
+            var paginatedCourses = _staffRepository.GetAllStaffs().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
-            var displayedCourses = _staffRepository.GetAllStaffs()
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)_staffRepository.GetAllStaffs().Count() / pageSize);
 
-            return View("Index", displayedCourses);
+            return View("Index", paginatedCourses);
         }
+
+        // Create 
+        [HttpPost]
+        public IActionResult SaveStaff(Staff staff)
+        {
+            _staffRepository.Add(staff);
+            if (staff.StaffId == " ")
+            {
+                TempData["staffError"] = "Course not saved!";
+            }
+            else
+            {
+                TempData["staffSuccess"] = "Course successfully saved!";
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult CreateStaff()
+        {
+            return View("CreateStaff", new Staff());
+        }
+
+        [HttpPost]
+        // Edit
+        public IActionResult UpdateStaff(Staff staff)
+        {
+            _staffRepository.Update(staff);
+            if (staff.StaffId == " ")
+            {
+                TempData["staffError"] = "Staff not saved!";
+            }
+            else
+            {
+                TempData["staffSuccess"] = "Staff successfully saved!";
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult EditStaff(string id)
+        {
+            return View("EditStaff", _staffRepository.FindStaffByID(id));
+        }
+
+        // Delete
+        public IActionResult Delete(string id)
+        {
+            _staffRepository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }
