@@ -1,3 +1,14 @@
+/*--------------------------------------------------------------------
+        ********** Page Loader
+---------------------------------------------------------------------- */
+window.addEventListener("load", () => {
+    document.querySelector(".js-page-loader").classList.add("fade-out");
+    setTimeout(() => {
+        document.querySelector(".js-page-loader").style.display = "none";
+    }, 2000);
+});
+
+
 // Đường dẫn mặc định cho CSS
 const defaultCssPath = "~/css/colors/color-1.css";
 
@@ -16,7 +27,6 @@ if (link) {
   newLink.classList.add('js-color-style');
   document.head.appendChild(newLink);
 }
-
 
 
 /*--------------------------------------------------------------------

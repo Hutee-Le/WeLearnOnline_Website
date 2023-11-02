@@ -33,3 +33,35 @@ label {
 .hide {
     display: none;
 }
+.toast {
+    margin-top: 90px !important;
+    margin-right: 50px !important;
+    animation: fadein-jump 1s ease-in-out;
+}
+@keyframes fadeout-toast {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+@keyframes fadein-jump {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

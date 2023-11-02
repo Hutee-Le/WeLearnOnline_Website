@@ -26,21 +26,15 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         //View All Table Course
         public IActionResult Index(int? page)
         {
-            int pageSize = 5; // Số hàng trên mỗi trang
-            int pageNumber = page ?? 1; // Trang mặc định
-            int totalItems = _courseRepository.GetAllCourses().Count(); // Tổng số mục
+            int pageSize = 4; // Số lượng mục trên mỗi trang
+            int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị
 
-            // Đưa các giá trị vào ViewBag
-            ViewBag.PageNumber = pageNumber;
-            ViewBag.PageSize = pageSize;
-            ViewBag.TotalItems = totalItems;
+            var paginatedCourses = _courseRepository.GetAllCourses().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
-            var displayedCourses = _courseRepository.GetAllCourses()
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)_courseRepository.GetAllCourses().Count() / pageSize);
 
-            return View("Index", displayedCourses);
+            return View("Index", paginatedCourses);
         }
 
         // Create 
@@ -48,6 +42,14 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         public IActionResult SaveCourse(Course course) 
         {
             _courseRepository.Add(course);
+            if (course.CourseId == 0)
+            {
+                TempData["courseError"] = "Course not saved!";
+            }
+            else
+            {
+                TempData["courseSuccess"] = "Course successfully saved!";
+            }
             return RedirectToAction("Index");
         }
 
@@ -69,6 +71,14 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         public IActionResult UpdateCourse(Course course)
         {
             _courseRepository.Update(course);
+            if (course.CourseId == 0)
+            {
+                TempData["courseError"] = "Course not saved!";
+            }
+            else
+            {
+                TempData["courseSuccess"] = "Course successfully saved!";
+            }
             return RedirectToAction("Index");
         }
 
