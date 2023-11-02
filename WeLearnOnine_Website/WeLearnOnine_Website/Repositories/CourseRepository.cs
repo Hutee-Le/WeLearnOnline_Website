@@ -69,6 +69,7 @@ namespace WeLearnOnine_Website.Repositories
             Course? course = _ctx.Courses
                 .Include(c => c.Staff)
                 .Include(c => c.Level)
+                .Include(c=> c.Lessons)
                 .Where(x => x.CourseId == id)
                 .FirstOrDefault();
             return course;
