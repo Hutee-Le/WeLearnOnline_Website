@@ -35,7 +35,7 @@ namespace WeLearnOnine_Website.Repositories
 
         public bool Update(Course course)
         {
-            Course c = _ctx.Courses.Find(course.CourseId);
+            Course? c = _ctx.Courses.Find(course.CourseId);
             if (c != null)
             {
                 _ctx.Entry(c).CurrentValues.SetValues(course);
@@ -47,7 +47,7 @@ namespace WeLearnOnine_Website.Repositories
 
         public bool Delete(int id)
         {
-            Course f = _ctx.Courses.Where(x => x.CourseId == id).FirstOrDefault();
+            Course? f = _ctx.Courses.Where(x => x.CourseId == id).FirstOrDefault();
             if (f != null)
             {
                 _ctx.Courses.Remove(f);
@@ -66,8 +66,12 @@ namespace WeLearnOnine_Website.Repositories
 
         public Course FindCourseByID(int id)
         {
-            Course c = _ctx.Courses.Where(x => x.CourseId == id).FirstOrDefault();
-            return c;
+            Course? course = _ctx.Courses
+                .Include(c => c.Staff)
+                .Include(c => c.Level)
+                .Where(x => x.CourseId == id)
+                .FirstOrDefault();
+            return course;
         }
 
         public List<CourseViewModel> GetAllCoursesWithDetails(int userId)
@@ -141,5 +145,12 @@ namespace WeLearnOnine_Website.Repositories
             return true;
         }
 
+        public List<Bill> MyCourses(int userId)
+        {
+            List<Bill> lst = _ctx.Bills. Where(b => b.UserId == userId)
+                 .Include(c => c.BillDetails)
+                .ThenInclude(c => c.Course). ToList();
+            return lst;
+        }
     }
 }

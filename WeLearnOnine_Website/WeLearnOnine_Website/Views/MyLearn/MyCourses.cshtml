@@ -1,0 +1,195 @@
+﻿@model List<WeLearnOnine_Website.Models.Bill>
+<!-- breadcrumb start -->
+<div class="breadcrumb-nav">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">My learning</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- breadcrumb end -->
+<!-- courses section start -->
+<section class="courses-section section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="section-title text-center mb-4">
+                    <h2 class="title">My learning</h2>
+                    <p class="sub-title">Find the right course for you</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav>
+                    <div class="nav nav-tabs border-0 justify-content-center mb-4" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button"
+                                role="tab" aria-controls="all" aria-selected="true">
+                            All Courses
+                        </button>
+                        <button class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button"
+                                role="tab" aria-controls="wishlist" aria-selected="false">
+                            Wishlist
+                        </button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        <div class="row justify-content-center">
+                            @foreach (var item in Model)
+                            {
+                                @foreach (var c in item.BillDetails)
+                                {
+                                    <!-- courses item start -->
+                                    <div class="col-md-6 col-lg-3 course-popover">
+                                        <div class="courses-item">
+                                            <a asp-action="Details" asp-controller="Course" asp-route-id="@c.Course.CourseId" class="link">
+                                                <div class="courses-item-inner">
+                                                    <div class="img-box">
+                                                        <img src="~/img/courses/web-development/CSS.png" alt="course img">
+                                                    </div>
+                                                    <h3 class="title">@c.Course.Title</h3>
+                                                    <div class="instructor">
+                                                        <img src="~/img/courses/web-development/CSS.png" alt="instructor img">
+                                                        @* <span class="instructor-name">@c.Course.Staff.StaffName</span> *@
+                                                    </div>
+                                                    <div class="rating">
+                                                        <span class="average-rating">(4.5)</span>
+                                                        <span class="average-stars">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star-half-alt"></i>
+                                                        </span>
+                                                        <span class="reviews">(230)</span>
+                                                    </div>
+                                                    @* @if (item.Course.DiscountPrice.HasValue)
+                                            {
+                                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> @item.Course.DiscountPrice.Value.ToString("N0")</div>
+                                            } *@
+                                                    @* <div class="price d-flex align-items-center"><span>&#8363;</span>@item.Course.Price.ToString("N0")</div> *@
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="card-popover" id="myPopover">
+                                            @* <a href="#" class="title">@item.Course.Title</a> *@@* <a href="#" class="title">@item.Course.Title</a> *@
+                                            <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
+                                            <div class="info-total">
+                                                <span>All level</span>
+                                                <span>58 total hours</span>
+                                            </div>
+                                            <div class="short-desc mt-2">
+                                                <p>
+                                                    Master Python by building 100 projects in 100 days. Learn data science, automation, build
+                                                    websites, games and apps!
+                                                </p>
+                                            </div>
+
+                                            <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
+                                            <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
+                                        </div>
+                                    </div>
+                                    <!-- courses item end -->
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
+                        <div class="row justify-content-center">
+                            @foreach (var item in Model)
+                            {
+                                @foreach(var c in item.BillDetails)
+                                {
+                                <!-- courses item start -->
+                                <div class="col-md-6 col-lg-3 course-popover">
+                                    <div class="courses-item">
+                                        <a asp-action="Details" asp-controller="Course" asp-route-id="@c.Course.CourseId" class="link">
+                                            <div class="courses-item-inner">
+                                                <div class="img-box">
+                                                    <img src="~/img/courses/web-development/CSS.png" alt="course img">
+                                                    <i class="bi bi-heart-fill heart-icon"></i>
+                                                </div>
+                                                <h3 class="title">@c.Course.Title</h3>
+                                                <div class="instructor">
+                                                    <img src="~/img/courses/web-development/CSS.png" alt="instructor img">
+                                                    @* <span class="instructor-name">@c.Course.Staff.StaffName</span> *@
+                                                </div>
+                                                <div class="rating">
+                                                    <span class="average-rating">(4.5)</span>
+                                                    <span class="average-stars">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </span>
+                                                    <span class="reviews">(230)</span>
+                                                </div>
+                                                @* @if (item.Course.DiscountPrice.HasValue)
+                                                {
+                                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> @item.Course.DiscountPrice.Value.ToString("N0")</div>
+                                                } *@
+                                                @* <div class="price d-flex align-items-center"><span>&#8363;</span>@item.Course.Price.ToString("N0")</div> *@
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="card-popover" id="myPopover">
+                                        @* <a href="#" class="title">@item.Course.Title</a> *@@* <a href="#" class="title">@item.Course.Title</a> *@
+                                        <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
+                                        <div class="info-total">
+                                            <span>All level</span>
+                                            <span>58 total hours</span>
+                                        </div>
+                                        <div class="short-desc mt-2">
+                                            <p>
+                                                Master Python by building 100 projects in 100 days. Learn data science, automation, build
+                                                websites, games and apps!
+                                            </p>
+                                        </div>
+
+                                        <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
+                                        <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
+                                    </div>
+                                </div>
+                                    <!-- courses item end -->
+                                }
+                            } 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3">
+                <!-- pagination start -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#">20</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- pagination end -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- courses section end -->
