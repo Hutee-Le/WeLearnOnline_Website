@@ -37,7 +37,7 @@
                         <span class="reviews">(230 reviews)</span>
                     </div>
                     <ul>
-                        <li>enrolled students - <span>2200</span></li>
+                        <li>enrolled students - <span>@Model.Count</span></li>
                         <li>created by - <span><a href="#">@Model.Staff.StaffName</a></span></li>
                         <li>last updated - <span>29/09/2023</span></li>
                         <li>language - <span>@Model.Language</span></li>
@@ -81,39 +81,21 @@
                             <!-- accordion start -->
                             <div class="accordion" id="accordion">
                                 <!-- accordion item start -->
+                                @foreach (var l in Model.Lessons)
+                                                {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-1">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        <div class="accordion-button" type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-                                            Languages basics <span>2 lessons | 20 mins</span>
-                                        </button>
-                                    </h2>
-                                    <div id="collapse-1" class="accordion-collapse collapse show" aria-labelledby="heading-1"
-                                         data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <ul>
-                                                @foreach (var l in Model.Lessons)
-                                                {
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fas fa-play-circle"></i>
-                                                            @l.Title
-                                                            
-                                                            <span>@l.Time minutes</span>
-                                                        </a>
-
-                                                        @*  <a asp-controller="Course" asp-action="GetLessons" asp-route-courseId="@Model.CourseId" class="link">Lexical structure</a> *@
-                                                    </li>
-                                                }
-
-                                            </ul>
+                                            @l.Title<span>@l.Time mins</span>
                                         </div>
-                                    </div>
+                                    </h2>
+                                   
                                 </div>
+                                }
                                 <!-- accordion item end -->
                                 <!-- accordion item start -->
-                                <div class="accordion-item">
+                                @* <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-2">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
@@ -208,7 +190,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </div> *@
                                 <!-- accordion item end -->
                             </div>
                             <!-- accordion end -->
