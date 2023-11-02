@@ -8,6 +8,8 @@
         void DeleteAll();
         Course FindCourseByID(int id);
 
+        List<Bill> MyCourses(int userId);
+
         Task<bool> AddToFavorites(int userId, int courseId);
 
         Task<bool> RemoveFromFavorites(int userId, int courseId);
