@@ -26,7 +26,7 @@
                 <div class="course-header box">
                     <h2 class="text-capitalize">@Model.Title</h2>
                     <div class="rating">
-                        <span class="average-rating">(4.5)</span>
+                        <span class="average-rating">@Model.Rating</span>
                         <span class="average-stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -38,9 +38,10 @@
                     </div>
                     <ul>
                         <li>enrolled students - <span>2200</span></li>
-                       @*  <li>created by - <span><a href="#">@Model.Staff.StaffName</a></span></li> *@
+                        <li>created by - <span><a href="#">@Model.Staff.StaffName</a></span></li>
                         <li>last updated - <span>29/09/2023</span></li>
                         <li>language - <span>@Model.Language</span></li>
+                        <li>Level - <span>@Model.Level.Name</span></li>
                     </ul>
                 </div>
                 <!-- course header end -->
@@ -98,6 +99,7 @@
                                                         <a href="#">
                                                             <i class="fas fa-play-circle"></i>
                                                             @l.Title
+                                                            
                                                             <span>@l.Time minutes</span>
                                                         </a>
 
@@ -121,11 +123,12 @@
                                     <div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2"
                                          data-bs-parent="#accordion">
                                         <div class="accordion-body">
+                                           
                                             <ul>
                                                 <li>
                                                     <i class="fas fa-play-circle"></i>
-                                                    Strings
-                                                    <span>05:00</span>
+                                                    
+                                                    <span></span>
                                                 </li>
                                                 <li>
                                                     <i class="fas fa-play-circle"></i>
@@ -138,6 +141,7 @@
                                                     <span>05:00</span>
                                                 </li>
                                             </ul>
+                                            
                                         </div>
                                     </div>
                                 </div>
