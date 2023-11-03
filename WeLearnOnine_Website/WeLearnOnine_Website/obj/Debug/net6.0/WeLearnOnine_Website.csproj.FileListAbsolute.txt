@@ -1096,3 +1096,6 @@ E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net
 E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net6.0\WeLearnOnine_Website.pdb
 E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net6.0\WeLearnOnine_Website.genruntimeconfig.cache
 E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net6.0\ref\WeLearnOnine_Website.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Auth.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Storage.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.ServiceModel.dll
