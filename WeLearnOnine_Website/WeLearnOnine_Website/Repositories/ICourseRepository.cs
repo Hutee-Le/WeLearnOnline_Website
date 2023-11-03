@@ -10,6 +10,9 @@
 
         List<Bill> MyCourses(int userId);
 
+        Task<string> UploadVideoAsync(IFormFile videoFile);
+        Task<string> UploadImageAsync(IFormFile imageFile);
+
         Task<bool> AddToFavorites(int userId, int courseId);
 
         Task<bool> RemoveFromFavorites(int userId, int courseId);
@@ -25,6 +28,6 @@
 
 
         List<Course> Search(string keyword);
-       
+
     }
 }

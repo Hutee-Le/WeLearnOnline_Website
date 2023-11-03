@@ -95,7 +95,7 @@
 
 <div class="container-fuild flex-grow-1 container-p-y">
     <h4 class="py-3 mb-4"><span class="text-muted fw-light">Course/</span> Create New</h4>
-    <form asp-action="SaveCourse">
+    <form asp-action="SaveCourse" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-xl">
                 <div class="card">
@@ -144,16 +144,18 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label for="html5-url-input" class="col-md-2 col-form-label" asp-for="ImageCourseUrl">URL</label>
+                            <label for="imageCourseUrl" class="col-md-2 col-form-label">Image</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="url" id="html5-url-input" asp-for="ImageCourseUrl">
+                                <input type="file" class="form-control" id="imageCourseUrl" name="ImageCourseUrl" onchange="checkFileSize(this,200)">
+                                <span id="imageCourseUrl-error" class="text-danger"></span>
                             </div>
                         </div>
 
-                        <div class="my-3 row">
-                            <label for="html5-url-input" class="col-md-2 col-form-label" asp-for="PreviewUrl">Preview Url</label>
+                        <div class="mb-3 row">
+                            <label for="previewUrl" class="col-md-2 col-form-label">Preview Video</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="url" id="html5-url-input" asp-for="PreviewUrl">
+                                <input type="file" class="form-control" id="previewUrl" name="PreviewUrl" onchange="checkFileSize(this,200)">
+                                <span id="previewUrl-error" class="text-danger"></span>
                             </div>
                         </div>
 

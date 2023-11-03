@@ -14,6 +14,11 @@ builder.Services.AddDbContext<DerekmodeWeLearnSystemContext>(options =>
 	options.UseSqlServer(connectionString);
 });
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 250 * 1024 * 1024; // 250 MB
+});
+
 //DI
 builder.Services.AddTransient<IFavListRepository, FavListRepository>();
 builder.Services.AddTransient<ICommentRepository, CommentRepository>();
