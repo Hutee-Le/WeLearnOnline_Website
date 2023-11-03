@@ -79,7 +79,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateCourse(Course course, IFormFile ImageCourseUrl, IFormFile PreviewUrl)
+        public async Task<IActionResult> UpdateCourse(Course course, IFormFile ImageCourseUrl, IFormFile PreviewUrl, string ExistingImageCourseUrl, string ExistingPreviewUrl)
         {
             try
             {
@@ -87,10 +87,20 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                 {
                     course.ImageCourseUrl = await _courseRepository.UploadImageAsync(ImageCourseUrl);
                 }
+                else
+                {
+                    // Sử dụng giá trị hiện tại nếu không có file mới
+                    course.ImageCourseUrl = ExistingImageCourseUrl;
+                }
 
                 if (PreviewUrl != null)
                 {
                     course.PreviewUrl = await _courseRepository.UploadVideoAsync(PreviewUrl);
+                }
+                else
+                {
+                    // Sử dụng giá trị hiện tại nếu không có file mới
+                    course.PreviewUrl = ExistingPreviewUrl;
                 }
 
                 _courseRepository.Update(course);
