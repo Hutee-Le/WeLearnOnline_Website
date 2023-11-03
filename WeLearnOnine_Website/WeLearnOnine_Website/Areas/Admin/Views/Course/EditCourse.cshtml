@@ -140,12 +140,15 @@
                         <div class="mb-3">
                             <label asp-for="ImageCourseUrl" class="form-label">Course Image</label>
                             <input type="file" class="form-control" id="ImageCourseUrl" name="ImageCourseUrl" onchange="checkFileSize(this, 200)">
+                            <input type="hidden" name="ExistingImageCourseUrl" value="@Model.ImageCourseUrl" />
+                            
                             <label id="ImageCourseUrl-error" class="text-danger"></label>
                         </div>
 
                         <div class="mb-3">
                             <label asp-for="PreviewUrl" class="form-label">Course Video</label>
                             <input type="file" class="form-control" id="PreviewUrl" name="PreviewUrl" onchange="checkFileSize(this, 200)">
+                            <input type="hidden" name="ExistingPreviewUrl" value="@Model.PreviewUrl" />
                             <label id="PreviewUrl-error" class="text-danger"></label>
                         </div>
 
