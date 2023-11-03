@@ -1,4 +1,6 @@
-﻿    using Microsoft.EntityFrameworkCore;
+﻿using Firebase.Auth;
+using Firebase.Storage;
+using Microsoft.EntityFrameworkCore;
 using WeLearnOnine_Website.Models;
 
 namespace WeLearnOnine_Website.Repositories
@@ -6,17 +8,19 @@ namespace WeLearnOnine_Website.Repositories
     public class CourseRepository : ICourseRepository
     {
         private readonly DerekmodeWeLearnSystemContext _ctx;
+        private readonly IConfiguration _configuration;
 
-        public CourseRepository(DerekmodeWeLearnSystemContext ctx)
+        public CourseRepository(DerekmodeWeLearnSystemContext ctx, IConfiguration configuration)
         {
             _ctx = ctx;
+            _configuration = configuration;
         }
 
         public List<Course> GetCoursesByCategoryId(int categoryId)
         {
             var courses = _ctx.Courses
             .Where(c => c.CategoriesCourses.Any(cc => cc.CategoriesId == categoryId))
-            .Include(c => c.Staff)  
+            .Include(c => c.Staff)
             .Include(c => c.Level)
             .ToList();
 
@@ -69,7 +73,7 @@ namespace WeLearnOnine_Website.Repositories
             Course? course = _ctx.Courses
                 .Include(c => c.Staff)
                 .Include(c => c.Level)
-                .Include(c=> c.Lessons)
+                .Include(c => c.Lessons)
                 .Where(x => x.CourseId == id)
                 .FirstOrDefault();
             return course;
@@ -102,7 +106,7 @@ namespace WeLearnOnine_Website.Repositories
             Course = course,
             LevelName = course.Level.Name,
             StaffName = course.Staff.StaffName,
-            IsInFavorites = false 
+            IsInFavorites = false
         })
         .ToList();
 
@@ -130,7 +134,6 @@ namespace WeLearnOnine_Website.Repositories
             return true;
         }
 
-
         public async Task<bool> RemoveFromFavorites(int userId, int courseId)
         {
             var favorite = await _ctx.FavLists
@@ -148,10 +151,64 @@ namespace WeLearnOnine_Website.Repositories
 
         public List<Bill> MyCourses(int userId)
         {
-            List<Bill> lst = _ctx.Bills. Where(b => b.UserId == userId)
+            List<Bill> lst = _ctx.Bills.Where(b => b.UserId == userId)
                  .Include(c => c.BillDetails)
-                .ThenInclude(c => c.Course). ToList();
+                .ThenInclude(c => c.Course).ToList();
             return lst;
+        }
+
+        public async Task<string> UploadImageAsync(IFormFile imageFile)
+        {
+            var apiKey = _configuration["FirebaseConfig:ApiKey"];
+            var bucket = _configuration["FirebaseConfig:Bucket"];
+            var authEmail = _configuration["FirebaseConfig:AuthEmail"];
+            var authPassword = _configuration["FirebaseConfig:AuthPassword"];
+
+            var auth = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
+            var a = await auth.SignInWithEmailAndPasswordAsync(authEmail, authPassword);
+
+            var imageStorage = new FirebaseStorage(
+                bucket,
+                new FirebaseStorageOptions
+                {
+                    AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
+                    ThrowOnCancel = true
+                });
+
+            var imageFileName = Path.GetFileName(imageFile.FileName);
+            var imageChild = imageStorage.Child("images").Child(imageFileName);
+
+            using (var imageStream = imageFile.OpenReadStream())
+            {
+                return await imageChild.PutAsync(imageStream);
+            }
+        }
+
+        public async Task<string> UploadVideoAsync(IFormFile videoFile)
+        {
+            var apiKey = _configuration["FirebaseConfig:ApiKey"];
+            var bucket = _configuration["FirebaseConfig:Bucket"];
+            var authEmail = _configuration["FirebaseConfig:AuthEmail"];
+            var authPassword = _configuration["FirebaseConfig:AuthPassword"];
+
+            var auth = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
+            var a = await auth.SignInWithEmailAndPasswordAsync(authEmail, authPassword);
+
+            var videoStorage = new FirebaseStorage(
+                bucket,
+                new FirebaseStorageOptions
+                {
+                    AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
+                    ThrowOnCancel = true
+                });
+
+            var videoFileName = Path.GetFileName(videoFile.FileName);
+            var videoChild = videoStorage.Child("videos").Child(videoFileName);
+
+            using (var videoStream = videoFile.OpenReadStream())
+            {
+                return await videoChild.PutAsync(videoStream);
+            }
         }
     }
 }

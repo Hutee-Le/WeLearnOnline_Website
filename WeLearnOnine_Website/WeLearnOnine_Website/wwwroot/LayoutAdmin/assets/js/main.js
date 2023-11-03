@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Main
  */
 
@@ -116,3 +116,20 @@ let menu, animate;
     // Auto update menu collapsed/expanded based on the themeConfig
     window.Helpers.setCollapsed(true, false);
 })();
+function checkFileSize(input, maxSize) {
+    if (input.files && input.files[0]) {
+        var fileSize = input.files[0].size; // kích thước file tính bằng byte
+        var maxSizeInBytes = maxSize * 1024 * 1024; // chuyển maxSize từ MB sang byte
+
+        if (fileSize >= maxSizeInBytes) {
+            // Hiển thị thông báo lỗi
+            var labelId = input.id + "-error";
+            document.getElementById(labelId).innerText = "File size should be less than " + maxSize + "MB";
+            input.value = ""; // Xóa giá trị file đã chọn
+        } else {
+            // Reset thông báo lỗi nếu kích thước hợp lệ
+            var labelId = input.id + "-error";
+            document.getElementById(labelId).innerText = "";
+        }
+    }
+}

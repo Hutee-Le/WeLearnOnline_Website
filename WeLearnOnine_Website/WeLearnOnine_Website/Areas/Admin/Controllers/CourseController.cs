@@ -39,17 +39,29 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
         // Create 
         [HttpPost]
-        public IActionResult SaveCourse(Course course) 
+        public async Task<IActionResult> SaveCourse(Course course, IFormFile ImageCourseUrl, IFormFile PreviewUrl)
         {
-            _courseRepository.Add(course);
-            if (course.CourseId == 0)
+            try
             {
-                TempData["courseError"] = "Course not saved!";
-            }
-            else
-            {
+                if (ImageCourseUrl != null)
+                {
+                    course.ImageCourseUrl = await _courseRepository.UploadImageAsync(ImageCourseUrl);
+                }
+
+                if (PreviewUrl != null)
+                {
+                    course.PreviewUrl = await _courseRepository.UploadVideoAsync(PreviewUrl);
+                }
+
+                _courseRepository.Add(course);
+
                 TempData["courseSuccess"] = "Course successfully saved!";
             }
+            catch (Exception ex)
+            {
+                TempData["courseError"] = $"Error saving course: {ex.Message}";
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -59,7 +71,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                         select new SelectListItem()
                         {
                             Text = c.Name,
-                            
+
                             Value = c.LevelId.ToString(),
                         };
             ViewBag.LevelId = list1.ToList();
@@ -67,41 +79,44 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        // Edit
-        public IActionResult UpdateCourse(Course course)
+        public async Task<IActionResult> UpdateCourse(Course course, IFormFile ImageCourseUrl, IFormFile PreviewUrl)
         {
-            _courseRepository.Update(course);
-            if (course.CourseId == 0)
+            try
             {
-                TempData["courseError"] = "Course not saved!";
-            }
-            else
-            {
+                if (ImageCourseUrl != null)
+                {
+                    course.ImageCourseUrl = await _courseRepository.UploadImageAsync(ImageCourseUrl);
+                }
+
+                if (PreviewUrl != null)
+                {
+                    course.PreviewUrl = await _courseRepository.UploadVideoAsync(PreviewUrl);
+                }
+
+                _courseRepository.Update(course);
+
                 TempData["courseSuccess"] = "Course successfully saved!";
             }
+            catch (Exception ex)
+            {
+                TempData["courseError"] = $"Error updating course: {ex.Message}";
+            }
+
             return RedirectToAction("Index");
         }
 
         public IActionResult EditCourse(int id)
         {
-            //var list1 = from c in _levelRepository.GetAllLevels()
-            //            select new SelectListItem()
-            //            {
-            //                Text = c.Name,
-            //                Value = c.LevelId.ToString(),
-            //            };
-            //ViewBag.LevelId = list1.ToList();
-
             var levellst = _levelRepository.GetAllLevels();
             var stafflst = _staffRepository.GetAllStaffs();
             ViewBag.LevelId = new SelectList(levellst, "LevelId", "Name");
             ViewBag.StaffId = new SelectList(stafflst, "StaffId", "StaffName");
             return View("EditCourse", _courseRepository.FindCourseByID(id));
         }
-    
+
         // Delete
-        public IActionResult Delete(int id) 
-        { 
+        public IActionResult Delete(int id)
+        {
             _courseRepository.Delete(id);
             return RedirectToAction("Index");
         }

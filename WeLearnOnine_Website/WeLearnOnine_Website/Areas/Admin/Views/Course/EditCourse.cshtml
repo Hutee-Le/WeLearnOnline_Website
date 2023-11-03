@@ -93,136 +93,123 @@
 </div> *@
 
 
-            <div class="container-fuild flex-grow-1 container-p-y">
-                <h4 class="py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
-                <form asp-action="UpdateCourse">
-                    <div class="row">
-                        <div class="col-xl">
-                            <div class="card">
-                                <div class="card-body">
-                                <input class="form-control" asp-for="CourseId" asp-validation-for="CourseId" id="i-input" />
-                                <script>
-                                    document.getElementById("i-input").style.display = "none";
-                                </script>
-                                @* <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="StaffId">Staff Name</label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="text" id="html5-text-input" asp-for="StaffId">
-                                    </div>
-                                </div> *@
+<div class="container-fuild flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+    <form asp-action="UpdateCourse" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-xl">
+                <div class="card">
+                    <div class="card-body">
+                        <input class="form-control" asp-for="CourseId" asp-validation-for="CourseId" id="i-input" />
+                        <script>
+                            document.getElementById("i-input").style.display = "none";
+                        </script>
 
-                            <div class="input-group my-3">
-                                <label class="input-group-text" asp-for="StaffId">Staff Name</label>
-                                    <select asp-for="StaffId" asp-items="ViewBag.StaffId" class="form-select">
-                                </select>
-                            </div>
-
-                                @*     <div class="form-group">
-                                <label asp-for="StaffId" class="control-label"></label>
-                                <input asp-for="StaffId" class="form-control" />
-                                <span asp-validation-for="StaffId" class="text-danger"></span>
-                                </div> *@
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label" asp-for="Title"></label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" asp-for="Title" asp-validation-for="Title"></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label" asp-for="ShortDescription"></label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="ShortDescription" asp-validation-for="ShortDescription"></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label" asp-for="Description"></label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" asp-for="Description" asp-validation-for="Description"></textarea>
-                                </div>
-
-                                <div>
-                                    <label for="exampleFormControlTextarea1" class="form-label" asp-for="Required"></label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Required" asp-validation-for="Required"></textarea>
-                                </div>
-                            </div>
-                            </div>
+                        <div class="input-group my-3">
+                            <label class="input-group-text" asp-for="StaffId">Staff Name</label>
+                            <select asp-for="StaffId" asp-items="ViewBag.StaffId" class="form-select">
+                            </select>
                         </div>
-                        <div class="col-xl">
-                            <div class="card">
-                                <div class="card-body">
-                                <div class="mb-3 row">
-                                    <label for="html5-url-input" class="col-md-2 col-form-label" asp-for="ImageCourseUrl">URL</label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="url" id="html5-url-input" asp-for="ImageCourseUrl">
-                                    </div>
-                                </div>
 
-                                <div class="my-3 row">
-                                    <label for="html5-url-input" class="col-md-2 col-form-label" asp-for="PreviewUrl">Preview Url</label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="url" id="html5-url-input" asp-for="PreviewUrl">
-                                    </div>
-                                </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label" asp-for="Title"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" asp-for="Title" asp-validation-for="Title"></textarea>
+                        </div>
 
-                                <div class="input-group input-group-merge my-3">
-                                    <label class="input-group-text" asp-for="Price">$ Price</label>
-                                    <input type="number" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)" asp-for="Price">
-                                    <span class="input-group-text">.00</span>
-                                </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label" asp-for="ShortDescription"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="ShortDescription" asp-validation-for="ShortDescription"></textarea>
+                        </div>
 
-                                <div class="input-group input-group-merge my-3">
-                                    <label class="input-group-text" asp-for="DiscountPrice">$ DiscountPrice</label>
-                                    <input type="number" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)" asp-for="DiscountPrice">
-                                    <span class="input-group-text">.00</span>
-                                </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label" asp-for="Description"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" asp-for="Description" asp-validation-for="Description"></textarea>
+                        </div>
 
-                                <div class="form-check form-switch my-3">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  asp-for="Status" style="width: 70px;height:30px;"> Status
-                                    <label class="form-check-label mx-3" for="Status"></label>
-                                </div>
-
-                                <div class="mb-3 row">
-                                    <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="Count"></label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="number" id="html5-number-input" asp-for="Count">
-                                    </div>
-                                </div>
-
-                           @*      <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="Language"></label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="url" id="html5-text-input" asp-for="Language">
-                                    </div>
-                                </div> *@
-
-                                <div class="mb-3 row">
-                                     <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="Language"></label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="text" id="html5-text-input" asp-for="Language">
-                                    </div>
-                                </div>
-
-                                <div class="my-3 row">
-                                    <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="TimeTotal"></label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="number" id="html5-number-input" asp-for="TimeTotal">
-                                    </div>
-                                </div>
-
-                                <div class="input-group my-3">
-                                    <label class="input-group-text" asp-for="LevelId">Level</label>
-                                    <select asp-for="LevelId" asp-items="ViewBag.LevelId" class="form-select">
-                                    </select>
-                                </div>
-
-                                <div class="input-group mt-3 d-flex justify-content-end">
-                                <input class="btn btn-primary mx-3" value="Update" type="submit">
-
-                                    <a asp-action="Index" class="btn btn-outline-secondary
-                                        <span class="bx me-1">Cancel</span>
-                                    </a>
-                                </div>
-                            </div>
-                            </div>
+                        <div>
+                            <label for="exampleFormControlTextarea1" class="form-label" asp-for="Required"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Required" asp-validation-for="Required"></textarea>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
+            <div class="col-xl">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <label asp-for="ImageCourseUrl" class="form-label">Course Image</label>
+                            <input type="file" class="form-control" id="ImageCourseUrl" name="ImageCourseUrl" onchange="checkFileSize(this, 200)">
+                            <label id="ImageCourseUrl-error" class="text-danger"></label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PreviewUrl" class="form-label">Course Video</label>
+                            <input type="file" class="form-control" id="PreviewUrl" name="PreviewUrl" onchange="checkFileSize(this, 200)">
+                            <label id="PreviewUrl-error" class="text-danger"></label>
+                        </div>
+
+                        <div class="input-group input-group-merge my-3">
+                            <label class="input-group-text" asp-for="Price">$ Price</label>
+                            <input type="number" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)" asp-for="Price">
+                            <span class="input-group-text">.00</span>
+                        </div>
+
+                        <div class="input-group input-group-merge my-3">
+                            <label class="input-group-text" asp-for="DiscountPrice">$ DiscountPrice</label>
+                            <input type="number" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)" asp-for="DiscountPrice">
+                            <span class="input-group-text">.00</span>
+                        </div>
+
+                        <div class="form-check form-switch my-3">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" asp-for="Status" style="width: 70px;height:30px;"> Status
+                            <label class="form-check-label mx-3" for="Status"></label>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="Count"></label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="number" id="html5-number-input" asp-for="Count">
+                            </div>
+                        </div>
+
+                        @*      <div class="mb-3 row">
+                        <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="Language"></label>
+                        <div class="col-md-10">
+                        <input class="form-control" type="url" id="html5-text-input" asp-for="Language">
+                        </div>
+                        </div> *@
+
+                        <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="Language"></label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" id="html5-text-input" asp-for="Language">
+                            </div>
+                        </div>
+
+                        <div class="my-3 row">
+                            <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="TimeTotal"></label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="number" id="html5-number-input" asp-for="TimeTotal">
+                            </div>
+                        </div>
+
+                        <div class="input-group my-3">
+                            <label class="input-group-text" asp-for="LevelId">Level</label>
+                            <select asp-for="LevelId" asp-items="ViewBag.LevelId" class="form-select">
+                            </select>
+                        </div>
+
+                        <div class="input-group mt-3 d-flex justify-content-end">
+                            <input class="btn btn-primary mx-3" value="Update" type="submit">
+
+                            <a asp-action="Index" class="btn btn-outline-secondary
+                                        <span class="bx me-1">Cancel</span>
+                                    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
