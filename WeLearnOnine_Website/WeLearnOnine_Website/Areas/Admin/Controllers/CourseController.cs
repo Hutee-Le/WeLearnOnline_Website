@@ -37,6 +37,13 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return View("Index", paginatedCourses);
         }
 
+        // Detail
+        public IActionResult PopupView(int id)
+        {
+            var model = _courseRepository.FindCourseByID(id);
+            return PartialView("_PopupViewPartial", model);
+        }
+
         // Create 
         [HttpPost]
         public async Task<IActionResult> SaveCourse(Course course, IFormFile ImageCourseUrl, IFormFile PreviewUrl)
@@ -75,6 +82,8 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                             Value = c.LevelId.ToString(),
                         };
             ViewBag.LevelId = list1.ToList();
+            var stafflst = _staffRepository.GetAllStaffs();
+            ViewBag.StaffId = new SelectList(stafflst, "StaffId", "StaffName");
             return View("CreateCourse", new Course());
         }
 
@@ -127,10 +136,16 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         // Delete
         public IActionResult Delete(int id)
         {
-            _courseRepository.Delete(id);
+            try
+            {
+                _courseRepository.Delete(id);
+                TempData["courseSuccess"] = "Delete successfully saved!";
+            }
+            catch (Exception ex)
+            {
+                TempData["courseError"] = $"Error delete course: {ex.Message}";
+            }
             return RedirectToAction("Index");
         }
-
-
     }
 }

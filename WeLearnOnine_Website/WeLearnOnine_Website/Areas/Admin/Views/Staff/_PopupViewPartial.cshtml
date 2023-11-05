@@ -1,0 +1,69 @@
+﻿@model WeLearnOnine_Website.Models.Staff
+
+@{
+    string staffClass = "bg-label-secondary";
+
+    if (Model.Role == "Instructor")
+    {
+        staffClass = "bg-label-info";
+    }
+    else if (Model.Role == "Đào Tạo")
+    {
+        staffClass = "bg-label-primary";
+    }
+    else if (Model.Role == "Admin")
+    {
+        staffClass = "bg-label-danger";
+    }
+}
+<!-- Modal Header -->
+<div class="modal-header">
+    <h3 class="modal-title">Detail</h3>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    <div class="card-body">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="card-img card-img-left" src="@Model.AvatarUrl" alt="Card image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">@Model.StaffName</h4>
+                            <p class="card-text">
+                                @Model.Experience
+                            </p>
+                            <p class="card-text me-2">Email: <small class="text-muted fs-6">@Model.Email</small></p>
+                            <p class="card-text">
+                                Phone: <span class="@staffClass fs-5" style="font-weight: 600; color: #696cff;">@Model.PhoneNumber</span>
+                            </p>
+                            <h6 class="card-text mt-2">Rating: @Model.Rating</h6>
+                            <p class="card-text">Role: <span class="@staffClass fs-5">@Model.Role</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider">
+            <div class="divider-text">More (About)</div>
+        </div>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Address</dt>
+            <dd class="col-sm-9">@Model.Address</dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Desciption</dd>
+        </dl>
+    </div>
+</div>
+
+<!-- Modal footer -->
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>

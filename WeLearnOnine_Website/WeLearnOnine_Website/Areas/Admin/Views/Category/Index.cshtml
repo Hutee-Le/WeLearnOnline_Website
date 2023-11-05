@@ -1,0 +1,144 @@
+﻿@model IEnumerable<WeLearnOnine_Website.Models.Category>
+@inject WeLearnOnine_Website.Repositories.ICategoryRepository service
+
+@{
+    ViewData["Title"] = "ListCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if (TempData["categoryError"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["categoryError"]</div>
+    </div>
+}
+@if (TempData["categorySuccess"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["categorySuccess"]</div>
+    </div>
+}
+
+
+<h4 class="py-3 mb-4"><span class="text-muted fw-light">Category /</span> Category Table</h4>
+
+<p>
+    <a asp-action="CreateCategory" class="btn rounded-pill btn-primary text-white">
+        Create New
+    </a>
+</p>
+<style>
+    tbody td {
+        text-align: center;
+    }
+</style>
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            Parent Categories
+                        </th>
+                        <th>
+                           so luong danh muc cap 2
+                        </th>
+                      @*   <th>
+                            Category level 2
+                        </th>
+                        <th>
+                            Category level 3
+                        </th> *@
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in service.GetRootCategories())
+                    {
+                        <tr>
+                            <td>
+                                <p>@item.CategoryName</p>
+                            </td>
+
+                            <td>
+                                @foreach (var subitem_multi2 in service.GetSecondLevelCategories(item.CategoriesId))
+                                {
+
+                                    <p>@subitem_multi2.CategoryName.Length</p>
+                                }
+                            </td>
+
+                           @*  <td>
+                                    @foreach (var subitem_multi2 in service.GetSecondLevelCategories(item.CategoriesId))
+                                    {
+                                        @foreach (var subitem_multi3 in service.GetThirdLevelCategories(subitem_multi2.CategoriesId))
+                                        {
+                                            <p>@subitem_multi3.CategoryName</p>
+                                        }
+                                    }
+                            </td> *@
+
+                            <td>
+                                <a class="dropdown-item mb-2" asp-action="EditStaff" asp-route-id="@item.CategoriesId" style="color: #03c3ec; background-color:#d7f5fc; border-color: #b3edf9; padding: 5px 8px; border-radius: 5px;cursor:pointer"><i class="bx bx-trash me-1"></i> Edit</a>
+                                <a class="dropdown-item mb-2" data-bs-toggle="modal" data-bs-target="#smallModal" style="color: #ff3e1d; background-color:#ffe0db; border-color: #ffc5bb; padding: 5px 8px; border-radius: 5px; cursor:pointer"><i class="bx bx-edit-alt me-1"></i> Delete</a>
+                                <a asp-action="index2" asp-route-CategoriesId="@item.CategoriesId">Show cate level 2</a>
+                            </td>
+                        </tr>
+                    }
+
+                    @*   Truy van SQL
+                    select * from Categories
+
+                    select * from Categories
+                    where ParentCategories IS NULL
+
+                    select * from Categories
+                    where  CategoriesID = 15 OR ParentCategories = 15 *@
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Hiển thị phân trang -->
+        <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
+            <ul class="pagination">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                }
+
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
+
+                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <!-- Hiển thị phân trang -->
+
+    </div>
+</div>

@@ -29,18 +29,30 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return View("Index", paginatedCourses);
         }
 
+        // Detail
+        public IActionResult PopupView(string id)
+        {
+            var model = _staffRepository.FindStaffByID(id);
+            return PartialView("_PopupViewPartial", model);
+        }
+
         // Create 
         [HttpPost]
-        public IActionResult SaveStaff(Staff staff)
+        public async Task<IActionResult> SaveStaff(Staff staff, IFormFile AvatarUrl)
         {
-            _staffRepository.Add(staff);
-            if (staff.StaffId == " ")
-            {
-                TempData["staffError"] = "Course not saved!";
+            try {
+                if (AvatarUrl != null)
+                {
+                    staff.AvatarUrl = await _staffRepository.UploadImageAsync(AvatarUrl);
+                }
+
+                _staffRepository.Add(staff);
+
+                TempData["staffSuccess"] = "Create staff successfully saved!";
             }
-            else
+            catch (Exception ex)
             {
-                TempData["staffSuccess"] = "Course successfully saved!";
+                TempData["staffError"] = $"Error create staff: {ex.Message}";
             }
             return RedirectToAction("Index");
         }
@@ -50,18 +62,24 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return View("CreateStaff", new Staff());
         }
 
-        [HttpPost]
         // Edit
-        public IActionResult UpdateStaff(Staff staff)
+        [HttpPost]
+        public async Task<IActionResult> UpdateStaff(Staff staff, IFormFile AvatarUrl)
         {
-            _staffRepository.Update(staff);
-            if (staff.StaffId == " ")
+            try
             {
-                TempData["staffError"] = "Staff not saved!";
+                if (AvatarUrl != null)
+                {
+                    staff.AvatarUrl = await _staffRepository.UploadImageAsync(AvatarUrl);
+                }
+
+                _staffRepository.Update(staff);
+
+                TempData["staffSuccess"] = "Update Staff successfully saved!";
             }
-            else
+            catch (Exception ex)
             {
-                TempData["staffSuccess"] = "Staff successfully saved!";
+                TempData["staffError"] = $"Error updating staff: {ex.Message}";
             }
             return RedirectToAction("Index");
         }
@@ -74,7 +92,15 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         // Delete
         public IActionResult Delete(string id)
         {
-            _staffRepository.Delete(id);
+            try
+            {
+                _staffRepository.Delete(id);
+                TempData["staffSuccess"] = "Delete successfully saved!";
+            }
+            catch (Exception ex)
+            {
+                TempData["staffError"] = $"Error delete course: {ex.Message}";
+            }
             return RedirectToAction("Index");
         }
 

@@ -27,8 +27,6 @@
     </div>
 }
 
-
-
 <h4 class="py-3 mb-4"><span class="text-muted fw-light">Course /</span> Course Table</h4>
 
 <p>
@@ -49,9 +47,6 @@
                         <th>
                             Image
                         </th>
-     @*                    <th>
-                            <b>No.</b> StaffId
-                        </th> *@
                         <th>
                             Staff Name
                         </th>
@@ -61,36 +56,18 @@
                         <th>
                             Title
                         </th>
-                       @*  <th>
-                            ShortDescription
-                        </th>
-                        <th>
-                            Description
-                        </th> *@
-                        <th>
-                            Required
-                        </th>
                         <th>
                             Price
                         </th>
                         <th>
                             DiscountPrice
                         </th>
-                      @*   <th>
-                            PreviewUrl
-                        </th> *@
                         <th>
                             Status
                         </th>
                         <th>
-                            Count
+                            Total buyer
                         </th>
-                       @*  <th>
-                            Rating
-                        </th>
-                        <th>
-                            Language
-                        </th> *@
                         <th>
                             TimeTotal
                         </th>
@@ -117,19 +94,9 @@
                                     levelClass = "bg-label-danger";
                                 }
                             }
-                @*             <td>
-                                <i class="fab fa-bootstrap fa-lg text-primary me-3"></i>
-                                <span class="fw-medium">@item.CourseId</span>
-                            </td> *@
                             <td>
                                 <img src="@item.ImageCourseUrl" width="150" height="100" />
                             </td>
-                            @* <td>
-                                @if (item.Staff != null)
-                                {
-                                    <span>@item.Staff.StaffName</span>
-                                }
-                            </td> *@
                             <td><span>@item.Staff.StaffName</span></td>
                             <td>
                                 <span class="badge me-1 @levelClass">
@@ -140,40 +107,24 @@
                             <td class="hidetext">
                                 <p class="content">@item.Title</p>
                             </td>
-                           @*  <td class="hidetext">
-                                <p>@item.ShortDescription</p>
-                            </td>
-                            <td class="hidetext">
-                                <p>@item.Description</p>
-                            </td> *@
-                            <td class="hidetext">
-                                <p>@item.Required</p>
-                            </td>
-                            <td>@item.Price</td>
-                            <td>@item.DiscountPrice</td>
-                            @* <td>
-                                <img src="@item.PreviewUrl" width="200" height="100"/>
-                            </td> *@
+                            <td>@item.Price.ToString("#,##0")</td>
+                            <td>@String.Format("{0:#,##0}", item.DiscountPrice)</td>
                             <td>
                                 <span class="badge me-1 @(item.Status ? "bg-label-success" : "bg-label-warning")">
                                     @item.Status
                                 </span>
                             </td>
                             <td>@item.Count</td>
-                         @*    <td>@item.Rating</td>
-                            <td>@item.Language</td> *@
                             <td>@item.TimeTotal</td>
                             <td>
                                 <a class="dropdown-item mb-2" asp-action="EditCourse" asp-route-id="@item.CourseId" style="color: #03c3ec; background-color:#d7f5fc; border-color: #b3edf9; padding: 5px 8px; border-radius: 5px;cursor:pointer"><i class="bx bx-trash me-1"></i> Edit</a>
-                                <a class="dropdown-item mb-2" data-bs-toggle="modal" data-bs-target="#smallModal" style="color: #ff3e1d; background-color:#ffe0db; border-color: #ffc5bb; padding: 5px 8px; border-radius: 5px; cursor:pointer"><i class="bx bx-edit-alt me-1"></i> Delete</a>
-                                @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModal">
-                                    Delete
-                                </button> *@
+                                <a class="dropdown-item mb-2" data-bs-toggle="modal" data-bs-target="#smallModal-@item.CourseId" style="color: #ff3e1d; background-color:#ffe0db; border-color: #ffc5bb; padding: 5px 8px; border-radius: 5px; cursor:pointer"><i class="bx bx-edit-alt me-1"></i> Delete</a>
+                                <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.CourseId">Show</a>
                             </td>
                         </tr>
 
                         @* Small Model Delete *@
-                        <div class="modal fade" id="smallModal" tabindex="-1" style="display: none;" aria-hidden="true">
+                        <div class="modal fade" id="smallModal-@item.CourseId" tabindex="-1" style="display: none;" aria-hidden="true">
                             <div class="modal-dialog modal-sm" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -186,18 +137,26 @@
                                                 <h3>Do you want to delete?</h3>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                             Close
                                         </button>
-                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CourseId">Detele</a>
+                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CourseId">@item.CourseId Delete</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="modal fade" id="myModal-@item.CourseId">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-body" id="modal-content-@item.CourseId">
+                                        @await Html.PartialAsync("_PopupViewPartial", item)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 </tbody>
             </table>
