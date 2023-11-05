@@ -1099,3 +1099,6 @@ E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net
 E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Auth.dll
 E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Storage.dll
 E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.ServiceModel.dll
+E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Auth.dll
+E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Storage.dll
+E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.ServiceModel.dll

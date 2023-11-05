@@ -5,96 +5,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@* <div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditCourse">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="CourseId" />
-            <div class="form-group">
-                <label asp-for="LevelId" class="control-label"></label>
-                <select asp-for="LevelId" class="form-control" asp-items="ViewBag.LevelId"></select>
-                <span asp-validation-for="LevelId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StaffId" class="control-label"></label>
-                <input asp-for="StaffId" class="form-control" />
-                <span asp-validation-for="StaffId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShortDescription" class="control-label"></label>
-                <input asp-for="ShortDescription" class="form-control" />
-                <span asp-validation-for="ShortDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Required" class="control-label"></label>
-                <input asp-for="Required" class="form-control" />
-                <span asp-validation-for="Required" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageCourseUrl" class="control-label"></label>
-                <input asp-for="ImageCourseUrl" class="form-control" />
-                <span asp-validation-for="ImageCourseUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiscountPrice" class="control-label"></label>
-                <input asp-for="DiscountPrice" class="form-control" />
-                <span asp-validation-for="DiscountPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PreviewUrl" class="control-label"></label>
-                <input asp-for="PreviewUrl" class="form-control" />
-                <span asp-validation-for="PreviewUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Count" class="control-label"></label>
-                <input asp-for="Count" class="form-control" />
-                <span asp-validation-for="Count" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Language" class="control-label"></label>
-                <input asp-for="Language" class="form-control" />
-                <span asp-validation-for="Language" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TimeTotal" class="control-label"></label>
-                <input asp-for="TimeTotal" class="form-control" />
-                <span asp-validation-for="TimeTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div> *@
-
-
 <div class="container-fuild flex-grow-1 container-p-y">
-    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Edit</h4>
     <form asp-action="UpdateCourse" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-xl">
@@ -153,35 +65,28 @@
                         </div>
 
                         <div class="input-group input-group-merge my-3">
-                            <label class="input-group-text" asp-for="Price">$ Price</label>
-                            <input type="number" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)" asp-for="Price">
-                            <span class="input-group-text">.00</span>
+                            <label class="input-group-text" asp-for="Price">Price</label>
+                            <input type="text" class="form-control" placeholder="1,000,000" aria-label="Amount (to the nearest dollar)" asp-for="Price" value="@Model.Price.ToString("#,##0")">
+                            <span class="input-group-text">VND</span>
                         </div>
 
                         <div class="input-group input-group-merge my-3">
-                            <label class="input-group-text" asp-for="DiscountPrice">$ DiscountPrice</label>
-                            <input type="number" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)" asp-for="DiscountPrice">
-                            <span class="input-group-text">.00</span>
+                            <label class="input-group-text" asp-for="DiscountPrice">Discount Price</label>
+                            <input type="number" class="form-control" placeholder="999,000" aria-label="Amount (to the nearest dollar)" asp-for="DiscountPrice" value="@Model.Price.ToString("#,##0")">
+                            <span class="input-group-text">VND</span>
                         </div>
 
                         <div class="form-check form-switch my-3">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" asp-for="Status" style="width: 70px;height:30px;"> Status
-                            <label class="form-check-label mx-3" for="Status"></label>
+                            <label class="form-check-label mx-3" for="Status"> of trending</label>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="Count"></label>
+                            <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="Count">Total buyers</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="number" id="html5-number-input" asp-for="Count">
                             </div>
                         </div>
-
-                        @*      <div class="mb-3 row">
-                        <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="Language"></label>
-                        <div class="col-md-10">
-                        <input class="form-control" type="url" id="html5-text-input" asp-for="Language">
-                        </div>
-                        </div> *@
 
                         <div class="mb-3 row">
                             <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="Language"></label>
@@ -191,8 +96,8 @@
                         </div>
 
                         <div class="my-3 row">
-                            <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="TimeTotal"></label>
-                            <div class="col-md-10">
+                            <label for="html5-number-input" class="col-md-3 col-form-label" asp-for="TimeTotal">Total course time (mins)</label>
+                            <div class="col-md-9">
                                 <input class="form-control" type="number" id="html5-number-input" asp-for="TimeTotal">
                             </div>
                         </div>

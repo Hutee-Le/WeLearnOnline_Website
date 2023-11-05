@@ -7,7 +7,7 @@
 
 <div class="container-fuild flex-grow-1 container-p-y">
     <h4 class="py-3 mb-4"><span class="text-muted fw-light">Staff/</span> Create New</h4>
-    <form asp-action="SaveStaff">
+    <form asp-action="SaveStaff" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-xl">
                 <div class="card">
@@ -53,14 +53,6 @@
                             <span class="input-group-text" id="basic-addon33">gmail.com</span>
                         </div>
 
-                        <div class="form-password-toggle mb-3">
-                            <label class="form-label" for="basic-default-password32">Password</label>
-                            <div class="input-group input-group-merge">
-                                <input type="text" class="form-control" id="basic-default-password32" placeholder="············" aria-describedby="basic-default-password" asp-for="Password">
-                                <span class="input-group-text cursor-pointer" id="basic-default-password"><i class="bx bx-hide"></i></span>
-                            </div>
-                        </div>
-
                         <div class="mb-3 row">
                             <label for="html5-tel-input" class="col-md-2 col-form-label">Phone</label>
                             <div class="col-md-10">
@@ -68,9 +60,12 @@
                             </div>
                         </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon14">Image URL</span>
-                            <input type="text" class="form-control" placeholder="URL" id="basic-url1" aria-describedby="basic-addon14" asp-for="AvatarUrl">
+                        <div class="mb-3">
+                            <label asp-for="AvatarUrl" class="form-label">Image Avatar</label>
+                            <input type="file" class="form-control" id="AvatarUrl" name="AvatarUrl" onchange="checkFileSize(this, 200)">
+                            <input type="hidden" name="ExistingAvatarUrl" value="@Model.AvatarUrl" />
+
+                            <label id="AvatarUrl-error" class="text-danger"></label>
                         </div>
 
                         <div class="input-group mb-3">
@@ -81,11 +76,6 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">Address</span>
                             <textarea class="form-control" aria-label="With textarea" placeholder="Việt Nam" asp-for="Address"></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                            <input class="form-control" type="file" id="formFileMultiple" multiple="">
                         </div>
 
                         <div class="input-group mt-3 d-flex justify-content-end">
