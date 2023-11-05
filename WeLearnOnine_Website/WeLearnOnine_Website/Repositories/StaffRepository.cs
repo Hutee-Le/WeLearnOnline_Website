@@ -69,7 +69,7 @@ namespace WeLearnOnine_Website.Repositories
             return c;
         }
 
-        public async Task<string> UploadImageAsync(IFormFile AvatarUrl)
+        public async Task<string> UploadImageAsync(IFormFile imageFile)
         {
             var apiKey = _configuration["FirebaseConfig:ApiKey"];
             var bucket = _configuration["FirebaseConfig:Bucket"];
@@ -87,10 +87,10 @@ namespace WeLearnOnine_Website.Repositories
                     ThrowOnCancel = true
                 });
 
-            var imageFileName = Path.GetFileName(AvatarUrl.FileName);
-            var imageChild = imageStorage.Child("images").Child("Avatar").Child(imageFileName);
+            var imageFileName = Path.GetFileName(imageFile.FileName);
+            var imageChild = imageStorage.Child("staff").Child(imageFileName);
 
-            using (var imageStream = AvatarUrl.OpenReadStream())
+            using (var imageStream = imageFile.OpenReadStream())
             {
                 return await imageChild.PutAsync(imageStream);
             }

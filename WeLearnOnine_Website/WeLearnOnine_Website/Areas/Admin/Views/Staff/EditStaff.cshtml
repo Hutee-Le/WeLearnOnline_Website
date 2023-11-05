@@ -53,13 +53,13 @@
                             <span class="input-group-text" id="basic-addon33">gmail.com</span>
                         </div>
 
-                       @*  <div class="form-password-toggle mb-3">
+                        <div class="form-password-toggle mb-3">
                             <label class="form-label" for="basic-default-password32">Password</label>
                             <div class="input-group input-group-merge">
                                 <input type="text" class="form-control" id="basic-default-password32" placeholder="············" aria-describedby="basic-default-password" asp-for="Password">
                                 <span class="input-group-text cursor-pointer" id="basic-default-password"><i class="bx bx-hide"></i></span>
                             </div>
-                        </div> *@
+                        </div>
 
                         <div class="mb-3 row">
                             <label for="html5-tel-input" class="col-md-2 col-form-label">Phone</label>
@@ -70,8 +70,7 @@
 
                         <div class="mb-3">
                             <label asp-for="AvatarUrl" class="form-label">Image Avatar</label>
-                            <input type="file" class="form-control" id="AvatarUrl" name="AvatarUrl" onchange="checkFileSize(this, 200)">
-
+                            <input type="file" class="form-control" id="AvatarUrl" name="ImageAvartarFile" onchange="checkFileSize(this, 50)">
                             <label id="AvatarUrl-error" class="text-danger"></label>
                         </div>
 

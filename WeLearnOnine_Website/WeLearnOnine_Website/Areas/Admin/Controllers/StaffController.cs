@@ -64,13 +64,13 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
         // Edit
         [HttpPost]
-        public async Task<IActionResult> UpdateStaff(Staff staff, IFormFile AvatarUrl)
+        public async Task<IActionResult> UpdateStaff(Staff staff, IFormFile ImageAvartarFile)
         {
             try
             {
-                if (AvatarUrl != null)
+                if (ImageAvartarFile != null)
                 {
-                    staff.AvatarUrl = await _staffRepository.UploadImageAsync(AvatarUrl);
+                    staff.AvatarUrl = await _staffRepository.UploadImageAsync(ImageAvartarFile);
                 }
 
                 _staffRepository.Update(staff);
