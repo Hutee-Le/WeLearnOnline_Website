@@ -36,7 +36,6 @@ public partial class Course
     public string? Language { get; set; }
 
     public int? TimeTotal { get; set; }
-    //public bool IsInFavorites { get; set; }
 
     public virtual ICollection<BillDetail> BillDetails { get; set; } = new List<BillDetail>();
 

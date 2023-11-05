@@ -9,6 +9,6 @@
         List<Staff> GetAllStaffs();
         Staff FindStaffByID(string id);
         List<Staff> Search(string keyword);
-        Task<string> UploadImageAsync(IFormFile AvatarUrl);
+        Task<string> UploadImageAsync(IFormFile imageFile);
     }
 }

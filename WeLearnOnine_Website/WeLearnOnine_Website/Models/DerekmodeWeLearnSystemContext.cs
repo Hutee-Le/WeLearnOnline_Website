@@ -50,6 +50,7 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
     public virtual DbSet<UserLesson> UserLessons { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=sql.bsite.net\\MSSQL2016;uid=derekmode_WeLearn_System;password=123456;database=derekmode_WeLearn_System;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -302,7 +303,6 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
                 .HasColumnName("StaffID");
             entity.Property(e => e.Address).HasMaxLength(255);
             entity.Property(e => e.AvatarUrl)
-                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("AvatarURL");
             entity.Property(e => e.Email)
