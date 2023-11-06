@@ -1,4 +1,4 @@
-﻿@model List<WeLearnOnine_Website.Models.FavList>
+﻿@model WeLearnOnine_Website.ViewModels.MyLearnViewModel
 <!-- breadcrumb start -->
 <div class="breadcrumb-nav">
     <div class="container">
@@ -39,207 +39,69 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                         <div class="row justify-content-center">
-                            <!-- courses item start -->
-                            <div class="col-md-6 col-lg-3 course-popover">
-                                <div class="courses-item">
-                                    <a href="course-details.html" class="link">
-                                        <div class="courses-item-inner">
-                                            <div class="img-box">
-                                                <img src="~/img/courses/web-development/CSS.png" alt="course img">
-                                            </div>
-                                            <h3 class="title">HTML for beginner</h3>
-                                            <div class="instructor">
-                                                <img src="~/img/courses/web-development/CSS.png" alt="instructor img">
-                                                <span class="instructor-name">Joe Doe</span>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="average-rating">(4.5)</span>
-                                                <span class="average-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </span>
-                                                <span class="reviews">(230)</span>
-                                            </div>
-                                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                            @foreach (var item in Model.MyCourses)
+                            {
+                                @foreach (var c in item.BillDetails)
+                                {
+                                    <!-- courses item start -->
+                                    <div class="col-md-6 col-lg-3 course-popover">
+                                        <div class="courses-item">
+                                            <a asp-action="Details" asp-controller="Course" asp-route-id="@c.Course.CourseId" class="link">
+                                                <div class="courses-item-inner">
+                                                    <div class="img-box">
+                                                        <img src="~/img/courses/web-development/CSS.png" alt="course img">
+                                                    </div>
+                                                    <h3 class="title">@c.Course.Title</h3>
+                                                    <div class="instructor">
+                                                        <img src="~/img/courses/web-development/CSS.png" alt="instructor img">
+                                                        @* <span class="instructor-name">@c.Course.Staff.StaffName</span> *@
+                                                    </div>
+                                                    <div class="rating">
+                                                        <span class="average-rating">(4.5)</span>
+                                                        <span class="average-stars">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star-half-alt"></i>
+                                                        </span>
+                                                        <span class="reviews">(230)</span>
+                                                    </div>
+                                                    @* @if (item.Course.DiscountPrice.HasValue)
+                                            {
+                                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> @item.Course.DiscountPrice.Value.ToString("N0")</div>
+                                            } *@
+                                                    @* <div class="price d-flex align-items-center"><span>&#8363;</span>@item.Course.Price.ToString("N0")</div> *@
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
 
-                                <div class="card-popover" id="myPopover">
-                                    <a href="#" class="title">100 Days of Code: The Complete Python Pro Bootcamp for 2023</a>
-                                    <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
-                                    <div class="info-total">
-                                        <span>All level</span>
-                                        <span>58 total hours</span>
-                                    </div>
-                                    <div class="short-desc mt-2">
-                                        <p>
-                                            Master Python by building 100 projects in 100 days. Learn data science, automation, build
-                                            websites, games and apps!
-                                        </p>
-                                    </div>
+                                        <div class="card-popover" id="myPopover">
+                                            @* <a href="#" class="title">@item.Course.Title</a> *@@* <a href="#" class="title">@item.Course.Title</a> *@
+                                            <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
+                                            <div class="info-total">
+                                                <span>All level</span>
+                                                <span>58 total hours</span>
+                                            </div>
+                                            <div class="short-desc mt-2">
+                                                <p>
+                                                    Master Python by building 100 projects in 100 days. Learn data science, automation, build
+                                                    websites, games and apps!
+                                                </p>
+                                            </div>
 
-                                    <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
-                                    <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
-                                </div>
-                            </div>
-                            <!-- courses item end -->
-                            <!-- courses item start -->
-                            <div class="col-md-6 col-lg-3 course-popover">
-                                <div class="courses-item">
-                                    <a href="course-details.html" class="link">
-                                        <div class="courses-item-inner">
-                                            <div class="img-box">
-                                                <img src="~/img/courses/web-development/CSS.png" alt="course img">
-                                            </div>
-                                            <h3 class="title">HTML for beginner</h3>
-                                            <div class="instructor">
-                                                <img src="img/instructor/1.png" alt="instructor img">
-                                                <span class="instructor-name">Joe Doe</span>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="average-rating">(4.5)</span>
-                                                <span class="average-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </span>
-                                                <span class="reviews">(230)</span>
-                                            </div>
-                                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                                            <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
+                                            <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
                                         </div>
-                                    </a>
-                                </div>
-
-                                <div class="card-popover" id="myPopover">
-                                    <a href="#" class="title">100 Days of Code: The Complete Python Pro Bootcamp for 2023</a>
-                                    <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
-                                    <div class="info-total">
-                                        <span>All level</span>
-                                        <span>58 total hours</span>
                                     </div>
-                                    <div class="short-desc mt-2">
-                                        <p>
-                                            Master Python by building 100 projects in 100 days. Learn data science, automation, build
-                                            websites, games and apps! Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores ad repellendus. A, aut corporis.
-                                        </p>
-                                    </div>
-
-                                    <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
-                                    <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
-                                </div>
-                            </div>
-                            <!-- courses item end -->
-                            <!-- courses item start -->
-                            <div class="col-md-6 col-lg-3 course-popover">
-                                <div class="courses-item">
-                                    <a href="course-details.html" class="link">
-                                        <div class="courses-item-inner">
-                                            <div class="img-box">
-                                                <img src="~/img/courses/web-development/CSS.png" alt="course img">
-                                            </div>
-                                            <h3 class="title">HTML for beginner</h3>
-                                            <div class="instructor">
-                                                <img src="~/img/courses/web-development/CSS.png" alt="instructor img">
-                                                <span class="instructor-name">Joe Doe</span>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="average-rating">(4.5)</span>
-                                                <span class="average-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </span>
-                                                <span class="reviews">(230)</span>
-                                            </div>
-                                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="card-popover" id="myPopover">
-                                    <a href="#" class="title">100 Days of Code: The Complete Python Pro Bootcamp for 2023</a>
-                                    <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
-                                    <div class="info-total">
-                                        <span>All level</span>
-                                        <span>58 total hours</span>
-                                    </div>
-                                    <div class="short-desc mt-2">
-                                        <p>
-                                            Master Python by building 100 projects in 100 days. Learn data science, automation, build
-                                            websites, games and apps!
-                                        </p>
-                                    </div>
-
-                                    <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
-                                    <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
-                                </div>
-                            </div>
-                            <!-- courses item end -->
-                            <!-- courses item start -->
-                            <div class="col-md-6 col-lg-3 course-popover">
-                                <div class="courses-item">
-                                    <a href="course-details.html" class="link">
-                                        <div class="courses-item-inner">
-                                            <div class="img-box">
-                                                <img src="~/img/courses/web-development/CSS.png" alt="course img">
-                                            </div>
-                                            <h3 class="title">HTML for beginner</h3>
-                                            <div class="instructor">
-                                                <img src="img/instructor/1.png" alt="instructor img">
-                                                <span class="instructor-name">Joe Doe</span>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="average-rating">(4.5)</span>
-                                                <span class="average-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </span>
-                                                <span class="reviews">(230)</span>
-                                            </div>
-                                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="card-popover" id="myPopover">
-                                    <a href="#" class="title">100 Days of Code: The Complete Python Pro Bootcamp for 2023</a>
-                                    <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
-                                    <div class="info-total">
-                                        <span>All level</span>
-                                        <span>58 total hours</span>
-                                    </div>
-                                    <div class="short-desc mt-2">
-                                        <p>
-                                            Master Python by building 100 projects in 100 days. Learn data science, automation, build
-                                            websites, games and apps! Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores ad repellendus. A, aut corporis.
-                                        </p>
-                                    </div>
-
-                                    <a href="index.html"><button class="btn-addCart mt-3">Add to cart</button></a>
-                                    <a href="#"><button class="btn-favor"><i class="bi bi-heart"></i></button></a>
-                                </div>
-                            </div>
-                            <!-- courses item end -->
+                                    <!-- courses item end -->
+                                }
+                            }
                         </div>
                     </div>
                     <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
                         <div class="row justify-content-center">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.WishList)
                             {
                                 <!-- courses item start -->
                                 <div class="col-md-6 col-lg-3 course-popover">

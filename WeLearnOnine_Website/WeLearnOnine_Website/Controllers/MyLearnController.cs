@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
+using WeLearnOnine_Website.ViewModels;
 
 namespace WeLearnOnine_Website.Controllers
 {
@@ -15,17 +16,24 @@ namespace WeLearnOnine_Website.Controllers
         }
         public IActionResult Index()
         {
-            return View(_courseRepository.MyCourses(1));
+            int userId = 2;
+            var viewModel = new MyLearnViewModel
+            {
+                MyCourses = _courseRepository.MyCourses(userId),
+                WishList = _favListRepository.GetAllByUserId(userId)
+            };
+
+            return View(viewModel);
         }
 
-        public IActionResult WishList()
-        {
-            return View(_favListRepository.GetAllByUserId(1));
-        }
+        //public IActionResult WishList()
+        //{
+        //    return View(_favListRepository.GetAllByUserId(1));
+        //}
 
-        public IActionResult MyCourses()
-        {
-            return View(_courseRepository.MyCourses(1));
-        }
+        //public IActionResult MyCourses()
+        //{
+        //    return View(_courseRepository.MyCourses(1));
+        //}
     }
 }
