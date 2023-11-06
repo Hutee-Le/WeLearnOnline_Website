@@ -24,7 +24,6 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         //View All Table Staff
         public IActionResult Index(int? page)
         {
-            int count1 = 0;
             int pageSize = 4; // Số lượng mục trên mỗi trang
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị
 
