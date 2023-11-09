@@ -25,15 +25,5 @@ namespace WeLearnOnine_Website.Controllers
 
             return View(viewModel);
         }
-
-        //public IActionResult WishList()
-        //{
-        //    return View(_favListRepository.GetAllByUserId(1));
-        //}
-
-        //public IActionResult MyCourses()
-        //{
-        //    return View(_courseRepository.MyCourses(1));
-        //}
     }
 }
