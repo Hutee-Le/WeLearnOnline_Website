@@ -1,4 +1,5 @@
-﻿@model WeLearnOnine_Website.Models.Course
+﻿@model WeLearnOnine_Website.ViewModels.DetailCourseViewModel
+
 <!-- breadcrumb start -->
 <div class="breadcrumb-nav position-relative">
     <div class="container-xxl">
@@ -26,7 +27,7 @@
                 <div class="course-header box">
                     <h2 class="text-capitalize">@Model.Title</h2>
                     <div class="rating">
-                        <span class="average-rating">@Model.Rating</span>
+                        <span class="average-rating"></span>
                         <span class="average-stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -34,14 +35,14 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                         </span>
-                        <span class="reviews">(230 reviews)</span>
+                        <span class="reviews">(@Model.Comments.Count reviews)</span>
                     </div>
                     <ul>
-                        <li>enrolled students - <span>@Model.Count</span></li>
-                        <li>created by - <span><a href="#">@Model.Staff.StaffName</a></span></li>
-                        <li>last updated - <span>29/09/2023</span></li>
-                        <li>language - <span>@Model.Language</span></li>
-                        <li>Level - <span>@Model.Level.Name</span></li>
+                        <li>enrolled students - <span>@Model.Course.Count</span></li>
+                        <li>created by - <span><a href="#">@Model.StaffName</a></span></li>
+                        <li>last updated - <span>11/09/2023</span></li>
+                        <li>language - <span>@Model.Course.Language</span></li>
+                        <li>Level - <span>@Model.Course.Level.Name</span></li>
                     </ul>
                 </div>
                 <!-- course header end -->
@@ -81,7 +82,7 @@
                             <!-- accordion start -->
                             <div class="accordion" id="accordion">
                                 <!-- accordion item start -->
-                                @foreach (var l in Model.Lessons)
+                                @foreach (var l in Model.Course.Lessons)
                                                 {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-1">
@@ -204,7 +205,7 @@
                             <h3 class="text-capitalize mb-4">description</h3>
 
                             <p>
-                                @Model.Description
+                                @Model.Course.Description
                             </p>
                             <h4>For who is this course designed ?</h4>
                             <p>
@@ -214,7 +215,7 @@
                             </p>
                             <h4>Required</h4>
                             <p>
-                                @Model.Required
+                                @Model.Course.Required
                             </p>
                         </div>
                     </div>
@@ -232,17 +233,17 @@
                                         </div>
                                     </div>
                                     <div class="right-box">
-                                        <h4>@Model.Staff.StaffName <span>(web development)</span></h4>
+                                        <h4>@Model.StaffName <span>(web development)</span></h4>
                                         <ul>
-                                            <li><i class="fas fa-star"></i> @Model.Rating</li>
+                                            <li><i class="fas fa-star"></i> @Model.Course.Rating</li>
                                             <li><i class="fas fa-play-circle"></i> 10 Courses</li>
-                                            <li><i class="fas fa-certificate"></i> 3000 Reviews</li>
+                                            <li><i class="fas fa-certificate"></i> @Model.Comments.Count Reviews</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="text">
                                     <p class="mb-0">
-                                        @Model.Staff.Desciption
+                                       @*  @Model.Staff.Desciption *@
                                     </p>
                                 </div>
                             </div>
@@ -339,61 +340,89 @@
                                     </div>
                                 </form>
                             </div>
-                            <!-- reviews filter end -->
-                            <!-- reviews list start -->
-                            <div class="reviews-list">
-                                <!-- reviews item start -->
-                                <div class="reviews-item">
-                                    <div class="img-box">
-                                        <img src="~/img//review/1.png" alt="review img">
-                                    </div>
-                                    <h4>john doe</h4>
-                                    <div class="stars-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="date">1 week ago</span>
-                                    </div>
-                                    <p>Great work. I learnt lot of things about javascript in this course.</p>
+
+
+
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                            <script>
+                                $(document).ready(function () {
+                                    $("#comment-form").on("submit", function (e) {
+                                        e.preventDefault();
+                                        var form = $(this);
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: form.attr("/Course/PostComment"),
+                                            data: form.serialize(),
+                                            success: function (data) {
+                                                $("#comments-container").append(data);
+                                                form[0].reset(); // Xóa nội dung comment sau khi gửi
+                                            },
+                                            error: function () {
+                                                // Xử lý lỗi nếu cần
+                                            }
+                                        });
+                                    });
+                                });
+                                var courseId =
+                                    document.getElementById("CourseId").value = courseId;
+                            </script>
+
+
+                            <form asp-action="PostComment" asp-controller="Course" method="post">
+                                <input type="hidden" asp-for="@Model.CourseId" />
+
+                                <div class="form-group">
+                                    <label asp-for="ContentNote"></label>
+                                    <textarea asp-for="ContentNote" class="form-control"></textarea>
+                                    <span asp-validation-for="ContentNote" class="text-danger"></span>
                                 </div>
-                                <!-- reviews item end -->
-                                <!-- reviews item start -->
-                                <div class="reviews-item">
-                                    <div class="img-box">
-                                        <img src="~/img//review/1.png" alt="review img">
-                                    </div>
-                                    <h4>john doe</h4>
-                                    <div class="stars-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="date">1 week ago</span>
-                                    </div>
-                                    <p>Great work. I learnt lot of things about javascript in this course.</p>
+                                <button type="submit" class="btn btn-primary">Post Comment</button>
+                            </form>
+                            <div id="comments-container">
+
+                                <!-- reviews filter end -->
+                                <!-- reviews list start -->
+                                <div class="reviews-list">
+                                    <partial name="../Course/PostComment.cshtml" />
+
+                                    <!-- reviews item start -->
+                                    @foreach (var c in Model.Comments)
+                                    {
+                                        <div class="reviews-item">
+                                            <div class="img-box">
+                                                <img src="~/img//review/1.png" alt="review img">
+                                            </div>
+                                            @if (c.ReplyId != null)
+                                            {
+                                                <h4>@c.Staff.StaffName</h4>
+                                            }
+                                            else
+                                            {
+                                                <h4>@c.User.UserName</h4>
+                                            }
+
+
+                                            <div class="stars-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <span class="date"></span>
+                                            </div>
+                                            <p>@c.ContentNote</p>
+
+                                        </div>
+                                        <div> @Model.Date</div>
+
+                                    }
+
+
                                 </div>
-                                <!-- reviews item end -->
-                                <!-- reviews item start -->
-                                <div class="reviews-item">
-                                    <div class="img-box">
-                                        <img src="~/img/review/1.png" alt="review img">
-                                    </div>
-                                    <h4>john doe</h4>
-                                    <div class="stars-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="date">1 week ago</span>
-                                    </div>
-                                    <p>Great work. I learnt lot of things about javascript in this course.</p>
-                                </div>
-                                <!-- reviews item end -->
                             </div>
+
                             <!-- reviews list end -->
                             <button type="button" class="btn btn-theme">more reviews</button>
                         </div>
@@ -406,25 +435,25 @@
                 <!-- course sidebar start -->
                 <div class="course-sidebar box">
                     <div class="img-box position-relative" data-bs-toggle="modal" data-bs-target="#video-modal">
-                        <img src="@Model.ImageCourseUrl" class="w-100" alt="course img">
+                        <img src="@Model.Course.ImageCourseUrl" class="w-100" alt="course img">
                         <div class="play-icon">
                             <i class="fas fa-play"></i>
                         </div>
                         <p class="text-center">Course Preview</p>
                     </div>
                     <div class="price mb-3">
-                        @if (Model.DiscountPrice > 0)
+                        @if (Model.Course.DiscountPrice > 0)
                         {
-                            <p class="price-old"><span>&#8363;</span> @Model.Price.ToString("N0")</p>
-                            <span class="price-new"><span>&#8363;</span> @Model.DiscountPrice.ToString()</span>
+                            <p class="price-old"><span>&#8363;</span> @Model.Course.Price.ToString("N0")</p>
+                            <span class="price-new"><span>&#8363;</span> @Model.Course.DiscountPrice.ToString()</span>
                         }
                         else
                         {
                             @* <p class="price-old"><span>&#8363;</span> @Model.Price</p> *@
-                            <span class="price-new"><span>&#8363;</span> @Model.Price.ToString("N0")</span>
+                            <span class="price-new"><span>&#8363;</span> @Model.Course.Price.ToString("N0")</span>
                         }
 
-                        <span class="price-discount">@Model.Count Off</span>
+                        <span class="price-discount">@Model.Course.Count Off</span>
                     </div>
                     <h3 class="mb-3">Course Features</h3>
                     <ul class="features-list">
@@ -456,7 +485,7 @@
                 </button>
                 <div class="ratio ratio-16x9">
                     <video controls class="js-course-preview-video">
-                        <source src="@Model.PreviewUrl" type="video/mp4">
+                        <source src="@Model.Course.PreviewUrl" type="video/mp4">
                     </video>
                 </div>
             </div>

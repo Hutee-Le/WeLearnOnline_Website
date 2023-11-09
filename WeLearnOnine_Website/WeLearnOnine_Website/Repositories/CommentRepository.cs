@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using WeLearnOnine_Website.Models;
 
 namespace WeLearnOnine_Website.Repositories
@@ -11,7 +12,12 @@ namespace WeLearnOnine_Website.Repositories
         {
             _ctx = ctx;
         }
-
+        public Comment AddComment(Comment comment)
+        {
+            _ctx.Comments.Add(comment);
+            _ctx.SaveChanges();
+            return comment;
+        }
         public bool Create(Comment comment)
         {
             _ctx.Comments.Add(comment);
@@ -35,10 +41,11 @@ namespace WeLearnOnine_Website.Repositories
             return _ctx.Comments.ToList();
         }
 
-        public Comment GetById(int Id)
+        public List<Comment> GetById(int Id)
         {
-            Comment c = _ctx.Comments.FirstOrDefault(x => x.CmtId == Id);
+            List<Comment> c = _ctx.Comments.Include(c => c.User).Include(c => c.Staff).Where(x => x.CourseId == Id).ToList();
             return c;
+
         }
 
         public bool Update(Comment comment)
