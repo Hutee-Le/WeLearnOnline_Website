@@ -159,7 +159,6 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("StaffID");
-            entity.Property(e => e.Title).HasMaxLength(50);
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
             entity.HasOne(d => d.Course).WithMany(p => p.Comments)

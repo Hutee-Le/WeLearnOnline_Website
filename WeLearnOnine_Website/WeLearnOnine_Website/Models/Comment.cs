@@ -13,8 +13,6 @@ public partial class Comment
 
     public int CourseId { get; set; }
 
-    public string? Title { get; set; }
-
     public string ContentNote { get; set; } = null!;
 
     public DateTime? Date { get; set; }
