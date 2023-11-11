@@ -1102,3 +1102,11 @@ E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net
 E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Auth.dll
 E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Firebase.Storage.dll
 E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.ServiceModel.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\MailKit.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\MimeKit.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.Formats.Asn1.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+E:\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll

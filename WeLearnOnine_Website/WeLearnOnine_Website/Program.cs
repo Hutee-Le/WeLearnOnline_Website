@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
+using WeLearnOnine_Website.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ST_Welearn");
@@ -18,6 +19,7 @@ builder.WebHost.ConfigureKestrel(options =>
 {
     options.Limits.MaxRequestBodySize = 250 * 1024 * 1024; // 250 MB
 });
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 //DI
 builder.Services.AddTransient<IFavListRepository, FavListRepository>();
@@ -27,6 +29,7 @@ builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ILevelRepository, LevelRepository>();
 builder.Services.AddTransient<ISkillRepository, StaffRepository>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 var app = builder.Build();
 
