@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #555;
+            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            border-top: solid 6px #E55252;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            /* Center text for the container */
+        }
+
+        .header,
+        .footer {
+            padding: 10px 25px;
+        }
+
+        .content {
+            padding: 20px 25px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+        }
+
+            .logo .accent {
+                color: #E55252;
+            }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            width: 70%;
+        }
+
+        .user-info-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .user-info-label,
+        .user-info-value {
+            margin: 0 5px;
+        }
+
+        .user-info-label {
+            text-align: left;
+            flex: 1;
+        }
+
+        .user-info-value {
+            text-align: left;
+            flex: 1;
+            font-weight: bold;
+            color: #E55252;
+        }
+
+        .course-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .course-item {
+            width: calc(40%);
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+            .course-item img {
+                max-width: 200px;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+        .button {
+            background-color: #E55252;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 2px;
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+        }
+
+        .footer {
+            padding: 15px 0;
+            font-size: 0.8em;
+        }
+
+        .social-media img {
+            width: 28px;
+            height: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span class="accent">WE</span>LEARN</span>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Chào mừng bạn đã đăng ký các khóa học của WeLearn</h1>
+            <div class="user-info">
+                <div class="user-info-row">
+                    <div class="user-info-label">Học viên:</div>
+                    <div class="user-info-value">Lê Minh Nhựt</div>
+                </div>
+                <div class="user-info-row">
+                    <div class="user-info-label">Email:</div>
+                    <div class="user-info-value">lenhut0929@gmail.com</div>
+                </div>
+                <div class="user-info-row">
+                    <div class="user-info-label">Tổng giá trị:</div>
+                    <div class="user-info-value">398,000 VND</div>
+                </div>
+                <div class="user-info-row">
+                    <div class="user-info-label">Mã đơn hàng:</div>
+                    <div class="user-info-value">5CCEAA</div>
+                </div>
+            </div>
+            <h2>Khóa học đăng ký</h2>
+            <div class="course-list">
+                <div class="course-item">
+                    <img src="https://img-c.udemycdn.com/course/240x135/648826_f0e5_4.jpg" alt="MongoDB" />
+                    <p>Cơ sở dữ liệu MongoDB (NOSQL) kết hợp server ExpressJS NodeJS</p>
+                </div>
+                <div class="course-item">
+                    <img src="https://img-c.udemycdn.com/course/240x135/648826_f0e5_4.jpg" alt="MySQL" />
+                    <p>Khóa học MySQL cơ bản - tìm hiểu các chức năng cơ bản của MySQL</p>
+                </div>
+                <div class="course-item">
+                    <img src="https://img-c.udemycdn.com/course/240x135/648826_f0e5_4.jpg" alt="MySQL" />
+                    <p>Khóa học MySQL cơ bản - tìm hiểu các chức năng cơ bản của MySQL</p>
+                </div>
+
+            </div>
+            <div class="button-container">
+                <a href="https://class.nodemy.vn/order/5CCEAA" class="button">Xem đơn hàng</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Liên hệ, hỗ trợ:</p>
+            <p>Name: Công ty TNHH Công nghệ Welearn Việt Nam</p>
+            <p>Email: <a href="#">info@Welearn.vn</a></p>
+            <div class="social-media">
+                <a href="#">
+                    <img alt="Facebook" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png">
+                </a>
+                <a href="#">
+                    <img alt="Youtube" src="https://i.upanh.org/2021/06/28/free-youtube-logo-icon-2431-thumb87fd555bdf412bdf.png">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

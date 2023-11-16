@@ -17,6 +17,7 @@ namespace WeLearnOnine_Website.Services
         }
         public async Task SendEmailAsync(List<string> toAddresses, string subject, string body)
         {
+            string userName = "LeVanA";
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_mailSettings.SenderName, _mailSettings.SenderEmail));
 
@@ -27,7 +28,11 @@ namespace WeLearnOnine_Website.Services
 
             message.Subject = subject;
 
-            var bodyBuilder = new BodyBuilder { HtmlBody = "<h1>" + body + "</h1>" };
+            var bodyBuilder = new BodyBuilder();
+
+            var emailBody = File.ReadAllText("EmailTemplates/WelcomeEmailTemplate.html");
+            emailBody = emailBody.Replace("{UserName}", userName);
+            bodyBuilder.HtmlBody = emailBody;
             message.Body = bodyBuilder.ToMessageBody();
 
             using (var client = new SmtpClient())

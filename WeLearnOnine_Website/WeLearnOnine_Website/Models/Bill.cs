@@ -25,9 +25,9 @@ public partial class Bill
 
     public DateTime? ExpirationDate { get; set; }
 
+    public string? Status { get; set; }
+
     public virtual ICollection<BillDetail> BillDetails { get; set; } = new List<BillDetail>();
 
     public virtual ICollection<HistoryPayment> HistoryPayments { get; set; } = new List<HistoryPayment>();
-
-    public virtual User? User { get; set; }
 }

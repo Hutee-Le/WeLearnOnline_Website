@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {}
+    "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {}
   },
   "projects": {
-    "E:\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {
+    "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
+        "projectUniqueName": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
         "projectName": "WeLearnOnine_Website",
-        "projectPath": "E:\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
+        "projectPath": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\",
+        "outputPath": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
