@@ -81,12 +81,11 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("Payment_Method");
             entity.Property(e => e.Promotion).HasColumnType("money");
+            entity.Property(e => e.Status)
+                .HasMaxLength(100)
+                .IsUnicode(false);
             entity.Property(e => e.Total).HasColumnType("money");
             entity.Property(e => e.UserId).HasColumnName("UserID");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Bills)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK_Bill_User");
         });
 
         modelBuilder.Entity<BillDetail>(entity =>
