@@ -7,7 +7,7 @@
         bool Delete(int id);
         void DeleteAll();
         Course FindCourseByID(int id);
-
+        public IEnumerable<Course> GetTopCourses(int count);
         List<Bill> MyCourses(int userId);
 
         Task<string> UploadVideoAsync(IFormFile videoFile);

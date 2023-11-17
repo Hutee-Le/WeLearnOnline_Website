@@ -22,7 +22,7 @@ namespace WeLearnOnine_Website.Controllers
 
         public IActionResult Index()
         {
-            List<Course> courses = _courseRepository.GetAllCourses();
+            var courses = _courseRepository.GetTopCourses(4);
             return View(courses);
 
         }

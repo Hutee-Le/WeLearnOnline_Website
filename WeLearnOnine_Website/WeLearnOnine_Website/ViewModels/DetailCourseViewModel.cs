@@ -15,5 +15,8 @@ namespace WeLearnOnine_Website.ViewModels
         public string? StaffName { get; set; }
         public int UserId { get; set; }
         public DateTime? Date { get; set; }
+        public Lesson? Currentlesson { get; set; }
+        public string? UserName { get; set; }
+        public int LessonId { get; set; }
     }
 }

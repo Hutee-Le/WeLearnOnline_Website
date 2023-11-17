@@ -6,5 +6,6 @@ namespace WeLearnOnine_Website.ViewModels
     {
         public List<Bill> MyCourses { get; set; }
         public List<FavList> WishList { get; set; }
+        public List<BillDetail> PaginatedDetails { get; set; }
     }
 }

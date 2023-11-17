@@ -15,7 +15,15 @@ namespace WeLearnOnine_Website.Repositories
 		{
 			return _context.Lessons.FirstOrDefault(p => p.LessonId == id);
 		}
-		public void Add(Lesson lesson)
+
+        public Lesson getLessonbyCourse(int courseid, int lessonid)
+        {
+            Lesson? lesson = _context.Lessons.Where(x => x.CourseId == courseid && x.LessonId == lessonid).FirstOrDefault();
+            return lesson;
+        }
+
+
+        public void Add(Lesson lesson)
 		{
 			if (lesson == null)
 				throw new ArgumentNullException(nameof(lesson));

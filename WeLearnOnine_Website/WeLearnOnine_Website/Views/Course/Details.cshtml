@@ -94,104 +94,7 @@
                                    
                                 </div>
                                 }
-                                <!-- accordion item end -->
-                                <!-- accordion item start -->
-                                @* <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading-2">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-                                            Type <span>2 lessons | 18 mins</span>
-                                        </button>
-                                    </h2>
-                                    <div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="heading-2"
-                                         data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                           
-                                            <ul>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    
-                                                    <span></span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Booleans
-                                                    <span>05:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Null and undefined
-                                                    <span>05:00</span>
-                                                </li>
-                                            </ul>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- accordion item end -->
-                                <!-- accordion item start -->
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading-3">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-                                            Control structure <span>2 lessons | 50 mins</span>
-                                        </button>
-                                    </h2>
-                                    <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3"
-                                         data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <ul>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    If / else
-                                                    <span>05:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Switch case
-                                                    <span>05:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Loops
-                                                    <span>05:00</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- accordion item end -->
-                                <!-- accordion item start -->
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading-4">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-                                            Function <span>15 lessons | 45 mins</span>
-                                        </button>
-                                    </h2>
-                                    <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4"
-                                         data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <ul>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Arrow Function
-                                                    <span>05:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Parameter
-                                                    <span>05:00</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-play-circle"></i>
-                                                    Return values
-                                                    <span>05:00</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div> *@
+                              
                                 <!-- accordion item end -->
                             </div>
                             <!-- accordion end -->
@@ -341,51 +244,12 @@
                                 </form>
                             </div>
 
-
-
-                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-                            <script>
-                                $(document).ready(function () {
-                                    $("#comment-form").on("submit", function (e) {
-                                        e.preventDefault();
-                                        var form = $(this);
-
-                                        $.ajax({
-                                            type: "POST",
-                                            url: form.attr("/Course/PostComment"),
-                                            data: form.serialize(),
-                                            success: function (data) {
-                                                $("#comments-container").append(data);
-                                                form[0].reset(); // Xóa nội dung comment sau khi gửi
-                                            },
-                                            error: function () {
-                                                // Xử lý lỗi nếu cần
-                                            }
-                                        });
-                                    });
-                                });
-                                var courseId =
-                                    document.getElementById("CourseId").value = courseId;
-                            </script>
-
-
-                            <form asp-action="PostComment" asp-controller="Course" method="post">
-                                <input type="hidden" asp-for="@Model.CourseId" />
-
-                                <div class="form-group">
-                                    <label asp-for="ContentNote"></label>
-                                    <textarea asp-for="ContentNote" class="form-control"></textarea>
-                                    <span asp-validation-for="ContentNote" class="text-danger"></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Post Comment</button>
-                            </form>
                             <div id="comments-container">
 
                                 <!-- reviews filter end -->
                                 <!-- reviews list start -->
                                 <div class="reviews-list">
-                                    <partial name="../Course/PostComment.cshtml" />
+                                    
 
                                     <!-- reviews item start -->
                                     @foreach (var c in Model.Comments)
@@ -424,7 +288,7 @@
                             </div>
 
                             <!-- reviews list end -->
-                            <button type="button" class="btn btn-theme">more reviews</button>
+                           
                         </div>
                     </div>
                     <!-- course reviews end -->
