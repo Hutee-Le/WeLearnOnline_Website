@@ -39,14 +39,13 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                         <div class="row justify-content-center">
-                            @foreach (var item in Model.MyCourses)
-                            {
-                                @foreach (var c in item.BillDetails)
+
+                            @foreach (var c in Model.PaginatedDetails)
                                 {
                                     <!-- courses item start -->
                                     <div class="col-md-6 col-lg-3 course-popover">
                                         <div class="courses-item">
-                                            <a asp-action="Details" asp-controller="Course" asp-route-id="@c.Course.CourseId" class="link">
+                                            <a asp-action="MyLearningLessons" asp-controller="MyLearn" asp-route-courseid="@c.Course.CourseId" class="link">
                                                 <div class="courses-item-inner">
                                                     <div class="img-box">
                                                         <img src="~/img/courses/web-development/CSS.png" alt="course img">
@@ -96,8 +95,37 @@
                                     </div>
                                     <!-- courses item end -->
                                 }
-                            }
+                            
                         </div>
+                        <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
+                            <ul class="pagination">
+                                @if (ViewBag.CurrentPage > 1)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                }
+
+                                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                {
+                                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                    </li>
+                                }
+
+                                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                        <!-- pagination end -->
                     </div>
                     <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
                         <div class="row justify-content-center">
@@ -106,7 +134,7 @@
                                 <!-- courses item start -->
                                 <div class="col-md-6 col-lg-3 course-popover">
                                     <div class="courses-item">
-                                        <a asp-action="Details" asp-controller="Course" asp-route-id="@item.CourseId" class="link">
+                                        <a asp-action="MyLearningLessons" asp-controller="MyLearn" asp-route-courseid="@item.CourseId" class="link">
                                             <div class="courses-item-inner">
                                                 <div class="img-box">
                                                     <img src="~/img/courses/web-development/CSS.png" alt="course img">
@@ -165,7 +193,7 @@
         <div class="row">
             <div class="col-12 mt-3">
                 <!-- pagination start -->
-                <nav aria-label="Page navigation">
+              @*   <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Previous">
@@ -183,7 +211,7 @@
                             </a>
                         </li>
                     </ul>
-                </nav>
+                </nav> *@
                 <!-- pagination end -->
             </div>
         </div>

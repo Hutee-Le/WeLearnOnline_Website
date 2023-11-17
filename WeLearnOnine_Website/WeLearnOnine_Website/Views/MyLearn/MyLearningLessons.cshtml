@@ -1,0 +1,636 @@
+﻿@model WeLearnOnine_Website.ViewModels.DetailCourseViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> We Learn Online </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awsome icon -->
+    <link rel="stylesheet" href="~/css/font-awesome.css">
+
+    <link rel="shortcut icon" href="~/img/online-education.png" type="image/x-icon">
+
+    <!-- font awsome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+
+
+    <!-- swiperJS CSS -->
+    <link rel="stylesheet" href="~/css/swiper-bundle.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <!-- color Theme -->
+    <link rel="stylesheet" href="~/css/colors/color-1.css">
+
+    <!-- bootstrap icon cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body class="t-dark">
+    <!-- page loader start -->
+    <div class="page-loader js-page-loader">
+        <div></div>
+    </div>
+
+    <!-- main wrapper start -->
+    <div class="main-wrapper">
+
+        <main class="container-fluid container-playlist">
+            <section class="main-video">
+                <video src="videos/manipulate text background.mp4" controls autoplay muted></video>
+                <h3 class="title">@Model.Course.Title</h3>
+
+                <!-- course tabs start -->
+                <nav class="course-tabs">
+                    <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
+                        <bqutton class="nav-link active" id="course-description-tab" data-bs-toggle="tab"
+                                data-bs-target="#course-description" type="button" role="tab" aria-controls="course-description"
+                                aria-selected="false">
+                            Description
+                        </bqutton>
+                        
+                        <button class="nav-link" id="course-instructor-tab" data-bs-toggle="tab"
+                                data-bs-target="#course-instructor" type="button" role="tab" aria-controls="course-instructor"
+                                aria-selected="false">
+                            Instructor
+                        </button>
+                        <button class="nav-link" id="course-reviews-tab" data-bs-toggle="tab" data-bs-target="#course-reviews"
+                                type="button" role="tab" aria-controls="course-reviews" aria-selected="false">
+                            Reviews
+                        </button>
+                    </div>
+                </nav>
+                <!-- course tabs end -->
+                <!-- tab panes start -->
+                <div class="tab-content" id="nav-tabContent">
+                    <!-- course description start -->
+                    <div class="tab-pane fade show active" id="course-description" role="tabpanel"
+                         aria-labelledby="course-description-tab" tabindex="0">
+                        <div class="course-description box">
+                            <h3 class="text-capitalize mb-4">description</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
+                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
+                                cupiditate, iure quod nostrum a?
+                            </p>
+                            <h4>For who is this course designed ?</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
+                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
+                                cupiditate, iure quod nostrum a?
+                            </p>
+                            <h4>Why should you take this course ?</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
+                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
+                                cupiditate, iure quod nostrum a?
+                            </p>
+                        </div>
+                    </div>
+                    <!-- course description end -->
+                    <!-- course instructor start -->
+                    <div class="tab-pane fade" id="course-instructor" role="tabpanel" aria-labelledby="course-instructor-tab"
+                         tabindex="0">
+                        <div class="course-instructor box show active">
+                            <h3 class="mb-3 text-capitalize">instructor</h3>
+                            <div class="instructor-details">
+                                <div class="details-wrap d-flex align-items-center flex-wrap  ">
+                                    <div class="left-box me-4">
+                                        <div class="img-box">
+                                            <img src="~/img/instructor/1.png" class="rounded-circle" alt="instructor img">
+                                        </div>
+                                    </div>
+                                    <div class="right-box">
+                                        <h4>john doe <span>(web development)</span></h4>
+                                        <ul>
+                                            <li><i class="fas fa-star"></i> 4.5 Rating</li>
+                                            <li><i class="fas fa-play-circle"></i> 10 Courses</li>
+                                            <li><i class="fas fa-certificate"></i> 3000 Reviews</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <p class="mb-0">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quidem commodi
+                                        quos asperiores in voluptas officia, neque rem quisquam soluta enim fugiat dolor, illum tempore
+                                        consequuntur veritatis? Molestias, minus, maiores atque aspernatur laboriosam beatae nobis
+                                        labore corrupti quaerat alias neque reprehenderit repellendus eius pariatur, ratione repellat
+                                        blanditiis temporibus sit nihil?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- course instructor end -->
+                    <!-- course reviews start -->
+                    <div class="tab-pane fade" id="course-reviews" role="tabpanel" aria-labelledby="course-reviews-tab"
+                         tabindex="0">
+                        <div class="course-reviews box">
+                            <!-- rating summary start -->
+                            <div class="rating-summary">
+                                <h3 class="mb-4 text-capitalize">students feedback</h3>
+                                <div class="row">
+                                    <div class="col-md-4 d-flex align-items-center justify-content-center text-center">
+                                        <div class="rating-box">
+                                            <div class="average-rating">@Model.Course.Rating</div>
+                                            <div class="average-stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                            <div class="reviews">@Model.Course.Comments.Count reviews</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="rating-bars">
+                                            <!-- rating bar item star -->
+                                            <div class="rating-bars-item">
+                                                <div class="star-text">5 Star</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" style="width: 50%"></div>
+                                                </div>
+                                                <div class="percent">50%</div>
+                                            </div>
+                                            <!-- rating bar item end -->
+                                            <!-- rating bar item star -->
+                                            <div class="rating-bars-item">
+                                                <div class="star-text">4 Star</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" style="width: 30%"></div>
+                                                </div>
+                                                <div class="percent">30%</div>
+                                            </div>
+                                            <!-- rating bar item end -->
+                                            <!-- rating bar item star -->
+                                            <div class="rating-bars-item">
+                                                <div class="star-text">3 Star</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" style="width: 10%"></div>
+                                                </div>
+                                                <div class="percent">10%</div>
+                                            </div>
+                                            <!-- rating bar item end -->
+                                            <!-- rating bar item star -->
+                                            <div class="rating-bars-item">
+                                                <div class="star-text">2 Star</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" style="width: 7%"></div>
+                                                </div>
+                                                <div class="percent">7%</div>
+                                            </div>
+                                            <!-- rating bar item end -->
+                                            <!-- rating bar item star -->
+                                            <div class="rating-bars-item">
+                                                <div class="star-text">1 Star</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar" style="width: 3%"></div>
+                                                </div>
+                                                <div class="percent">3%</div>
+                                            </div>
+                                            <!-- rating bar item end -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- rating summary end -->
+                            <!-- reviews filter star -->
+                            <div class="reviews-filter">
+                                <h3 class="mb-4 text-capitalize">@Model.Course.Comments.Count reviews</h3>
+                                <form action="">
+                                    <div class="form-group">
+                                        <i class="fas fa-chevron-down select-icon"></i>
+                                        <select class="form-control">
+                                            <option value="">All Reviews</option>
+                                            <option value="1">1 Stars</option>
+                                            <option value="2">2 Stars</option>
+                                            <option value="3">3 Stars</option>
+                                            <option value="4">4 Stars</option>
+                                            <option value="5">5 Stars</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- reviews filter end -->
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                            <script>
+                                $(document).ready(function () {
+                                    $("#comment-form").on("submit", function (e) {
+                                        e.preventDefault();
+                                        var form = $(this);
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: form.attr("/MyLearn/PostComment"),
+                                            data: form.serialize(),
+                                            success: function (data) {
+                                                $("#comments-container").append(data);
+                                                form[0].reset(); // Xóa nội dung comment sau khi gửi
+                                            },
+                                            error: function () {
+                                                // Xử lý lỗi nếu cần
+                                            }
+                                        });
+                                    });
+                                });
+                                // var courseId =
+                                //     document.getElementById("CourseId").value = courseId;
+                            </script>
+                            <!-- comment post zone start -->
+                            <form asp-action="PostComment" asp-controller="MyLearn" method="post">
+                                <input type="hidden" asp-for="@Model.CourseId" />
+
+                                <div class="form-group">
+                                    <label asp-for="ContentNote"></label>
+                                    <textarea asp-for="ContentNote" class="form-control py-5"></textarea>
+                                    <span asp-validation-for="ContentNote" class="text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Post Comment</button>
+                            </form>
+                            <!-- comment post zone end -->
+                            <!-- reviews list start -->
+                            <div class="reviews-list">
+                                <partial name="../MyLearn/PostComment.cshtml" />
+                                <!-- reviews item start -->
+                                @foreach (var c in Model.Comments)
+                                {
+                                    <div class="reviews-item">
+                                        <div class="img-box">
+                                            <img src="~/img/review/1.png" alt="review img">
+                                        </div>
+                                        @if (c.ReplyId != null)
+                                        {
+                                            <h4>@c.Staff.StaffName</h4>
+                                        }
+                                        else
+                                        {
+                                            <h4>@c.User.UserName</h4>
+                                        }
+                                        <div class="stars-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="date">@c.Date</span>
+                                        </div>
+                                        <p>@c.ContentNote</p>
+                                    </div>
+                                }
+                            </div>
+                            @* <partial name="../MyLearn/_CommentListPartial.cshtml" /> *@
+                            
+                            <!-- reviews list end -->
+                            @* <button class="btn btn-theme" id="showMoreComments" data-course-id="@Model.CourseId" data-skip="3" data-take="3">more reviews</button> *@
+                    @*         <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
+                                <ul class="pagination">
+                                    @if (ViewBag.CurrentPage > 1)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    }
+
+                                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                    {
+                                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = i })">@i</a>
+                                        </li>
+                                    }
+
+                                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </nav> *@
+                            <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
+                                <ul class="pagination">
+                                    @if (ViewBag.CurrentPage > 1)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    }
+
+                                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                    {
+                                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page= i })">@i</a>
+                                        </li>
+                                    }
+
+                                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </nav>
+
+                        </div>
+                        
+                        <script>
+                            $(document).ready(function () {
+                                $("#showMoreComments").click(function () {
+                                    var courseId = $(this).data("course-id");
+                                    var skip = $(this).data("skip");
+                                    var take = $(this).data("take");
+
+                                    $.ajax({
+                                        url: "/MyLearn/GetMoreComments",
+                                        type: "GET",
+                                        data: { courseId: courseId, skip: skip, take: take },
+                                        success: function (result) {
+                                            $("#commentContainer").append(result);
+                                            // Cập nhật giá trị skip để lấy các comment tiếp theo khi nhấn nút "Show More" lại
+                                            $("#showMoreComments").data("skip", skip + take);
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    </div>
+                    <!-- course reviews end -->
+                </div>
+
+                <!-- tab panes end -->
+            </section>
+
+            @*  <section class="video-playlist">
+            <h3 class="title">Title of Video Playlist</h3>
+            <p>@Model.Course.Lessons.Count lessions &nbsp; . &nbsp; 50m 48s</p>
+            <div class="videos">
+            @foreach (var v in Model.Course.Lessons)
+            {
+            <div class="video-item  @(v.LessonId == ViewBag.ActiveLessonId ? "active" : "")"
+            onclick="playVideo('@v.UrlVideo', '@v.Title', @v.LessonId)" id="@v.LessonId">
+            <h3 class="title">@v.Title</h3>
+            <p class="time">@v.Time</p>
+            </div>
+            }
+
+            </div>
+            <div id="video-player">
+            <!-- Video player will be dynamically added here -->
+            </div>
+            </section>
+            <script>
+            // JavaScript to handle video item click
+            document.addEventListener('DOMContentLoaded', function () {
+            var videoItems = document.querySelectorAll('.video-item');
+
+            videoItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+            var videoUrl = item.getAttribute('data-url');
+            var videoTitle = item.getAttribute('data-title');
+            var lessonId = item.getAttribute('data-lessonid');
+
+            playVideo(videoUrl, videoTitle, lessonId);
+            });
+            });
+            });
+
+            function playVideo(videoUrl, videoTitle, lessonId) {
+            var videoPlayer = document.getElementById('video-player');
+
+            // Clear previous video player content
+            videoPlayer.innerHTML = '';
+
+            // Add new video player
+            var videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', 'controls');
+
+            var sourceElement = document.createElement('source');
+            sourceElement.setAttribute('src', videoUrl);
+            sourceElement.setAttribute('type', 'video/mp4');
+
+            videoElement.appendChild(sourceElement);
+            videoPlayer.appendChild(videoElement);
+
+            // Display the video title
+            var titleElement = document.createElement('h3');
+            titleElement.textContent = videoTitle;
+            videoPlayer.appendChild(titleElement);
+
+            // Set the active lesson ID for client-side handling
+            var activeLessonId = lessonId;
+            }
+            </script> *@
+            <section class="video-playlist">
+                <h3 class="title">@Model.Course.Title</h3>
+                <p>@Model.Course.Lessons.Count lessons &nbsp; . &nbsp; 50m 48s</p>
+
+                <div class="videos">
+                    @foreach (var v in Model.Course.Lessons)
+                    {
+
+                        @* <a href="/MyLearningLessons/GetVideo/" + @Model.Currentlesson.CourseId + "/" + @Model.Currentlesson.LessonId> *@
+                            <a href="">
+                        
+                        <div class="video" data-url="@v.UrlVideo" data-title="@v.Title" data-lessonid="@v.LessonId">
+                           
+
+                            <img src="@v.ImageLessonUrl" alt="">
+                          
+                            <h3 class="title">@v.Title</h3>
+                            <p class="time">@v.Time</p>
+                        </div>
+                        </a>
+                    }
+                </div>
+
+                <div id="video-player">
+                    <!-- Video player will be dynamically added here -->
+                    
+                </div> 
+            </section>
+
+          <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    console.log('DOMContentLoaded event fired');
+
+                    var videoItems = document.querySelectorAll('.video');
+                    var currentVideoElement = null;
+
+                    videoItems.forEach(function (item) {
+                        item.addEventListener('click', function () {
+                            var videoUrl = item.getAttribute('data-url');
+                            var videoTitle = item.getAttribute('data-title');
+
+                            console.log('Clicked video:', videoTitle, 'URL:', videoUrl);
+
+                            playVideo(videoUrl, videoTitle);
+                        });
+                    });
+
+                    function playVideo(videoUrl, videoTitle) {
+                        var videoPlayer = document.getElementById('video-player');
+
+                        // Clear previous video player content
+                        if (currentVideoElement) {
+                            currentVideoElement.pause();
+                            videoPlayer.removeChild(currentVideoElement);
+                        }
+
+                        // Add new video player
+                        var videoElement = document.createElement('video');
+                        videoElement.setAttribute('controls', 'controls');
+
+                        var sourceElement = document.createElement('source');
+                        sourceElement.setAttribute('src', videoUrl);
+                        sourceElement.setAttribute('type', 'video/mp4');
+
+                        videoElement.appendChild(sourceElement);
+                        videoPlayer.appendChild(videoElement);
+
+                        // Display the video title
+                        var titleElement = document.createElement('h3');
+                        titleElement.textContent = videoTitle;
+                        videoPlayer.appendChild(titleElement);
+
+                        // Set the current video element for pausing later
+                        currentVideoElement = videoElement;
+
+                        // Start playing the new video
+                        currentVideoElement.play();
+                    }
+                });
+            </script>
+           
+ @*            <script>
+               
+                document.addEventListener('DOMContentLoaded', function () {
+                    var videoItems = document.querySelectorAll('.video');
+                    var currentVideoElement = null;
+
+                    videoItems.forEach(function (item) {
+                        item.addEventListener('click', function () {
+                            var videoUrl = item.getAttribute('data-url');
+                            var videoTitle = item.getAttribute('data-title');
+
+                            playVideo(videoUrl, videoTitle);
+                        });
+                    });
+
+                    function playVideo(videoUrl, videoTitle) {
+                        var videoPlayer = document.getElementById('video-player');
+
+                        // Clear previous video player content
+                        if (currentVideoElement) {
+                            currentVideoElement.pause();
+                            videoPlayer.removeChild(currentVideoElement);
+                        }
+
+                        // Add new video player
+                        var videoElement = document.createElement('video');
+                        videoElement.setAttribute('controls', 'controls');
+
+                        var sourceElement = document.createElement('source');
+                        sourceElement.setAttribute('src', videoUrl);
+                        sourceElement.setAttribute('type', 'video/mp4');
+
+                        videoElement.appendChild(sourceElement);
+                        videoPlayer.appendChild(videoElement);
+
+                        // Display the video title
+                        var titleElement = document.createElement('h3');
+                        titleElement.textContent = videoTitle;
+                        videoPlayer.appendChild(titleElement);
+
+                        // Set the current video element for pausing later
+                        currentVideoElement = videoElement;
+
+                        // Start playing the new video
+                        currentVideoElement.play();
+                    }
+                });
+            </script> *@
+
+            @*  <script>
+            function playVideo(videoUrl, videoTitle, lessonId) {
+            var videoPlayer = document.getElementById('video-player');
+
+            // Clear previous video player content
+            videoPlayer.innerHTML = '';
+
+            // Add new video player
+            var videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', 'controls');
+
+            var sourceElement = document.createElement('source');
+            sourceElement.setAttribute('src', videoUrl);
+            sourceElement.setAttribute('type', 'video/mp4');
+
+            videoElement.appendChild(sourceElement);
+            videoPlayer.appendChild(videoElement);
+
+            // Display the video title
+            var titleElement = document.createElement('h3');
+            titleElement.textContent = videoTitle;
+            videoPlayer.appendChild(titleElement);
+
+            // Set the active lesson ID in ViewBag for server-side handling
+            @ViewBag.ActiveLessonId = lessonId;
+            }
+            </script> *@
+        </main>
+    </div>
+    <!-- main wrapper end -->
+    <!-- style switcher start -->
+    <div class="style-switcher js-style-switcher">
+        <div class="style-switcher-toggler js-style-switcher-toggler">
+            <i class="fas fa-cog"></i>
+        </div>
+        <h3>Style Switcher</h3>
+        <div class="style-switcher-item">
+            <p class="mb-2">Theme Colors</p>
+            <!-- theme color -->
+            <div class="theme-colors js-theme-colors">
+                <button type="button" data-js-theme-color="color-1" class="js-theme-color-item color-1"></button>
+                <button type="button" data-js-theme-color="color-2" class="js-theme-color-item color-2"></button>
+                <button type="button" data-js-theme-color="color-3" class="js-theme-color-item color-3"></button>
+                <button type="button" data-js-theme-color="color-4" class="js-theme-color-item color-4"></button>
+                <button type="button" data-js-theme-color="color-5" class="js-theme-color-item color-5"></button>
+            </div>
+        </div>
+        <div class="style-switcher-item">
+            <div class="form-check form-switch">
+                <input class="form-check-input js-dark-mode" type="checkbox" role="switch" id="dark-mode">
+                <label class="form-check-label" for="dark-mode">Dark Mode</label>
+            </div>
+        </div>
+    </div>
+    <!-- style switcher end -->
+    @*  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> *@
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/swiper-bundle.min.js"></script>
+    <script src="~/js/main.js"></script>
+</body>
+</html>

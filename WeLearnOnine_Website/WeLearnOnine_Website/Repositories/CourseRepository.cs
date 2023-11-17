@@ -26,6 +26,10 @@ namespace WeLearnOnine_Website.Repositories
 
             return courses;
         }
+        public IEnumerable<Course> GetTopCourses(int count)
+        {
+            return _ctx.Courses.Include(x => x.Level).Include(x => x.Staff).Take(count).ToList();
+        }
         public List<Course> Search(string keyword)
         {
             return _ctx.Courses.Where(c => c.Title.Contains(keyword)).ToList();
