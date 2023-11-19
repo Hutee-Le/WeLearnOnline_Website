@@ -23,7 +23,7 @@ namespace WeLearnOnine_Website.Controllers
         public IActionResult Index(int? page)
         {
             
-            int userId = 1; // Hoặc lấy userId từ đâu đó nếu cần
+            int userId = 1; 
             int pageSize = 4; // Số lượng mục trên mỗi trang
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 
