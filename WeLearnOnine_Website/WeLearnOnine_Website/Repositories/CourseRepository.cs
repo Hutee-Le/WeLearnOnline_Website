@@ -72,6 +72,8 @@ namespace WeLearnOnine_Website.Repositories
 
         public List<Course> GetAllCourses() => _ctx.Courses.Include(x => x.Level).Include(x => x.Staff).ToList();
 
+        
+
         public Course FindCourseByID(int id)
         {
             Course? course = _ctx.Courses
@@ -83,45 +85,51 @@ namespace WeLearnOnine_Website.Repositories
             return course;
         }
 
-        public List<CourseViewModel> GetAllCoursesWithDetails(int userId)
+        public List<CourseViewModel> GetAvailableAndFavoriteCourses(int userId)
         {
-            var purchasedCourseIds = _ctx.Bills
-                .Where(b => b.UserId == userId)
-                .SelectMany(b => b.BillDetails)
+            // Lấy danh sách ID các khóa học đã mua
+            var purchasedCourseIds = _ctx.BillDetails
+                .Where(bd => bd.Bill.UserId == userId)
                 .Select(bd => bd.CourseId)
                 .ToList();
 
-            var courses = _ctx.Courses
+            // Lấy danh sách các khóa học chưa mua
+            var availableCourses = _ctx.Courses
                 .Where(c => !purchasedCourseIds.Contains(c.CourseId))
                 .Include(c => c.Level)
                 .Include(c => c.Staff)
-                .Select(course => new CourseViewModel
-                {
-                    Course = course,
-                    LevelName = course.Level.Name,
-                    StaffName = course.Staff.StaffName,
-                    IsInFavorites = _ctx.FavLists.Any(f => f.UserId == userId && f.CourseId == course.CourseId)
-                })
                 .ToList();
 
-            return courses;
+            // Tạo và trả về CourseViewModels
+            var courseViewModels = availableCourses.Select(c => new CourseViewModel
+            {
+                Course = c,
+                LevelName = c.Level?.Name, // Giả sử Level có thuộc tính Name
+                StaffName = c.Staff?.StaffName, // Giả sử Staff có thuộc tính Name
+                IsInFavorites = _ctx.FavLists.Any(f => f.UserId == userId && f.CourseId == c.CourseId)
+            }).ToList();
+
+            return courseViewModels;
         }
 
-        public List<CourseViewModel> GetAllCoursesWithDetails()
+        public List<CourseViewModel> GetAllAvailableCourses()
         {
+            // Lấy danh sách tất cả các khóa học từ cơ sở dữ liệu
             var courses = _ctx.Courses
-        .Include(c => c.Level)
-        .Include(c => c.Staff)
-        .Select(course => new CourseViewModel
-        {
-            Course = course,
-            LevelName = course.Level.Name,
-            StaffName = course.Staff.StaffName,
-            IsInFavorites = false
-        })
-        .ToList();
+                .Include(c => c.Level)
+                .Include(c => c.Staff)
+                .ToList();
 
-            return courses;
+            // Tạo danh sách CourseViewModel
+            var courseViewModels = courses.Select(c => new CourseViewModel
+            {
+                Course = c,
+                LevelName = c.Level?.Name, 
+                StaffName = c.Staff?.StaffName, 
+                IsInFavorites = false 
+            }).ToList();
+
+            return courseViewModels;
         }
 
         public async Task<bool> AddToFavorites(int userId, int courseId)
