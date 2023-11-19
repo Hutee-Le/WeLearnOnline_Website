@@ -21,10 +21,10 @@
         // Retrieve all courses by category id
         List<Course> GetCoursesByCategoryId(int categoryId);
 
-        List<CourseViewModel> GetAllCoursesWithDetails();
+        List<CourseViewModel> GetAllAvailableCourses();
 
         // Retrieve all courses with favorite status
-        List<CourseViewModel> GetAllCoursesWithDetails(int userId);
+        List<CourseViewModel> GetAvailableAndFavoriteCourses(int userId);
 
 
         List<Course> Search(string keyword);

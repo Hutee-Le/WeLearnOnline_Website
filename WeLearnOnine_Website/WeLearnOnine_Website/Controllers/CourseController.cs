@@ -20,29 +20,30 @@ namespace WeLearnOnine_Website.Controllers
             _commentRepository = commentRepository;
         }
 
-        public IActionResult Index(int? page)
+        public IActionResult Index(int? page, int pageSize = 4)
         {
             
-            int userId = 1; 
-            int pageSize = 4; // Số lượng mục trên mỗi trang
+            int userId = 0; 
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 
             List<CourseViewModel> courses;
 
             if (userId != 0)
             {
-                courses = _courseRepository.GetAllCoursesWithDetails(userId);
+                courses = _courseRepository.GetAvailableAndFavoriteCourses(userId);
             }
             else
             {
                 // Nếu người dùng chưa đăng nhập, hiển thị danh sách khoá học mặc định
-                courses = _courseRepository.GetAllCoursesWithDetails();
+                courses = _courseRepository.GetAllAvailableCourses();
             }
 
             var paginatedCourses = courses.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            var totalCourses = courses.Count;
+            var totalPages = (int)Math.Ceiling(totalCourses / (double)pageSize);
 
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)courses.Count() / pageSize);
+            ViewBag.TotalPages = totalPages;
 
             return View("Index", paginatedCourses);
         }
