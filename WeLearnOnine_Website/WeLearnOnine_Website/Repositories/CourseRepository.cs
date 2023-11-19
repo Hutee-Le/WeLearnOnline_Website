@@ -85,7 +85,14 @@ namespace WeLearnOnine_Website.Repositories
 
         public List<CourseViewModel> GetAllCoursesWithDetails(int userId)
         {
+            var purchasedCourseIds = _ctx.Bills
+                .Where(b => b.UserId == userId)
+                .SelectMany(b => b.BillDetails)
+                .Select(bd => bd.CourseId)
+                .ToList();
+
             var courses = _ctx.Courses
+                .Where(c => !purchasedCourseIds.Contains(c.CourseId))
                 .Include(c => c.Level)
                 .Include(c => c.Staff)
                 .Select(course => new CourseViewModel
