@@ -76,10 +76,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Cart/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Comment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENvbW1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -134,6 +130,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/_ViewImports.cshtml]
