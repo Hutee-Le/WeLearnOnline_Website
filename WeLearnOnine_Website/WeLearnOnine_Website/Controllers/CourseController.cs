@@ -23,7 +23,7 @@ namespace WeLearnOnine_Website.Controllers
         public IActionResult Index(int? page, int pageSize = 4)
         {
             
-            int userId = 0; 
+            int userId = 4; 
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 
             List<CourseViewModel> courses;

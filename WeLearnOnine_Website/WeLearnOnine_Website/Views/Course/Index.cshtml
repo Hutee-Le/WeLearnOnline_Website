@@ -669,7 +669,25 @@
                 });
             });
         </script>
-
+       @*  <script>
+            function addToCart(courseId) {
+                $.ajax({
+                    type: "POST",
+                    url: '/Course/AddToCart', // Thay đổi đường dẫn tương ứng với hành động AddToCartViaAjax của bạn
+                    data: { courseId: courseId },
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Course added to cart successfully.');
+                        } else {
+                            alert('Failed to add course to cart.');
+                        }
+                    },
+                    error: function () {
+                        alert('An error occurred while adding the course to cart.');
+                    }
+                });
+            }
+        </script> *@
 
 
     </div>
@@ -720,7 +738,7 @@
                     <a href="#" class="title">@item.Course.Title</a>
                     <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
                     <div class="popover-course-btn">
-                        <form asp-action="AddToCart" asp-controller="Course" class="inline-form">
+                        <form asp-controller="ShoppingCart" asp-action="AddToCart" method="post" class="inline-form">
                             <input type="hidden" name="courseId" value="@item.Course.CourseId" />
                             <button type="submit" class="btn-addCart">Add to cart</button>
                         </form>
