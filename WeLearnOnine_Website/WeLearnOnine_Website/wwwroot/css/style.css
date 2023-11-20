@@ -2224,7 +2224,7 @@ Shop Cart
 .shopping-item--container {
     position: relative;
     display: grid;
-    grid: 'image header header actions price' auto 'image badges rating actions price' auto 'image meta meta actions price' auto/auto auto 1fr auto auto;
+    grid: 'image header header actions price' auto 'image badges badges actions price' auto 'image rating rating actions price' auto 'image meta meta actions price' auto/auto auto 1fr auto auto;
 }
 
     .shopping-item--container .shopping-item--image {
