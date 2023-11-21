@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title> Twstudy </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awsome icon -->
+  <link rel="stylesheet" href="css/font-awesome.css">
+
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- swiperJS CSS -->
+  <link rel="stylesheet" href="css/swiper-bundle.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- color Theme -->
+  <link rel="stylesheet" href="css/colors/color-1.css">
+
+  <!-- bootstrap icon cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body class="t-dark">
+  <!-- main wrapper start -->
+  <div class="main-wrapper">
+    <!-- header start -->
+    <header class="header">
+      <div class="container-xxl">
+        <div class="header-main d-flex justify-content-between align-items-center">
+          <div class="header-logo">
+            <a href="index.html"><span>tws</span>tudy</a>
+          </div>
+          <button type="button" class="header-hamburger-btn js-header-menu-toggler">
+            <span></span>
+          </button>
+          <div class="header-backdrop js-header-backdrop"></div>
+
+          <div class="menu-item pe-4"><span>categories</span></div>
+          <div class="search-input">
+            <span><i class="fas fa-search"></i></span>
+            <input type="text" placeholder="Search for anything">
+          </div>
+          <nav class="header-menu js-header-menu">
+            <button type="button" class="header-close-btn js-header-menu-toggler">
+              <i class="fas fa-times"></i>
+            </button>
+            <ul class="menu h-100">
+              <li class="menu-item menu-item-has-children">
+                <a href="#" class="js-toggle-sub-menu">courses<i class="fas fa-chevron-down"></i></a>
+                <ul class="sub-menu js-sub-menu">
+                  <li class="sub-menu-item"><a href="courses.html">courses</a></li>
+                  <li class="sub-menu-item"><a href="course-details.html">my courses</a></li>
+                  <li class="sub-menu-item"><a href="courses-test.html">courses-test</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a href="contact.html">contact</a></li>
+              <li class="menu-item icon-color-theme"><a href="#"><i class="far fa-heart"></i></a></li>
+              <li class="menu-item"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+              <li class="menu-item"><a href="#"><i class="far fa-bell"></i></a></li>
+            </ul>
+          </nav>
+
+          <!-- <div class="menu-item btn-login overflow-hidden"><a class="fw-bold" href="log-in.html ">Login</a></div>
+          <div class="menu-item btn-signup overflow-hidden"><a class="fw-bold" href="sign-up.html">Sign Up</a></div> -->
+
+          <div class="menu-item user-profile">
+            <div class="img-user-profile">
+              <img src="img/instructor/1.png" alt="img profile" class="user-pic" onclick="menuToggle()">
+            </div>
+
+            <div class="sub-menu-box" id="subMenuUser">
+              <div class="sub-menu-user">
+                <div class="user-info">
+                  <img src="img/instructor/1.png">
+                  <div class="info-name">
+                    <h3>Joe Doe</h3><span>JoeDoe123@gmail.com</span>
+                  </div>
+                </div>
+                <hr>
+                <a href="user-profile.html" class="sub-menu-links">
+                  <i class="bi bi-person-circle"></i>
+                  <p>Edit Profile</p><span>></span>
+                </a>
+                <a href="#" class="sub-menu-links">
+                  <i class="bi bi-gear"></i>
+                  <p>Setting</p><span>></span>
+                </a>
+                <a href="#" class="sub-menu-links">
+                  <i class="bi bi-question-circle"></i>
+                  <p>Help</p><span>></span>
+                </a>
+                <a href="#" class="sub-menu-links">
+                  <i class="bi bi-box-arrow-left"></i>
+                  <p>Log Out</p><span>></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+    <!-- header end -->
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-nav">
+      <div class="container-fluid mx-5">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">shopping-cart</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- breadcrumb end -->
+
+    <!-- Empty Cart Section Begin -->
+    <section class="shopping-cart spad">
+      <div class="container-fluid">
+        <div class="cart-title-section d-flex justify-content-center">
+          <h1 class="ud-heading-xxxl">
+            Shopping Cart
+          </h1>
+        </div>
+        <div class="cart--notifications-section">
+          <div class="styles--notifications">
+          </div>
+        </div>
+        <div class="cart--shopping-section d-flex justify-content-center align-item-center mt-4">
+          <div class="cart--shopping-lists-pane">
+            <div class="styles--shopping-list">
+              <h3 class="ud-heading-md">
+                0 Courses in Cart
+              </h3>
+              <div class="empty-shopping-list--empty-shopping-list-container  ">
+                <div class="empty-cart-content text-center">
+                  <img src="https://s.udemycdn.com/browse_components/flyout/empty-shopping-cart-v2.jpg" width="240" alt="Empty Cart" class="empty-cart-icon mb-3">
+                  <p class="empty-shopping-list--empty-shopping-list-message">Your cart is empty. Keep shopping to find a course!</p>
+                  <button class="btn keep-shopping-btn">Keep shopping</button>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    <!-- Empty Cart Section End -->
+
+
+    <!-- courses section start -->
+    <section class="courses-section section-padding">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="section-title text-center">
+              <h2 class="title">courses</h2>
+              <p class="sub-title">Find the right course for you</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- courses item start -->
+          <div class="courese-wrapper col-md-6 col-lg-3">
+            <div class="courses-item">
+              <a href="course-details.html" class="link">
+                <div class="courses-item-inner">
+                  <div class="img-box">
+                    <img src="img/courses/web-development/python.jpg" alt="course img">
+                  </div>
+                  <h3 class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, saepe qui
+                    consequuntur facilis quae minus.</h3>
+                  <div class="instructor">
+                    <img src="img/instructor/1.png" alt="instructor img">
+                    <span class="instructor-name">Joe Doe</span>
+                  </div>
+                  <div class="rating">
+                    <span class="average-rating">(4.5)</span>
+                    <span class="average-stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span class="reviews">(230)</span>
+                  </div>
+                  <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                  <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                  <div class="seller d-flex justify-content-end"><span>Bestseller</span></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- courses item end -->
+          <!-- courses item start -->
+          <div class="courese-wrapper col-md-6 col-lg-3">
+            <div class="courses-item">
+              <a href="course-details.html" class="link">
+                <div class="courses-item-inner">
+                  <div class="img-box">
+                    <img src="img/courses/web-development/python.jpg" alt="course img">
+                  </div>
+                  <h3 class="title">HTML for beginner</h3>
+                  <div class="instructor">
+                    <img src="img/instructor/1.png" alt="instructor img">
+                    <span class="instructor-name">Joe Doe</span>
+                  </div>
+                  <div class="rating">
+                    <span class="average-rating">(4.5)</span>
+                    <span class="average-stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span class="reviews">(230)</span>
+                  </div>
+                  <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                  <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- courses item end -->
+          <!-- courses item start -->
+          <div class="courese-wrapper col-md-6 col-lg-3">
+            <div class="courses-item">
+              <a href="course-details.html" class="link">
+                <div class="courses-item-inner">
+                  <div class="img-box">
+                    <img src="img/courses/web-development/python.jpg" alt="course img">
+                  </div>
+                  <h3 class="title">HTML for beginner</h3>
+                  <div class="instructor">
+                    <img src="img/instructor/1.png" alt="instructor img">
+                    <span class="instructor-name">Joe Doe</span>
+                  </div>
+                  <div class="rating">
+                    <span class="average-rating">(4.5)</span>
+                    <span class="average-stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span class="reviews">(230)</span>
+                  </div>
+                  <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                  <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- courses item end -->
+          <!-- courses item start -->
+          <div class="courese-wrapper col-md-6 col-lg-3">
+            <div class="courses-item">
+              <a href="course-details.html" class="link">
+                <div class="courses-item-inner">
+                  <div class="img-box">
+                    <img src="img/courses/web-development/python.jpg" alt="course img">
+                  </div>
+                  <h3 class="title">HTML for beginner</h3>
+                  <div class="instructor">
+                    <img src="img/instructor/1.png" alt="instructor img">
+                    <span class="instructor-name">Joe Doe</span>
+                  </div>
+                  <div class="rating">
+                    <span class="average-rating">(4.5)</span>
+                    <span class="average-stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span class="reviews">(230)</span>
+                  </div>
+                  <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
+                  <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- courses item end -->
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <a href="courses.html" class="btn btn-theme">view all courses</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- courses section end -->
+
+    <!-- fun fact section start -->
+    <section class="fun-facts-section">
+      <div class="container">
+        <div class="box py-2">
+          <div class="row text-center">
+            <div class="col-md-6 col-lg-3">
+              <div class="fun-facts-item">
+                <div class="style-1 counter" data-goal="800">0 <span>k</span></div>
+                <p>student we've</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="fun-facts-item">
+                <div class="style-2 counter" data-goal="500">0 <span>+</span></div>
+                <p>courses</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="fun-facts-item">
+                <div class="style-3 counter" data-goal="50">0 <span>+</span></div>
+                <p>countries</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="fun-facts-item">
+                <div class="style-4 counter" data-goal="100">0 <span>+</span></div>
+                <p>skilled constructors</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <!-- fun fact section end -->
+
+    <!-- footer start -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3><span class="footer-logo">tws</span>tudy</h3>
+                <ul>
+                  <li><a href="#">about</a></li>
+                  <li><a href="#">what we offer</a></li>
+                  <li><a href="#">careers</a></li>
+                  <li><a href="#">certificates</a></li>
+                  <li><a href="#">blog</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3>learning</h3>
+                <ul>
+                  <li><a href="#">get the app</a></li>
+                  <li><a href="#">testimonials</a></li>
+                  <li><a href="#">pricing</a></li>
+                  <li><a href="#">faq</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3>more</h3>
+                <ul>
+                  <li><a href="#">affiliates</a></li>
+                  <li><a href="#">become a course creator</a></li>
+                  <li><a href="#">training webinars</a></li>
+                  <li><a href="#">free personality test</a></li>
+                  <li><a href="#">help and support</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="footer-item">
+                <h3>get in touch</h3>
+                <ul>
+                  <li><a href="#"><i class="fab fa-facebook social-icon"></i> facebook</a></li>
+                  <li><a href="#"><i class="fab fa-twitter social-icon"></i> twitter</a></li>
+                  <li><a href="#"><i class="fab fa-instagram social-icon"></i> instagram</a></li>
+                  <li><a href="#"><i class="fab fa-youtube social-icon"></i> youtube</a></li>
+                  <li><a href="#"><i class="fab fa-linkedin social-icon"></i> linkedin</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="mt-0 py-4 text-center">Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> Education IT
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end -->
+  </div>
+  <!-- main wrapper end -->
+
+  <!-- style switcher start -->
+  <div class="style-switcher js-style-switcher">
+    <div class="style-switcher-toggler js-style-switcher-toggler">
+      <i class="fas fa-cog"></i>
+    </div>
+    <h3>Style Switcher</h3>
+    <div class="style-switcher-item">
+      <p class="mb-2">Theme Colors</p>
+      <!-- theme color -->
+      <div class="theme-colors js-theme-colors">
+        <button type="button" data-js-theme-color="color-1" class="js-theme-color-item color-1"></button>
+        <button type="button" data-js-theme-color="color-2" class="js-theme-color-item color-2"></button>
+        <button type="button" data-js-theme-color="color-3" class="js-theme-color-item color-3"></button>
+        <button type="button" data-js-theme-color="color-4" class="js-theme-color-item color-4"></button>
+        <button type="button" data-js-theme-color="color-5" class="js-theme-color-item color-5"></button>
+      </div>
+    </div>
+    <div class="style-switcher-item">
+      <div class="form-check form-switch">
+        <input class="form-check-input js-dark-mode" type="checkbox" role="switch" id="dark-mode">
+        <label class="form-check-label" for="dark-mode">Dark Mode</label>
+      </div>
+    </div>
+  </div>
+  <!-- style switcher end -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

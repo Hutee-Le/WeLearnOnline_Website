@@ -15,5 +15,6 @@ namespace WeLearnOnine_Website.Repositories
         void DeleteBill(Guid billId);
 
         void AddBillDetail(BillDetail billDetail);
+        void RemoveBillDetail(Guid billDetailId);
     }
 }

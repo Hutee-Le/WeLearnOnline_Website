@@ -51,6 +51,16 @@ namespace WeLearnOnine_Website.Repositories
                 .FirstOrDefault(b => b.UserId == userId && b.Status == "Pending");
         }
 
+        public void RemoveBillDetail(Guid billDetailId)
+        {
+            var billDetail = _context.BillDetails.FirstOrDefault(bd => bd.BillDetailId == billDetailId);
+            if (billDetail != null)
+            {
+                _context.BillDetails.Remove(billDetail);
+                _context.SaveChanges();
+            }
+        }
+
         public void UpdateBill(Bill bill)
         {
             // Thực hiện logic để cập nhật thông tin Bill

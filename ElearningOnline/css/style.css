@@ -2249,8 +2249,37 @@ main.container-playlist {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     font: 100 1rem sans-serif;
     padding: 0 .5rem;
     margin: 0;
+}
+
+/* Emty Cart */
+
+.empty-shopping-list--empty-shopping-list-container {
+    border: 1px solid #e1e1e1; 
+    padding: 2em; 
+    border-radius: 8px; 
+    background-color: #ffffff; 
+}
+
+.keep-shopping-btn {
+    /* Button styles */
+    background-color: #624de3; /* Change to match your site's theme */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for the button */
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 1em; /* Space above the button */
+}
+
+.empty-shopping-list--empty-shopping-list-message{
+    font-size: inherit;
+    font-weight: 400;
+}
+
+.keep-shopping-btn:hover {
+    background-color: #5039c8; /* Darker shade for hover state */
 }

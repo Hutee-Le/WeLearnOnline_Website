@@ -76,5 +76,35 @@ namespace WeLearnOnine_Website.Controllers
             return RedirectToAction("Index");
             //return Json(new { success = true });
         }
+
+        [HttpPost]
+        public IActionResult RemoveFromCart(int courseId)
+        {
+            var userId = 4;
+
+            // Lấy Bill đang ở trạng thái "pending" của người dùng
+            var bill = _billRepository.GetPendingBillByUserId(userId);
+            if (bill == null)
+            {
+                return NotFound("Không tìm thấy giỏ hàng.");
+            }
+            // Tìm BillDetail và xóa nó
+            var billDetail = bill.BillDetails.FirstOrDefault(bd => bd.CourseId == courseId);
+            if (billDetail != null)
+            {
+                _billRepository.RemoveBillDetail(billDetail.BillDetailId);
+
+                if (!bill.BillDetails.Any())
+                {
+                    _billRepository.DeleteBill(bill.BillId);
+                }
+            }
+            else
+            {
+                return NotFound("Không tìm thấy khóa học trong giỏ hàng.");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
