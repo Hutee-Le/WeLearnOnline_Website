@@ -94,9 +94,11 @@
                                         <span class="shopping-item--meta-item">@detail.Course.Level.Name</span>
                                     </div>
                                     <div class="shopping-item--vertical-actions">
-                                        <button type="button" class="ud-btn ud-btn-xsmall ud-btn-ghost ud-text-sm">
-                                            <span>Remove</span>
-                                        </button>
+                                        <form method="post" asp-action="RemoveFromCart" asp-route-courseId="@detail.Course.CourseId">
+                                            <button type="submit" class="ud-btn ud-btn-xsmall ud-btn-ghost ud-text-sm">
+                                                <span>Remove</span>
+                                            </button>
+                                        </form>
                                         <button type="button" class="ud-btn ud-btn-xsmall ud-btn-ghost ud-text-sm">
                                             <span>Save for Later</span>
                                         </button>
