@@ -47,18 +47,19 @@
 
         <main class="container-fluid container-playlist">
             <section class="main-video">
-                <video src="videos/manipulate text background.mp4" controls autoplay muted></video>
-                <h3 class="title">@Model.Course.Title</h3>
+
+                <video src="@Model.Course.Lessons.FirstOrDefault()?.UrlVideo" id="video-player" controls autoplay muted></video>
+                <h3 id="video-title">@Model.Title</h3>
 
                 <!-- course tabs start -->
                 <nav class="course-tabs">
                     <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
                         <bqutton class="nav-link active" id="course-description-tab" data-bs-toggle="tab"
-                                data-bs-target="#course-description" type="button" role="tab" aria-controls="course-description"
-                                aria-selected="false">
+                                 data-bs-target="#course-description" type="button" role="tab" aria-controls="course-description"
+                                 aria-selected="false">
                             Description
                         </bqutton>
-                        
+
                         <button class="nav-link" id="course-instructor-tab" data-bs-toggle="tab"
                                 data-bs-target="#course-instructor" type="button" role="tab" aria-controls="course-instructor"
                                 aria-selected="false">
@@ -291,36 +292,36 @@
                                 }
                             </div>
                             @* <partial name="../MyLearn/_CommentListPartial.cshtml" /> *@
-                            
+
                             <!-- reviews list end -->
                             @* <button class="btn btn-theme" id="showMoreComments" data-course-id="@Model.CourseId" data-skip="3" data-take="3">more reviews</button> *@
-                    @*         <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
-                                <ul class="pagination">
-                                    @if (ViewBag.CurrentPage > 1)
-                                    {
-                                        <li class="page-item">
-                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                    }
+                            @*         <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
+                            <ul class="pagination">
+                            @if (ViewBag.CurrentPage > 1)
+                            {
+                            <li class="page-item">
+                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            </li>
+                            }
 
-                                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                                    {
-                                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = i })">@i</a>
-                                        </li>
-                                    }
+                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                            {
+                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = i })">@i</a>
+                            </li>
+                            }
 
-                                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                                    {
-                                        <li class="page-item">
-                                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage + 1 })" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
+                            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                            {
+                            <li class="page-item">
+                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            </li>
+                            }
+                            </ul>
                             </nav> *@
                             <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
                                 <ul class="pagination">
@@ -352,33 +353,93 @@
                             </nav>
 
                         </div>
-                        
-                        <script>
-                            $(document).ready(function () {
-                                $("#showMoreComments").click(function () {
-                                    var courseId = $(this).data("course-id");
-                                    var skip = $(this).data("skip");
-                                    var take = $(this).data("take");
 
-                                    $.ajax({
-                                        url: "/MyLearn/GetMoreComments",
-                                        type: "GET",
-                                        data: { courseId: courseId, skip: skip, take: take },
-                                        success: function (result) {
-                                            $("#commentContainer").append(result);
-                                            // Cập nhật giá trị skip để lấy các comment tiếp theo khi nhấn nút "Show More" lại
-                                            $("#showMoreComments").data("skip", skip + take);
-                                        }
-                                    });
-                                });
-                            });
-                        </script>
+
                     </div>
                     <!-- course reviews end -->
                 </div>
 
                 <!-- tab panes end -->
             </section>
+            <section class="video-playlist">
+                <h3 class="title">@Model.Course.Title</h3>
+                <p>@Model.Course.Lessons.Count lessons &nbsp; . &nbsp; 50m 48s</p>
+
+
+                @* <a href="/MyLearningLessons/GetVideo/" + @Model.Currentlesson.CourseId + "/" + @Model.Currentlesson.LessonId> *@
+                @*                                     <a href="/MyLearningLessons/GetVideo/@Model.Currentlesson.CourseId/@Model.Currentlesson.LessonId"> </a>
+                *@
+                @* <a href=""> *@
+                <div class="videos">
+                    @foreach (var v in Model.Course.Lessons)
+                    {
+
+                        <div class="video" data-url="@v.UrlVideo" data-title="@v.Title" data-lessonid="@v.LessonId">
+                            <img src="@v.ImageLessonUrl" alt="">
+
+                            <h3 class="title">@v.Title</h3>
+                            <p class="time">@v.Time</p>
+                        </div>
+                        @*  </a> *@
+                    }
+                </div>
+
+                @*  <div id="video-player">
+                <!-- Video player will be dynamically added here -->
+
+                </div> *@
+            </section>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    console.log('DOMContentLoaded event fired');
+                    var videoItems = document.querySelectorAll('.video');
+                    var currentVideoElement = document.getElementById('video-player');
+                    var currentTitleElement = document.getElementById('video-title');
+                    videoItems.forEach(function (item) {
+                        item.addEventListener('click', function () {
+                            var videoUrl = item.getAttribute('data-url');
+                            var videoTitle = item.getAttribute('data-title');
+
+                            console.log('Clicked video:', videoTitle, 'URL:', videoUrl);
+
+                            playVideo(videoUrl, videoTitle);
+                        });
+                    });
+
+                    function playVideo(videoUrl, videoTitle) {
+                        // Pause the current video
+                        if (currentVideoElement) {
+                            currentVideoElement.pause();
+                        }
+
+                        // Remove the current video element
+                        currentVideoElement.parentNode.removeChild(currentVideoElement);
+
+                        // Add new video player
+                        var videoElement = document.createElement('video');
+                        videoElement.setAttribute('controls', 'controls');
+
+                        var sourceElement = document.createElement('source');
+                        sourceElement.setAttribute('src', videoUrl);
+                        sourceElement.setAttribute('type', 'video/mp4');
+
+                        videoElement.appendChild(sourceElement);
+                        currentTitleElement.insertAdjacentElement('afterend', videoElement);
+
+                        // Display the video title
+                        currentTitleElement.textContent = videoTitle;
+
+                        // Set the current video element for pausing later
+                        currentVideoElement = videoElement;
+
+                        // Start playing the new video
+                        currentVideoElement.play();
+                    }
+                });
+
+
+            </script>
 
             @*  <section class="video-playlist">
             <h3 class="title">Title of Video Playlist</h3>
@@ -440,134 +501,55 @@
             var activeLessonId = lessonId;
             }
             </script> *@
-            <section class="video-playlist">
-                <h3 class="title">@Model.Course.Title</h3>
-                <p>@Model.Course.Lessons.Count lessons &nbsp; . &nbsp; 50m 48s</p>
 
-                <div class="videos">
-                    @foreach (var v in Model.Course.Lessons)
-                    {
 
-                        @* <a href="/MyLearningLessons/GetVideo/" + @Model.Currentlesson.CourseId + "/" + @Model.Currentlesson.LessonId> *@
-                            <a href="">
-                        
-                        <div class="video" data-url="@v.UrlVideo" data-title="@v.Title" data-lessonid="@v.LessonId">
-                           
+            @*            <script>
 
-                            <img src="@v.ImageLessonUrl" alt="">
-                          
-                            <h3 class="title">@v.Title</h3>
-                            <p class="time">@v.Time</p>
-                        </div>
-                        </a>
-                    }
-                </div>
+            document.addEventListener('DOMContentLoaded', function () {
+            var videoItems = document.querySelectorAll('.video');
+            var currentVideoElement = null;
 
-                <div id="video-player">
-                    <!-- Video player will be dynamically added here -->
-                    
-                </div> 
-            </section>
+            videoItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+            var videoUrl = item.getAttribute('data-url');
+            var videoTitle = item.getAttribute('data-title');
 
-          <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    console.log('DOMContentLoaded event fired');
+            playVideo(videoUrl, videoTitle);
+            });
+            });
 
-                    var videoItems = document.querySelectorAll('.video');
-                    var currentVideoElement = null;
+            function playVideo(videoUrl, videoTitle) {
+            var videoPlayer = document.getElementById('video-player');
 
-                    videoItems.forEach(function (item) {
-                        item.addEventListener('click', function () {
-                            var videoUrl = item.getAttribute('data-url');
-                            var videoTitle = item.getAttribute('data-title');
+            // Clear previous video player content
+            if (currentVideoElement) {
+            currentVideoElement.pause();
+            videoPlayer.removeChild(currentVideoElement);
+            }
 
-                            console.log('Clicked video:', videoTitle, 'URL:', videoUrl);
+            // Add new video player
+            var videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', 'controls');
 
-                            playVideo(videoUrl, videoTitle);
-                        });
-                    });
+            var sourceElement = document.createElement('source');
+            sourceElement.setAttribute('src', videoUrl);
+            sourceElement.setAttribute('type', 'video/mp4');
 
-                    function playVideo(videoUrl, videoTitle) {
-                        var videoPlayer = document.getElementById('video-player');
+            videoElement.appendChild(sourceElement);
+            videoPlayer.appendChild(videoElement);
 
-                        // Clear previous video player content
-                        if (currentVideoElement) {
-                            currentVideoElement.pause();
-                            videoPlayer.removeChild(currentVideoElement);
-                        }
+            // Display the video title
+            var titleElement = document.createElement('h3');
+            titleElement.textContent = videoTitle;
+            videoPlayer.appendChild(titleElement);
 
-                        // Add new video player
-                        var videoElement = document.createElement('video');
-                        videoElement.setAttribute('controls', 'controls');
+            // Set the current video element for pausing later
+            currentVideoElement = videoElement;
 
-                        var sourceElement = document.createElement('source');
-                        sourceElement.setAttribute('src', videoUrl);
-                        sourceElement.setAttribute('type', 'video/mp4');
-
-                        videoElement.appendChild(sourceElement);
-                        videoPlayer.appendChild(videoElement);
-
-                        // Display the video title
-                        var titleElement = document.createElement('h3');
-                        titleElement.textContent = videoTitle;
-                        videoPlayer.appendChild(titleElement);
-
-                        // Set the current video element for pausing later
-                        currentVideoElement = videoElement;
-
-                        // Start playing the new video
-                        currentVideoElement.play();
-                    }
-                });
-            </script>
-           
- @*            <script>
-               
-                document.addEventListener('DOMContentLoaded', function () {
-                    var videoItems = document.querySelectorAll('.video');
-                    var currentVideoElement = null;
-
-                    videoItems.forEach(function (item) {
-                        item.addEventListener('click', function () {
-                            var videoUrl = item.getAttribute('data-url');
-                            var videoTitle = item.getAttribute('data-title');
-
-                            playVideo(videoUrl, videoTitle);
-                        });
-                    });
-
-                    function playVideo(videoUrl, videoTitle) {
-                        var videoPlayer = document.getElementById('video-player');
-
-                        // Clear previous video player content
-                        if (currentVideoElement) {
-                            currentVideoElement.pause();
-                            videoPlayer.removeChild(currentVideoElement);
-                        }
-
-                        // Add new video player
-                        var videoElement = document.createElement('video');
-                        videoElement.setAttribute('controls', 'controls');
-
-                        var sourceElement = document.createElement('source');
-                        sourceElement.setAttribute('src', videoUrl);
-                        sourceElement.setAttribute('type', 'video/mp4');
-
-                        videoElement.appendChild(sourceElement);
-                        videoPlayer.appendChild(videoElement);
-
-                        // Display the video title
-                        var titleElement = document.createElement('h3');
-                        titleElement.textContent = videoTitle;
-                        videoPlayer.appendChild(titleElement);
-
-                        // Set the current video element for pausing later
-                        currentVideoElement = videoElement;
-
-                        // Start playing the new video
-                        currentVideoElement.play();
-                    }
-                });
+            // Start playing the new video
+            currentVideoElement.play();
+            }
+            });
             </script> *@
 
             @*  <script>
