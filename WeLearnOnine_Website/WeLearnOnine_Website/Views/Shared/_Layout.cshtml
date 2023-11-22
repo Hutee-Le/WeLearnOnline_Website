@@ -66,13 +66,13 @@
                                             <a asp-action="CourseByCategory" asp-controller="Course" asp-route-categoryId="@item.CategoriesId">@item.CategoryName</a>
                                             <i class="bi bi-chevron-right"></i>
                                             <ul class="submenu-multi2">
-                                                @foreach (var subitem_multi2 in service.GetSecondLevelCategories(item.CategoriesId))
+                                                @foreach (var subitem_multi2 in service.GetSubCategories(item.CategoriesId))
                                                 {
                                                     <li class="inline-block">
                                                         <a asp-action="CourseByCategory" asp-controller="Course" asp-route-categoryId="@subitem_multi2.CategoriesId">@subitem_multi2.CategoryName</a>
                                                         <i class="bi bi-chevron-right"></i>
                                                         <ul class="submenu-multi3">
-                                                            @foreach (var subitem_multi3 in service.GetThirdLevelCategories(subitem_multi2.CategoriesId))
+                                                            @foreach (var subitem_multi3 in service.GetSubCategories(subitem_multi2.CategoriesId))
                                                             {
                                                                 <li><a asp-action="CourseByCategory" asp-controller="Course" asp-route-categoryId="@subitem_multi3.CategoriesId">@subitem_multi3.CategoryName</a></li>
                                                             }

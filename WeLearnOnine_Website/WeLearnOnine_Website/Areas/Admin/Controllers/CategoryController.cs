@@ -37,7 +37,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
         public IActionResult Index2(int categoriesId)
         {
-            var lst2 = _categoryRepository.GetSecondLevelCategories(categoriesId);
+            var lst2 = _categoryRepository.GetSubCategories(categoriesId);
             return View("Index2", lst2);
         }
         // Create 

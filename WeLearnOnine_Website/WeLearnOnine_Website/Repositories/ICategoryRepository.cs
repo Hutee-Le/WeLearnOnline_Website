@@ -7,11 +7,8 @@ namespace WeLearnOnine_Website.Repositories
         // Retrieve all root categories
         public List<Category> GetRootCategories();
 
-        // Retrieve all second-level categories based on the parent id
-        public List<Category> GetSecondLevelCategories(int id);
-
-        // Retrieve all third-level categories based on the parent id
-        List<Category> GetThirdLevelCategories(int id);
+        // Retrieve subcategories for a given category.
+        List<Category>  GetSubCategories(int id);
 
         // Retrieve all categories
         List<Category> GetAllCategories();

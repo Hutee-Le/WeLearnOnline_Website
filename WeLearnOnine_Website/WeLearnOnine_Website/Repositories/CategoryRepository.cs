@@ -19,22 +19,6 @@ namespace WeLearnOnine_Website.Repositories
                 .ToList();
         }
 
-        public List<Category> GetSecondLevelCategories(int id)
-        {
-            return _ctx.Categories
-                .Where(c=>c.ParentCategories==id)
-                .OrderBy(c => c.CategoryName)
-                .ToList();
-        }
-
-        public List<Category> GetThirdLevelCategories(int id)
-        {
-            return _ctx.Categories
-            .Where(c => c.ParentCategories == id)
-            .OrderBy(c => c.CategoryName)
-            .ToList();
-        }
-
         public List<Category> GetAllCategories()
         {
             return _ctx.Categories.ToList();
@@ -107,6 +91,12 @@ namespace WeLearnOnine_Website.Repositories
             }
         }
 
-        
+        public List<Category> GetSubCategories(int id)
+        {
+            return _ctx.Categories
+                .Where(c => c.ParentCategories == id)
+                .OrderBy(c => c.CategoryName)
+                .ToList();
+        }
     }
 }
