@@ -1,0 +1,29 @@
+﻿@model WeLearnOnine_Website.Models.Category
+
+@{
+    ViewData["Title"] = "CreateStaff";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fuild flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Staff/</span>Edit</h4>
+    <form asp-action="UpdateStaff" method="post" enctype="multipart/form-data">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="i-input" placeholder="STF001" aria-label="Username" aria-describedby="basic-addon11" asp-for="CategoriesId">
+                        <script>
+                            document.getElementById("i-input").style.display = "none";
+                        </script>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon11">Name</span>
+                            <input type="text" class="form-control" placeholder="Nguyen Van A" aria-label="Username" aria-describedby="basic-addon11" asp-for="CategoryName">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -114,11 +114,60 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboards -->
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="/admin" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboards</div>
                         </a>
+                    </li>
+
+                    <!--  User -->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">All User </span>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class='menu-icon tf-icons bx bx-user-circle'></i>
+                            <div data-i18n="Employers Settings">List Account</div>
+                        </a>
+                        <ul class="menu-sub ">
+                            <li class="menu-item">
+                                <a href="/admin/list-employer" class="menu-link">
+                                    <div data-i18n="Employers">All Employers</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/admin/user" class="menu-link">
+                                    <div data-i18n="Users">All Users</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Roles -->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text"> Roles </span>
+                    </li>
+                    <!-- Roles Setting -->
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class='menu-icon tf-icons bx bx-wrench'></i>
+                            <div data-i18n="Account Settings">Roles Settings</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a class="menu-link" href="/admin/auth/list-roles">
+                                    <div data-i18n="Account">Roles Management</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a class="menu-link" href="/admin/users">
+                                    <div data-i18n="Notifications">Set Role For User</div>
+                                </a>
+                            </li>
+
+                        </ul>
                     </li>
 
                     <!-- Forms & Tables -->
@@ -126,7 +175,6 @@
                     <!-- Forms -->
                     <!-- Tables: Courses -->
                     <li class="menu-item">
-                @*         <a class="menu-link" asp-area="Admin" asp-action="Index" asp-controller="Course"> *@
                             <a href="/admin/course" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Courses</div>
@@ -134,7 +182,7 @@
                     </li>
                     <!-- Tables: Lessons -->
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="/admin/lesson" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Lessons</div>
                         </a>
@@ -151,6 +199,14 @@
                         <a href="/admin/staff" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Staffs</div>
+                        </a>
+                    </li>
+
+                     <!-- Tables: Bill -->
+                    <li class="menu-item">
+                        <a href="/admin/bill" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Tables">Bills</div>
                         </a>
                     </li>
                     <!-- Misc -->
@@ -274,7 +330,7 @@
                         <!-- Layout Demo -->
                        
                             @RenderBody();
-                       
+                          
                         <!--/ Layout Demo -->
                     </div>
                     <!-- / Content -->
@@ -290,6 +346,41 @@
     </div>
     <!-- / Layout wrapper -->
 
+    @* <script>
+        // Lấy tất cả các thẻ <li> trong menu
+        var menuItems = document.querySelectorAll('.menu-item');
+
+        // Lặp qua từng thẻ và thêm sự kiện click
+        menuItems.forEach(function (item) {
+            item.addEventListener('click', function (event) {
+                // Loại bỏ lớp 'active' từ tất cả các thẻ
+                menuItems.forEach(function (otherItem) {
+                    otherItem.classList.remove('active');
+                });
+
+                // Thêm lớp 'active' cho thẻ đang được nhấn
+                item.classList.add('active');
+
+                // Lưu trạng thái "active" vào localStorage
+                localStorage.setItem('activeMenuItem', item.querySelector('a').getAttribute('href'));
+            });
+        });
+
+        // Khôi phục trạng thái "active" khi trang được tải lại
+        var activeMenuItem = localStorage.getItem('activeMenuItem');
+        if (activeMenuItem) {
+            var activeItem = document.querySelector('.menu-item a[href="' + activeMenuItem + '"]').parentNode;
+            activeItem.classList.add('active');
+        } else {
+            // Nếu không có trạng thái "active" được lưu trữ, đặt mặc định cho "Dashboards"
+            var defaultItem = document.querySelector('.menu-item a[href="/admin"]').parentNode;
+            defaultItem.classList.add('active');
+        }
+    </script> *@
+
+
+
+
     <!-- Core JS -->
     <!-- build:js LayoutAdmin/assets/vendor/js/core.js -->
     <script src="~/LayoutAdmin/assets/vendor/libs/jquery/jquery.js"></script>
@@ -304,6 +395,15 @@
     <script src="~/LayoutAdmin/assets/js/main.js"></script>
     <!-- Table JS -->
     <script src="~/LayoutAdmin/js/table.js"></script>
+
+    <!-- Popup -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!-- jQuery & Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
     <!-- Page JS -->
     <!-- Place this tag in your head or just before your close body tag. -->

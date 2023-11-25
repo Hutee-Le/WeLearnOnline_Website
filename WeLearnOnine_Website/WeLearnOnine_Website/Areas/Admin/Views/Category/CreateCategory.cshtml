@@ -1,0 +1,144 @@
+﻿@model WeLearnOnine_Website.Models.Category
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fuild flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Category/</span> Create New</h4>
+    <form asp-action="SaveCategory" method="post" enctype="multipart/form-data">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                   @*      <div class="form-group mb-3">
+                            <label asp-for="CategoriesId" class="control-label"></label>
+                            <input asp-for="CategoriesId" class="form-control" />
+                            <span asp-validation-for="CategoriesId" class="text-danger"></span>
+                        </div> *@
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Name</span>
+                            <textarea class="form-control" aria-label="With textarea" asp-for="CategoryName"></textarea>
+                        </div>
+
+
+                    @*     <div class="input-group my-3">
+                            <div class="input-group my-3">
+                                <label class="input-group-text">Category</label>
+                                <select asp-for="ParentCategories" asp-items="ViewBag.Level1" class="form-select">
+                                </select>
+                            </div>
+
+                          <select name="category" id="category" asp-for="ParentCategories">
+                                <optgroup label="Level 1">
+                                    <option value="">Select Level 1</option>
+                                    @foreach (var item in ViewBag.Level1)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </optgroup>
+                                <optgroup label="Level 2">
+                                    <option value="">Select Level 2</option>
+                                    @foreach (var item in ViewBag.Level2)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </optgroup>
+                                <optgroup label="Level 3">
+                                    <option value="">Select Level 3</option>
+                                    @foreach (var item in ViewBag.Level3)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </optgroup>
+                            </select>
+                        </div> *@
+
+                      @*   <div class="input-group mb-3">
+                            <span class="input-group-text">Dafault</span>
+                            <textarea class="form-control" aria-label="with textarea" asp-for="ParentCategories"> asp-items="ViewBag.Level1"</textarea>
+                        </div> 
+                       
+                        <div class="form-group">
+                            <label asp-for="Level1" class="control-label"></label>
+                            <select asp-for="Level1" class="form-control" id="level1Dropdown" name="Level1"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Level2" class="control-label"></label>
+                            <select asp-for="Level2" class="form-control" id="level2Dropdown" name="Level2"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Level3" class="control-label"></label>
+                            <select asp-for="Level3" class="form-control" id="level3Dropdown" name="Level3"></select>
+                        </div>
+
+                        @section Scripts {
+                            <script>
+                                $(document).ready(function () {
+                                    $("#level1Dropdown").change(function () {
+                                        var level1Id = $(this).val();
+                                        $.get("/Category/GetLevel2Categories/" + level1Id, function (data) {
+                                            $("#level2Dropdown").empty();
+                                            $("#level2Dropdown").append($('<option>').text("Select Level 2").attr('value', ''));
+                                            $.each(data, function (index, item) {
+                                                $("#level2Dropdown").append($('<option>').text(item.categoryName).attr('value', item.categoryId));
+                                            });
+                                        });
+                                    });
+
+                                    $("#level2Dropdown").change(function () {
+                                        var level2Id = $(this).val();
+                                        $.get("/Category/GetLevel3Categories/" + level2Id, function (data) {
+                                            $("#level3Dropdown").empty();
+                                            $("#level3Dropdown").append($('<option>').text("Select Level 3").attr('value', ''));
+                                            $.each(data, function (index, item) {
+                                                $("#level3Dropdown").append($('<option>').text(item.categoryName).attr('value', item.categoryId));
+                                            });
+                                        });
+                                    });
+                                });
+                            </script>
+                        } *@
+
+                        <div class="input-group mt-3 d-flex justify-content-end">
+                            <input class="btn btn-primary mx-3" value="Create" type="submit">
+
+                            <a asp-action="Index" class="btn btn-outline-secondary
+                                        <span class="bx me-1">Cancel</span>
+                                    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@* <div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParentCategories" class="control-label"></label>
+                <input asp-for="ParentCategories" class="form-control" />
+                <span asp-validation-for="ParentCategories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+ *@
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

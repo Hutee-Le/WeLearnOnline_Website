@@ -1,0 +1,179 @@
+﻿@model IEnumerable<WeLearnOnine_Website.Models.User>
+
+@{
+    ViewData["Title"] = "ListLesson";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@if (TempData["lessonError"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["lessonError"]</div>
+    </div>
+}
+@if (TempData["lessonSuccess"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["lessonSuccess"]</div>
+    </div>
+}
+
+<h4 class="py-3 mb-4"><span class="text-muted fw-light">User /</span> List User</h4>
+
+<div class="card">
+    <div class="col-md-12 d-flex justify-content-between align-items-center table-responsive">
+        <!-- Dropdown List for Categories -->
+       @*  <div class="form-group">
+            <label class="d-flex align-items-center">
+                Course: *@
+                @*  <select id="categorySelect" asp-for="SelectedCategoryId">
+                <option value="0">-- Chọn danh mục --</option>
+                @foreach (var category in Model.Categories)
+                {
+                <option value="@category.CategoriesId">@category.CategoryName</option>
+                }
+                </select> *@
+
+             @*    <form asp-action="ShowLessonByCourse" method="get" class="form-inline">
+                    <select asp-items="ViewBag.CourseId" name="CourseId" onchange="forms[0].submit()"></select>
+                </form>
+            </label>
+        </div>  *@
+
+       @*  <div id="DataTables_Table_0_filter" class="dataTables_filter d-flex">
+            <form asp-controller="Lesson" asp-action="Search" method="post">
+                <label class="d-flex align-items-center me-5">
+                    Search:
+                    <input type="search" class="form-control ms-2" placeholder="" name="keyword"><button>Tìm</button>
+                </label>
+            </form> *@
+       
+           @*  <a asp-action="CreateLesson" class="btn rounded-pill btn-primary text-white">Create New</a> *@
+        <@* /div> *@
+    </div>
+
+    
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Phone
+                        </th>     
+                        <th>
+                            Create date
+                        </th>
+                        @* <th>Actions</th> *@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="text-align: center">
+                           @*  <td>
+                                <img src="@item.ImageLessonUrl" width="150" height="100" />
+                            </td> *@
+                            <td><span>@item.UserName</span></td>
+                            <td>@item.Email</td>
+                            <td>@item.Address</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.CreateAt</td>
+                          @*   <td>
+                                <a class="dropdown-item mb-2" asp-action="EditLesson" asp-route-id="@item.LessonId" style="color: #03c3ec; background-color:#d7f5fc; border-color: #b3edf9; padding: 5px 6px; border-radius: 5px;cursor:pointer"><i class="bx bx-trash me-1"></i> Edit</a>
+                                <a class="dropdown-item mb-2" data-bs-toggle="modal" data-bs-target="#smallModal-@item.LessonId" style="color: #ff3e1d; background-color:#ffe0db; border-color: #ffc5bb; padding: 5px 6px; border-radius: 5px; cursor:pointer"><i class="bx bx-edit-alt me-1"></i> Delete</a>
+                                <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.LessonId">Show</a>
+                            </td> *@
+                        </tr>
+
+                        @* Small Model Delete *@
+                       @*  <div class="modal fade" id="smallModal-@item.LessonId" tabindex="-1" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col mb-3">
+                                                <h3>Do you want to delete?</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.LessonId">@item.LessonId Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="myModal-@item.LessonId">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-body" id="modal-content-@item.LessonId">
+                                        @await Html.PartialAsync("_LessonDetailsViewPartial", item)
+                                    </div>
+                                </div>
+                            </div>
+                        </div> *@
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Hiển thị phân trang -->
+    <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
+        <ul class="pagination">
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
+            }
+
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+    <!-- Hiển thị phân trang -->
+
+</div>
+

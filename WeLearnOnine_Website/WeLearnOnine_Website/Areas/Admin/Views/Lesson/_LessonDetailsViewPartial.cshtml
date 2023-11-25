@@ -1,0 +1,75 @@
+﻿@model WeLearnOnine_Website.Models.Lesson
+@{
+    string typeClass = "badge bg-label-warning";
+
+    if (Model.Type.Title == "Lý thuyết")
+    {
+        typeClass = "badge bg-label-info";
+    }
+
+    else if (Model.Type.Title == "Thực hành")
+    {
+        typeClass = "badge bg-label-primary";
+    }
+    else if (Model.Type.Title == "Quiz")
+    {
+        typeClass = "badge bg-label-success";
+    }
+    else if (Model.Type.Title == "Assignment")
+    {
+        typeClass = "badge bg-label-danger";
+    }
+}
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h3 class="modal-title">Detail</h3>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    <div class="card-body">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="card-img card-img-left" src="@Model.ImageLessonUrl" alt="Card image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">@Model.Title</h4>
+                            <span class="card-text me-2">STT: <small class="text-muted fs-6">@Model.Stt</small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <video controls>
+            <source src="@Model.UrlVideo" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="divider">
+            <div class="divider-text">More (About)</div>
+        </div>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Type</dt>
+            <dd class="col-sm-9"><span class="@typeClass fs-5">@Model.Type.Title</span></dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Time</dt>
+            <dd class="col-sm-9">@Model.Time mins</dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Course</dt>
+            <dd class="col-sm-9">@Model.Course.Title</dd>
+        </dl>
+    </div>
+</div>
+
+<!-- Modal footer -->
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>

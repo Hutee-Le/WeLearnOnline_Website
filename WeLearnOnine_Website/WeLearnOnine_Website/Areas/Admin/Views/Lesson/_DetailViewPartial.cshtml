@@ -1,0 +1,92 @@
+﻿@model WeLearnOnine_Website.Models.Lesson
+@* 
+@{
+    string levelClass = "bg-label-info";
+
+    if (Model.Level.Name == "Beginner")
+    {
+        levelClass = "bg-label-secondary";
+    }
+    else if (Model.Level.Name == "Intermediate")
+    {
+        levelClass = "bg-label-primary";
+    }
+    else if (Model.Level.Name == "Expert")
+    {
+        levelClass = "bg-label-danger";
+    }
+}
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h3 class="modal-title">Detail</h3>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    <div class="card-body">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="card-img card-img-left" src="@Model.ImageCourseUrl" alt="Card image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">@Model.Title</h4>
+                            <p class="card-text">
+                                @Model.ShortDescription
+                            </p>
+                            <span class="card-text me-2"><small class="text-muted fs-6">@Model.TimeTotal mins</small></span>
+                            <span class="card-text me-2"><small class="text-muted fs-6">@Model.Language</small></span>
+                            <span class="card-text me-2"><small class="text-muted fs-6">@Model.Staff.StaffName</small></span>
+                            <h5 class="card-text mt-2">Rating: @Model.Rating</h5>
+                            <p class="card-text">Level: <span class="@levelClass fs-5">@Model.Level.Name</span></p>
+                            <span class="card-text">Total user buy: @Model.Count</span>
+
+                            <p class="card-text me-2 mt-2">
+                                Price: <span class="text-muted fs-6">@Model.Price.ToString("#,##0") VND</span>
+                            </p>
+                            <p class="card-text me-2">
+                                Discount Price:
+                                @if (Model.DiscountPrice.HasValue)
+                                {
+                                    <span class="text-muted fs-6">@Model.DiscountPrice.Value.ToString("#,##0")</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted fs-6">N/A</span>
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <video controls>
+            <source src="@Model.PreviewUrl" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="divider">
+            <div class="divider-text">More (About)</div>
+        </div>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Required</dt>
+            <dd class="col-sm-9">@Model.Required</dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+        </dl>
+    </div>
+</div>
+
+<!-- Modal footer -->
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>
+ *@

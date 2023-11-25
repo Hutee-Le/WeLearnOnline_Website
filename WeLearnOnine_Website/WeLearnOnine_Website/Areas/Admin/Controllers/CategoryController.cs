@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
+using System;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
+using WeLearnOnine_Website.ViewModels;
 
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
@@ -35,11 +38,11 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             return View("Index", paginatedCourses);
         }
-        public IActionResult Index2(int categoriesId)
-        {
-            var lst2 = _categoryRepository.GetSubCategories(categoriesId);
-            return View("Index2", lst2);
-        }
+        //public IActionResult Index2(int categoriesId)
+        //{
+        //    var lst2 = _categoryRepository.GetSecondLevelCategories(categoriesId);
+        //    return View("Index2", lst2);
+        //}
         // Create 
         [HttpPost]
         public IActionResult SaveCategory(Category category)
@@ -56,10 +59,74 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult CreateCategory()
-        {
-            return View("CreateCategory", new Category());
-        }
+        //public IActionResult CreateCategory()
+        //{
+        //    var level1 = _categoryRepository.GetRootCategories();
+        //    foreach (var catelevel in level1)
+        //    {
+        //        ViewBag.level1 = new SelectList(level1, "CategoriesId", "CategoryName");
+        //        var level2 = _categoryRepository.GetSecondLevelCategories(catelevel);
+        //        foreach (var catelevel2 in level2)
+        //        {
+        //            ViewBag.level2 = new SelectList(level2, "CategoriesId", "CategoryName");
+        //            var level3 = _categoryRepository.GetThirdLevelCategories(catelevel2);
+        //            foreach (var catelevel3 in level3)
+        //            {
+        //                ViewBag.level3 = new SelectList(level3, "CategoriesId", "CategoryName");
+        //            }
+        //        }
+        //    }
+        //    //// Chọn một CategoriesId từ level1 để truyền vào GetSecondLevelCategories
+        //    //int selectedId = (level1.Count > 0) ? level1[0].CategoriesId : 0;
+
+        //    //var level2 = _categoryRepository.GetSecondLevelCategories(selectedId);
+        //    //ViewBag.level2 = new SelectList(level2, "CategoriesId", "CategoryName");
+
+        //    //// Chọn một CategoriesId từ level2 để truyền vào GetThirdLevelCategories
+        //    //int selectedIdLevel2 = (level2.Count > 0) ? level2[0].CategoriesId : 0;
+
+        //    //var level3 = _categoryRepository.GetThirdLevelCategories(selectedIdLevel2);
+        //    //ViewBag.level3 = new SelectList(level3, "CategoriesId", "CategoryName");
+
+        //    return View("CreateCategory", new Category());
+        //}
+
+
+        //public IActionResult CreateCategory()
+        //{
+        //    var level1 = _categoryRepository.GetRootCategories();
+        //    ViewBag.Level1 = new SelectList(level1, "CategoriesId", "CategoryName");
+
+        //    // Default empty SelectList for level 2 and level 3
+        //    ViewBag.Level2 = new SelectList(new List<Category>(), "CategoriesId", "CategoryName");
+        //    ViewBag.Level3 = new SelectList(new List<Category>(), "CategoriesId", "CategoryName");
+
+        //    return View("CreateCategory", new CategoryViewModel());
+        //}
+
+
+        //[HttpPost]
+        //public IActionResult CreateCategory(Category model)
+        //{
+        //    // Your create category logic here...
+
+        //    return RedirectToAction("Index"); // Redirect to the appropriate action after creating the category
+        //}
+
+        //[HttpGet]
+        //public IActionResult GetLevel2Categories(int id)
+        //{
+        //    var level2 = _categoryRepository.GetSecondLevelCategories(id);
+        //    return Json(level2.Select(c => new { c.CategoriesId, c.CategoryName }));
+        //}
+
+        //[HttpGet]
+        //public IActionResult GetLevel3Categories(int id)
+        //{
+        //    var level3 = _categoryRepository.GetThirdLevelCategories(id);
+        //    return Json(level3.Select(c => new { c.CategoriesId, c.CategoryName }));
+        //}
+
 
         [HttpPost]
         // Edit
