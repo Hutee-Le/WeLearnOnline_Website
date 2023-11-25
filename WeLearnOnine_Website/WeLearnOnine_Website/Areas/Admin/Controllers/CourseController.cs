@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Firebase.Auth;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
+using WeLearnOnine_Website.ViewModels;
 
 
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
@@ -9,22 +12,58 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
     [Area("Admin")]
     public class CourseController : Controller
     {
+        DerekmodeWeLearnSystemContext ctx;
         private ICourseRepository _courseRepository;
         private ILessonRepository _lessonRepository;
         private ICategoryRepository _categoryRepository;
         private ILevelRepository _levelRepository;
         private ISkillRepository _staffRepository;
 
-        public CourseController(ICourseRepository courseRepository, ICategoryRepository categoryRepository, ILevelRepository levelRepository, ISkillRepository staffRepository)
+        public CourseController(ICourseRepository courseRepository, ICategoryRepository categoryRepository, ILevelRepository levelRepository, ISkillRepository staffRepository, DerekmodeWeLearnSystemContext ctx)
         {
             _courseRepository = courseRepository;
             _categoryRepository = categoryRepository;
             _levelRepository = levelRepository;
             _staffRepository = staffRepository;
+            this.ctx = ctx;
         }
 
         //View All Table Course
-        public IActionResult Index(int? page)
+
+        //[HttpPost]
+        //public IActionResult FilterCoursesAjax(int categoryId)
+        //{
+        //    List<Course> courses;
+
+        //    if (categoryId == 0)
+        //    {
+        //        courses = _courseRepository.GetAllCourses();
+        //    }
+        //    else
+        //    {
+        //        courses = _courseRepository.GetCoursesByCategoryId(categoryId);
+        //    }
+
+        //    return View(courses);
+        //}
+
+        public IActionResult ShowCourseByCategory(int? CategoryId)
+        {
+            CategoryId = CategoryId ?? 0;
+
+            var Categories = _categoryRepository.GetAllCategories();
+
+            Categories.Insert(0, new Category { CategoriesId = 0, CategoryName = "---------- Category ----------" });
+
+            ViewBag.CategoryId = new SelectList(Categories, "CategoriesId", "CategoryName", CategoryId);
+
+            var courses = _courseRepository.GetCoursesByCategoryId((int)CategoryId);
+
+            return View("Index", courses);
+        }
+
+
+        public IActionResult Index(int? page, int? CategoryId)
         {
             int pageSize = 4; // Số lượng mục trên mỗi trang
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị
@@ -34,8 +73,24 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             ViewBag.CurrentPage = pageNumber;
             ViewBag.TotalPages = (int)Math.Ceiling((double)_courseRepository.GetAllCourses().Count() / pageSize);
 
-            return View("Index", paginatedCourses);
+            //var viewModel = new CategoryCourseViewModel
+            //{
+            //    Categories = _categoryRepository.GetRootCategories(),
+            //    Courses = paginatedCourses,
+            //    SelectedCategoryId = null
+            //};
+
+            CategoryId = CategoryId ?? 0;
+
+            var Categories = _categoryRepository.GetAllCategories();
+
+            Categories.Insert(0, new Category { CategoriesId = 0, CategoryName = "---------- Category ----------" });
+
+            ViewBag.CategoryId = new SelectList(Categories, "CategoriesId", "CategoryName", CategoryId);
+
+            return View(paginatedCourses);
         }
+
 
         // Detail
         public IActionResult PopupView(int id)
@@ -147,5 +202,31 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        // Search
+        public IActionResult Search(string keyword)
+        {
+            List<Course> courses;
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                courses = ctx.Courses.Include(x => x.Level).Include(x => x.Staff).ToList();
+            }
+            else
+            {
+                courses = ctx.Courses.Where(p => p.Title.Contains(keyword)).Include(x => x.Level).Include(x => x.Staff).ToList();
+            }
+
+            if (courses.Count == 0)
+            {
+                ViewBag.SearchMessage = "Không tìm thấy khóa học.";
+                // Chuyển hướng về trang Index
+                return RedirectToAction("Index");
+            }
+
+            // Chuyển hướng về trang Index với trang hiện tại
+            return View("Index", courses);
+        }
+
     }
 }

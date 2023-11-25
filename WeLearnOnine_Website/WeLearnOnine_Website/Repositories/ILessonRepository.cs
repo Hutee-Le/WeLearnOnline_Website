@@ -11,5 +11,7 @@
         void Delete(int id);
         void DeleteAll();
         Lesson GetById(int id);
+        Task<string> UploadVideoAsync(IFormFile videoFile);
+        Task<string> UploadImageAsync(IFormFile imageFile);
     }
 }

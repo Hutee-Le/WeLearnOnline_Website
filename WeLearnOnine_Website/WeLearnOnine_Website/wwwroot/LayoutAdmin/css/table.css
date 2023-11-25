@@ -1,21 +1,27 @@
+.create-zone a {
+    padding: 10px 20px;
+    margin-right: 20px;
+}
+
+
 td.hidetext {
     max-width: 300px;
 }
 
     td.hidetext p {
-        width: 200px;
+        width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        white-space: normal; 
+        white-space: normal;
     }
 
-td.hidetext.expanded p {
+/*td.hidetext.expanded p {
     max-height: initial;
-    -webkit-line-clamp: initial;
-}
+    -webkit-line-clamp: initial;a
+}*/
 
 thead th {
     font-weight: bold;
@@ -33,11 +39,13 @@ label {
 .hide {
     display: none;
 }
+
 .toast {
     margin-top: 90px !important;
     margin-right: 50px !important;
     animation: fadein-jump 1s ease-in-out;
 }
+
 @keyframes fadeout-toast {
     0% {
         opacity: 1;

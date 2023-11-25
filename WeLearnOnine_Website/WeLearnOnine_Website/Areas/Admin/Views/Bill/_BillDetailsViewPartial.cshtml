@@ -1,0 +1,74 @@
+﻿@model WeLearnOnine_Website.Models.Bill
+@* 
+@{
+    string promotionClass = "bg-label-secondary";
+
+    if (Model.Promotion == "Instructor")
+    {
+        promotionClass = "bg-label-info";
+    }
+    else if (Model.Promotion == "Đào Tạo")
+    {
+        promotionClass = "bg-label-primary";
+    }
+    else if (Model.Promotion == "Admin")
+    {
+        promotionClass = "bg-label-danger";
+    }
+} *@
+<!-- Modal Header -->
+<div class="modal-header">
+    <h3 class="modal-title">Detail</h3>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    <div class="card-body">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                      @*   <img class="card-img card-img-left" src="@Model.UserId" alt="Avatar"> *@
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                           @*  <h4 class="card-title">@Model.UserId</h4> *@
+                            <p class="card-text">
+                                @Model.CreateAt
+                            </p>
+                            <p class="card-text me-2">Email: <small class="text-muted fs-6">@Model.Email</small></p>
+                            <p class="card-text">Promotion: <span class="fs-5">@Model.Total.ToString("#,##0") VNĐ</span></p>
+                            <p class="card-text">Promotion: <span class="fs-5">@String.Format("{0:#,##0}", Model.Promotion) VNĐ</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider">
+            <div class="divider-text">More (About)</div>
+        </div>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Expiration Date</dt>
+            <dd class="col-sm-9">@Model.ExpirationDate</dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Payment Method</dt>
+            <dd class="col-sm-9">@Model.PaymentMethod</dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Historical Cost</dt>
+            <dd class="col-sm-9">@String.Format("{0:#,##0}", Model.HistoricalCost) VNĐ</dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Card Holder</dt>
+            <dd class="col-sm-9">@Model.CardHolderName</dd>
+        </dl>
+    </div>
+</div>
+
+<!-- Modal footer -->
+@* <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div> *@

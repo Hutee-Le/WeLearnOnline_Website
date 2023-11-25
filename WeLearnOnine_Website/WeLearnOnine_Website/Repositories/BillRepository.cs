@@ -61,6 +61,29 @@ namespace WeLearnOnine_Website.Repositories
             }
         }
 
+        // Trong BillRepository.cs
+        public IEnumerable<Bill> GetAllBillsWithUser()
+        {
+            var billsWithUsers = from bill in _context.Bills
+                                 join user in _context.Users on bill.UserId equals user.UserId
+                                 select new Bill
+                                 {
+                                     BillId = bill.BillId,
+                                     Total = bill.Total,
+                                     UserId = bill.UserId,
+                                     HistoricalCost = bill.HistoricalCost,
+                                     Promotion = bill.Promotion,
+                                     Email = user.Email,
+                                     Status = bill.Status,
+                                     CreateAt = bill.CreateAt,
+                                     PaymentMethod = bill.PaymentMethod,
+                                     CardHolderName = bill.CardHolderName,
+                                     ExpirationDate = bill.ExpirationDate
+                                 };
+            return billsWithUsers.ToList();
+        }
+
+
         public void UpdateBill(Bill bill)
         {
             // Thực hiện logic để cập nhật thông tin Bill

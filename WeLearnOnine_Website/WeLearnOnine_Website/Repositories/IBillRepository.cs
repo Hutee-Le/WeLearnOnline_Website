@@ -4,6 +4,8 @@ namespace WeLearnOnine_Website.Repositories
 {
     public interface IBillRepository
     {
+        //List<Bill> GetAllBill();
+        IEnumerable<Bill> GetAllBillsWithUser();
         Bill GetPendingBillByUserId(int userId);
 
         Bill GetBillById(Guid billId); 
