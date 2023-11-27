@@ -92,17 +92,18 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         //}
 
 
-        //public IActionResult CreateCategory()
-        //{
-        //    var level1 = _categoryRepository.GetRootCategories();
-        //    ViewBag.Level1 = new SelectList(level1, "CategoriesId", "CategoryName");
+        public IActionResult CreateCourse()
+        {
+            var levelTop = from c in _categoryRepository.GetRootCategories()
+                        select new SelectListItem()
+                        {
+                            Text = c.CategoryName,
 
-        //    // Default empty SelectList for level 2 and level 3
-        //    ViewBag.Level2 = new SelectList(new List<Category>(), "CategoriesId", "CategoryName");
-        //    ViewBag.Level3 = new SelectList(new List<Category>(), "CategoriesId", "CategoryName");
-
-        //    return View("CreateCategory", new CategoryViewModel());
-        //}
+                            Value = c.CategoriesId.ToString(),
+                        };
+            ViewBag.LevelId = levelTop.ToList();
+            return View("CreateCourse", new Category());
+        }
 
 
         //[HttpPost]

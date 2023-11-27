@@ -997,6 +997,10 @@
       "PackagePath": "staticwebassets\\js\\main.js"
     },
     {
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\modeTheme.js",
+      "PackagePath": "staticwebassets\\js\\modeTheme.js"
+    },
+    {
       "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\owl.carousel.js",
       "PackagePath": "staticwebassets\\js\\owl.carousel.js"
     },

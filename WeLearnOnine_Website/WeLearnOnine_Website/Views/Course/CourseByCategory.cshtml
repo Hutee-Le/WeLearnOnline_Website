@@ -456,41 +456,47 @@
     <div id="sortfilter">
         <h3>Ratings</h3>
 
-        <div class="checkrating">
-            <input type="radio" name="star">
-            <span class="average-stars ps-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </span>
-            <p>&nbsp;&nbsp;4.7 & Up&nbsp;&nbsp;(413)</p>
+        <div class="checkrating d-flex justify-content-between align-items-center">
+            <div class="left-start">
+                <input type="radio" name="star">
+                <span class="average-stars ps-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+            </div>
+            <p>4.7(413)</p>
         </div>
-        <div class="checkrating">
-            <input type="radio" name="star">
-            <span class="average-stars ps-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </span>
-            <p>&nbsp;&nbsp;4.5 & Up&nbsp;&nbsp;(789)</p>
+        <div class="checkrating d-flex justify-content-between">
+            <div class="left-start">
+                <input type="radio" name="star">
+                <span class="average-stars ps-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </span>
+            </div>
+            <p>4.5 (789)</p>
         </div>
-        <div class="checkrating">
-            <input type="radio" name="star">
-            <span class="average-stars ps-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </span>
-            <p>&nbsp;&nbsp;4.0 & Up&nbsp;&nbsp;(654)</p>
+        <div class="checkrating d-flex justify-content-between">
+            <div class="left-start">
+                <input type="radio" name="star">
+                <span class="average-stars ps-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </span>
+            </div>
+            <p>4.0 (654)</p>
         </div>
 
-        <button id="clearfilter">Clear Filters</button>
+        <button class="clearfilter">Clear Filters</button>
 
         <div class="side-bar-filter">
             <div class="menu-filter">
@@ -646,10 +652,11 @@
         @foreach (var item in Model)
         {
             <div class="course-card mb-4">
-                <div class="course-card--img">
+                <div class="row">
+                    <div class="course-card--img col-3">
                     <img src="@item.ImageCourseUrl" alt="">
                 </div>
-                <div class="course-card-content">
+                <div class="course-card-content col-7">
                     <div class="card-content--title">
                         <a asp-action="Details" asp-controller="Course" asp-route-id="@item.CourseId">
                             <h4>@item.Title</h4>
@@ -682,8 +689,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-content-price">
-                    <span>&#8363;</span> @item.Price
+                <div class="card-content-price col-2">
+                      @item.Price.ToString("#,##0") đ
+                </div>
                 </div>
             </div>
         }

@@ -167,22 +167,16 @@
                                 @if (p.DiscountPrice > 0)
                                 {
                                     <div class="price-discount d-flex align-items-center">
-                                        <span>&#8363;</span>
-                                        @p.Price.ToString("N0")
+                                        @p.Price.ToString("#,##0") đ
                                     </div>
                                     <div class="price d-flex align-items-center">
-                                        <span>&#8363;</span>
-                                        <p>Price: @p.DiscountPrice.ToString()</p>
-
-
+                                        <p>@String.Format("{0:#,##0}", p.DiscountPrice) đ</p>
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="price d-flex align-items-center">
-                                        <span>&#8363;</span>
-                                        @p.Price.ToString("N0")
-
+                                        @p.Price.ToString("#,##0") đ
                                     </div>
                                 }
 

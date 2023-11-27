@@ -180,8 +180,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/EmptyCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEVtcHR5Q2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/IndexDemo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEluZGV4RGVtby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/_ViewImports.cshtml]

@@ -308,16 +308,16 @@
                     <div class="price mb-3">
                         @if (Model.Course.DiscountPrice > 0)
                         {
-                            <p class="price-old"><span>&#8363;</span> @Model.Course.Price.ToString("N0")</p>
-                            <span class="price-new"><span>&#8363;</span> @Model.Course.DiscountPrice.ToString()</span>
+                            <p class="price-old">@Model.Course.Price.ToString("#,##0") đ</p>
+                            <span class="price-new">@String.Format("{0:#,##0}", Model.Course.DiscountPrice) đ</span>
                         }
                         else
                         {
                             @* <p class="price-old"><span>&#8363;</span> @Model.Price</p> *@
-                            <span class="price-new"><span>&#8363;</span> @Model.Course.Price.ToString("N0")</span>
+                            <span class="price-new">@Model.Course.Price.ToString("#,##0") đ</span>
                         }
 
-                        <span class="price-discount">@Model.Course.Count Off</span>
+                        <span class="price-discount d-block">@Model.Course.Count Off</span>
                     </div>
                     <h3 class="mb-3">Course Features</h3>
                     <ul class="features-list">

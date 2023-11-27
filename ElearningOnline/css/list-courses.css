@@ -71,7 +71,7 @@
 
 #alsolearn {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     gap: 20px;
 }
@@ -160,20 +160,17 @@
 }
 #filter-course .course-card {
     height: 200px;
-    display: flex;
     border-bottom: 1px solid #ccc;
 }
 #filter-course .course-card .course-card--img img {
-    height: 180px;
-    width: 200px;
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
 }
-#filter-course .course-card-content {
-    margin-left: 20px;
-    width: 65%;
-}
-#filter-course .course-card-content > * div{
+
+/* #filter-course .course-card-content > * div{
     padding: 2px 0;
-}
+} */
 #filter-course .course-card-content .desc--headline span {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -192,13 +189,15 @@
 #filter-course .card-content--desc .average-stars,
 .average-stars {
     color: #b4690e;
+    font-size: 14px;
 }
 #filter-course .card-content--desc .desc--details span {
     padding-right: 10px;
 }
 #filter-course .card-content-price {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
+    color: var(--main-color);
 }
 
 
@@ -208,11 +207,19 @@
     align-items: center;
 }
 
-.checkrating>img {
-    height: 20px;
-    width: 80px;
+.checkrating p {
+    color: var(--black-90);
 }
+button.clearfilter {
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    background-color: var(--main-color);
+    color: var(--WHITE);
+    border-radius: 5px;
+    padding: 5px 10px;
 
+}
 #sortfilter>h3 {
     border-top: 1px solid #777;
 }
@@ -287,7 +294,7 @@
 .side-bar-filter .menu-filter .item {
     position: relative;
     cursor: pointer;
-    border-bottom: 1px solid var(--black-70);
+    border-bottom: 1px solid #dcdcdc;
 }
 .side-bar-filter .menu-filter .item a {
     color: var(--black-90);
@@ -297,6 +304,9 @@
     padding: 5px 30px;
     line-height: 60px;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+.side-bar-filter .menu-filter .item .title {
+    font-size: 17px !important;
 }
 .side-bar-filter .menu-filter .item .sub-item {
     line-height: 40px;
