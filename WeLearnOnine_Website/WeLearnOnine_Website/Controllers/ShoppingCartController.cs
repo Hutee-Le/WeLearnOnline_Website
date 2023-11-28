@@ -60,19 +60,29 @@ namespace WeLearnOnine_Website.Controllers
                 _billRepository.CreateBill(bill);
             }
 
-            var course = _courseRepository.FindCourseByID(courseId);
-            if (course != null)
+            bool courseAlreadyAdded = bill.BillDetails.Any(bd => bd.CourseId == courseId);
+            if (courseAlreadyAdded)
             {
-                var billDetail = new BillDetail
-                {
-                    BillDetailId = Guid.NewGuid(),
-                    BillId = bill.BillId,
-                    CourseId = course.CourseId,
-                    Price = course.Price,
-                    Date = DateTime.Now
-                };
-                _billRepository.AddBillDetail(billDetail);
+                TempData["Notification"] = "Khóa học đã có trong giỏ hàng.";
+                return RedirectToAction("Index", "Course");
             }
+
+            var course = _courseRepository.FindCourseByID(courseId);
+            if (course == null)
+            {
+                // Khóa học không tồn tại
+                return NotFound("Không tìm thấy khóa học.");
+            }
+
+            var billDetail = new BillDetail
+            {
+                BillDetailId = Guid.NewGuid(),
+                BillId = bill.BillId,
+                CourseId = course.CourseId,
+                Price = course.Price,
+                Date = DateTime.Now
+            };
+            _billRepository.AddBillDetail(billDetail);
             return RedirectToAction("Index");
             //return Json(new { success = true });
         }
