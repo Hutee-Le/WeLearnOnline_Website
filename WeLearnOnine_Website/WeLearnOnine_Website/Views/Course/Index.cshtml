@@ -463,41 +463,47 @@
     <div id="sortfilter">
         <h3>Ratings</h3>
 
-        <div class="checkrating">
-            <input type="radio" name="star">
-            <span class="average-stars ps-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </span>
-            <p>&nbsp;&nbsp;4.7 & Up&nbsp;&nbsp;(413)</p>
+        <div class="checkrating d-flex justify-content-between align-items-center">
+            <div class="left-start">
+                <input type="radio" name="star">
+                <span class="average-stars ps-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+            </div>
+            <p>4.7(413)</p>
         </div>
-        <div class="checkrating">
-            <input type="radio" name="star">
-            <span class="average-stars ps-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </span>
-            <p>&nbsp;&nbsp;4.5 & Up&nbsp;&nbsp;(789)</p>
+        <div class="checkrating d-flex justify-content-between">
+            <div class="left-start">
+                <input type="radio" name="star">
+                <span class="average-stars ps-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </span>
+            </div>
+            <p>4.5 (789)</p>
         </div>
-        <div class="checkrating">
-            <input type="radio" name="star">
-            <span class="average-stars ps-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </span>
-            <p>&nbsp;&nbsp;4.0 & Up&nbsp;&nbsp;(654)</p>
+        <div class="checkrating d-flex justify-content-between">
+            <div class="left-start">
+                <input type="radio" name="star">
+                <span class="average-stars ps-2">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </span>
+            </div>
+            <p>4.0 (654)</p>
         </div>
 
-        <button id="clearfilter">Clear Filters</button>
+        <button class="clearfilter">Clear Filters</button>
 
         <div class="side-bar-filter">
             <div class="menu-filter">
@@ -647,58 +653,17 @@
                     $(this).find('.dropdown').toggleClass('rotate');
                 });
             });
-
-            $(document).ready(function () {
-                $('.btn-favor').click(function (e) {
-                    e.preventDefault();
-                    var button = $(this);
-                    var courseId = button.siblings('input[name="courseId"]').val();
-                    var isInFavorites = button.hasClass('favorited');
-                    var url = isInFavorites ? '/Course/RemoveFromFavorites' : '/Course/AddToFavorites';
-
-                    $.post(url, { courseId: courseId }, function (data) {
-                        if (data.success) {
-                            button.toggleClass('favorited');
-                            var icon = button.find('i');
-                            icon.toggleClass('bi-heart');
-                            icon.toggleClass('bi-heart-fill');
-                        } else {
-                            alert(data.message);
-                        }
-                    });
-                });
-            });
         </script>
-       @*  <script>
-            function addToCart(courseId) {
-                $.ajax({
-                    type: "POST",
-                    url: '/Course/AddToCart', // Thay đổi đường dẫn tương ứng với hành động AddToCartViaAjax của bạn
-                    data: { courseId: courseId },
-                    success: function (response) {
-                        if (response.success) {
-                            alert('Course added to cart successfully.');
-                        } else {
-                            alert('Failed to add course to cart.');
-                        }
-                    },
-                    error: function () {
-                        alert('An error occurred while adding the course to cart.');
-                    }
-                });
-            }
-        </script> *@
-
-
     </div>
     <div id="filter-course">
         @foreach(var item in Model)
         {  
             <div class="course-card mb-4">
-            <div class="course-card--img">
-                    <img src="@item.Course.ImageCourseUrl" alt="">
-            </div>
-            <div class="course-card-content">
+                <div class="row">
+                    <div class="course-card--img col-3">
+                        <img src="@item.Course.ImageCourseUrl" alt="">
+                    </div>
+             <div class="course-card-content col-7">
                 <div class="card-content--title">
                         <a asp-action="Details" asp-controller="Course" asp-route-id="@item.Course.CourseId">
                         <h4>@item.Course.Title</h4>
@@ -731,9 +696,11 @@
                     </div>
                 </div>
             </div>
-            <div class="card-content-price">
-                <span>&#8363;</span> @item.Course.Price
+                <div class="card-content-price col-2">
+                    @item.Course.Price.ToString("#,##0") đ
+                </div>
             </div>
+
                 <div class="popover-course">
                     <a href="#" class="title">@item.Course.Title</a>
                     <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
@@ -750,7 +717,7 @@
                         </form>
                     </div>
                 </div>
-        </div>
+            </div>
         }
         <!-- Hiển thị phân trang -->
         <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">

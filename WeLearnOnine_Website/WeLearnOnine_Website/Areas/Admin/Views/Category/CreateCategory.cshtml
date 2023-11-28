@@ -1,4 +1,5 @@
 ﻿@model WeLearnOnine_Website.Models.Category
+@inject WeLearnOnine_Website.Repositories.ICategoryRepository service
 @{
     ViewData["Title"] = "CreateCategory";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -23,85 +24,45 @@
                         </div>
 
 
-                    @*     <div class="input-group my-3">
-                            <div class="input-group my-3">
+                        <div class="input-group my-3">
+                            @* <div class="input-group ">
                                 <label class="input-group-text">Category</label>
-                                <select asp-for="ParentCategories" asp-items="ViewBag.Level1" class="form-select">
-                                </select>
+                                <input asp-for="ParentCategories" asp-items="ViewBag.Level1" class="form-select">
+                                </input>
                             </div>
+ *@
+                          @*   <div class="form-check my-3">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
+                                <label class="form-check-label" for="defaultCheck1" asp-for="CategoriesId"> Default Level </label>
+                            </div> *@
 
                           <select name="category" id="category" asp-for="ParentCategories">
                                 <optgroup label="Level 1">
                                     <option value="">Select Level 1</option>
-                                    @foreach (var item in ViewBag.Level1)
+                                    @foreach (var item in service.GetRootCategories())
                                     {
-                                        <option value="@item.Value">@item.Text</option>
+                                        <option value="@item.CategoriesId">@item.CategoryName</option>
                                     }
                                 </optgroup>
                                 <optgroup label="Level 2">
                                     <option value="">Select Level 2</option>
-                                    @foreach (var item in ViewBag.Level2)
+                                    @foreach (var item in service.GetRootCategories())
                                     {
-                                        <option value="@item.Value">@item.Text</option>
+                                        @foreach (var subitem_multi2 in service.GetSubCategories(item.CategoriesId))
+                                        {
+                                            <option value="@item.CategoriesId">@item.CategoryName</option>
+                                        }
                                     }
                                 </optgroup>
-                                <optgroup label="Level 3">
+                               @*  <optgroup label="Level 3">
                                     <option value="">Select Level 3</option>
                                     @foreach (var item in ViewBag.Level3)
                                     {
                                         <option value="@item.Value">@item.Text</option>
                                     }
-                                </optgroup>
+                                </optgroup> *@
                             </select>
-                        </div> *@
-
-                      @*   <div class="input-group mb-3">
-                            <span class="input-group-text">Dafault</span>
-                            <textarea class="form-control" aria-label="with textarea" asp-for="ParentCategories"> asp-items="ViewBag.Level1"</textarea>
-                        </div> 
-                       
-                        <div class="form-group">
-                            <label asp-for="Level1" class="control-label"></label>
-                            <select asp-for="Level1" class="form-control" id="level1Dropdown" name="Level1"></select>
                         </div>
-
-                        <div class="form-group">
-                            <label asp-for="Level2" class="control-label"></label>
-                            <select asp-for="Level2" class="form-control" id="level2Dropdown" name="Level2"></select>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="Level3" class="control-label"></label>
-                            <select asp-for="Level3" class="form-control" id="level3Dropdown" name="Level3"></select>
-                        </div>
-
-                        @section Scripts {
-                            <script>
-                                $(document).ready(function () {
-                                    $("#level1Dropdown").change(function () {
-                                        var level1Id = $(this).val();
-                                        $.get("/Category/GetLevel2Categories/" + level1Id, function (data) {
-                                            $("#level2Dropdown").empty();
-                                            $("#level2Dropdown").append($('<option>').text("Select Level 2").attr('value', ''));
-                                            $.each(data, function (index, item) {
-                                                $("#level2Dropdown").append($('<option>').text(item.categoryName).attr('value', item.categoryId));
-                                            });
-                                        });
-                                    });
-
-                                    $("#level2Dropdown").change(function () {
-                                        var level2Id = $(this).val();
-                                        $.get("/Category/GetLevel3Categories/" + level2Id, function (data) {
-                                            $("#level3Dropdown").empty();
-                                            $("#level3Dropdown").append($('<option>').text("Select Level 3").attr('value', ''));
-                                            $.each(data, function (index, item) {
-                                                $("#level3Dropdown").append($('<option>').text(item.categoryName).attr('value', item.categoryId));
-                                            });
-                                        });
-                                    });
-                                });
-                            </script>
-                        } *@
 
                         <div class="input-group mt-3 d-flex justify-content-end">
                             <input class="btn btn-primary mx-3" value="Create" type="submit">

@@ -1,9 +1,4 @@
 ﻿@model WeLearnOnine_Website.ViewModels.ShoppingCartViewModel
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
 <!-- breadcrumb start -->
 <div class="breadcrumb-nav">
     <div class="container-fluid mx-5">
@@ -15,381 +10,126 @@
         </nav>
     </div>
 </div>
+
 <!-- breadcrumb end -->
 <!-- Checkout Section Begin -->
-<section class="shopping-cart spad">
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
-        <div class="cart-title-section d-flex">
-            <h1 class="ud-heading-xxxl">
-                Shopping Cart
-            </h1>
-        </div>
-        <div class="cart--notifications-section">
-            <div class="styles--notifications">
-            </div>
-        </div>
-        <div class="cart--shopping-section d-flex mt-4">
-            <div class="cart--shopping-lists-pane">
-                <div class="styles--shopping-list">
-                    <h3 class="ud-heading-md">
-                        3 Courses in Cart
-                    </h3>
-                    <ul class="ud-unstyled-list">
-                        @foreach (var detail in Model.Bill.BillDetails)
+<!-- Checkout -->
+<div class="checkout-container">
+    <div class="container-xxl">
+        <div class="page__container">
+            <h2 class="heading text-center fs-1 fw-bold mb-5">Xem lại yêu cầu đăng ký</h2>
+            <div class="checkout-container d-flex">
+                <div class="checkout-left col-6">
+                    <div class="order-item">
+                           @foreach (var detail in Model.Bill.BillDetails)
                         {
-                            <div class="shopping-item--shopping-item-wrapper">
-                                <div class="shopping-item--container">
-                                    <div class="shopping-item--image">
-                                        <div class="shopping-item--image-wrapper">
-                                            <img class="shopping-item--course-image"
-                                                 src="@detail.Course.ImageCourseUrl" alt=""
-                                                 class="shopping-item--course-image">
-                                        </div>
-                                    </div>
-                                    <div class="shopping-item--header">
-                                        <h3 class="ud-heading-md">
-                                            <a href="#">
-                                                @detail.Course.Title
-                                            </a>
-                                        </h3>
-                                        <div class="ud-text-xs shopping-item--instructors">
-                                            <span class="ud-sr-only">
-                                                Instructors:
-                                            </span>
-                                            <span class="shopping-item--instructor-list">
-                                                By Kirill Eremenko and 3 others
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="shopping-item--badges">
-                                        <div class="ud-badge ud-heading-xs course-badges-module--bestseller">
-                                            Bestseller
-                                        </div>
-                                        <div class="ud-badge ud-heading-xs course-badges-module--updated-recently">
-                                            Updated Recently
-                                        </div>
-                                    </div>
-                                    <div class="shopping-item--rating">
-                                        <div class="star-rating-module--star-wrapper star-rating-module--medium">
-                                            <span class="ud-sr-only">Rating: 4.5 out of 5</span>
-                                            <span class="ud-heading-sm star-rating-module--rating-number" aria-hidden="true"
-                                                  data-purpose="rating-number">4.5</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </div>
-                                        <span class="ud-text-xs shopping-item--reviews-text">(175,765 ratings)</span>
-                                    </div>
-                                    <div class="ud-text-xs shopping-item--meta">
-                                        <span class="shopping-item--meta-item">@detail.Course.TimeTotal total hours</span>
-                                        <span class="icon">
-                                            <i class="fas fa-circle"></i>
-                                        </span>
-                                        <span class="shopping-item--meta-item">383 lectures</span>
-                                        <span class="icon">
-                                            <i class="fas fa-circle"></i>
-                                        </span>
-                                        <span class="shopping-item--meta-item">@detail.Course.Level.Name</span>
-                                    </div>
-                                    <div class="shopping-item--vertical-actions">
-                                        <form method="post" asp-action="RemoveFromCart" asp-route-courseId="@detail.Course.CourseId">
-                                            <button type="submit" class="ud-btn ud-btn-xsmall ud-btn-ghost ud-text-sm">
-                                                <span>Remove</span>
-                                            </button>
-                                        </form>
-                                        <button type="button" class="ud-btn ud-btn-xsmall ud-btn-ghost ud-text-sm">
-                                            <span>Save for Later</span>
-                                        </button>
-                                    </div>
-                                    <div class="shopping-item--price-container">
-                                        <div class="price-text--container shopping-item--price shopping-item--price-discounted-styles">
-                                            <div class="price-text--price-part shopping-item--price-text--2VEWH ud-heading-md">
-                                                <span class="ud-sr-only">
-                                                    Current price
-                                                </span>
-                                                <span>
-                                                    <span>
-                                                        ₫@detail.Course.Price
-                                                    </span>
-                                                </span>
+                            <div class="order-item__inner row">
+                                <div class="order-item__img col-3">
+                                    <img
+                                         alt="" class="order-item__image cover ls-is-cached lazyloaded"
+                                         style="object-fit: cover; border-radius: 10px;"
+                                         src="@detail.Course.ImageCourseUrl"
+                                         style="width: 100%;" height="120">
+                                </div>
+                                <div class="order-item__content col-9 d-flex flex-column justify-content-center">
+                                    <h5 class="order-item__title">
+                                        <a>@detail.Course.Title</a>
+                                    </h5>
+                                        <div class="order-item__price hidden-mb d-flex justify-content-between mt-3">
+                                            <div class="price-group d-flex">
+                                            <h5 class="price me-xl-5">@detail.Course.Price.ToString("#,##0")đ</h5>
+                                                @if (detail.Course.DiscountPrice.HasValue)
+                                                {
+                                                    <div class="price-sale text-decoration-line-through">@String.Format("{0:#,##0}", detail.Course.DiscountPrice)</div>
+                                                }
                                             </div>
-                                            @if (detail.Course.DiscountPrice.HasValue)
-                                            {
-                                            <div class="price-text--price-part price-text--original-price--1sDdx shopping-item--price-text--2VEWH ud-text-sm" data-purpose="original-price-container">
-                                                <div data-purpose="course-old-price-text">
-                                                    <span class="ud-sr-only">Original Price</span>
-                                                    <span>
-                                                        
-                                                            <s>
-                                                                <span>₫@detail.Course.DiscountPrice</span>
-                                                            </s>
-                                                        
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            }
+                                             <form method="post" asp-action="RemoveFromCart" asp-route-courseId="@detail.Course.CourseId">
+                                                <button type="submit" class="order-item__remove ">
+                                                    <span class="primary pe-xl-5">Bỏ khóa này</span>
+                                                </button>
+                                            </form>
                                         </div>
-                                        <div class="popper-module--popper shopping-item--coupon-icon-tooltip">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         }
-                    </ul>
+                    </div>
+                    <h3 class="order-box__heading mt-4">Chọn phương thức thanh toán</h3>
+                    <div class="payment__list">
+                        <div class="payment__item d-flex align-items-center p-4" data-value="1">
+                            <div class="payment__info col-7">
+                                <img class="payment__icon" src="https://kt.city/static/icon-transfer.png"
+                                     width="40" height="40">
+                                <span class="payment__name ps-3">
+                                    Chuyển khoản <span class="hidden-mb">
+                                        ngân
+                                        hàng
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="payment__desc col-4">Hoàn thành ngay</div>
+                            <input class="payment__check col-1" type="radio" name="payment__check"></input>
+                        </div>
+                        <div class="payment__item d-flex align-items-center p-4" data-value="2">
+                            <div class="payment__info col-7">
+                                <img class="payment__icon" src="https://kt.city/static/icon-momo.png" width="40"
+                                     height="40">
+                                <span class="payment__name ps-3">
+                                    <span class="hidden-mb">Ví điện tử</span>
+                                    MOMO
+                                </span>
+                            </div>
+                            <div class="payment__desc col-4">Hoàn thành ngay</div>
+                            <input class="payment__check col-1" type="radio" name="payment__check"></input>
+                        </div>
+                        <div class="payment__item d-flex align-items-center p-4" data-value="3">
+                            <div class="payment__info col-7">
+                                <img class="payment__icon" src="https://kt.city/static/card-vnpay.png"
+                                     width="40" style="object-fit: cover;">
+                                <span class="payment__name ps-3">Quét VNpay QRcode</span>
+                            </div>
+                            <div class="payment__desc col-4">Hoàn thành ngay</div>
+                            <input class="payment__check col-1" type="radio" name="payment__check"></input>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="cart--checkout-pane">
-                <div>
-                    <div class="total-price--total-checkout-container">
-                        <div class="price-text--container total-price--container-desktop-layout">
-                            <div class="total-price--total-label ud-heading-md">
-                                Total:
+                <div class="checkout-right col-6">
+                    <div class="order-box order-total">
+                        <div class="order-total__top d-flex justify-content-between">
+                            <div class="order-price-all">
+                                <div class="order-price d-flex align-items-center">
+                                    <div class="price fs-4 me-4">599,000đ</div>
+                                    <div class="price-sale">Giá gốc: 999,000đ</div>
+                                </div>
+                                <div class="order-saving">Tiết kiệm 41% (400,000đ)</div>
                             </div>
-                            <div class="price-text--price-part ud-heading-xxl">
-                                <span>
-                                    <span>
-                                        ₫997,000
-                                    </span>
-                                </span>
+                            <div class="coupon">
+                                <div class="coupon-add">
+                                    <img src="/static/gmb-coupon.png" alt="" class="icon">
+                                    <input type="text" placeholder="Nhập Mã COUPON...">
+                                    <button class="text">Áp dụng</span>
+                                </div>
                             </div>
-                            <div class="price-text--price-part price-text--original-price ud-text-md">
-                                <span>
-                                    <s>
-                                        <span>
-                                            ₫5,597,000
-                                        </span>
-                                    </s>
-                                </span>
+                        </div>
+                        <div class="user-info d-flex flex-column align-items-start mt-4">
+                            <div class="user-info__header mt-4">
+                                <h4 class="user-info__title purple bolder">Thông tin cá nhân</h3>
                             </div>
-                            <div class="price-text--price-part ud-text-md">
-                                <span>
-                                    82% off
-                                </span>
+                            <div class="user-info__item mt-4 align-items-center">
+                                <i class="bi bi-person fs-5 pe-2"></i>
+                                <span class="user-info__text">Quoc Nguyen</span>
+                            </div>
+                            <div class="user-info__item mt-4">
+                                <i class="bi bi-envelope fs-5 pe-2"></i>
+                                <span class="user-info__text">quoc.nng2002@gmail.com</span>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button type="button" class="ud-btn ud-btn-large ud-btn-brand ud-heading-md checkout-button--checkout-button--a6YjA">
-                            <span>
-                                Checkout
-                            </span>
-                        </button>
-                    </div>
-                    <div class="styles--redeem-coupon-wrapper">
-                        <div>
-                            <div class="redeem-coupon--add-coupon-button--gEFrS"></div>
-                            <p class="ud-heading-md redeem-coupon--title--GmLKT">Promotions</p>
-                            <div class="redeem-coupon--codes--yrm-S">
-                                <p class="redeem-coupon--code--3lfGJ redeem-coupon--code-in-checkout-pane--BYsiV">
-                                    <button class="close-button">
-                                        <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M5.293 5.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 11-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                    <span class="redeem-coupon--code-text--2HFA4">
-                                        <b>ST20MT100423</b>
-                                        is applied
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="coupon-form--coupon-form-group--2fnQg ud-form-group">
-                                <label class="ud-sr-only ud-form-label ud-heading-sm" for="u18-form-group--38">Apply coupon</label>
-                                <form action="#" class="text-input-form-module--text-input-form--9uxfY">
-                                    <input aria-invalid="false" data-purpose="coupon-input" placeholder="Enter Coupon" id="u18-form-group--38" type="text" class="ud-text-input ud-text-input-small ud-text-sm" value="">
-                                    <button type="submit" data-purpose="coupon-submit" class="ud-btn ud-btn-small ud-btn-brand ud-heading-sm"><span>Apply</span></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="btn-complete mt-5">
+                        <span>Hoàn tất đăng ký </span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 <!-- Checkout Section End -->
-<!-- courses section start -->
-<section class="courses-section section-padding">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="section-title text-center">
-                    <h2 class="title">courses</h2>
-                    <p class="sub-title">Find the right course for you</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- courses item start -->
-            <div class="courese-wrapper col-md-6 col-lg-3">
-                <div class="courses-item">
-                    <a href="course-details.html" class="link">
-                        <div class="courses-item-inner">
-                            <div class="img-box">
-                                <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                            </div>
-                            <h3 class="title">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, saepe qui
-                                consequuntur facilis quae minus.
-                            </h3>
-                            <div class="instructor">
-                                <img src="~/img/instructor/1.png" alt="instructor img">
-                                <span class="instructor-name">Joe Doe</span>
-                            </div>
-                            <div class="rating">
-                                <span class="average-rating">(4.5)</span>
-                                <span class="average-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </span>
-                                <span class="reviews">(230)</span>
-                            </div>
-                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                            @* <div class="seller d-flex justify-content-end"><span>Bestseller</span></div> *@
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- courses item end -->
-            <!-- courses item start -->
-            <div class="courese-wrapper col-md-6 col-lg-3">
-                <div class="courses-item">
-                    <a href="course-details.html" class="link">
-                        <div class="courses-item-inner">
-                            <div class="img-box">
-                                <img src="~/img/courses/web-development/web3.jpg" alt="course img">
-                            </div>
-                            <h3 class="title">HTML for beginner</h3>
-                            <div class="instructor">
-                                <img src="~/img/instructor/1.png" alt="instructor img">
-                                <span class="instructor-name">Joe Doe</span>
-                            </div>
-                            <div class="rating">
-                                <span class="average-rating">(4.5)</span>
-                                <span class="average-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </span>
-                                <span class="reviews">(230)</span>
-                            </div>
-                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- courses item end -->
-            <!-- courses item start -->
-            <div class="courese-wrapper col-md-6 col-lg-3">
-                <div class="courses-item">
-                    <a href="course-details.html" class="link">
-                        <div class="courses-item-inner">
-                            <div class="img-box">
-                                <img src="~/img/courses/web-development/CSS.png" alt="course img">
-                            </div>
-                            <h3 class="title">HTML for beginner</h3>
-                            <div class="instructor">
-                                <img src="~/img/instructor/1.png" alt="instructor img">
-                                <span class="instructor-name">Joe Doe</span>
-                            </div>
-                            <div class="rating">
-                                <span class="average-rating">(4.5)</span>
-                                <span class="average-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </span>
-                                <span class="reviews">(230)</span>
-                            </div>
-                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- courses item end -->
-            <!-- courses item start -->
-            <div class="courese-wrapper col-md-6 col-lg-3">
-                <div class="courses-item">
-                    <a href="course-details.html" class="link">
-                        <div class="courses-item-inner">
-                            <div class="img-box">
-                                <img src="~/img/courses/web-development/asp.png" alt="course img">
-                            </div>
-                            <h3 class="title">HTML for beginner</h3>
-                            <div class="instructor">
-                                <img src="~/img/instructor/1.png" alt="instructor img">
-                                <span class="instructor-name">Joe Doe</span>
-                            </div>
-                            <div class="rating">
-                                <span class="average-rating">(4.5)</span>
-                                <span class="average-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </span>
-                                <span class="reviews">(230)</span>
-                            </div>
-                            <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                            <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- courses item end -->
-        </div>
-        <div class="row">
-            <div class="col-12 text-center">
-                <a href="courses.html" class="btn btn-theme">view all courses</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- courses section end -->
-<!-- fun fact section start -->
-<section class="fun-facts-section">
-    <div class="container">
-        <div class="box py-2">
-            <div class="row text-center">
-                <div class="col-md-6 col-lg-3">
-                    <div class="fun-facts-item">
-                        <div class="style-1 counter" data-goal="800">0 <span>k</span></div>
-                        <p>student we've</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="fun-facts-item">
-                        <div class="style-2 counter" data-goal="500">0 <span>+</span></div>
-                        <p>courses</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="fun-facts-item">
-                        <div class="style-3 counter" data-goal="50">0 <span>+</span></div>
-                        <p>countries</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="fun-facts-item">
-                        <div class="style-4 counter" data-goal="100">0 <span>+</span></div>
-                        <p>skilled constructors</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<br>
-<!-- fun fact section end -->

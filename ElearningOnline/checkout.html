@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Twstudy </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awsome icon -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- swiperJS CSS -->
+    <link rel="stylesheet" href="css/swiper-bundle.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- color Theme -->
+    <link rel="stylesheet" href="css/colors/color-1.css">
+
+    <!-- bootstrap icon cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body class="t-dark">
+    <!-- main wrapper start -->
+    <div class="main-wrapper">
+        <!-- header start -->
+        <header class="header">
+            <div class="container-xxl">
+                <div class="header-main d-flex justify-content-between align-items-center">
+                    <div class="header-logo">
+                        <a href="index.html"><span>tws</span>tudy</a>
+                    </div>
+                    <button type="button" class="header-hamburger-btn js-header-menu-toggler">
+                        <span></span>
+                    </button>
+                    <div class="header-backdrop js-header-backdrop"></div>
+
+                    <div class="menu-item pe-4"><span>categories</span></div>
+                    <div class="search-input">
+                        <span><i class="fas fa-search"></i></span>
+                        <input type="text" placeholder="Search for anything">
+                    </div>
+                    <nav class="header-menu js-header-menu">
+                        <button type="button" class="header-close-btn js-header-menu-toggler">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <ul class="menu h-100">
+                            <li class="menu-item menu-item-has-children">
+                                <a href="#" class="js-toggle-sub-menu">courses<i class="fas fa-chevron-down"></i></a>
+                                <ul class="sub-menu js-sub-menu">
+                                    <li class="sub-menu-item"><a href="courses.html">courses</a></li>
+                                    <li class="sub-menu-item"><a href="course-details.html">my courses</a></li>
+                                    <li class="sub-menu-item"><a href="courses-test.html">courses-test</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item"><a href="contact.html">contact</a></li>
+                            <li class="menu-item icon-color-theme"><a href="#"><i class="far fa-heart"></i></a></li>
+                            <li class="menu-item"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                            <li class="menu-item"><a href="#"><i class="far fa-bell"></i></a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- <div class="menu-item btn-login overflow-hidden"><a class="fw-bold" href="log-in.html ">Login</a></div>
+          <div class="menu-item btn-signup overflow-hidden"><a class="fw-bold" href="sign-up.html">Sign Up</a></div> -->
+
+                    <div class="menu-item user-profile">
+                        <div class="img-user-profile">
+                            <img src="img/instructor/1.png" alt="img profile" class="user-pic" onclick="menuToggle()">
+                        </div>
+
+                        <div class="sub-menu-box" id="subMenuUser">
+                            <div class="sub-menu-user">
+                                <div class="user-info">
+                                    <img src="img/instructor/1.png">
+                                    <div class="info-name">
+                                        <h3>Joe Doe</h3><span>JoeDoe123@gmail.com</span>
+                                    </div>
+                                </div>
+                                <hr>
+                                <a href="user-profile.html" class="sub-menu-links">
+                                    <i class="bi bi-person-circle"></i>
+                                    <p>Edit Profile</p><span>></span>
+                                </a>
+                                <a href="#" class="sub-menu-links">
+                                    <i class="bi bi-gear"></i>
+                                    <p>Setting</p><span>></span>
+                                </a>
+                                <a href="#" class="sub-menu-links">
+                                    <i class="bi bi-question-circle"></i>
+                                    <p>Help</p><span>></span>
+                                </a>
+                                <a href="#" class="sub-menu-links">
+                                    <i class="bi bi-box-arrow-left"></i>
+                                    <p>Log Out</p><span>></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+        <!-- breadcrumb start -->
+        <div class="breadcrumb-nav">
+            <div class="container-fluid mx-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Complete Checkout</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- breadcrumb end -->
+
+
+        <div class="checkout-container">
+            <div class="container-xxl">
+                <div class="page__container">
+                    <h2 class="checkout-page-heading fs-2 fw-bold mb-5">Hướng dẫn thanh toán cho đơn hàng <span class="text-main-color">DZZYI9</span></h2>
+                    <div class="checkout-container d-flex">
+                        <div class="checkout-left col-6">
+                            <div class="checkout-left-box">
+                                <div class="order order-success order-done d-flex flex-column align-items-center">
+                                    <img src="https://kt.city/static/ads-success-icon.png" alt="order success"
+                                        class="order-success-image">
+                                    <h4 class="checkout-title text-main-color">Thanh toán thành công!</h4>
+                                    <p>Đơn hàng này đã được thanh toán. Truy cập vào khu vực học tập để bắt đầu học.</p>
+                                    <a href="/myclass" class="checkout-action">Khu vực học tập</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-right col-6">
+                            <div class="review-header d-flex">
+                                <div class="review-header-item col-6"><span class="checkout-label">Xem lại đơn
+                                        hàng</span>
+                                    <h4 class="checkout-text text-main-color">DZZYI9</h4>
+                                </div>
+                                <div class="review-header-item">
+                                    <span class="checkout-label hidden-mb">Phương thức thanh toán</span>
+                                    <h5 class="checkout-text">Chuyển khoản</h5>
+                                </div>
+                                <div class="review-header-item">
+                                    <h3 class="checkout-text"></h3>
+                                </div>
+                            </div>
+                            <div class="review-user p-4 mb-3">
+                                <span class="checkout-label">Khách hàng</span>
+                                <h4 class="review-user-name fw-bold">Quoc Nguyen</h4>
+                                <p class="checkout-text">ngocquocnguyen692002@gmail.com</p>
+                            </div>
+                            <div class="review-order">
+                                <div class="review-order-item d-flex">
+                                    <img src="https://static.kt.city/cjxtrhjqs00we098574enz0ng/reactjs-course-cover-1640655350243.jpg"
+                                        alt="Khóa học ReactJS cơ bản đến nâng cao dành cho người mới bắt đầu"
+                                        width="100" height="100" class="review-order-image me-4"
+                                        style="object-fit: cover;">
+                                    <div class="review-order-info">
+                                        <h5 class="review-order-name">Khóa học ReactJS cơ bản đến nâng cao dành cho
+                                            người
+                                            mới bắt đầu</h5><span class="review-order-price"> 509,400đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-total d-flex justify-content-center fs-4 fw-bold p-3 mt-3">Tổng cộng:
+                                509,400đ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout-container">
+            <div class="container-xxl">
+                <div class="page__container">
+                    <h2 class="checkout-page-heading fs-2 fw-bold mb-5">Hướng dẫn thanh toán cho đơn hàng <span class="text-main-color">DZZYI9</span></h2>
+                    <div class="checkout-container d-flex">
+                        <div class="checkout-left col-6 p-4">
+                            <div class="checkout-left-box">
+                                <div class="order order-checkout d-flex flex-column align-items-center">
+                                    <h3 class="checkout-heading text-main-color"><i class="bi bi-clock-history"></i> Vui
+                                        lòng thanh toán để hoàn tất</h3>
+                                    <p class="checkout-notice">Nhấn vào nút dưới đây để bắt đầu thanh toán bằng MoMo:
+                                    </p>
+                                    <button class="checkout-action checkout-action--momo">Thanh toán bằng MoMo</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-right col-6">
+                            <div class="review-header d-flex">
+                                <div class="review-header-item col-6"><span class="checkout-label">Xem lại đơn
+                                        hàng</span>
+                                    <h4 class="checkout-text text-main-color">DZZYI9</h4>
+                                </div>
+                                <div class="review-header-item">
+                                    <span class="checkout-label hidden-mb">Phương thức thanh toán</span>
+                                    <h5 class="checkout-text">MoMo</h5>
+                                </div>
+                            </div>
+                            <div class="review-user p-4 mb-3">
+                                <span class="checkout-label">Khách hàng</span>
+                                <h4 class="review-user-name fw-bold">Quoc Nguyen</h4>
+                                <p class="checkout-text">ngocquocnguyen692002@gmail.com</p>
+                            </div>
+                            <div class="review-order">
+                                <div class="review-order-item d-flex">
+                                    <img src="https://static.kt.city/cjxtrhjqs00we098574enz0ng/reactjs-course-cover-1640655350243.jpg"
+                                        alt="Khóa học ReactJS cơ bản đến nâng cao dành cho người mới bắt đầu"
+                                        width="100" height="100" class="review-order-image me-4"
+                                        style="object-fit: cover;">
+                                    <div class="review-order-info">
+                                        <h5 class="review-order-name">Khóa học ReactJS cơ bản đến nâng cao dành cho
+                                            người
+                                            mới bắt đầu</h5><span class="review-order-price"> 509,400đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-total d-flex justify-content-center fs-4 fw-bold p-3 mt-3">Tổng cộng:
+                                509,400đ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout -->
+        <div class="checkout-container">
+            <div class="container-xxl">
+                <div class="page__container">
+                    <h2 class="heading text-center fs-1 fw-bold mb-5">Xem lại yêu cầu đăng ký</h2>
+                    <div class="checkout-container d-flex">
+                        <div class="checkout-left col-6">
+                            <div class="order-item">
+                                <div class="order-item__inner row">
+                                    <div class="order-item__img col-3">
+                                        <img data-src="https://static.kt.city/cjxtrhjqs00we098574enz0ng/banner-khoa-hoc-typescript-1693039655371.png"
+                                            alt="" class="order-item__image cover ls-is-cached lazyloaded"
+                                            style="object-fit: cover; border-radius: 10px;"
+                                            src="https://static.kt.city/cjxtrhjqs00we098574enz0ng/banner-khoa-hoc-typescript-1693039655371.png"
+                                            style="width: 100%;" height="120">
+                                    </div>
+                                    <div class="order-item__content col-9 d-flex flex-column justify-content-center">
+                                        <h5 class="order-item__title">Khóa học Typescript cơ bản dành cho người mới</h3>
+                                            <div
+                                                class="order-item__price hidden-mb d-flex justify-content-between mt-3">
+                                                <div class="price-group d-flex">
+                                                    <h5 class="price me-xl-5">599,000đ</h5>
+                                                    <div class="price-sale text-decoration-line-through">999,000đ</div>
+                                                </div>
+                                                <form>
+                                                    <button type="submit" class="order-item__remove ">
+                                                        <span class="primary pe-xl-5">Bỏ khóa này</span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="order-item__inner row">
+                                    <div class="order-item__img col-3">
+                                        <img data-src="https://static.kt.city/cjxtrhjqs00we098574enz0ng/banner-khoa-hoc-typescript-1693039655371.png"
+                                            alt="" class="order-item__image cover ls-is-cached lazyloaded"
+                                            style="object-fit: cover; border-radius: 10px;"
+                                            src="https://static.kt.city/cjxtrhjqs00we098574enz0ng/banner-khoa-hoc-typescript-1693039655371.png"
+                                            style="width: 100%;" height="120">
+                                    </div>
+                                    <div class="order-item__content col-9 d-flex flex-column justify-content-center">
+                                        <h5 class="order-item__title">Khóa học Typescript cơ bản dành cho người mới</h3>
+                                            <div
+                                                class="order-item__price hidden-mb d-flex justify-content-between mt-3">
+                                                <div class="price-group d-flex">
+                                                    <h5 class="price me-xl-5">599,000đ</h5>
+                                                    <div class="price-sale text-decoration-line-through">999,000đ</div>
+                                                </div>
+                                                <a class="primary order-item__remove pe-xl-5">Bỏ khóa này</a>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="order-box__heading mt-4">Chọn phương thức thanh toán</h3>
+                            <div class="payment__list">
+                                <div class="payment__item d-flex align-items-center p-4" data-value="1">
+                                    <div class="payment__info col-7">
+                                        <img class="payment__icon" src="https://kt.city/static/icon-transfer.png"
+                                            width="40" height="40">
+                                        <span class="payment__name ps-3">Chuyển khoản <span class="hidden-mb">ngân
+                                                hàng</span></span>
+                                    </div>
+                                    <div class="payment__desc col-4">Hoàn thành ngay</div>
+                                    <input class="payment__check col-1" type="radio" name="payment__check"></input>
+                                </div>
+                                <div class="payment__item d-flex align-items-center p-4" data-value="2">
+                                    <div class="payment__info col-7">
+                                        <img class="payment__icon" src="https://kt.city/static/icon-momo.png" width="40"
+                                            height="40">
+                                        <span class="payment__name ps-3"><span class="hidden-mb">Ví điện tử</span>
+                                            MOMO</span>
+                                    </div>
+                                    <div class="payment__desc col-4">Hoàn thành ngay</div>
+                                    <input class="payment__check col-1" type="radio" name="payment__check"></input>
+                                </div>
+                                <div class="payment__item d-flex align-items-center p-4" data-value="3">
+                                    <div class="payment__info col-7">
+                                        <img class="payment__icon" src="https://kt.city/static/card-vnpay.png"
+                                            width="40" style="object-fit: cover;">
+                                        <span class="payment__name ps-3">Quét VNpay QRcode</span>
+                                    </div>
+                                    <div class="payment__desc col-4">Hoàn thành ngay</div>
+                                    <input class="payment__check col-1" type="radio" name="payment__check"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-right col-6">
+                            <div class="order-box order-total">
+                                <div class="order-total__top d-flex justify-content-between">
+                                    <div class="order-price-all">
+                                        <div class="order-price d-flex align-items-center">
+                                            <div class="price fs-4 me-4">599,000đ</div>
+                                            <div class="price-sale">Giá gốc: 999,000đ</div>
+                                        </div>
+                                        <div class="order-saving">Tiết kiệm 41% (400,000đ)</div>
+                                    </div>
+                                    <div class="coupon">
+                                        <div class="coupon-add"><img src="/static/gmb-coupon.png" alt="" class="icon">
+                                            <input type="text" placeholder="Nhập Mã COUPON...">
+                                            <button class="text">Áp dụng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-info d-flex flex-column align-items-start mt-4">
+                                    <div class="user-info__header mt-4">
+                                        <h4 class="user-info__title purple bolder">Thông tin cá nhân</h3>
+                                    </div>
+                                    <div class="user-info__item mt-4 align-items-center">
+                                        <i class="bi bi-person fs-5 pe-2"></i>
+                                        <span class="user-info__text">Quoc Nguyen</span>
+                                    </div>
+                                    <div class="user-info__item mt-4">
+                                        <i class="bi bi-envelope fs-5 pe-2"></i>
+                                        <span class="user-info__text">quoc.nng2002@gmail.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-complete mt-5">
+                                <span>Hoàn tất đăng ký </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty cart -->
+        <div class="Checkout-empty d-flex justify-content-center">
+            <div class="empty d-flex flex-column align-items-center">
+                <img src="https://kt.city/static/img-empty-cart.png" class="empty__image">
+                <h2 class="empty__title fs-4 mt-5">Giỏ hàng trống, khám phá kiến thức <a class="empty__link fw-bold"
+                        href="/categories">tại đây</a>.</h2>
+            </div>
+        </div>
+        <!-- footer start -->
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="footer-item">
+                                <h3><span class="footer-logo">tws</span>tudy</h3>
+                                <ul>
+                                    <li><a href="#">about</a></li>
+                                    <li><a href="#">what we offer</a></li>
+                                    <li><a href="#">careers</a></li>
+                                    <li><a href="#">certificates</a></li>
+                                    <li><a href="#">blog</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="footer-item">
+                                <h3>learning</h3>
+                                <ul>
+                                    <li><a href="#">get the app</a></li>
+                                    <li><a href="#">testimonials</a></li>
+                                    <li><a href="#">pricing</a></li>
+                                    <li><a href="#">faq</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="footer-item">
+                                <h3>more</h3>
+                                <ul>
+                                    <li><a href="#">affiliates</a></li>
+                                    <li><a href="#">become a course creator</a></li>
+                                    <li><a href="#">training webinars</a></li>
+                                    <li><a href="#">free personality test</a></li>
+                                    <li><a href="#">help and support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="footer-item">
+                                <h3>get in touch</h3>
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook social-icon"></i> facebook</a></li>
+                                    <li><a href="#"><i class="fab fa-twitter social-icon"></i> twitter</a></li>
+                                    <li><a href="#"><i class="fab fa-instagram social-icon"></i> instagram</a></li>
+                                    <li><a href="#"><i class="fab fa-youtube social-icon"></i> youtube</a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin social-icon"></i> linkedin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="mt-0 py-4 text-center">Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> Education IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+        <!-- style switcher start -->
+        <div class="style-switcher js-style-switcher">
+            <div class="style-switcher-toggler js-style-switcher-toggler">
+                <i class="fas fa-cog"></i>
+            </div>
+            <h3>Style Switcher</h3>
+            <div class="style-switcher-item">
+                <p class="mb-2">Theme Colors</p>
+                <!-- theme color -->
+                <div class="theme-colors js-theme-colors">
+                    <button type="button" data-js-theme-color="color-1" class="js-theme-color-item color-1"></button>
+                    <button type="button" data-js-theme-color="color-2" class="js-theme-color-item color-2"></button>
+                    <button type="button" data-js-theme-color="color-3" class="js-theme-color-item color-3"></button>
+                    <button type="button" data-js-theme-color="color-4" class="js-theme-color-item color-4"></button>
+                    <button type="button" data-js-theme-color="color-5" class="js-theme-color-item color-5"></button>
+                </div>
+            </div>
+            <div class="style-switcher-item">
+                <div class="form-check form-switch">
+                    <input class="form-check-input js-dark-mode" type="checkbox" role="switch" id="dark-mode">
+                    <label class="form-check-label" for="dark-mode">Dark Mode</label>
+                </div>
+            </div>
+        </div>
+        <!-- style switcher end -->
+
+
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/swiper-bundle.min.js"></script>
+        <script src="js/main.js"></script>
+</body>
+
+</html>

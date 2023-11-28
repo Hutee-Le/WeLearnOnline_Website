@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2lvssa3jgs0q4GtRKgEDE39pY8xuzHxj9PTwsdoEgRA=",
+  "Hash": "YHxlA9SWDqdfFWE7FvdDYqKp3mMmc8mGhwCU/IYaOVQ=",
   "Source": "WeLearnOnine_Website",
   "BasePath": "_content/WeLearnOnine_Website",
   "Mode": "Default",
@@ -695,6 +695,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\main.js"
+    },
+    {
+      "Identity": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\modeTheme.js",
+      "SourceId": "WeLearnOnine_Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\",
+      "BasePath": "_content/WeLearnOnine_Website",
+      "RelativePath": "js/modeTheme.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\modeTheme.js"
     },
     {
       "Identity": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\owl.carousel.js",
