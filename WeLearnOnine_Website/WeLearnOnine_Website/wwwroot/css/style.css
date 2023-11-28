@@ -3002,6 +3002,21 @@ button.clearfilter {
     background-color: #5039c8; /* Darker shade for hover state */
 }
 
+.payment__desc {
+    position: relative
+}
+
+.payment__desc::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 1rem;
+    background-color: rgb(35, 194, 127);
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    transform: translateY(-50%);
+}
 /* Checkout */
 .checkout-container {
     margin-bottom: 30vh;
@@ -3126,6 +3141,61 @@ button.clearfilter {
     width: 95%;
 }
 
+.payment__check {
+    appearance: none; /* For modern browsers */
+    -webkit-appearance: none; /* For older webkit browsers */
+    -moz-appearance: none; /* For older Firefox browsers */
+    background-color: transparent;
+    margin: 0 10px 0 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc; /* Light grey border for unchecked state */
+    border-radius: 50%;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Base style for the radio input */
+.payment__check {
+    background-color: transparent;
+    margin: 0 10px 0 0;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ccc; /* Light grey border for unchecked state */
+    border-radius: 50%;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.payment__check:checked {
+    background-color: #C04141; 
+    border-color: #C04141; 
+}
+
+.payment__check:checked::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #E55252;
+    border-radius: 50%;
+}
+
+.payment__check:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(229, 82, 82, 0.25);
+}
+
+.payment__check::-ms-check {
+    display: none;
+}
+
+
 .checkout-right .btn-complete {
     width: 100%;
     outline: none;
@@ -3163,9 +3233,9 @@ button.clearfilter {
 .order-item__inner {
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
-    .order-item__inner:not(div:first-child) {
+.order-item__inner:not(div:first-child) {
         margin-top: 1rem;
-    }
+}
 .user-info__item i {
     color: var(--main-color);
 }
