@@ -87,26 +87,33 @@ namespace WeLearnOnine_Website.Repositories
 
         public List<CourseViewModel> GetAvailableAndFavoriteCourses(int userId)
         {
-            // Lấy danh sách ID các khóa học đã mua
+            // Lấy danh sách ID các khóa học đã mua với điều kiện hóa đơn đã được thanh toán
             var purchasedCourseIds = _ctx.BillDetails
-                .Where(bd => bd.Bill.UserId == userId)
+                .Where(bd => bd.Bill.UserId == userId && bd.Bill.Status == "Paid") 
                 .Select(bd => bd.CourseId)
-                .ToList();
+                .ToHashSet();
+
+            // Danh sách các khóa học yêu thích
+            var favoriteCourseIds = _ctx.FavLists
+                .Where(f => f.UserId == userId)
+                .Select(f => f.CourseId)
+                .ToHashSet();
 
             // Lấy danh sách các khóa học chưa mua
             var availableCourses = _ctx.Courses
                 .Where(c => !purchasedCourseIds.Contains(c.CourseId))
                 .Include(c => c.Level)
                 .Include(c => c.Staff)
+                .AsNoTracking()
                 .ToList();
 
             // Tạo và trả về CourseViewModels
             var courseViewModels = availableCourses.Select(c => new CourseViewModel
             {
                 Course = c,
-                LevelName = c.Level?.Name, // Giả sử Level có thuộc tính Name
-                StaffName = c.Staff?.StaffName, // Giả sử Staff có thuộc tính Name
-                IsInFavorites = _ctx.FavLists.Any(f => f.UserId == userId && f.CourseId == c.CourseId)
+                LevelName = c.Level?.Name,
+                StaffName = c.Staff?.StaffName,
+                IsInFavorites = favoriteCourseIds.Contains(c.CourseId)
             }).ToList();
 
             return courseViewModels;
@@ -118,6 +125,7 @@ namespace WeLearnOnine_Website.Repositories
             var courses = _ctx.Courses
                 .Include(c => c.Level)
                 .Include(c => c.Staff)
+                .AsNoTracking()
                 .ToList();
 
             // Tạo danh sách CourseViewModel
