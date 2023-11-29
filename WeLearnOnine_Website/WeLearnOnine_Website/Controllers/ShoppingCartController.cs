@@ -37,6 +37,23 @@ namespace WeLearnOnine_Website.Controllers
             return View(viewModel);
         }
 
+        public IActionResult PurchaseHistory()
+        {
+            var userId = 4;
+            var bill = _billRepository.GetPendingBillByUserId(userId);
+            if (bill.Status == "Payment Successful")
+            {
+                return View("DetailBillSuccess"); // Hiển thị Details Bill khi có trạng thái "Payment Successful"
+            }
+
+            var viewModel = new ShoppingCartViewModel
+            {
+                Bill = bill
+            };
+
+            return View(viewModel);
+        }
+
         [HttpPost]
         public IActionResult AddToCart(int courseId)
         {
