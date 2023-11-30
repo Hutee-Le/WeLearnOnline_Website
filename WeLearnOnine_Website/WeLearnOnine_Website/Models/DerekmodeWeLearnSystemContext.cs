@@ -100,6 +100,7 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
             entity.Property(e => e.BillId).HasColumnName("BillID");
             entity.Property(e => e.CourseId).HasColumnName("CourseID");
             entity.Property(e => e.Date).HasColumnType("datetime");
+            entity.Property(e => e.DiscountPrice).HasColumnType("money");
             entity.Property(e => e.Price).HasColumnType("money");
 
             entity.HasOne(d => d.Bill).WithMany(p => p.BillDetails)
@@ -378,7 +379,7 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
         {
             entity.HasKey(e => e.Ucrid);
 
-            entity.ToTable("User_Course_Rating");
+            entity.ToTable("User_Course_Rating", tb => tb.HasTrigger("trg_CalculateCourseRating"));
 
             entity.Property(e => e.Ucrid).HasColumnName("UCRID");
             entity.Property(e => e.CourseId).HasColumnName("CourseID");

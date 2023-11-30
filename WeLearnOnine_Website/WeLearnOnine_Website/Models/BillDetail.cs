@@ -15,6 +15,8 @@ public partial class BillDetail
 
     public DateTime Date { get; set; }
 
+    public decimal? DiscountPrice { get; set; }
+
     public virtual Bill Bill { get; set; } = null!;
 
     public virtual Course Course { get; set; } = null!;

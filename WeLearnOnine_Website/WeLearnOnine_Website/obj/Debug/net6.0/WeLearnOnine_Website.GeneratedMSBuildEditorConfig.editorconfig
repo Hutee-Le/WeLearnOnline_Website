@@ -9,205 +9,209 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WeLearnOnine_Website
 build_property.RootNamespace = WeLearnOnine_Website
-build_property.ProjectDir = E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\
+build_property.ProjectDir = E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website
+build_property.MSBuildProjectDirectory = E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Bill/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Bill/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmlsbFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Bill/_BillDetailsViewPartial.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Bill/_BillDetailsViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmlsbFxfQmlsbERldGFpbHNWaWV3UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/CreateCategory.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/CreateCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ3JlYXRlQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/EditCategory.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/EditCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRWRpdENhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/Index2.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Category/Index2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXgyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/CreateCourse.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/CreateCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cnNlXENyZWF0ZUNvdXJzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/EditCourse.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/EditCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cnNlXEVkaXRDb3Vyc2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cnNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/ShowCourseByCategory.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/ShowCourseByCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cnNlXFNob3dDb3Vyc2VCeUNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/_PopupViewPartial.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Course/_PopupViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cnNlXF9Qb3B1cFZpZXdQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Home/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Home/ListCourse.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Home/ListCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxMaXN0Q291cnNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/CreateLesson.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/CreateLesson.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGVzc29uXENyZWF0ZUxlc3Nvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/EditLesson.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/EditLesson.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGVzc29uXEVkaXRMZXNzb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGVzc29uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/ShowLessonByCourse.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/ShowLessonByCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGVzc29uXFNob3dMZXNzb25CeUNvdXJzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/_DetailViewPartial.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/_DetailViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGVzc29uXF9EZXRhaWxWaWV3UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/_LessonDetailsViewPartial.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Lesson/_LessonDetailsViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGVzc29uXF9MZXNzb25EZXRhaWxzVmlld1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/CreateStaff.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/CreateStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcQ3JlYXRlU3RhZmYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/EditStaff.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/EditStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcRWRpdFN0YWZmLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/_PopupViewPartial.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/Staff/_PopupViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3RhZmZcX1BvcHVwVmlld1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/User/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/_ViewImports.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/_ViewStart.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Comment.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Comment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENvbW1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/CourseByCategory.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/CourseByCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENvdXJzZUJ5Q2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Details.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Search.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Course/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXFNlYXJjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Home/FavList.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Home/FavList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGYXZMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Home/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Home/Privacy.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlMZWFyblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/MyCourses.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/MyCourses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlMZWFyblxNeUNvdXJzZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/MyLearningLessons.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/MyLearningLessons.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlMZWFyblxNeUxlYXJuaW5nTGVzc29ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/PostComment.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/PostComment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlMZWFyblxQb3N0Q29tbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Shared/Error.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/MyLearn/ReplyToComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlMZWFyblxSZXBseVRvQ29tbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/DetailBillSuccess.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/DetailBillSuccess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XERldGFpbEJpbGxTdWNjZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/EmptyCart.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/EmptyCart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEVtcHR5Q2FydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/Index.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/IndexDemo.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/IndexDemo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XEluZGV4RGVtby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/PurchaseHistory.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/ShoppingCart/PurchaseHistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcHBpbmdDYXJ0XFB1cmNoYXNlSGlzdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/_ViewImports.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/_ViewStart.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DACNA - GIT KRAREN/WeLearnOnline_Website/WeLearnOnine_Website/WeLearnOnine_Website/Views/Shared/_Layout.cshtml]
+[E:/WeLearnOnline_Project/WeLearnOnine_Website/WeLearnOnine_Website/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-1pplh8h25p
