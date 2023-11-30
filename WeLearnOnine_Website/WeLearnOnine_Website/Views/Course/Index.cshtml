@@ -647,15 +647,7 @@
         </div>
 
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                // jquery for toggle sub menu
-                $('.sub-btn').click(function () {
-                    $(this).next('.sub-menu').slideToggle();
-                    $(this).find('.dropdown').toggleClass('rotate');
-                });
-            });
-        </script>
+        
     </div>
     <div id="filter-course">
         @foreach(var item in Model)
@@ -785,3 +777,43 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // jquery for toggle sub menu
+        $('.sub-btn').click(function () {
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+        });
+    });
+
+    $(document).ready(function () {
+        $('.btn-favor').click(function (e) {
+            e.preventDefault();
+            var button = $(this);
+            var courseId = button.siblings('input[name="courseId"]').val();
+            var isInFavorites = button.hasClass('favorited');
+            var url = isInFavorites ? '/Course/RemoveFromFavorites' : '/Course/AddToFavorites';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: { courseId: courseId },
+                success: function (data) {
+                    if (data.success) {
+                        button.toggleClass('favorited');
+                        var icon = button.find('i');
+                        icon.toggleClass('bi-heart');
+                        icon.toggleClass('bi-heart-fill');
+                    } else {
+                        alert(data.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle any errors here
+                    console.error("Error occurred: " + error);
+                }
+            });
+        });
+    });
+</script>
