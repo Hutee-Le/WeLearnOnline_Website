@@ -12,7 +12,12 @@ builder.Services.AddControllersWithViews();
 //Dependency Injection
 builder.Services.AddDbContext<DerekmodeWeLearnSystemContext>(options =>
 {
-	options.UseSqlServer(connectionString);
+    options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+    });
+
+
 });
 
 builder.WebHost.ConfigureKestrel(options =>
