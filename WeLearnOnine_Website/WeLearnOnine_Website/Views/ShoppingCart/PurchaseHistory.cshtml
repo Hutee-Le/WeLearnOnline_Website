@@ -1,0 +1,76 @@
+﻿@model WeLearnOnine_Website.ViewModels.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Purchase History";
+}
+
+<!-- breadcrumb start -->
+<div class="breadcrumb-nav">
+    <div class="container-fluid mx-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Purchase History</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- Purchase History -->
+@{
+    int counter = 1;
+}
+
+@foreach (var item in Model.Bill.BillDetails)
+{
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-heading-@counter">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapse-@counter" aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapse-@counter">
+                @(item.BillDetailId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString()) - Đã kích hoạt
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapse-@counter" class="accordion-collapse collapse show"
+             aria-labelledby="panelsStayOpen-heading-@counter">
+            <div class="accordion-body">
+                <div class="ant-collapse-content-box">
+                    <div class="ant-row" style="margin-left: -12px; margin-right: -12px; row-gap: 24px;">
+                        <div class="ant-col ant-col-xs-24 ant-col-md-24 ant-col-lg-24"
+                             style="padding-left: 12px; padding-right: 12px;">
+                            <p>code: @(item.BillDetailId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</p>
+                            <p>Account: Ngoc Quoc Nguyen - ngocquocnguyen2002@gmail.com</p>
+                            <p>Combo</p>
+                            <p>Courses:</p>
+                            <ul>
+                                <li>
+                                    @item.Course.Title - @item.Price.ToString("#,##0")đ
+                                    <span role="img" aria-label="check-circle"
+                                          class="anticon anticon-check-circle">
+                                        <svg viewBox="64 64 896 896"
+                                             focusable="false" data-icon="check-circle" width="1em"
+                                             height="1em" fill="currentColor" aria-hidden="true">
+                                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                                  fill="#52c41a"></path>
+                                            <path d="M512 140c-205.4 0-372 166.6-372 372s166.6 372 372 372 372-166.6 372-372-166.6-372-372-372zm193.4 225.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.3 0 19.9 5 25.9 13.3l71.2 98.8 157.2-218c6-8.4 15.7-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.4 12.7z"
+                                                  fill="#f6ffed"></path>
+                                            <path d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0051.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"
+                                                  fill="#52c41a"></path>
+                                        </svg>
+                                    </span>
+                                </li>
+                            </ul>
+                            <p class="mt-2">Contact: quốc - 0949272244</p>
+                            <p>Total Ticket: 6</p>
+
+                            <p>Total Price: @item.Price.ToString("#,##0")đ</p>
+                        </div>
+                        <div class="btn-showDetail" style="padding-left: 12px; padding-right: 12px;">
+                            <a class="view-detail-history-payment" asp-action="PurchaseHistory" asp-controller="ShoppingCart">Xem chi tiết đơn hàng</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    counter++;
+}

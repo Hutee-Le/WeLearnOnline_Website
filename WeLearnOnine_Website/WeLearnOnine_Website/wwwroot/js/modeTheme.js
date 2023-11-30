@@ -27,58 +27,8 @@ window.addEventListener("load", () => {
 //  document.head.appendChild(newLink);
 //}
 
-
-/*--------------------------------------------------------------------
-        ********** Style switcher
----------------------------------------------------------------------- */
-function styleSwitcherToggle() {
-  const styleSwitcher = document.querySelector('.js-style-switcher'),
-    styleSwitcherToggler = document.querySelector('.js-style-switcher-toggler');
-
-  styleSwitcherToggler.addEventListener("click", function () {
-    styleSwitcher.classList.toggle("open");
-    this.querySelector("i").classList.toggle("fa-times");
-    this.querySelector("i").classList.toggle("fa-cog");
-  })
-}
-styleSwitcherToggle();
-
-/*--------------------------------------------------------------------
-        ********** Theme colors
----------------------------------------------------------------------- */
-//function themeColors() {
-//  const colorStyle = document.querySelector(".js-color-style"),
-//    themeColorsContainer = document.querySelector(".js-theme-colors");
-
-//  themeColorsContainer.addEventListener("click", ({ target }) => {
-//    if (target.classList.contains("js-theme-color-item")) {
-//      localStorage.setItem("color", target.getAttribute("data-js-theme-color"));
-//      setColor();
-//    }
-//  });
-
-//  function setColor() {
-//    let path = colorStyle.getAttribute("href").split("/");
-//    path = path.slice(0, path.length - 1);
-//    colorStyle.setAttribute("href", path.join("/") + "/" + localStorage.getItem("color") + ".css");
-
-//    if (document.querySelector(".js-theme-color-item.active")) {
-//      document.querySelector(".js-theme-color-item.active").classList.remove("active");
-//    }
-//    document.querySelector("[data-js-theme-color=" + localStorage.getItem("color") + "]").classList.add("active");
-//  }
-
-//  if (localStorage.getItem("color") != null) {
-//    setColor();
-//  }
-//  else {
-//    const defaultColor = colorStyle.getAttribute("href");
-//    document.querySelector("[data-js-theme-color=" + defaultColor + "]").classList.add("active");
-//  }
-//}
-//themeColors();
 // Đường dẫn mặc định cho CSS
-const defaultCssPath = '@defaultCssPath';
+const defaultCssPath = "/css/colors/color-1.css";
 
 // Tìm phần tử <link> với đường dẫn CSS mặc định
 const link = document.querySelector(`link[href="${defaultCssPath}"]`);
@@ -95,6 +45,22 @@ if (link) {
     newLink.classList.add('js-color-style');
     document.head.appendChild(newLink);
 }
+
+
+/*--------------------------------------------------------------------
+        ********** Style switcher
+---------------------------------------------------------------------- */
+function styleSwitcherToggle() {
+  const styleSwitcher = document.querySelector('.js-style-switcher'),
+    styleSwitcherToggler = document.querySelector('.js-style-switcher-toggler');
+
+  styleSwitcherToggler.addEventListener("click", function () {
+    styleSwitcher.classList.toggle("open");
+    this.querySelector("i").classList.toggle("fa-times");
+    this.querySelector("i").classList.toggle("fa-cog");
+  })
+}
+styleSwitcherToggle();
 
 /*--------------------------------------------------------------------
         ********** Theme colors
@@ -129,7 +95,6 @@ function themeColors() {
         document.querySelector("[data-js-theme-color=" + defaultColor + "]").classList.add("active");
     }
 }
-
 themeColors();
 
 
@@ -168,43 +133,43 @@ themeLightDark();
 /*--------------------------------------------------------------------
     ********** Auto increase
 ---------------------------------------------------------------------- */
-let nums = document.querySelectorAll(".box .fun-facts-item .counter");
-let section = document.querySelector(".fun-facts-section");
-let windowHeight = window.innerHeight;
-let started = false;
+//let nums = document.querySelectorAll(".box .fun-facts-item .counter");
+//let section = document.querySelector(".fun-facts-section");
+//let windowHeight = window.innerHeight;
+//let started = false;
 
-window.addEventListener('scroll', function () {
-    if (!started && isElementInViewport(section)) {
-        nums.forEach((num) => startCount(num));
-        started = true;
-    }
-});
+//window.addEventListener('scroll', function () {
+//    if (!started && isElementInViewport(section)) {
+//        nums.forEach((num) => startCount(num));
+//        started = true;
+//    }
+//});
 
-function isElementInViewport(element) {
-    let rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    );
-}
+//function isElementInViewport(element) {
+//    let rect = element.getBoundingClientRect();
+//    return (
+//        rect.top >= 0 &&
+//        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+//    );
+//}
 
-function startCount(el) {
-    let goal = parseInt(el.dataset.goal);
-    let currentCount = 0;
-    let increment = Math.ceil(goal / 70);  // Adjust the increment as needed
+//function startCount(el) {
+//    let goal = parseInt(el.dataset.goal);
+//    let currentCount = 0;
+//    let increment = Math.ceil(goal / 70);  // Adjust the increment as needed
 
-    let countInterval = setInterval(() => {
-        currentCount += increment;
-        if (currentCount > goal) {
-            currentCount = goal;
-            clearInterval(countInterval);
-        }
+//    let countInterval = setInterval(() => {
+//        currentCount += increment;
+//        if (currentCount > goal) {
+//            currentCount = goal;
+//            clearInterval(countInterval);
+//        }
 
-        // Extract the existing content and spans
-        let existingContent = el.innerHTML;
-        let existingSpan = existingContent.match(/<span>[^<]*<\/span>/);
+//        // Extract the existing content and spans
+//        let existingContent = el.innerHTML;
+//        let existingSpan = existingContent.match(/<span>[^<]*<\/span>/);
 
-        // Update the numerical count and reinsert the spans
-        el.innerHTML = currentCount + (existingSpan ? existingSpan[0] : '');
-    }, 100);
-}
+//        // Update the numerical count and reinsert the spans
+//        el.innerHTML = currentCount + (existingSpan ? existingSpan[0] : '');
+//    }, 100);
+//}

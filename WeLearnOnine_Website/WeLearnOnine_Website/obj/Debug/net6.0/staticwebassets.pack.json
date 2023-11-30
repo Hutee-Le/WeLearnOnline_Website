@@ -1,1107 +1,1107 @@
 {
   "Files": [
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WeLearnOnine_Website.bundle.scp.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WeLearnOnine_Website.bundle.scp.css",
       "PackagePath": "staticwebassets\\WeLearnOnine_Website.bundle.scp.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\css\\demo.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\css\\demo.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\css\\demo.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\1.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\1.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\avatars\\1.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\5.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\5.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\avatars\\5.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\6.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\6.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\avatars\\6.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\7.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\avatars\\7.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\avatars\\7.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\backgrounds\\18.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\backgrounds\\18.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\backgrounds\\18.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\1.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\1.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\1.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\11.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\11.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\11.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\12.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\12.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\12.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\13.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\13.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\13.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\17.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\17.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\17.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\18.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\18.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\18.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\19.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\19.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\19.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\2.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\2.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\2.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\20.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\20.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\20.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\3.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\3.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\3.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\4.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\4.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\4.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\5.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\5.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\5.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\7.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\elements\\7.jpg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\elements\\7.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\favicon\\favicon.ico",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\favicon\\favicon.ico",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\favicon\\favicon.ico"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\asana.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\asana.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\asana.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\behance.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\behance.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\behance.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\dribbble.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\dribbble.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\dribbble.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\facebook.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\facebook.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\facebook.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\github.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\github.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\github.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\google.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\google.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\google.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\instagram.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\instagram.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\instagram.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\mailchimp.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\mailchimp.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\mailchimp.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\slack.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\slack.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\slack.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\twitter.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\brands\\twitter.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\brands\\twitter.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-primary.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-primary.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-primary.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-success.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-success.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-success.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-warning.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-warning.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\cc-warning.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\chart-success.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\chart-success.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\chart-success.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\chart.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\chart.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\chart.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\paypal.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\paypal.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\paypal.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\wallet-info.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\wallet-info.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\wallet-info.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\wallet.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\icons\\unicons\\wallet.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\icons\\unicons\\wallet.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\illustrations\\girl-doing-yoga-light.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\illustrations\\girl-doing-yoga-light.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\illustrations\\girl-doing-yoga-light.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\illustrations\\man-with-laptop-light.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\illustrations\\man-with-laptop-light.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\illustrations\\man-with-laptop-light.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\illustrations\\page-misc-error-light.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\illustrations\\page-misc-error-light.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\illustrations\\page-misc-error-light.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-container-light.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-container-light.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\layouts\\layout-container-light.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-fluid-light.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-fluid-light.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\layouts\\layout-fluid-light.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-without-menu-light.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-without-menu-light.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\layouts\\layout-without-menu-light.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-without-navbar-light.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\img\\layouts\\layout-without-navbar-light.png",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\img\\layouts\\layout-without-navbar-light.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\config.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\config.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\config.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\dashboards-analytics.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\dashboards-analytics.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\dashboards-analytics.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\extended-ui-perfect-scrollbar.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\extended-ui-perfect-scrollbar.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\extended-ui-perfect-scrollbar.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\form-basic-inputs.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\form-basic-inputs.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\form-basic-inputs.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\main.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\main.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\main.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\pages-account-settings-account.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\pages-account-settings-account.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\pages-account-settings-account.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\ui-modals.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\ui-modals.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\ui-modals.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\ui-popover.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\ui-popover.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\ui-popover.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\ui-toasts.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\js\\ui-toasts.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\js\\ui-toasts.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\core.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\core.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\css\\core.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-account-settings.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-account-settings.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-account-settings.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-auth.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-auth.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-auth.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-icons.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-icons.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-icons.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-misc.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-misc.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\css\\pages\\page-misc.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\theme-default.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\css\\theme-default.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\css\\theme-default.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.eot",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.eot",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.eot"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.svg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.svg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.svg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.ttf",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.ttf",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.ttf"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.woff",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.woff",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.woff"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.woff2",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.woff2",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\fonts\\boxicons\\boxicons.woff2"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\js\\bootstrap.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\js\\bootstrap.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\js\\helpers.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\js\\helpers.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\js\\helpers.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\js\\menu.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\js\\menu.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\js\\menu.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\apex-charts\\apex-charts.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\apex-charts\\apex-charts.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\apex-charts\\apex-charts.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\apex-charts\\apexcharts.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\apex-charts\\apexcharts.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\apex-charts\\apexcharts.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight-github.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight-github.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight-github.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\highlight\\highlight.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\jquery\\jquery.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\jquery\\jquery.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\jquery\\jquery.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\masonry\\masonry.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\masonry\\masonry.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\masonry\\masonry.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\perfect-scrollbar\\perfect-scrollbar.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\perfect-scrollbar\\perfect-scrollbar.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\perfect-scrollbar\\perfect-scrollbar.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\perfect-scrollbar\\perfect-scrollbar.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\perfect-scrollbar\\perfect-scrollbar.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\perfect-scrollbar\\perfect-scrollbar.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\popper\\popper.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\assets\\vendor\\libs\\popper\\popper.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\assets\\vendor\\libs\\popper\\popper.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\css\\table.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\css\\table.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\css\\table.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\core.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\core.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\css\\core.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-account-settings.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-account-settings.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\css\\pages\\page-account-settings.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-auth.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-auth.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\css\\pages\\page-auth.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-icons.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-icons.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\css\\pages\\page-icons.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-misc.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\pages\\page-misc.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\css\\pages\\page-misc.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\theme-default.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\css\\theme-default.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\css\\theme-default.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\fonts\\boxicons.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.eot",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.eot",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.eot"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.svg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.svg",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.svg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.ttf",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.ttf",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.ttf"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.woff",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.woff",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.woff"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.woff2",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.woff2",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\fonts\\boxicons\\boxicons.woff2"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\js\\bootstrap.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\js\\helpers.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\js\\helpers.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\js\\helpers.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\js\\menu.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\js\\menu.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\js\\menu.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\apex-charts\\apex-charts.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\apex-charts\\apex-charts.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\apex-charts\\apex-charts.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\apex-charts\\apexcharts.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\apex-charts\\apexcharts.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\apex-charts\\apexcharts.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\highlight\\highlight-github.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\highlight\\highlight-github.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\highlight\\highlight-github.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\highlight\\highlight.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\highlight\\highlight.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\highlight\\highlight.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\highlight\\highlight.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\highlight\\highlight.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\highlight\\highlight.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\jquery\\jquery.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\jquery\\jquery.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\jquery\\jquery.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\masonry\\masonry.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\masonry\\masonry.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\masonry\\masonry.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\perfect-scrollbar\\perfect-scrollbar.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\perfect-scrollbar\\perfect-scrollbar.css",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\perfect-scrollbar\\perfect-scrollbar.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\perfect-scrollbar\\perfect-scrollbar.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\perfect-scrollbar\\perfect-scrollbar.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\perfect-scrollbar\\perfect-scrollbar.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\popper\\popper.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\dist\\libs\\popper\\popper.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\dist\\libs\\popper\\popper.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\fonts\\boxicons.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\fonts\\boxicons.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\fonts\\boxicons.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\bootstrap.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\js\\bootstrap.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\helpers.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\helpers.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\js\\helpers.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\menu - Copy.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\menu - Copy.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\js\\menu - Copy.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\menu.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\menu.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\js\\menu.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\table.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\js\\table.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\js\\table.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\apex-charts\\apex-charts.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\apex-charts\\apex-charts.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\apex-charts\\apex-charts.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\apex-charts\\apexcharts.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\apex-charts\\apexcharts.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\apex-charts\\apexcharts.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\highlight\\highlight-github.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\highlight\\highlight-github.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\highlight\\highlight-github.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\highlight\\highlight.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\highlight\\highlight.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\highlight\\highlight.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\highlight\\highlight.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\highlight\\highlight.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\highlight\\highlight.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\jquery\\jquery.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\jquery\\jquery.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\jquery\\jquery.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\masonry\\masonry.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\masonry\\masonry.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\masonry\\masonry.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\perfect-scrollbar\\perfect-scrollbar.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\perfect-scrollbar\\perfect-scrollbar.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\perfect-scrollbar\\perfect-scrollbar.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\perfect-scrollbar\\perfect-scrollbar.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\perfect-scrollbar\\perfect-scrollbar.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\perfect-scrollbar\\perfect-scrollbar.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\popper\\popper.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\libs\\popper\\popper.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\libs\\popper\\popper.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_accordion.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_accordion.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_accordion.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_alert.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_alert.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_alert.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_badge.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_badge.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_badge.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_breadcrumb.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_breadcrumb.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_breadcrumb.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_button-group.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_button-group.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_button-group.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_buttons.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_buttons.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_buttons.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_card.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_card.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_card.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_carousel.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_carousel.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_carousel.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_close.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_close.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_close.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_dropdown.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_dropdown.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_dropdown.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_forms.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_forms.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_forms.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_functions.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_functions.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_functions.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_include.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_include.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_include.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_list-group.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_list-group.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_list-group.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_mixins.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_mixins.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_mixins.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_modal.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_modal.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_modal.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_nav.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_nav.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_nav.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_navbar.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_navbar.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_navbar.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_offcanvas.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_offcanvas.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_offcanvas.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_pagination.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_pagination.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_pagination.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_popover.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_popover.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_popover.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_progress.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_progress.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_progress.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_reboot.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_reboot.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_reboot.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_root.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_root.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_root.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_spinners.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_spinners.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_spinners.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_tables.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_tables.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_tables.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_toasts.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_toasts.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_toasts.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_tooltip.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_tooltip.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_tooltip.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_type.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_type.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_type.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_utilities-ltr.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_utilities-ltr.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_utilities-ltr.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_utilities.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_utilities.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_utilities.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_variables.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\_variables.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\_variables.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_floating-labels.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_floating-labels.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_floating-labels.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-control.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-control.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-control.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-range.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-range.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-range.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-select.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-select.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_form-select.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_input-group.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_input-group.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_input-group.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_labels.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_labels.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_labels.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_validation.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_validation.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\forms\\_validation.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_alert.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_alert.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_alert.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_badge.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_badge.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_badge.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_buttons.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_buttons.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_buttons.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_caret.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_caret.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_caret.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_dropdown.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_dropdown.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_dropdown.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_forms.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_forms.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_forms.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_list-group.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_list-group.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_list-group.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_misc.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_misc.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_misc.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_navs.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_navs.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_navs.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_pagination.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_pagination.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_pagination.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_progress.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_progress.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_progress.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_table-variants.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_table-variants.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_table-variants.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_toasts.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_toasts.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap-extended\\mixins\\_toasts.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_bootstrap.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_bootstrap.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_colors.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_colors.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_colors.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_app-brand.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_app-brand.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_app-brand.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_avatar.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_avatar.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_avatar.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_base.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_base.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_base.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_common.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_common.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_common.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_footer.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_footer.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_footer.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_include.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_include.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_include.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_layout.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_layout.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_layout.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_menu.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_menu.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_menu.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_mixins.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_mixins.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_mixins.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_text-divider.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_text-divider.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_text-divider.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_variables.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\_variables.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\_variables.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_app-brand.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_app-brand.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\mixins\\_app-brand.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_avatar.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_avatar.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\mixins\\_avatar.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_footer.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_footer.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\mixins\\_footer.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_menu.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_menu.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\mixins\\_menu.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_misc.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_misc.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\mixins\\_misc.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_navbar.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_navbar.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\mixins\\_navbar.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_text-divider.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_components\\mixins\\_text-divider.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_components\\mixins\\_text-divider.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_bootstrap-extended.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_bootstrap-extended.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_custom-variables\\_bootstrap-extended.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_components.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_components.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_custom-variables\\_components.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_libs.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_libs.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_custom-variables\\_libs.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_pages.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_pages.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_custom-variables\\_pages.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_support.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_custom-variables\\_support.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_custom-variables\\_support.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_theme\\_common.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_theme\\_common.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_theme\\_common.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_theme\\_theme.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\_theme\\_theme.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\_theme\\_theme.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\core.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\core.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\core.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-account-settings.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-account-settings.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\pages\\page-account-settings.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-auth.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-auth.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\pages\\page-auth.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-icons.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-icons.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\pages\\page-icons.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-misc.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\pages\\page-misc.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\pages\\page-misc.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\theme-default.scss",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\scss\\theme-default.scss",
       "PackagePath": "staticwebassets\\LayoutAdmin\\scss\\theme-default.scss"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\tasks\\build.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\tasks\\build.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\tasks\\build.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\tasks\\prod.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\LayoutAdmin\\tasks\\prod.js",
       "PackagePath": "staticwebassets\\LayoutAdmin\\tasks\\prod.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\bootstrap.min.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-1.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-1.css",
       "PackagePath": "staticwebassets\\css\\colors\\color-1.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-2.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-2.css",
       "PackagePath": "staticwebassets\\css\\colors\\color-2.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-3.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-3.css",
       "PackagePath": "staticwebassets\\css\\colors\\color-3.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-4.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-4.css",
       "PackagePath": "staticwebassets\\css\\colors\\color-4.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-5.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\colors\\color-5.css",
       "PackagePath": "staticwebassets\\css\\colors\\color-5.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\courses-test.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\courses-test.css",
       "PackagePath": "staticwebassets\\css\\courses-test.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\font-awesome.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\font-awesome.css",
       "PackagePath": "staticwebassets\\css\\font-awesome.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\owl.carousel.min.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\owl.carousel.min.css",
       "PackagePath": "staticwebassets\\css\\owl.carousel.min.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\owl.theme.default.min.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\owl.theme.default.min.css",
       "PackagePath": "staticwebassets\\css\\owl.theme.default.min.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\style.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\swiper-bundle.css",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\css\\swiper-bundle.css",
       "PackagePath": "staticwebassets\\css\\swiper-bundle.css"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\bai-img.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\bai-img.png",
       "PackagePath": "staticwebassets\\img\\bai-img.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\banner-img.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\banner-img.png",
       "PackagePath": "staticwebassets\\img\\banner-img.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\health\\1.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\health\\1.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\health\\1.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\health\\2.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\health\\2.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\health\\2.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\music\\1.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\music\\1.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\music\\1.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\music\\2.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\music\\2.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\music\\2.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\1.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\1.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\1.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\2.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\2.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\2.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\3.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\3.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\3.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\4.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\4.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\4.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\CSS.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\CSS.png",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\CSS.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\ai.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\ai.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\ai.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\asp.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\asp.png",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\asp.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\html.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\html.png",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\html.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\js.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\js.png",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\js.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\learnpython.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\learnpython.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\learnpython.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\web3.jpg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\courses\\web-development\\web3.jpg",
       "PackagePath": "staticwebassets\\img\\courses\\web-development\\web3.jpg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\instructor\\1.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\instructor\\1.png",
       "PackagePath": "staticwebassets\\img\\instructor\\1.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\logoWeLearn.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\logoWeLearn.png",
       "PackagePath": "staticwebassets\\img\\logoWeLearn.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\online-education.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\online-education.png",
       "PackagePath": "staticwebassets\\img\\online-education.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\review\\1.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\review\\1.png",
       "PackagePath": "staticwebassets\\img\\review\\1.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\testimonial\\1.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\testimonial\\1.png",
       "PackagePath": "staticwebassets\\img\\testimonial\\1.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\testimonial\\2.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\testimonial\\2.png",
       "PackagePath": "staticwebassets\\img\\testimonial\\2.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\testimonial\\3.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\testimonial\\3.png",
       "PackagePath": "staticwebassets\\img\\testimonial\\3.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\main.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\modeTheme.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\modeTheme.js",
       "PackagePath": "staticwebassets\\js\\modeTheme.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\owl.carousel.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\owl.carousel.js",
       "PackagePath": "staticwebassets\\js\\owl.carousel.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\owl.carousel.min.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\owl.carousel.min.js",
       "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\swiper-bundle.min.js",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\js\\swiper-bundle.min.js",
       "PackagePath": "staticwebassets\\js\\swiper-bundle.min.js"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\1. home page.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\1. home page.png",
       "PackagePath": "staticwebassets\\screenshots\\1. home page.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\2. courses page.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\2. courses page.png",
       "PackagePath": "staticwebassets\\screenshots\\2. courses page.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\3. course detail page.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\3. course detail page.png",
       "PackagePath": "staticwebassets\\screenshots\\3. course detail page.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\4. login page.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\4. login page.png",
       "PackagePath": "staticwebassets\\screenshots\\4. login page.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\5. sign up page.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\5. sign up page.png",
       "PackagePath": "staticwebassets\\screenshots\\5. sign up page.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\6. contact page.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\6. contact page.png",
       "PackagePath": "staticwebassets\\screenshots\\6. contact page.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\7. style switcher.png",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\screenshots\\7. style switcher.png",
       "PackagePath": "staticwebassets\\screenshots\\7. style switcher.png"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\video\\course-preview.mp4",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\video\\course-preview.mp4",
       "PackagePath": "staticwebassets\\video\\course-preview.mp4"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.eot",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.eot",
       "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.eot"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.svg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.svg",
       "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.svg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.ttf",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.ttf",
       "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.ttf"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.woff",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.woff",
       "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.woff"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.woff2",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-brands-400.woff2",
       "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.woff2"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.eot",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.eot",
       "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.eot"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.svg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.svg",
       "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.svg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.ttf",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.ttf",
       "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.ttf"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.woff",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.woff",
       "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.woff"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.woff2",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-regular-400.woff2",
       "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.woff2"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.eot",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.eot",
       "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.eot"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.svg",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.svg",
       "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.svg"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.ttf",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.ttf",
       "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.ttf"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.woff",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.woff",
       "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.woff"
     },
     {
-      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.woff2",
+      "Id": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\webfonts\\fa-solid-900.woff2",
       "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.woff2"
     },
     {

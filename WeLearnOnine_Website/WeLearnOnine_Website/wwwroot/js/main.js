@@ -2,13 +2,13 @@
         ********** Testimonial slider
 ---------------------------------------------------------------------- */
 function TestimonialSlider() {
-  const carouselOne = document.getElementById('carouselOne');
-  if (carouselOne) {
-    carouselOne.addEventListener('slide.bs.carousel', function () {
-      const activeItem = this.querySelector(".active");
-      document.querySelector(".js-testimonial-img").src = activeItem.getAttribute("data-js-testimonial-img");
-    })
-  }
+    const carouselOne = document.getElementById('carouselOne');
+    if (carouselOne) {
+        carouselOne.addEventListener('slide.bs.carousel', function () {
+            const activeItem = this.querySelector(".active");
+            document.querySelector(".js-testimonial-img").src = activeItem.getAttribute("data-js-testimonial-img");
+        })
+    }
 }
 TestimonialSlider();
 
@@ -16,17 +16,17 @@ TestimonialSlider();
         ********** Course preview video
 ---------------------------------------------------------------------- */
 function coursePreviewVideo() {
-  const coursePreviewModal = document.querySelector('.js-course-preview-modal');
-  if (coursePreviewModal) {
-    coursePreviewModal.addEventListener('shown.bs.modal', function () {
-      this.querySelector(".js-course-preview-video").play();
-      this.querySelector(".js-course-preview-video").currentTime = 0;
-    });
+    const coursePreviewModal = document.querySelector('.js-course-preview-modal');
+    if (coursePreviewModal) {
+        coursePreviewModal.addEventListener('shown.bs.modal', function () {
+            this.querySelector(".js-course-preview-video").play();
+            this.querySelector(".js-course-preview-video").currentTime = 0;
+        });
 
-    coursePreviewModal.addEventListener('hide.bs.modal', function () {
-      this.querySelector(".js-course-preview-video").pause();
-    });
-  }
+        coursePreviewModal.addEventListener('hide.bs.modal', function () {
+            this.querySelector(".js-course-preview-video").pause();
+        });
+    }
 }
 
 
@@ -38,8 +38,8 @@ coursePreviewVideo()
 ---------------------------------------------------------------------- */
 const subMenuUser = document.getElementById("subMenuUser");
 function menuToggle() {
-  console.log("hi")
-  subMenuUser.classList.toggle('open-menu');
+    console.log("hi")
+    subMenuUser.classList.toggle('open-menu');
 }
 // menuToggle();
 
@@ -50,13 +50,13 @@ function menuToggle() {
 ---------------------------------------------------------------------- */
 // -----------------------------------------------------------------------------------/
 var swiper = new Swiper(".content", {
-  slidesPerView: 6,
-  spaceBetween: 10,
-  freeMode: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
+    slidesPerView: 6,
+    spaceBetween: 10,
+    freeMode: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
 });
 /*--------------------------------------------------------------------
         ********** Video Play list

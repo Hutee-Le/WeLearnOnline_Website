@@ -25,14 +25,7 @@
     <link rel="stylesheet" href="~/css/style.css">
 
     <!-- color Theme -->
-  @*   <link rel="stylesheet" href="~/css/colors/color-1.css"> *@
-    <!-- color Theme -->
-    @{
-        var defaultCssPath = Url.Content("~/css/colors/color-1.css");
-    }
-    <link id="colorStylesheet" rel="stylesheet" href="@defaultCssPath">
-
-
+    <link rel="stylesheet" href="~/css/colors/color-1.css">
 
     <!-- bootstrap icon cdn -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -113,7 +106,13 @@
                             </li>
                             <li class="menu-item"><a asp-action="Index" asp-controller="Mylearn">My learning</a></li>
                             <li class="menu-item icon-color-theme"><a href="#"><i class="far fa-heart"></i></a></li>
-                            <li class="menu-item"><a asp-action="Index" asp-controller="ShoppingCart"><i class="fas fa-shopping-cart"></i></a></li>
+                            <li class="menu-item">
+                                <a href="#" class="js-toggle-sub-menu"><i class="fas fa-shopping-cart"></i></a>
+                                <ul class="sub-menu js-sub-menu">
+                                    <li class="sub-menu-item"><a asp-action="Index" asp-controller="ShoppingCart">Current orders</a></li>
+                                    <li class="sub-menu-item"><a asp-action="PurchaseHistory" asp-controller="ShoppingCart">Purchase History</a></li>
+                                </ul>
+                            </li>
                             <li class="menu-item"><a href="#"><i class="far fa-bell"></i></a></li>
                         </ul>
                     </nav>

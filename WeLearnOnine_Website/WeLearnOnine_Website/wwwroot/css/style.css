@@ -31,6 +31,7 @@
     27. =contact section
     28. =videoPlaylist
     29. =Empty Cart & checkout
+    30. =Purchase-history
 
 ---------------------------------------------------------------------------------------------*/
 
@@ -723,7 +724,7 @@ select.form-control:focus option {
 
 .header .sub-menu-item a {
     display: block;
-    padding: 10px 40px;
+    padding: 10px 20px !important;
     margin-left: 10px;
     color: var(--black-90);
     text-transform: capitalize;
@@ -975,6 +976,25 @@ select.form-control:focus option {
 /*---------------------------------------------
 20. =footer
 -----------------------------------------------*/
+/*footer alway bottom*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+/*footer alway bottom*/
+
 .footer-top {
     padding: 50px 0 20px;
     border-top: 1px solid var(--border-color-2);
@@ -3246,3 +3266,32 @@ button.clearfilter {
 .Checkout-empty {
     height: 90vh;
 }
+
+/*purchase-history*/
+.accordion-item {
+    background-color: var(--white);
+}
+
+    .accordion-item button {
+        color: var(--main-color);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+.accordion-body ul li {
+    list-style: disc;
+    margin-left: 5%;
+    padding-bottom: 5px;
+}
+
+.accordion-body .btn-showDetail {
+    background-color: var(--main-color);
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+    .accordion-body .btn-showDetail a {
+        color: var(--WHITE);
+        font-weight: 600;
+    }
