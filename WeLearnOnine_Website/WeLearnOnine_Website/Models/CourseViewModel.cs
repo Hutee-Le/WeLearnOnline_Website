@@ -6,5 +6,6 @@
         public string? LevelName { get; set; }
         public string? StaffName { get; set; }
         public bool IsInFavorites { get; set; }
+        public bool IsInCart { get; set; }
     }
 }

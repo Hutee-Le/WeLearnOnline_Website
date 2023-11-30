@@ -141,7 +141,8 @@ namespace WeLearnOnine_Website.Repositories
                 Course = c,
                 LevelName = c.Level?.Name, 
                 StaffName = c.Staff?.StaffName, 
-                IsInFavorites = false 
+                IsInFavorites = false,
+                IsInCart = false
             }).ToList();
 
             return courseViewModels;
