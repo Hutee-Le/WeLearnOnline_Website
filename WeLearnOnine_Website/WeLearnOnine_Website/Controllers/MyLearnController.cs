@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 using WeLearnOnine_Website.ViewModels;
@@ -11,12 +13,14 @@ namespace WeLearnOnine_Website.Controllers
         private ICourseRepository _courseRepository;
         private readonly ICommentRepository _commentRepository;
         private ILessonRepository _lessonRepository;
-        public MyLearnController(IFavListRepository favListRepository, ICourseRepository courseRepository, ICommentRepository commentRepository, ILessonRepository lessonRepository)
+        private IUserCourseRatingRepository _userCourseRatingRepository;
+        public MyLearnController(IFavListRepository favListRepository, ICourseRepository courseRepository, ICommentRepository commentRepository, ILessonRepository lessonRepository, IUserCourseRatingRepository userCourseRatingRepository)
         {
             _favListRepository = favListRepository;
             _courseRepository = courseRepository;
             _commentRepository = commentRepository;
             _lessonRepository = lessonRepository;
+            _userCourseRatingRepository = userCourseRatingRepository;
         }
         public IActionResult Index(int? page)
         {
@@ -53,12 +57,7 @@ namespace WeLearnOnine_Website.Controllers
             {
                 return NotFound();
             }
-            //List<Lesson> lessons = _lessonRepository.GetLessonById(courseid, lessonid);
-
             List<Comment> comments = _commentRepository.GetById(courseid);
-            // var recentcomments = _commentRepository.GetRecentComments(courseid);
-            //var allComments = _commentRepository.GetCommentsByCourseId(courseid);
-
             // Phân trang
             var pageNumber = page ?? 1;
             //var commentsForPage = allComments.ToPagedList(pageNumber, pageSize);
@@ -95,44 +94,87 @@ namespace WeLearnOnine_Website.Controllers
                     ContentNote = model.ContentNote,
                     Date = DateTime.Now,
                 };
-
-                // Lưu comment vào cơ sở dữ liệu (sử dụng repository hoặc Entity Framework)
                 _commentRepository.AddComment(comment);
-                //var commentPartial = PartialView("PostComment", comment);
-                // Tạo một partial view chứa comment
-                //return View(model);
-                //var commentPartial = PartialView("PostComment", comment);
-                // Trả về partial view để hiển thị comment mà không cần chuyển trang
-                //return Json(new { success = true, comment = commentPartial });
+
                 return RedirectToAction("MyLearningLessons", new { courseid = CourseId });
             }
             // Validation errors occurred, return errors to the client
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             return Json(new { success = false, errors = errors });
         }
-        public IActionResult GetVideo(int courseId, int lessonid)
+        //[HttpPost]
+        //public IActionResult ReplyToComment(int parentCommentId, string replyContent)
+        //{
+        //    // Get the parent comment
+        //    var parentComment = _commentRepository.GetById(parentCommentId);
+
+        //    // Create a new reply
+        //    var reply = new Comment
+        //    {
+        //        ContentNote = replyContent,
+        //        UserId = 2, // Set the user ID accordingly
+        //        Date = DateTime.Now,
+        //        CourseId = parentComment.CourseId,
+        //        ReplyId = parentCommentId
+        //    };
+
+        //    // Save the reply to the database
+        //    _commentRepository.AddComment(reply);
+
+        //    return RedirectToAction("MyLearningLessons", new { courseid = parentComment.CourseId });
+        //}
+        public IActionResult ReplyToComment(DetailCourseViewModel model)
         {
-            var course = _courseRepository.FindCourseByID(courseId);
-            Lesson lesson = _lessonRepository.getLessonbyCourse(courseId, lessonid);
-            List<Comment> comments = _commentRepository.GetById(courseId);
 
-            DetailCourseViewModel model = new()
+            var CourseId = model.CourseId;
+            if (ModelState.IsValid)
             {
-                CourseId = course.CourseId,
-                Course = course,
-                StaffId = course.StaffId,
-                Comments = comments,
-                Currentlesson = lesson,
-                LessonId = lesson.LessonId,
-                ContentNote = "ContentNote",
-                UserName = "Linh",
-                Title = course.Title,
-                Date = DateTime.Now,
-                UserId = 2
-            };
-            // var moreComments = _commentRepository.GetMoreComments(courseId,les);
-            return View(model);
-        }
+                var comment = new Comment()
+                {
+                    CourseId = CourseId,
+                    //CmtId= model.Comment,
+                    StaffId = model.StaffId,
+                    ContentNote = model.ContentNote,
+                    Date = DateTime.Now,
+                };
+                _commentRepository.AddComment(comment);
 
+                return RedirectToAction("MyLearningLessons", new { courseid = CourseId });
+            }
+            // Validation errors occurred, return errors to the client
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            return Json(new { success = false, errors = errors });
+        }
+        [HttpPost]
+        public IActionResult RateCourse(int courseId, float stars)
+        {
+            var CourseId = courseId;
+            if (ModelState.IsValid)
+            {
+                var rating = new UserCourseRating
+                {
+                    CourseId = CourseId,
+                    UserId=5,
+                    Rating = stars,
+                    //Rating = model.ContentNote,
+                    // Other rating-related properties
+                };
+
+                _userCourseRatingRepository.RatingCourse(rating);
+                // You can customize the success message based on your UI framework (e.g., Bootstrap, jQuery UI)
+                TempData["SuccessMessage"] = "Thank you for rating the course!";
+
+                return RedirectToAction("MyLearningLessons", new { courseid = CourseId });
+            }
+
+            // Validation errors occurred, return errors to the client
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            return Json(new
+            {
+                success = false,
+                errors = errors
+            });
+
+        }
     }
 }

@@ -223,6 +223,44 @@
                                     </div>
                                 </form>
                             </div>
+                            <div>
+                                <h4>Rate this course:</h4>
+                                <form asp-action="RateCourse" asp-controller="MyLearn" method="post">
+                                    <div class="form-group">
+                                    <input type="hidden" name="courseId" value="@Model.CourseId" />
+                                        <i class="fas fa-chevron-down select-icon"></i>
+                                    <select name="stars">
+                                        <option value="1">1 Star</option>
+                                        <option value="1.5">1.5 Star</option>
+                                        <option value="2">2 Stars</option>
+                                        <option value="2.5">2.5 Star</option>
+                                        <option value="3">3 Stars</option>
+                                        <option value="3.5">3.5 Stars</option>
+                                        <option value="4">4 Stars</option>
+                                        <option value="4.5">4.5 Stars</option>
+                                        <option value="5">5 Stars</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Submit Rating</button>
+                                    </div>
+                                </form>
+                            </div>
+                            @if (TempData["SuccessMessage"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    @TempData["SuccessMessage"]
+                                </div>
+                            }
+                            <script>
+                                // Check if the success message exists and show the popup
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var successMessage = document.querySelector('.alert-success');
+                                    if (successMessage) {
+                                        // Show your popup (you might use a library like Bootstrap's modal)
+                                        // Example: $('#successModal').modal('show');
+                                        // Ensure to include the necessary JavaScript and CSS files for your modal library
+                                    }
+                                });
+                            </script>
                             <!-- reviews filter end -->
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -246,13 +284,10 @@
                                         });
                                     });
                                 });
-                                // var courseId =
-                                //     document.getElementById("CourseId").value = courseId;
                             </script>
                             <!-- comment post zone start -->
                             <form asp-action="PostComment" asp-controller="MyLearn" method="post">
                                 <input type="hidden" asp-for="@Model.CourseId" />
-
                                 <div class="form-group">
                                     <label asp-for="ContentNote"></label>
                                     <textarea asp-for="ContentNote" class="form-control py-5"></textarea>
@@ -279,50 +314,126 @@
                                         {
                                             <h4>@c.User.UserName</h4>
                                         }
+                                        
                                         <div class="stars-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="fas fa-star @((i <= ViewBag.CourseRating) ? "rated" : "")"></i>
+                                            }
+                                           
+
                                             <span class="date">@c.Date</span>
+                                            
                                         </div>
                                         <p>@c.ContentNote</p>
+                                        @* <button class="reply-button" data-comment-id="@c.CmtId" data-commenter-name="@c.User.UserName">Reply</button>
+                                        <div class="reply-form" data-comment-id="@c.CmtId" style="display: none;">
+                                            <form asp-action="ReplyToComment" asp-controller="MyLearn" method="post">
+                                                <input type="hidden" name="parentCommentId" asp-for="@c.CourseId" asp-for="@c.CmtId" value="@c.CmtId" />
+                                                <div class="form-group">
+                                                    <label for="replyContent">Reply:</label>
+                                                    <textarea name="replyContent" class="form-control"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Post Reply</button>
+                                            </form>
+                                        </div> *@
+                                        <button class="reply-button" data-comment-id="@c.CmtId">Reply</button>
+
+                                        <div class="reply-form" data-comment-id="@c.CmtId">
+                                            <form class="hidden" asp-action="ReplyToComment" asp-controller="Comment">
+                                                <input type="hidden" asp-for="@c.CmtId" />
+                                                <label asp-for="ContentNote"></label>
+                                                <textarea asp-for="ContentNote" placeholder="Your Reply" class="form-control py-5"></textarea>
+                                                <span asp-validation-for="ContentNote" class="text-danger"></span>
+                                       
+                                                <button type="submit">Post Reply</button>
+                                            </form>
+                                        </div>
+                                        
                                     </div>
                                 }
+                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $(".reply-button").on("click", function () {
+                                            var commentId = $(this).data("comment-id");
+                                            $(".reply-form[data-comment-id='" + commentId + "']").removeClass("hidden");
+
+                                            // Fetch and display existing replies
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "/Comment/GetReplies",
+                                                data: { parentCommentId: commentId },
+                                                success: function (data) {
+                                                    $("#replies-" + commentId).html(data);
+                                                },
+                                                error: function () {
+                                                    console.log("Error fetching replies");
+                                                }
+                                            });
+                                        });
+
+                                        $(".reply-form form").on("submit", function (e) {
+                                            e.preventDefault();
+
+                                            var form = $(this);
+
+                                            $.ajax({
+                                                type: "POST",
+                                                url: form.attr("action"),
+                                                data: form.serialize(),
+                                                success: function (data) {
+                                                    var commentId = data.ParentCommentId;
+                                                    $(".reply-form[data-comment-id='" + commentId + "']").addClass("hidden");
+
+                                                    // Append the new reply to the replies container
+                                                    $("#replies-" + commentId).append(data);
+                                                },
+                                                error: function () {
+                                                    console.log("Error posting reply");
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
                             </div>
-                            @* <partial name="../MyLearn/_CommentListPartial.cshtml" /> *@
+                           
 
-                            <!-- reviews list end -->
-                            @* <button class="btn btn-theme" id="showMoreComments" data-course-id="@Model.CourseId" data-skip="3" data-take="3">more reviews</button> *@
-                            @*         <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
-                            <ul class="pagination">
-                            @if (ViewBag.CurrentPage > 1)
-                            {
-                            <li class="page-item">
-                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            </a>
-                            </li>
-                            }
 
-                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                            {
-                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = i })">@i</a>
-                            </li>
-                            }
 
-                            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                            {
-                            <li class="page-item">
-                            <a class="page-link" href="@Url.Action("MyLearningLessons", new { courseid = ViewBag.CourseId, page = ViewBag.CurrentPage + 1 })" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            </a>
-                            </li>
-                            }
-                            </ul>
-                            </nav> *@
+
+@* 
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                            <script>
+                                $(document).ready(function () {
+                                    $(".reply-button").on("click", function () {
+                                        var parentCommentId = $(this).data("comment-id");
+                                        var commenterName = $(this).data("commenter-name");
+
+                                        var replyContent = prompt("Reply to " + commenterName + ":");
+
+                                        if (replyContent) {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/MyLearn/ReplyToComment",
+                                                data: { parentCommentId: parentCommentId, replyContent: replyContent },
+                                                success: function (data) {
+                                                    if (data.success) {
+                                                        $("#comments-container").append(data.replyHtml);
+                                                    } else {
+                                                        alert("Failed to add reply.");
+                                                    }
+                                                },
+                                                error: function () {
+                                                    alert("Error while processing your request.");
+                                                }
+                                            });
+                                        }
+                                    });
+                                });
+                            </script> *@
+                      
                             <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
                                 <ul class="pagination">
                                     @if (ViewBag.CurrentPage > 1)
@@ -364,12 +475,6 @@
             <section class="video-playlist">
                 <h3 class="title">@Model.Course.Title</h3>
                 <p>@Model.Course.Lessons.Count lessons &nbsp; . &nbsp; 50m 48s</p>
-
-
-                @* <a href="/MyLearningLessons/GetVideo/" + @Model.Currentlesson.CourseId + "/" + @Model.Currentlesson.LessonId> *@
-                @*                                     <a href="/MyLearningLessons/GetVideo/@Model.Currentlesson.CourseId/@Model.Currentlesson.LessonId"> </a>
-                *@
-                @* <a href=""> *@
                 <div class="videos">
                     @foreach (var v in Model.Course.Lessons)
                     {
@@ -441,144 +546,6 @@
 
             </script>
 
-            @*  <section class="video-playlist">
-            <h3 class="title">Title of Video Playlist</h3>
-            <p>@Model.Course.Lessons.Count lessions &nbsp; . &nbsp; 50m 48s</p>
-            <div class="videos">
-            @foreach (var v in Model.Course.Lessons)
-            {
-            <div class="video-item  @(v.LessonId == ViewBag.ActiveLessonId ? "active" : "")"
-            onclick="playVideo('@v.UrlVideo', '@v.Title', @v.LessonId)" id="@v.LessonId">
-            <h3 class="title">@v.Title</h3>
-            <p class="time">@v.Time</p>
-            </div>
-            }
-
-            </div>
-            <div id="video-player">
-            <!-- Video player will be dynamically added here -->
-            </div>
-            </section>
-            <script>
-            // JavaScript to handle video item click
-            document.addEventListener('DOMContentLoaded', function () {
-            var videoItems = document.querySelectorAll('.video-item');
-
-            videoItems.forEach(function (item) {
-            item.addEventListener('click', function () {
-            var videoUrl = item.getAttribute('data-url');
-            var videoTitle = item.getAttribute('data-title');
-            var lessonId = item.getAttribute('data-lessonid');
-
-            playVideo(videoUrl, videoTitle, lessonId);
-            });
-            });
-            });
-
-            function playVideo(videoUrl, videoTitle, lessonId) {
-            var videoPlayer = document.getElementById('video-player');
-
-            // Clear previous video player content
-            videoPlayer.innerHTML = '';
-
-            // Add new video player
-            var videoElement = document.createElement('video');
-            videoElement.setAttribute('controls', 'controls');
-
-            var sourceElement = document.createElement('source');
-            sourceElement.setAttribute('src', videoUrl);
-            sourceElement.setAttribute('type', 'video/mp4');
-
-            videoElement.appendChild(sourceElement);
-            videoPlayer.appendChild(videoElement);
-
-            // Display the video title
-            var titleElement = document.createElement('h3');
-            titleElement.textContent = videoTitle;
-            videoPlayer.appendChild(titleElement);
-
-            // Set the active lesson ID for client-side handling
-            var activeLessonId = lessonId;
-            }
-            </script> *@
-
-
-            @*            <script>
-
-            document.addEventListener('DOMContentLoaded', function () {
-            var videoItems = document.querySelectorAll('.video');
-            var currentVideoElement = null;
-
-            videoItems.forEach(function (item) {
-            item.addEventListener('click', function () {
-            var videoUrl = item.getAttribute('data-url');
-            var videoTitle = item.getAttribute('data-title');
-
-            playVideo(videoUrl, videoTitle);
-            });
-            });
-
-            function playVideo(videoUrl, videoTitle) {
-            var videoPlayer = document.getElementById('video-player');
-
-            // Clear previous video player content
-            if (currentVideoElement) {
-            currentVideoElement.pause();
-            videoPlayer.removeChild(currentVideoElement);
-            }
-
-            // Add new video player
-            var videoElement = document.createElement('video');
-            videoElement.setAttribute('controls', 'controls');
-
-            var sourceElement = document.createElement('source');
-            sourceElement.setAttribute('src', videoUrl);
-            sourceElement.setAttribute('type', 'video/mp4');
-
-            videoElement.appendChild(sourceElement);
-            videoPlayer.appendChild(videoElement);
-
-            // Display the video title
-            var titleElement = document.createElement('h3');
-            titleElement.textContent = videoTitle;
-            videoPlayer.appendChild(titleElement);
-
-            // Set the current video element for pausing later
-            currentVideoElement = videoElement;
-
-            // Start playing the new video
-            currentVideoElement.play();
-            }
-            });
-            </script> *@
-
-            @*  <script>
-            function playVideo(videoUrl, videoTitle, lessonId) {
-            var videoPlayer = document.getElementById('video-player');
-
-            // Clear previous video player content
-            videoPlayer.innerHTML = '';
-
-            // Add new video player
-            var videoElement = document.createElement('video');
-            videoElement.setAttribute('controls', 'controls');
-
-            var sourceElement = document.createElement('source');
-            sourceElement.setAttribute('src', videoUrl);
-            sourceElement.setAttribute('type', 'video/mp4');
-
-            videoElement.appendChild(sourceElement);
-            videoPlayer.appendChild(videoElement);
-
-            // Display the video title
-            var titleElement = document.createElement('h3');
-            titleElement.textContent = videoTitle;
-            videoPlayer.appendChild(titleElement);
-
-            // Set the active lesson ID in ViewBag for server-side handling
-            @ViewBag.ActiveLessonId = lessonId;
-            }
-            </script> *@
         </main>
     </div>
     <!-- main wrapper end -->
