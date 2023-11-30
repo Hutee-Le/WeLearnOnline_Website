@@ -33,6 +33,7 @@ builder.Services.AddTransient<ITypeRepository, TypeRepository>();
 builder.Services.AddTransient<IBillRepository, BillRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddTransient<IUserCourseRatingRepository, UserCourseRatingRepository>();
 
 var app = builder.Build();
 

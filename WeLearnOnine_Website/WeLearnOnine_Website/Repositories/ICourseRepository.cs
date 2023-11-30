@@ -3,6 +3,7 @@
     public interface ICourseRepository
     {
         bool Add(Course course);
+      
         bool Update(Course course);
         bool Delete(int id);
         void DeleteAll();

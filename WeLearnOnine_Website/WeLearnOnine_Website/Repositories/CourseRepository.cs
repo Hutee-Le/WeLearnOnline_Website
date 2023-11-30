@@ -41,6 +41,13 @@ namespace WeLearnOnine_Website.Repositories
             return true;
         }
 
+        public bool RatingCourse(Course course)
+        {
+            _ctx.Courses.Add(course);
+            _ctx.SaveChanges();
+            return true;
+        }
+
         public bool Update(Course course)
         {
             Course? c = _ctx.Courses.Find(course.CourseId);
