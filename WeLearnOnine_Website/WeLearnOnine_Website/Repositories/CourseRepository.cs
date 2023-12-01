@@ -106,6 +106,12 @@ namespace WeLearnOnine_Website.Repositories
                 .Select(f => f.CourseId)
                 .ToHashSet();
 
+            // Danh sách các khóa học trong giỏ hàng
+            var cartCourseIds = _ctx.BillDetails
+                .Where(bd => bd.Bill.UserId == userId && bd.Bill.Status == "Pending")
+                .Select(bd => bd.CourseId)
+                .ToHashSet();
+
             // Lấy danh sách các khóa học chưa mua
             var availableCourses = _ctx.Courses
                 .Where(c => !purchasedCourseIds.Contains(c.CourseId))
@@ -120,7 +126,8 @@ namespace WeLearnOnine_Website.Repositories
                 Course = c,
                 LevelName = c.Level?.Name,
                 StaffName = c.Staff?.StaffName,
-                IsInFavorites = favoriteCourseIds.Contains(c.CourseId)
+                IsInFavorites = favoriteCourseIds.Contains(c.CourseId),
+                IsInCart = cartCourseIds.Contains(c.CourseId)
             }).ToList();
 
             return courseViewModels;
