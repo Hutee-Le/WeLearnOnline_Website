@@ -699,10 +699,19 @@
                     <a href="#" class="title">@item.Course.Title</a>
                     <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
                     <div class="popover-course-btn">
-                        <form asp-controller="ShoppingCart" asp-action="AddToCart" method="post" class="inline-form">
-                            <input type="hidden" name="courseId" value="@item.Course.CourseId" />
-                            <button type="submit" class="btn-addCart">Add to cart</button>
-                        </form>
+                        @if (item.IsInCart)
+                        {
+                            <form asp-controller="ShoppingCart" asp-action="Index"  class="inline-form">
+                                <button type="submit" class="btn-addCart">Go to Cart</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-controller="ShoppingCart" asp-action="AddToCart" method="post" class="inline-form">
+                                <input type="hidden" name="courseId" value="@item.Course.CourseId" />
+                                <button type="submit" class="btn-addCart">Add to cart</button>
+                            </form>
+                        }
                         <form class="inline-form">
                             <input type="hidden" name="courseId" value="@item.Course.CourseId" />
                             <button type="submit" class="btn-favor @(item.IsInFavorites ? "favorited" : "")">
