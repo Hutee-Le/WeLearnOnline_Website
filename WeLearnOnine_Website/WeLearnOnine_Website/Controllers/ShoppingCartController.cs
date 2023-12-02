@@ -29,9 +29,20 @@ namespace WeLearnOnine_Website.Controllers
                 return View("EmptyCart"); // Hiển thị giỏ hàng trống nếu không có bill nào
             }
 
+            decimal totalDiscountedPrice = 0;
+            decimal totalOriginalPrice = 0;
+            foreach (var detail in bill.BillDetails)
+            {
+                totalDiscountedPrice += detail.Price;
+                totalOriginalPrice += detail.DiscountPrice ?? detail.Price; 
+            }
+
             var viewModel = new ShoppingCartViewModel
             {
-                Bill = bill
+                Bill = bill,
+                TotalDiscountedPrice = totalDiscountedPrice,
+                TotalOriginalPrice = totalOriginalPrice,
+                TotalSaving = totalOriginalPrice - totalDiscountedPrice
             };
 
             return View(viewModel);
@@ -97,6 +108,7 @@ namespace WeLearnOnine_Website.Controllers
                 BillId = bill.BillId,
                 CourseId = course.CourseId,
                 Price = course.Price,
+                DiscountPrice = course.DiscountPrice,
                 Date = DateTime.Now
             };
             _billRepository.AddBillDetail(billDetail);
