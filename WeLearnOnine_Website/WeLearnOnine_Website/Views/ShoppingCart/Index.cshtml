@@ -96,10 +96,10 @@
                         <div class="order-total__top d-flex justify-content-between">
                             <div class="order-price-all">
                                 <div class="order-price d-flex align-items-center">
-                                    <div class="price fs-4 me-4">599,000đ</div>
-                                    <div class="price-sale">Giá gốc: 999,000đ</div>
+                                    <div class="price fs-4 me-4">@Model.TotalDiscountedPrice.ToString("#,##0")đ</div>
+                                    <div class="price-sale">Giá gốc: @Model.TotalOriginalPrice.ToString("#,##0")đ</div>
                                 </div>
-                                <div class="order-saving">Tiết kiệm 41% (400,000đ)</div>
+                                <div class="order-saving">Tiết kiệm @String.Format("{0:F0}%", (Model.TotalOriginalPrice - Model.TotalDiscountedPrice) / Model.TotalOriginalPrice * 100) (@Model.TotalSaving.ToString("#,##0")đ)</div>
                             </div>
                             <div class="coupon">
                                 <div class="coupon-add">

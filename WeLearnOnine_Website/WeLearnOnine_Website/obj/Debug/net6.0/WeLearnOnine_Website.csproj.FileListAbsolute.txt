@@ -1129,3 +1129,4 @@ E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_We
 E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
 E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 E:\DACNA - GIT KRAREN\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net6.0\WeLearnOnine_Website.sourcelink.json
