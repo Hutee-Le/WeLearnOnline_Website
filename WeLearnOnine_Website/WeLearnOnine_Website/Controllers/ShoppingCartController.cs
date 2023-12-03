@@ -66,9 +66,16 @@ namespace WeLearnOnine_Website.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int courseId)
+        public async Task<IActionResult> AddToCartAsync(int courseId)
         {
             var userId = 4;
+
+            // Kiểm tra xem khóa học có tồn tại không
+            var course = _courseRepository.FindCourseByID(courseId);
+            if (course == null)
+            {
+                return Json(new { success = false, message = "Khóa học không tồn tại." });
+            }
 
             // Lấy Bill đang ở trạng thái "pending" của người dùng (hoặc tạo mới nếu chưa có)
             var bill = _billRepository.GetPendingBillByUserId(userId);
@@ -88,12 +95,13 @@ namespace WeLearnOnine_Website.Controllers
                 _billRepository.CreateBill(bill);
             }
 
-            var course = _courseRepository.FindCourseByID(courseId);
-            if (course == null)
+            // Kiểm tra xem khóa học đã có trong hóa đơn "pending" chưa
+            var existingBillDetail = await _billRepository.GetBillDetailByCourseAndUser(courseId, userId, bill.BillId);
+            if (existingBillDetail != null)
             {
-                // Khóa học không tồn tại
-                return NotFound("Không tìm thấy khóa học.");
+                return Json(new { success = false, message = "Khóa học này đã có trong giỏ hàng của bạn." });
             }
+
 
             var billDetail = new BillDetail
             {
@@ -105,8 +113,10 @@ namespace WeLearnOnine_Website.Controllers
                 Date = DateTime.Now
             };
             _billRepository.AddBillDetail(billDetail);
-            return RedirectToAction("Index");
-            //return Json(new { success = true });
+            // Lấy số lượng sản phẩm mới trong giỏ hàng sau khi thêm
+            var cartCount = await _billRepository.GetCartCountAsync(userId);
+
+            return Json(new { success = true, cartCount = cartCount, message = "Thêm vào giỏ hàng thành công!" });
         }
 
         [HttpPost]

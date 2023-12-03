@@ -11,6 +11,8 @@ namespace WeLearnOnine_Website.Repositories
         Bill GetBillById(Guid billId);
         Task<int> GetCartCountAsync(int userId);
 
+        Task<BillDetail> GetBillDetailByCourseAndUser(int courseId, int userId, Guid billId);
+
         void CreateBill(Bill bill); 
 
         void UpdateBill(Bill bill); 
