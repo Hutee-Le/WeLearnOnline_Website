@@ -710,6 +710,28 @@ select.form-control:focus option {
     transition: .1s ease;
 }
 
+.menu-item .fas.fa-shopping-cart {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Tạo badge cho số lượng sản phẩm */
+.cart-count {
+    position: absolute; /* Định vị tuyệt đối so với icon giỏ hàng */
+    top: 20px; /* Điều chỉnh vị trí lên trên */
+    right: -8px; /* Điều chỉnh vị trí sang phải */
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 50%; /* Tạo hình tròn */
+    padding: 2px 6px;
+    font-size: 0.75em; /* Giảm kích thước chữ */
+    line-height: 1; /* Điều chỉnh độ cao dòng */
+    min-width: 16px; /* Đảm bảo badge có kích thước tối thiểu */
+    text-align: center;
+}
+
+
 /* .header-main div.menu-item:hover a:last-child{
     background-color: var(--button-hover-color);
 } */

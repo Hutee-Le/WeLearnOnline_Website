@@ -88,13 +88,6 @@ namespace WeLearnOnine_Website.Controllers
                 _billRepository.CreateBill(bill);
             }
 
-            bool courseAlreadyAdded = bill.BillDetails.Any(bd => bd.CourseId == courseId);
-            if (courseAlreadyAdded)
-            {
-                TempData["Notification"] = "Khóa học đã có trong giỏ hàng.";
-                return RedirectToAction("Index", "Course");
-            }
-
             var course = _courseRepository.FindCourseByID(courseId);
             if (course == null)
             {
@@ -145,5 +138,6 @@ namespace WeLearnOnine_Website.Controllers
 
             return RedirectToAction("Index");
         }
+
     }
 }
