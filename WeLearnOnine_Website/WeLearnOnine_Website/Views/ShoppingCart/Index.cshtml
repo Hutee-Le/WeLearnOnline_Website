@@ -23,7 +23,7 @@
                     <div class="order-item">
                            @foreach (var detail in Model.Bill.BillDetails)
                         {
-                            <div class="order-item__inner row">
+                            <div class="order-item__inner row" id="course-@detail.Course.CourseId">
                                 <div class="order-item__img col-3">
                                     <img
                                          alt="" class="order-item__image cover ls-is-cached lazyloaded"
@@ -42,11 +42,9 @@
                                                     <div class="price-sale text-decoration-line-through">@String.Format("{0:#,##0}", detail.Course.DiscountPrice)</div>
                                                 }
                                             </div>
-                                             <form method="post" asp-action="RemoveFromCart" asp-route-courseId="@detail.Course.CourseId">
-                                                <button type="submit" class="order-item__remove ">
-                                                    <span class="primary pe-xl-5">Bỏ khóa này</span>
-                                                </button>
-                                            </form>
+                                            <button type="button" class="order-item__remove" onclick="removeFromCart(@detail.Course.CourseId)">
+                                                <span class="primary pe-xl-5">Bỏ khóa này</span>
+                                            </button>
                                         </div>
                                 </div>
                             </div>
@@ -96,8 +94,8 @@
                         <div class="order-total__top d-flex justify-content-between">
                             <div class="order-price-all">
                                 <div class="order-price d-flex align-items-center">
-                                    <div class="price fs-4 me-4">@Model.TotalDiscountedPrice.ToString("#,##0")đ</div>
-                                    <div class="price-sale">Giá gốc: @Model.TotalOriginalPrice.ToString("#,##0")đ</div>
+                                    <div class="price fs-4 me-4" id="price">@Model.TotalDiscountedPrice.ToString("#,##0")đ</div>
+                                    <div class="price-sale" id="price-sale">Giá gốc: @Model.TotalOriginalPrice.ToString("#,##0")đ</div>
                                 </div>
                                 <div class="order-saving">Tiết kiệm @String.Format("{0:F0}%", (Model.TotalOriginalPrice - Model.TotalDiscountedPrice) / Model.TotalOriginalPrice * 100) (@Model.TotalSaving.ToString("#,##0")đ)</div>
                             </div>
@@ -132,3 +130,62 @@
     </div>
 </div>
 <!-- Checkout Section End -->
+<script>
+    function removeFromCart(courseId) {
+        $.ajax({
+            url: '@Url.Action("RemoveFromCart", "ShoppingCart")',
+            type: 'POST',
+            data: { courseId: courseId },
+            success: function (response) {
+                if (response.success) {
+                    $(`#course-${courseId}`).remove();
+                    updateTotalPrice(response.totalDiscountedPrice, response.totalOriginalPrice, response.totalSaving, response.percentageDiscount);
+                    updateCartCount(response.cartCount);
+                } else {
+                    if (response.cartCount === 0) {
+                        $('.breadcrumb-nav').remove();
+                        $('.checkout-container').remove();
+
+                        // Thêm nội dung giỏ hàng trống sau thẻ header
+                        appendEmptyCartContent().insertAfter('header');
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            },
+            error: function (error) {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra. Vui lòng thử lại.');
+            }
+        });
+    }
+
+    function updateTotalPrice(totalDiscountedPrice, totalOriginalPrice, totalSaving, percentageDiscount) {
+        $('#price').text(`${totalDiscountedPrice}đ`);
+        $('#price-sale').text(`Giá gốc: ${totalOriginalPrice}đ`);
+        $('.order-saving').text(`Tiết kiệm ${percentageDiscount}% (${totalSaving}đ)`);
+    }
+
+    function updateCartCount(cartCount) {
+        $('.cart-count').text(cartCount);
+    }
+
+    function appendEmptyCartContent() {
+        var emptyCartContent = $('<div>', {
+            id: 'empty-cart-content',
+            class: 'Checkout-empty d-flex justify-content-center align-items-center'
+        }).append($('<div>', {
+            class: 'empty d-flex flex-column align-items-center'
+        }).append($('<img>', {
+            class: 'empty__image',
+            src: 'https://kt.city/static/img-empty-cart.png'
+        }), $('<h2>', {
+            class: 'empty__title fs-4 mt-5'
+        }).append('Giỏ hàng trống, khám phá kiến thức ', $('<a>', {
+            class: 'empty__link fw-bold',
+            href: '@Url.Action("Index", "Home")'
+        }).text('tại đây.'))));
+
+        return emptyCartContent;
+    }
+</script>
