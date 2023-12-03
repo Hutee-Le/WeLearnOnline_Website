@@ -699,16 +699,18 @@
                     <a href="#" class="title">@item.Course.Title</a>
                     <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
                     <div class="popover-course-btn">
-                        <button type="button" onclick="addToCart(@item.Course.CourseId)" class="btn-addCart">
-                            @if (item.IsInCart)
-                            {
-                                <span>Go to Cart</span>
-                            }
-                            else
-                            {
-                                <span>Add to Cart</span>
-                            }
-                        </button>
+                        @if (item.IsInCart)
+                        {
+                            <button type="button" class="btn-addCart" onclick="goToCartPage()">
+                                Go to Cart
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn-addCart" onclick="addToCart(@item.Course.CourseId)">
+                                Add to Cart
+                            </button>
+                        }
                         <form class="inline-form">
                             <input type="hidden" name="courseId" value="@item.Course.CourseId" />
                             <button type="submit" class="btn-favor @(item.IsInFavorites ? "favorited" : "")">
