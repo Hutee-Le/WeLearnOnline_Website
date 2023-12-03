@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
@@ -122,31 +123,81 @@ namespace WeLearnOnine_Website.Controllers
         [HttpPost]
         public IActionResult RemoveFromCart(int courseId)
         {
-            var userId = 4;
+            var userId = 4; // Thay thế bằng cách lấy ID người dùng hiện tại từ session hoặc cookie
 
-            // Lấy Bill đang ở trạng thái "pending" của người dùng
-            var bill = _billRepository.GetPendingBillByUserId(userId);
-            if (bill == null)
+            try
             {
-                return NotFound("Không tìm thấy giỏ hàng.");
-            }
-            // Tìm BillDetail và xóa nó
-            var billDetail = bill.BillDetails.FirstOrDefault(bd => bd.CourseId == courseId);
-            if (billDetail != null)
-            {
-                _billRepository.RemoveBillDetail(billDetail.BillDetailId);
-
-                if (!bill.BillDetails.Any())
+                var bill = _billRepository.GetPendingBillByUserId(userId);
+                if (bill == null)
                 {
-                    _billRepository.DeleteBill(bill.BillId);
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Không tìm thấy giỏ hàng.",
+                        redirectUrl = Url.Action("EmptyCart", "ShoppingCart") // URL đến trang giỏ hàng trống
+                    });
+                }
+
+                var billDetail = bill.BillDetails.FirstOrDefault(bd => bd.CourseId == courseId);
+                if (billDetail != null)
+                {
+                    _billRepository.RemoveBillDetail(billDetail.BillDetailId);
+
+                    // Nếu không còn BillDetails nào, xóa luôn bill
+                    if (!bill.BillDetails.Any())
+                    {
+                        _billRepository.DeleteBill(bill.BillId);
+
+                        return Json(new
+                        {
+                            success = false,
+                            cartCount = 0,
+                        });
+                    }
+
+                    // Tính toán lại tổng giá và số lượng sau khi xóa
+                    var totalDiscountedPrice = bill.BillDetails.Sum(bd => bd.Price); 
+                    var totalOriginalPrice = bill.BillDetails.Sum(bd => bd.DiscountPrice ?? bd.Price);
+                    var totalSaving = totalOriginalPrice - totalDiscountedPrice;
+                    var cartCount = bill.BillDetails.Count;
+                    var percentageDiscount = (totalSaving / totalOriginalPrice) * 100;
+
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Đã xóa khóa học khỏi giỏ hàng.",
+                        totalDiscountedPrice = totalDiscountedPrice.ToString("#,##0"),
+                        totalOriginalPrice = totalOriginalPrice.ToString("#,##0"),
+                        totalSaving = totalSaving.ToString("#,##0"),
+                        percentageDiscount = percentageDiscount.ToString("F0"),
+                        cartCount = cartCount
+                    });
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Khóa học không tồn tại trong giỏ hàng."
+                    });
                 }
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound("Không tìm thấy khóa học trong giỏ hàng.");
+                // Log exception here
+                return Json(new
+                {
+                    success = false,
+                    message = $"Đã xảy ra lỗi: {ex.Message}"
+                });
             }
+        }
 
-            return RedirectToAction("Index");
+
+
+        public IActionResult EmptyCart()
+        {
+            return View();
         }
 
     }
