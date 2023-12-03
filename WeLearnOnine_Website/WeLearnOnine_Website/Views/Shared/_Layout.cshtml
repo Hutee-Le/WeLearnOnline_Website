@@ -107,7 +107,9 @@
                             <li class="menu-item"><a asp-action="Index" asp-controller="Mylearn">My learning</a></li>
                             <li class="menu-item icon-color-theme"><a href="#"><i class="far fa-heart"></i></a></li>
                             <li class="menu-item">
-                                <a href="#" class="js-toggle-sub-menu"><i class="fas fa-shopping-cart"></i></a>
+                                <a href="#" class="js-toggle-sub-menu">
+                                    <i class="fas fa-shopping-cart"></i>@await Component.InvokeAsync("Cart")
+                                </a>
                                 <ul class="sub-menu js-sub-menu">
                                     <li class="sub-menu-item"><a asp-action="Index" asp-controller="ShoppingCart">Current orders</a></li>
                                     <li class="sub-menu-item"><a asp-action="PurchaseHistory" asp-controller="ShoppingCart">Purchase History</a></li>

@@ -8,7 +8,8 @@ namespace WeLearnOnine_Website.Repositories
         IEnumerable<Bill> GetAllBillsWithUser();
         Bill GetPendingBillByUserId(int userId);
 
-        Bill GetBillById(Guid billId); 
+        Bill GetBillById(Guid billId);
+        Task<int> GetCartCountAsync(int userId);
 
         void CreateBill(Bill bill); 
 

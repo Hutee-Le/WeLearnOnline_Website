@@ -90,5 +90,14 @@ namespace WeLearnOnine_Website.Repositories
             _context.Bills.Update(bill);
             _context.SaveChanges();
         }
+
+        // Lấy số lượng các sản phẩm trong giỏ hàng
+        public async Task<int> GetCartCountAsync(int userId)
+        {
+            var itemCount = await _context.BillDetails
+                                     .CountAsync(bd => bd.Bill.UserId == userId && bd.Bill.Status == "Pending");
+
+            return itemCount;
+        }
     }
 }
