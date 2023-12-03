@@ -99,5 +99,15 @@ namespace WeLearnOnine_Website.Repositories
 
             return itemCount;
         }
+
+        public async Task<BillDetail> GetBillDetailByCourseAndUser(int courseId, int userId, Guid billId)
+        {
+            return await _context.BillDetails
+                         .Where(bd => bd.CourseId == courseId &&
+                                      bd.BillId == billId &&
+                                      bd.Bill.UserId == userId &&
+                                      bd.Bill.Status == "Pending")
+                         .FirstOrDefaultAsync();
+        }
     }
 }

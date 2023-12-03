@@ -699,19 +699,16 @@
                     <a href="#" class="title">@item.Course.Title</a>
                     <span class="update-time my-2">Update <span class="date fw-bold"> March 2023</span></span>
                     <div class="popover-course-btn">
-                        @if (item.IsInCart)
-                        {
-                            @* <form asp-controller="ShoppingCart" asp-action="Index"  class="inline-form"> *@
-                                <button type="submit" class="btn-addCart">Go to Cart</button>
-                            @* </form> *@
-                        }
-                        else
-                        {
-                            @* <form asp-controller="ShoppingCart" asp-action="AddToCart" method="post" class="inline-form"> *@
-                                <input type="hidden" name="courseId" value="@item.Course.CourseId" />
-                                <button type="submit" class="btn-addCart">Add to cart</button>
-                            @* </form> *@
-                        }
+                        <button type="button" onclick="addToCart(@item.Course.CourseId)" class="btn-addCart">
+                            @if (item.IsInCart)
+                            {
+                                <span>Go to Cart</span>
+                            }
+                            else
+                            {
+                                <span>Add to Cart</span>
+                            }
+                        </button>
                         <form class="inline-form">
                             <input type="hidden" name="courseId" value="@item.Course.CourseId" />
                             <button type="submit" class="btn-favor @(item.IsInFavorites ? "favorited" : "")">
@@ -794,4 +791,40 @@
             });
         });
     });
+
+    function addToCart(courseId) {
+        $.ajax({
+            url: '@Url.Action("AddToCart", "ShoppingCart")',
+            type: 'POST',
+            data: { courseId: courseId },
+            success: function (response) {
+                if (response.success) {
+                    alert('Product added to cart.');
+                    // Thay đổi text của button thành "Go to Cart"
+                    $(`button[onclick="addToCart(${courseId})"]`).text('Go to Cart');
+                    var button = $(`button[onclick="addToCart(${courseId})"]`);
+                    button.text('Go to Cart');
+                    button.attr('onclick', `goToCartPage()`);
+                    // Cập nhật số lượng sản phẩm trong giỏ hàng
+                    updateCartCount(response.cartCount);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                console.error('Error adding to cart:', error);
+                alert('Error adding to cart. Please try again.');
+            }
+        });
+    }
+
+    function updateCartCount(cartCount) {
+        // Giả sử bạn có một phần tử để hiển thị số lượng sản phẩm trong giỏ hàng
+        $('.cart-count').text(cartCount);
+    }
+
+    function goToCartPage() {
+        // Chuyển hướng đến trang giỏ hàng
+        window.location.href = '@Url.Action("Index", "ShoppingCart")';
+    }
 </script>
