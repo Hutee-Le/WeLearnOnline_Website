@@ -123,75 +123,53 @@ namespace WeLearnOnine_Website.Controllers
         [HttpPost]
         public IActionResult RemoveFromCart(int courseId)
         {
-            var userId = 4; // Thay thế bằng cách lấy ID người dùng hiện tại từ session hoặc cookie
+            var userId = 4;
 
             try
             {
                 var bill = _billRepository.GetPendingBillByUserId(userId);
                 if (bill == null)
                 {
-                    return Json(new
-                    {
-                        success = false,
-                        message = "Không tìm thấy giỏ hàng.",
-                        redirectUrl = Url.Action("EmptyCart", "ShoppingCart") // URL đến trang giỏ hàng trống
-                    });
+                    return Json(new { success = false, message = "Không tìm thấy giỏ hàng.", redirectUrl = Url.Action("EmptyCart", "ShoppingCart") });
                 }
 
                 var billDetail = bill.BillDetails.FirstOrDefault(bd => bd.CourseId == courseId);
-                if (billDetail != null)
+                if (billDetail == null)
                 {
-                    _billRepository.RemoveBillDetail(billDetail.BillDetailId);
-
-                    // Nếu không còn BillDetails nào, xóa luôn bill
-                    if (!bill.BillDetails.Any())
-                    {
-                        _billRepository.DeleteBill(bill.BillId);
-
-                        return Json(new
-                        {
-                            success = false,
-                            cartCount = 0,
-                        });
-                    }
-
-                    // Tính toán lại tổng giá và số lượng sau khi xóa
-                    var totalDiscountedPrice = bill.BillDetails.Sum(bd => bd.Price); 
-                    var totalOriginalPrice = bill.BillDetails.Sum(bd => bd.DiscountPrice ?? bd.Price);
-                    var totalSaving = totalOriginalPrice - totalDiscountedPrice;
-                    var cartCount = bill.BillDetails.Count;
-                    var percentageDiscount = (totalSaving / totalOriginalPrice) * 100;
-
-                    return Json(new
-                    {
-                        success = true,
-                        message = "Đã xóa khóa học khỏi giỏ hàng.",
-                        totalDiscountedPrice = totalDiscountedPrice.ToString("#,##0"),
-                        totalOriginalPrice = totalOriginalPrice.ToString("#,##0"),
-                        totalSaving = totalSaving.ToString("#,##0"),
-                        percentageDiscount = percentageDiscount.ToString("F0"),
-                        cartCount = cartCount
-                    });
+                    return Json(new { success = false, message = "Khóa học không tồn tại trong giỏ hàng." });
                 }
-                else
+
+                _billRepository.RemoveBillDetail(billDetail.BillDetailId);
+
+                if (!bill.BillDetails.Any())
                 {
-                    return Json(new
-                    {
-                        success = false,
-                        message = "Khóa học không tồn tại trong giỏ hàng."
-                    });
+                    _billRepository.DeleteBill(bill.BillId);
+                    return Json(new { success = true, cartCount = 0 });
                 }
+
+                var totalDiscountedPrice = bill.BillDetails.Sum(bd => bd.Price);
+                var totalOriginalPrice = bill.BillDetails.Sum(bd => bd.DiscountPrice ?? bd.Price);
+                var totalSaving = totalOriginalPrice - totalDiscountedPrice;
+                var cartCount = bill.BillDetails.Count;
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Đã xóa khóa học khỏi giỏ hàng.",
+                    totalDiscountedPrice = totalDiscountedPrice.ToString("#,##0"),
+                    totalOriginalPrice = totalOriginalPrice.ToString("#,##0"),
+                    totalSaving = totalSaving.ToString("#,##0"),
+                    percentageDiscount = ((totalSaving / totalOriginalPrice) * 100).ToString("F0"),
+                    cartCount = cartCount
+                });
             }
             catch (Exception ex)
             {
                 // Log exception here
-                return Json(new
-                {
-                    success = false,
-                    message = $"Đã xảy ra lỗi: {ex.Message}"
-                });
+                return Json(new { success = false, message = $"Đã xảy ra lỗi: {ex.Message}" });
             }
         }
+
 
 
 
