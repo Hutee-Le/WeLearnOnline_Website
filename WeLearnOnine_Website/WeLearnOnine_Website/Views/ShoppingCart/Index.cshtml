@@ -141,16 +141,16 @@
                     $(`#course-${courseId}`).remove();
                     updateTotalPrice(response.totalDiscountedPrice, response.totalOriginalPrice, response.totalSaving, response.percentageDiscount);
                     updateCartCount(response.cartCount);
-                } else {
+
                     if (response.cartCount === 0) {
                         $('.breadcrumb-nav').remove();
                         $('.checkout-container').remove();
 
                         // Thêm nội dung giỏ hàng trống sau thẻ header
                         appendEmptyCartContent().insertAfter('header');
-                    } else {
-                        alert(response.message);
                     }
+                } else {
+                       alert(response.message);  
                 }
             },
             error: function (error) {
