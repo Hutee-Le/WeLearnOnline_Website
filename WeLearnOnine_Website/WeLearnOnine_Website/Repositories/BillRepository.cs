@@ -83,7 +83,6 @@ namespace WeLearnOnine_Website.Repositories
             return billsWithUsers.ToList();
         }
 
-
         public void UpdateBill(Bill bill)
         {
             // Thực hiện logic để cập nhật thông tin Bill
@@ -109,5 +108,7 @@ namespace WeLearnOnine_Website.Repositories
                                       bd.Bill.Status == "Pending")
                          .FirstOrDefaultAsync();
         }
+
+        public List<Bill> GetAllBills() => _context.Bills.ToList();
     }
 }

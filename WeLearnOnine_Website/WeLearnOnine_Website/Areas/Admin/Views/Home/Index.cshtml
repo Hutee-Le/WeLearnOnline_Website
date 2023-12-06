@@ -1,121 +1,86 @@
-﻿@* @model IEnumerable<WeLearnOnine_Website.Models.Course>
- *@
+﻿@model WeLearnOnine_Website.ViewModels.DashboardViewModel
+
 @{
     ViewData["Title"] = "ListCourse";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-fluid flex-grow-1 container-p-y">
         <!-- Layout Demo -->
-        <div class="container-fuild flex-grow-1 container-p-y">
+        <div class="container-fuild">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <div class="row row-bordered g-0 justify-content-between">
-                        <div class="col-2" style="width: 330px">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title d-flex align-items-start justify-content-between">
-                                            <div class="avatar flex-shrink-0">
-                                                <img src="~/LayoutAdmin/assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded">
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
+                    <div class="row justify-content-between">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card mb-lg-0 mb-4">
+                                <div class="card-body">
+                                    <div class="card-title row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/online-education.png" alt="Credit Card" class="rounded" width="60" height="60">
                                         </div>
-                                        <span class="d-block mb-1">Payments</span>
-                                        <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                                        <small class="text-danger fw-medium"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="col-2" style="width: 330px">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title d-flex align-items-start justify-content-between">
-                                            <div class="avatar flex-shrink-0">
-                                                <img src="~/LayoutAdmin/assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded">
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
+                                        <div class="left-group col-8">
+                                            <span class="d-block mb-1">Courses</span>
+                                            <h3 class="card-title text-nowrap mb-2">@Model.courses.Count()</h3>
+                                            <small class="text-danger fw-medium"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
                                         </div>
-                                        <span class="fw-medium d-block mb-1">Transactions</span>
-                                        <h3 class="card-title mb-2">$14,857</h3>
-                                        <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-                                    </div>
-                                </div>
-
-                            </div>
-                        <div class="col-2" style="width: 330px">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title d-flex align-items-start justify-content-between">
-                                            <div class="avatar flex-shrink-0">
-                                                <img src="~/LayoutAdmin/assets/img/icons/unicons/chart-success.png" alt="chart success" class="rounded">
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="fw-medium d-block mb-1">Profit</span>
-                                        <h3 class="card-title mb-2">$12,628</h3>
-                                        <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2" style="width: 330px">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="card-title d-flex align-items-start justify-content-between">
-                                            <div class="avatar flex-shrink-0">
-                                                <img src="~/LayoutAdmin/assets/img/icons/unicons/chart-success.png" alt="chart success" class="rounded">
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="fw-medium d-block mb-1">Profit</span>
-                                        <h3 class="card-title mb-2">$12,628</h3>
-                                        <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card mb-lg-0 mb-4">
+                                <div class="card-body">
+                                    <div class="card-title row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/video-content.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                        </div>
+                                        <div class="left-group col-8">
+                                            <span class="fw-medium d-block mb-1">Lessons</span>
+                                            <h3 class="card-title mb-2">@Model.lessons.Count()</h3>
+                                            <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card mb-lg-0 mb-4">
+                                <div class="card-body">
+                                    <div class="card-title row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/team.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                        </div>
+                                        <div class="left-group col-8">
+                                            <span class="fw-medium d-block mb-1">Staffs</span>
+                                            <h3 class="card-title mb-2">@Model.staffs.Count()</h3>
+                                            <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.60%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card mb-lg-0 mb-4">
+                                <div class="card-body">
+                                    <div class="card-title row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/bill.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                        </div>
+                                        <div class="left-group col-8">
+                                            <span class="fw-medium d-block mb-1">Bills</span>
+                                            <h3 class="card-title mb-2">@Model.bills.Count()</h3>
+                                            <span>
+                                                Total: 
+                                                <small class="text-success fw-medium fs-6">@ViewBag.TotalPrice.ToString("#,##0") đ</small>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
-
-
-
-
-
-
             </div>
             <div class="row">
                 <div class="col-8 mb-4 order-0">

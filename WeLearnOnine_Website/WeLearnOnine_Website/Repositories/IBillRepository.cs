@@ -4,7 +4,7 @@ namespace WeLearnOnine_Website.Repositories
 {
     public interface IBillRepository
     {
-        //List<Bill> GetAllBill();
+        List<Bill> GetAllBills();
         IEnumerable<Bill> GetAllBillsWithUser();
         Bill GetPendingBillByUserId(int userId);
 
@@ -21,5 +21,6 @@ namespace WeLearnOnine_Website.Repositories
 
         void AddBillDetail(BillDetail billDetail);
         void RemoveBillDetail(Guid billDetailId);
+
     }
 }
