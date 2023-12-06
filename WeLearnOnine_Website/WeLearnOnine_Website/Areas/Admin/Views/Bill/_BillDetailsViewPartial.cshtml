@@ -1,21 +1,20 @@
 ﻿@model WeLearnOnine_Website.Models.Bill
-@* 
 @{
-    string promotionClass = "bg-label-secondary";
+    string statusClass = "bg-label-info";
 
-    if (Model.Promotion == "Instructor")
+    if (Model.Status == "Payment Successful")
     {
-        promotionClass = "bg-label-info";
+        statusClass = "bg-label-success";
     }
-    else if (Model.Promotion == "Đào Tạo")
+    else if (Model.Status == "Pending")
     {
-        promotionClass = "bg-label-primary";
+        statusClass = "bg-label-primary";
     }
-    else if (Model.Promotion == "Admin")
+    else if (Model.Status == "Payment Fail")
     {
-        promotionClass = "bg-label-danger";
+        statusClass = "bg-label-danger";
     }
-} *@
+}
 <!-- Modal Header -->
 <div class="modal-header">
     <h3 class="modal-title">Detail</h3>
@@ -25,50 +24,107 @@
 <!-- Modal body -->
 <div class="modal-body">
     <div class="card-body">
-        <div class="col-md-12">
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                      @*   <img class="card-img card-img-left" src="@Model.UserId" alt="Avatar"> *@
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                           @*  <h4 class="card-title">@Model.UserId</h4> *@
-                            <p class="card-text">
-                                @Model.CreateAt
-                            </p>
-                            <p class="card-text me-2">Email: <small class="text-muted fs-6">@Model.Email</small></p>
-                            <p class="card-text">Promotion: <span class="fs-5">@Model.Total.ToString("#,##0") VNĐ</span></p>
-                            <p class="card-text">Promotion: <span class="fs-5">@String.Format("{0:#,##0}", Model.Promotion) VNĐ</span></p>
+        <div class="col-12">
+            <div class="mb-3">
+                <div class="row">
+                    <div class="d-flex justify-content-between">
+                        <div class="mb-xl-0 mb-4">
+                            <div class="d-flex mb-3 gap-2">
+                                <span class="app-brand-text demo text-body fw-bold">Sneat</span>
+                            </div>
+                            <p class="mb-1">Office 149, 450 South Brand Brooklyn</p>
+                            <p class="mb-1">San Diego County, CA 91905, USA</p>
+                            <p class="mb-0">+1 (123) 456 7891, +44 (876) 543 2198</p>
                         </div>
-                    </div>
+                        <div>
+                            <h4>Invoice #@(Model.BillId.ToString().Length >= 8 ? Model.BillId.ToString().Substring(0, 8) : Model.BillId.ToString())</h4>
+                            <div class="mb-2">
+                                <span class="me-1">Date Issues:</span>
+                                <span class="fw-medium">@Model.CreateAt</span>
+                            </div>
+                            <div>
+                                <span class="me-1">Date Due:</span>
+                                <span class="fw-medium">@Model.ExpirationDate</span>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
-
-        <div class="divider">
-            <div class="divider-text">More (About)</div>
-        </div>
-        <dl class="row mt-2">
-            <dt class="col-sm-3">Expiration Date</dt>
-            <dd class="col-sm-9">@Model.ExpirationDate</dd>
-        </dl>
-        <dl class="row mt-2">
-            <dt class="col-sm-3">Payment Method</dt>
-            <dd class="col-sm-9">@Model.PaymentMethod</dd>
-        </dl>
-        <dl class="row mt-2">
-            <dt class="col-sm-3">Historical Cost</dt>
-            <dd class="col-sm-9">@String.Format("{0:#,##0}", Model.HistoricalCost) VNĐ</dd>
-        </dl>
-        <dl class="row mt-2">
-            <dt class="col-sm-3">Card Holder</dt>
-            <dd class="col-sm-9">@Model.CardHolderName</dd>
-        </dl>
     </div>
+        <hr class="my-0">
+    <div class="card-body">
+        <div class="col-12">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <h6 class="pb-2">Invoice To:</h6>
+                        <p class="mb-1">UserID: @Model.UserId</p>
+                        <p class="mb-1">718-986-6062</p>
+                        <p class="mb-0">peakyFBlinders@gmail.com</p>
+                    </div>
+                    <div class="col-xl-6">
+                        <h6 class="pb-2">Bill To:</h6>
+                        <div class="d-flex">
+                            <div class="col-left" style="width: 120px;">
+                                <p class="mb-1">Total Due:</p>
+                                <p class="mb-1">Bank name:</p>
+                            </div>
+                            <div class="col-right">
+                                <p class="mb-1">@Model.Total.ToString("#,##0") đ</p>
+                                <p class="mb-1">@Model.PaymentMethod</p>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="col-12">
+                <div class="row p-2" style="border-top: 1px solid #d9dee3">
+                    <span class="col-3">Item</span>
+                    <span class ="col-3">Description</span>
+                    <span class ="col-2">Cost</span>
+                    <span class="col-2">Qty</span>
+                    <span class="col-2">Price</span>
+                </div>
+                <div class="row p-2" style="border-top: 1px solid #d9dee3">
+                    <span class="col-3">Frest Admin Template</span>
+                    <span class="col-3">Angular Admin Template</span>
+                    <span class="col-2">$22</span>
+                    <span class="col-2">1</span>
+                    <span class="col-2">$22.00</span>
+                </div>
+            </div>
+    </div>
+    <div class="card-body">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-xl-9">
+                    <p class="mb-1">Salesperson: @Model.CardHolderName</p>
+                </div>
+                <div class="col-xl-3">
+                    <div class="d-flex">
+                        <div class="col-left" style="width: 120px;">
+                            <p class="mb-1">Subtotal:</p>
+                            <p class="mb-1">Discount:</p>
+                            <p class="mb-1">Total:</p>
+                        </div>
+                        <div class="col-right">
+                            <p class="mb-1">@String.Format("{0:#,##0}", Model.HistoricalCost) đ</p>
+                            <p class="mb-1">@String.Format("{0:#,##0}", Model.Promotion) đ</p>
+                            <p class="mb-1">@Model.Total.ToString("#,##0") đ</p>
+                        </div>
+                    </div>
+                <span class="mt-4 @statusClass fs-5">@Model.Status</span>
+                </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Modal footer -->
 @* <div class="modal-footer">
     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 </div> *@
+
