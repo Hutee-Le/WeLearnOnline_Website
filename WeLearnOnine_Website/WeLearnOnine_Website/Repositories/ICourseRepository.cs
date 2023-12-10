@@ -1,4 +1,6 @@
-﻿namespace WeLearnOnine_Website.Models
+﻿using WeLearnOnine_Website.ViewModels;
+
+namespace WeLearnOnine_Website.Models
 {
     public interface ICourseRepository
     {

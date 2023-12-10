@@ -8,5 +8,6 @@ namespace WeLearnOnine_Website.ViewModels
         public decimal TotalDiscountedPrice { get; set; }
         public decimal TotalOriginalPrice { get; set; }
         public decimal TotalSaving { get; set; }
+        public string SelectedPaymentMethod { get; set; }
     }
 }
