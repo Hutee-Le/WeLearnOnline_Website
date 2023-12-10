@@ -18,7 +18,8 @@
     <div class="container-xxl">
         <div class="page__container">
             <h2 class="heading text-center fs-1 fw-bold mb-5">Xem lại yêu cầu đăng ký</h2>
-            <div class="checkout-container d-flex">
+            <form id ="checkoutForm" asp-controller="ShoppingCart" asp-action="Checkout" method="post">
+                <div class="checkout-container d-flex">
                 <div class="checkout-left col-6">
                     <div class="order-item">
                            @foreach (var detail in Model.Bill.BillDetails)
@@ -64,7 +65,7 @@
                                 </span>
                             </div>
                             <div class="payment__desc col-4">Hoàn thành ngay</div>
-                            <input class="payment__check col-1" type="radio" name="payment__check" />
+                                <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="BankTransfer" />
                         </div>
                         <div class="payment__item d-flex align-items-center p-4" data-value="2">
                             <div class="payment__info col-7">
@@ -76,7 +77,7 @@
                                 </span>
                             </div>
                             <div class="payment__desc col-4">Hoàn thành ngay</div>
-                            <input class="payment__check col-1" type="radio" name="payment__check" />
+                                <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="MOMO" />
                         </div>
                         <div class="payment__item d-flex align-items-center p-4" data-value="3">
                             <div class="payment__info col-7">
@@ -85,7 +86,7 @@
                                 <span class="payment__name ps-3">Quét VNpay QRcode</span>
                             </div>
                             <div class="payment__desc col-4">Hoàn thành ngay</div>
-                            <input class="payment__check col-1" type="radio" name="payment__check" />
+                                <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="VNPay" />
                         </div>
                     </div>
                 </div>
@@ -121,11 +122,12 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn-complete mt-5">
+                    <button type="submit" class="btn-complete mt-5">
                         <span>Hoàn tất đăng ký </span>
                     </button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -188,4 +190,12 @@
 
         return emptyCartContent;
     }
+
+    document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+        var paymentMethodIsChecked = document.querySelector('input[name="SelectedPaymentMethod"]:checked');
+        if (!paymentMethodIsChecked) {
+            e.preventDefault(); // ngăn không cho form submit
+            alert('Vui lòng chọn phương thức thanh toán.');
+        }
+    });
 </script>

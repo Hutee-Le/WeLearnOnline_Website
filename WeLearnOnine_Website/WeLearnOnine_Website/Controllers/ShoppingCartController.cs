@@ -170,8 +170,23 @@ namespace WeLearnOnine_Website.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Checkout(ShoppingCartViewModel model)
+        {
 
+            var paymentMethod = model.SelectedPaymentMethod;
+            // Xử lý logic thanh toán tại đây dựa vào phương thức thanh toán đã chọn
+            // ...
 
+            // Sau khi xử lý xong, bạn có thể chuyển hướng đến trang xác nhận hoặc hiển thị thông báo lỗi tùy theo kết quả
+            return RedirectToAction("PaymentConfirmation"); // Hoặc trả về View với thông báo lỗi
+        }
+
+        public IActionResult PaymentConfirmation()
+        {
+
+            return View(); 
+        }
 
         public IActionResult EmptyCart()
         {
