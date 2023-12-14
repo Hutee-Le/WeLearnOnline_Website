@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 using WeLearnOnine_Website.ViewModels;
@@ -11,6 +12,7 @@ namespace WeLearnOnine_Website.Controllers
     {
         private readonly IBillRepository _billRepository;
         private readonly ICourseRepository _courseRepository;
+        private readonly HttpClient client = new HttpClient();
         public ShoppingCartController(IBillRepository billRepository, ICourseRepository courseRepository)
         {
             _billRepository = billRepository;
@@ -152,6 +154,12 @@ namespace WeLearnOnine_Website.Controllers
                 var totalSaving = totalOriginalPrice - totalDiscountedPrice;
                 var cartCount = bill.BillDetails.Count;
 
+                bill.HistoricalCost = totalOriginalPrice;
+                bill.Promotion = totalDiscountedPrice;
+
+                // Lưu các thay đổi vào cơ sở dữ liệu
+                _billRepository.UpdateBill(bill);
+
                 return Json(new
                 {
                     success = true,
@@ -171,15 +179,64 @@ namespace WeLearnOnine_Website.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout(ShoppingCartViewModel model)
+        public async Task<IActionResult> Checkout(ShoppingCartViewModel model)
         {
+            var userId = 4;
+            var bill = _billRepository.GetPendingBillByUserId(userId);
 
-            var paymentMethod = model.SelectedPaymentMethod;
-            // Xử lý logic thanh toán tại đây dựa vào phương thức thanh toán đã chọn
-            // ...
+            if (bill == null)
+            {
+                // Xử lý trường hợp không tìm thấy hóa đơn
+                return View("Error"); // Trang lỗi hoặc thông báo phù hợp
+            }
+            if(model.SelectedPaymentMethod == "MOMO")
+            {
+                var orderId = DateTime.Now.Ticks.ToString();
 
-            // Sau khi xử lý xong, bạn có thể chuyển hướng đến trang xác nhận hoặc hiển thị thông báo lỗi tùy theo kết quả
-            return RedirectToAction("PaymentConfirmation"); // Hoặc trả về View với thông báo lỗi
+                string accessKey = "F8BBA842ECF85";
+                string secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz";
+
+                MoMoRequest request = new MoMoRequest();
+                request.orderInfo = "pay with MoMo";
+                request.partnerCode = "MOMO";
+                request.redirectUrl = "";
+                request.ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+                request.redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+                request.amount = (long)model.TotalDiscountedPrice;
+                request.orderId = bill.BillId.ToString();
+                request.requestId = orderId + "id";
+                request.requestType = "payWithMethod";
+                request.extraData = "";
+                request.partnerName = "MoMo Payment";
+                request.storeId = "Test Store";
+                request.autoCapture = true;
+                request.orderExpireTime = 15;
+                request.lang = "vi";
+
+                var rawSignature = "accessKey=" + accessKey + "&amount=" + request.amount + "&extraData=" + request.extraData + "&ipnUrl=" + request.ipnUrl + "&orderId=" + request.orderId + "&orderInfo=" + request.orderInfo + "&partnerCode=" + request.partnerCode + "&redirectUrl=" + request.redirectUrl + "&requestId=" + request.requestId + "&requestType=" + request.requestType;
+                request.signature = MoMoHelper.getSignature(rawSignature, secretKey);
+
+                StringContent httpContent = new StringContent(JsonSerializer.Serialize(request), System.Text.Encoding.UTF8, "application/json");
+                var quickPayResponse = await client.PostAsync("https://test-payment.momo.vn/v2/gateway/api/create", httpContent);
+
+                var responseContent = await quickPayResponse.Content.ReadAsStringAsync();
+                var responseObject = JsonSerializer.Deserialize<MoMoResponse>(responseContent);
+
+                bill.PayUrl = responseObject.payUrl;
+            }
+
+
+
+            //bill.Status = "Pend";
+            
+            bill.PaymentMethod = model.SelectedPaymentMethod;
+            bill.HistoricalCost = model.TotalOriginalPrice;
+            bill.Promotion = model.TotalDiscountedPrice;
+
+            // Lưu các thay đổi vào cơ sở dữ liệu
+            _billRepository.UpdateBill(bill);
+
+            return RedirectToAction("PaymentConfirmation" ); 
         }
 
         public IActionResult PaymentConfirmation()

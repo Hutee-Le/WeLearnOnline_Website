@@ -14,6 +14,9 @@
 <!-- breadcrumb end -->
 <!-- Checkout Section Begin -->
 <!-- Checkout -->
+<div id="paymentMethodError" class="alert alert-danger" style="display:none;">
+    Vui lòng chọn phương thức thanh toán.
+</div>
 <div class="checkout-container">
     <div class="container-xxl">
         <div class="page__container">
@@ -97,6 +100,8 @@
                                 <div class="order-price d-flex align-items-center">
                                     <div class="price fs-4 me-4" id="price">@Model.TotalDiscountedPrice.ToString("#,##0")đ</div>
                                     <div class="price-sale" id="price-sale">Giá gốc: @Model.TotalOriginalPrice.ToString("#,##0")đ</div>
+                                        <input type="hidden" name="TotalDiscountedPrice" value="@Model.TotalDiscountedPrice" />
+                                        <input type="hidden" name="TotalOriginalPrice" value="@Model.TotalOriginalPrice" />
                                 </div>
                                 <div class="order-saving">Tiết kiệm @String.Format("{0:F0}%", (Model.TotalOriginalPrice - Model.TotalDiscountedPrice) / Model.TotalOriginalPrice * 100) (@Model.TotalSaving.ToString("#,##0")đ)</div>
                             </div>
@@ -193,9 +198,13 @@
 
     document.getElementById('checkoutForm').addEventListener('submit', function (e) {
         var paymentMethodIsChecked = document.querySelector('input[name="SelectedPaymentMethod"]:checked');
+        var paymentMethodsContainer = document.querySelector('.payment__list'); // Chọn khung chứa các phương thức thanh toán
+
         if (!paymentMethodIsChecked) {
-            e.preventDefault(); // ngăn không cho form submit
-            alert('Vui lòng chọn phương thức thanh toán.');
+            e.preventDefault(); // Ngăn không cho form submit
+            paymentMethodsContainer.classList.add('payment-error'); // Thêm class để hiển thị khung màu đỏ
+        } else {
+            paymentMethodsContainer.classList.remove('payment-error'); // Loại bỏ class nếu người dùng đã chọn phương thức thanh toán
         }
     });
 </script>
