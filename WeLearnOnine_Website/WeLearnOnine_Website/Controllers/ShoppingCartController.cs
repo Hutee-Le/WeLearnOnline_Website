@@ -36,8 +36,8 @@ namespace WeLearnOnine_Website.Controllers
             decimal totalOriginalPrice = 0;
             foreach (var detail in bill.BillDetails)
             {
-                totalDiscountedPrice += detail.Price;
-                totalOriginalPrice += detail.DiscountPrice ?? detail.Price; 
+                totalDiscountedPrice += detail.DiscountPrice ?? detail.Price;
+                totalOriginalPrice += detail.Price; 
             }
 
             var viewModel = new ShoppingCartViewModel
@@ -153,8 +153,8 @@ namespace WeLearnOnine_Website.Controllers
                     return Json(new { success = true, cartCount = 0 });
                 }
 
-                var totalDiscountedPrice = bill.BillDetails.Sum(bd => bd.Price);
-                var totalOriginalPrice = bill.BillDetails.Sum(bd => bd.DiscountPrice ?? bd.Price);
+                var totalDiscountedPrice = bill.BillDetails.Sum(bd => bd.DiscountPrice ?? bd.Price);
+                var totalOriginalPrice = bill.BillDetails.Sum(bd => bd.Price);
                 var totalSaving = totalOriginalPrice - totalDiscountedPrice;
                 var cartCount = bill.BillDetails.Count;
 
@@ -228,8 +228,7 @@ namespace WeLearnOnine_Website.Controllers
 
 
 
-            //bill.Status = "Pend";
-            
+            bill.Status = "Processing";
             bill.PaymentMethod = model.SelectedPaymentMethod;
             bill.HistoricalCost = model.TotalOriginalPrice;
             bill.Promotion = model.TotalDiscountedPrice;

@@ -40,10 +40,14 @@
                                     </h5>
                                         <div class="order-item__price hidden-mb d-flex justify-content-between mt-3">
                                             <div class="price-group d-flex">
-                                            <h5 class="price me-xl-5">@detail.Course.Price.ToString("#,##0")đ</h5>
                                                 @if (detail.Course.DiscountPrice.HasValue)
                                                 {
-                                                    <div class="price-sale text-decoration-line-through">@String.Format("{0:#,##0}", detail.Course.DiscountPrice)</div>
+                                                    <h5 class="price me-xl-5">@detail.Course.DiscountPrice.Value.ToString("#,##0")đ</h5>
+                                                    <div class="price-sale text-decoration-line-through">@detail.Course.Price.ToString("#,##0")đ</div>
+                                                }
+                                                else
+                                                {
+                                                    <h5 class="price me-xl-5">@detail.Course.Price.ToString("#,##0")đ</h5>
                                                 }
                                             </div>
                                             <button type="button" class="order-item__remove" onclick="removeFromCart(@detail.Course.CourseId)">
