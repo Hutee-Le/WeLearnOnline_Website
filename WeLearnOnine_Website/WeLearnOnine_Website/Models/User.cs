@@ -21,6 +21,8 @@ public partial class User
 
     public DateTime? CreateAt { get; set; }
 
+    public string? UserAsp { get; set; }
+
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public virtual ICollection<FavList> FavLists { get; set; } = new List<FavList>();

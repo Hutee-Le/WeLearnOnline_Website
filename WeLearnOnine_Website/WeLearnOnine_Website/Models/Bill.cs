@@ -9,6 +9,8 @@ public partial class Bill
 
     public int? UserId { get; set; }
 
+    public string? BillCode { get; set; }
+
     public decimal Total { get; set; }
 
     public decimal? HistoricalCost { get; set; }
@@ -26,6 +28,8 @@ public partial class Bill
     public DateTime? ExpirationDate { get; set; }
 
     public string? Status { get; set; }
+
+    public string? PayUrl { get; set; }
 
     public virtual ICollection<BillDetail> BillDetails { get; set; } = new List<BillDetail>();
 

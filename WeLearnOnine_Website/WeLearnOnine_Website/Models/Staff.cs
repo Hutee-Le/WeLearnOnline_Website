@@ -29,6 +29,8 @@ public partial class Staff
 
     public string? FacebookUrl { get; set; }
 
+    public string? UserAsp { get; set; }
+
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public virtual ICollection<Course> Courses { get; set; } = new List<Course>();

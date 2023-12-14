@@ -3168,6 +3168,11 @@ button.clearfilter {
     border: none;
 }
 
+.payment-error {
+    border: 2px solid red;
+    padding: 10px;
+}
+
 .checkout-right .user-info {
     border-top: 1px solid rgb(222, 225, 243);
 }

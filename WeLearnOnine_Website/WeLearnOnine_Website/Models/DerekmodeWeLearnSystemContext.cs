@@ -64,6 +64,9 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
             entity.Property(e => e.BillId)
                 .HasDefaultValueSql("(newsequentialid())")
                 .HasColumnName("BillID");
+            entity.Property(e => e.BillCode)
+                .HasMaxLength(20)
+                .IsUnicode(false);
             entity.Property(e => e.CardHolderName)
                 .HasMaxLength(50)
                 .HasColumnName("Card_HolderName");
@@ -77,6 +80,7 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
             entity.Property(e => e.HistoricalCost)
                 .HasColumnType("money")
                 .HasColumnName("Historical_cost");
+            entity.Property(e => e.PayUrl).HasColumnName("PayURL");
             entity.Property(e => e.PaymentMethod)
                 .HasMaxLength(50)
                 .HasColumnName("Payment_Method");
@@ -321,6 +325,7 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
                 .IsFixedLength();
             entity.Property(e => e.Role).HasMaxLength(20);
             entity.Property(e => e.StaffName).HasMaxLength(70);
+            entity.Property(e => e.UserAsp).HasColumnName("UserASP");
         });
 
         modelBuilder.Entity<StaffSkill>(entity =>
@@ -372,6 +377,7 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(11)
                 .IsUnicode(false);
+            entity.Property(e => e.UserAsp).HasColumnName("UserASP");
             entity.Property(e => e.UserName).HasMaxLength(50);
         });
 
@@ -379,7 +385,11 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
         {
             entity.HasKey(e => e.Ucrid);
 
-            entity.ToTable("User_Course_Rating", tb => tb.HasTrigger("trg_CalculateCourseRating"));
+            entity.ToTable("User_Course_Rating", tb =>
+                {
+                    tb.HasTrigger("trg_AfterInsertUserCourseRating");
+                    tb.HasTrigger("trg_CalculateCourseRating");
+                });
 
             entity.Property(e => e.Ucrid).HasColumnName("UCRID");
             entity.Property(e => e.CourseId).HasColumnName("CourseID");
