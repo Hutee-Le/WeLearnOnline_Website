@@ -253,5 +253,15 @@ namespace WeLearnOnine_Website.Repositories
                 return await videoChild.PutAsync(videoStream);
             }
         }
+
+        public List<int> GetSelectedCategoriesForCourse(int courseId)
+        {
+            // Thực hiện truy vấn cơ sở dữ liệu để lấy danh sách các category đã chọn cho khóa học có ID là 'courseId'
+            // Giả sử Categories_Course là tên bảng liên kết giữa Courses và Categories
+            return _ctx.CategoriesCourses
+                .Where(cc => cc.CourseId == courseId)
+                .Select(cc => cc.CategoriesId)
+                .ToList();
+        }
     }
 }

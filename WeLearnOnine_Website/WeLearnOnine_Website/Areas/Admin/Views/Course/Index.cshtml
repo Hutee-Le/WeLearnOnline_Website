@@ -15,7 +15,11 @@
         Swal.fire({
             icon: 'info',
             title: 'Thông báo',
-            text: searchMessage
+            text: searchMessage,
+            willClose: () => {
+                // Chuyển hướng về trang Index
+                window.location.href = '@Url.Action("Index", "Course")';
+            }
         });
         </text>
     }
@@ -27,7 +31,7 @@
 }
 @if (TempData["courseError"] != null)
 {
-    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
             <div class="me-auto fw-medium">Notification</div>
@@ -54,13 +58,12 @@
 @* <button type="button" class="btn rounded-pill btn-primary">Primary</button> *@
 <p>@TempData["Message"]</p>
 <div class="card">
-    <div class="col-md-12 d-flex justify-content-between align-items-center create-zone">
-        <h5 class="card-header">Courses Table</h5>
-
+    <div class="col-md-12 d-flex justify-content-between align-items-center create-zone mt-3">
+    
         <!-- Dropdown List for Categories -->
-        <div class="form-group">
+        <div class="form-group ms-5">
             <label class="d-flex align-items-center">
-                Course:
+                Category:
                 @*  <select id="categorySelect" asp-for="SelectedCategoryId">
                 <option value="0">-- Chọn danh mục --</option>
                 @foreach (var category in Model.Categories)

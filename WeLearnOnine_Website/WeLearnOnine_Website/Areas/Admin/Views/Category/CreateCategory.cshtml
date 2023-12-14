@@ -9,7 +9,7 @@
     <h4 class="py-3 mb-4"><span class="text-muted fw-light">Category/</span> Create New</h4>
     <form asp-action="SaveCategory" method="post" enctype="multipart/form-data">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-8">
                 <div class="card">
                     <div class="card-body">
                    @*      <div class="form-group mb-3">
@@ -18,42 +18,47 @@
                             <span asp-validation-for="CategoriesId" class="text-danger"></span>
                         </div> *@
 
-                        <div class="input-group mb-3">
+                     @*    <div class="input-group mb-3">
                             <span class="input-group-text">Name</span>
                             <textarea class="form-control" aria-label="With textarea" asp-for="CategoryName"></textarea>
+                        </div> *@
+
+                        <div>
+                            <label for="defaultFormControlInput" class="form-label">Name</label>
+                            <input asp-for="CategoryName" type="text" class="form-control" id="defaultFormControlInput" placeholder="ASP.net Developer">
+                            <div id="defaultFormControlHelp" class="form-text alert alert-warning mt-1">
+                                Note: Entering a category name without selecting the categories below will default to the first category.
+                            </div>
                         </div>
 
-
                         <div class="input-group my-3">
-                            @* <div class="input-group ">
-                                <label class="input-group-text">Category</label>
-                                <input asp-for="ParentCategories" asp-items="ViewBag.Level1" class="form-select">
-                                </input>
-                            </div>
- *@
-                          @*   <div class="form-check my-3">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" >
-                                <label class="form-check-label" for="defaultCheck1" asp-for="CategoriesId"> Default Level </label>
-                            </div> *@
+                            <style>
+                                select {
+                                    padding: 10px 15px;
+                                    outline:none;
+                                    border: 1px solid #ccc;
+                                }
+                                
+                            </style>
 
-                          <select name="category" id="category" asp-for="ParentCategories">
+                    @*         <select name="category" id="category" asp-for="ParentCategories">
+                                <option value="">None</option>
                                 <optgroup label="Level 1">
-                                    <option value="">Select Level 1</option>
                                     @foreach (var item in service.GetRootCategories())
                                     {
                                         <option value="@item.CategoriesId">@item.CategoryName</option>
                                     }
                                 </optgroup>
-                                <optgroup label="Level 2">
-                                    <option value="">Select Level 2</option>
-                                    @foreach (var item in service.GetRootCategories())
+                                <optgroup label="Level 2"> *@
+                                    @* <option value="">Select Level 2</option> *@
+                                 @*    @foreach (var item in service.GetRootCategories())
                                     {
                                         @foreach (var subitem_multi2 in service.GetSubCategories(item.CategoriesId))
                                         {
-                                            <option value="@item.CategoriesId">@item.CategoryName</option>
+                                            <option value="@subitem_multi2.CategoriesId">@subitem_multi2.CategoryName</option>
                                         }
                                     }
-                                </optgroup>
+                                </optgroup> *@
                                @*  <optgroup label="Level 3">
                                     <option value="">Select Level 3</option>
                                     @foreach (var item in ViewBag.Level3)
@@ -61,7 +66,14 @@
                                         <option value="@item.Value">@item.Text</option>
                                     }
                                 </optgroup> *@
-                            </select>
+                           @*  </select> *@
+                            <div class="input-group my-3">
+                                <label class="input-group-text" asp-for="ParentCategories">Category</label>
+                                    <select asp-for="ParentCategories" asp-items="ViewBag.CategoriesId" class="form-select">
+                                    <option asp-for="ParentCategories" value="null">Default</option>
+                                </select>
+                            </div>
+
                         </div>
 
                         <div class="input-group mt-3 d-flex justify-content-end">

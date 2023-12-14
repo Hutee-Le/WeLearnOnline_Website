@@ -1,0 +1,73 @@
+﻿@model WeLearnOnine_Website.Models.Category
+@inject WeLearnOnine_Website.Repositories.ICategoryRepository service
+
+<!-- Tree CSS -->
+<link rel="stylesheet" href="~/LayoutAdmin/css/treeStyle.css" />
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h3 class="modal-title">Detail</h3>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    <div class="card-body">
+        <ul class="tree">
+            <li>
+                <details open>
+                    <summary>@Model.CategoryName</summary>
+                    <ul class="treeIn">
+                            @foreach (var sub_item in service.GetSubCategories(Model.CategoriesId))
+                            {
+
+                                @if (service.GetSubCategories(sub_item.CategoriesId).Count > 1)
+                                {
+                                    <li>
+                                        <details open>
+                                            <summary>@sub_item.CategoryName</summary>
+                                            <ul>
+                                                @foreach (var sub_item2 in service.GetSubCategories(sub_item.CategoriesId))
+                                                {
+                                                    <li>
+                                                        @sub_item2.CategoryName;
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </details>
+                                    </li>
+                                } 
+                                else 
+                                    {
+                                    <li>
+                                        @sub_item.CategoryName;
+                                    </li>
+                                    }
+                            }
+
+                        @* <li>
+                            <details open>
+                                <summary>Third Tier</summary>
+                                <ul>
+                                    <li>
+                                        @foreach (var sub_item in service.GetSubCategories(Model.CategoriesId))
+                                        {
+                                            @sub_item.CategoryName;
+                                            <br />
+                                        }
+                                    </li>
+                                </ul>
+                            </details>
+                        </li> *@
+                       @*  <li>Another Here</li> *@
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Modal footer -->
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>

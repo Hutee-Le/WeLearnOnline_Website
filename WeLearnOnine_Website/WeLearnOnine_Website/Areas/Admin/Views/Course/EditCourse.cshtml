@@ -3,7 +3,10 @@
 @{
     ViewData["Title"] = "EditCourse";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    var selectedCategories = Model.SelectedCategories ?? new List<int>();
 }
+
 
 <div class="container-fuild flex-grow-1 container-p-y">
     <h4 class="py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Edit</h4>
@@ -42,6 +45,13 @@
                             <label for="exampleFormControlTextarea1" class="form-label" asp-for="Required"></label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Required" asp-validation-for="Required"></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label asp-for="SelectedCategories">Select Categories:</label>
+                            <select asp-for="SelectedCategories" asp-items="@(new SelectList(ViewBag.Categories, "Value", "Text", Model.SelectedCategories))" multiple class="form-select" style="height: 150px"></select>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -81,25 +91,19 @@
                             <label class="form-check-label mx-3" for="Status"> of trending</label>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="html5-number-input" class="col-md-2 col-form-label" asp-for="Count">Total buyers</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="number" id="html5-number-input" asp-for="Count">
-                            </div>
+                        <div class="mb-3">
+                            <label for="defaultInput" class="form-label" asp-for="Count">Total buyers</label>
+                            <input id="defaultInput" class="form-control" type="number" placeholder="1200" asp-for="Count">
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="html5-text-input" class="col-md-2 col-form-label" asp-for="Language"></label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="text" id="html5-text-input" asp-for="Language">
-                            </div>
+                        <div class="mb-3">
+                            <label for="defaultInput" class="form-label" asp-for="Language"></label>
+                            <input id="defaultInput" class="form-control" type="text" placeholder="English" asp-for="Language">
                         </div>
 
-                        <div class="my-3 row">
-                            <label for="html5-number-input" class="col-md-3 col-form-label" asp-for="TimeTotal">Total course time (mins)</label>
-                            <div class="col-md-9">
-                                <input class="form-control" type="number" id="html5-number-input" asp-for="TimeTotal">
-                            </div>
+                        <div class="mb-3">
+                            <label for="defaultInput" class="form-label" asp-for="TimeTotal">Total course time (mins)</label>
+                            <input id="defaultInput" class="form-control" type="number" placeholder="120" asp-for="TimeTotal">
                         </div>
 
                         <div class="input-group my-3">

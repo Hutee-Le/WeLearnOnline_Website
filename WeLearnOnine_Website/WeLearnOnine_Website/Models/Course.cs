@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WeLearnOnine_Website.Models;
 
@@ -36,6 +37,9 @@ public partial class Course
     public string? Language { get; set; }
 
     public int? TimeTotal { get; set; }
+
+    [NotMapped]
+    public List<int> SelectedCategories { get; set; }
 
     public virtual ICollection<BillDetail> BillDetails { get; set; } = new List<BillDetail>();
 

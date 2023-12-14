@@ -28,9 +28,8 @@ namespace WeLearnOnine_Website.Models
 
         // Retrieve all courses with favorite status
         List<CourseViewModel> GetAvailableAndFavoriteCourses(int userId);
-
-
         List<Course> Search(string keyword);
+        List<int> GetSelectedCategoriesForCourse(int courseId);
 
     }
 }
