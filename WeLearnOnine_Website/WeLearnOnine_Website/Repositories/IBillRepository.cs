@@ -22,5 +22,7 @@ namespace WeLearnOnine_Website.Repositories
         void AddBillDetail(BillDetail billDetail);
         void RemoveBillDetail(Guid billDetailId);
 
+        int GetBillCountForDate(DateTime date);
+
     }
 }

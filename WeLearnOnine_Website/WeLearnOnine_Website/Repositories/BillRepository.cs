@@ -110,5 +110,16 @@ namespace WeLearnOnine_Website.Repositories
         }
 
         public List<Bill> GetAllBills() => _context.Bills.ToList();
+
+        public int GetBillCountForDate(DateTime date)
+        {
+            // Lấy ngày bắt đầu và kết thúc của ngày đang xét
+            var startDate = date.Date;
+            var endDate = startDate.AddDays(1);
+
+            // Đếm số lượng hóa đơn được tạo trong khoảng thời gian này
+            return _context.Bills
+                           .Count(b => b.CreateAt >= startDate && b.CreateAt < endDate);
+        }
     }
 }

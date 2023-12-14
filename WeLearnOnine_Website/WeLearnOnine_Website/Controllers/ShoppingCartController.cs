@@ -84,10 +84,14 @@ namespace WeLearnOnine_Website.Controllers
             var bill = _billRepository.GetPendingBillByUserId(userId);
             if (bill == null)
             {
+                var todayBillCount = _billRepository.GetBillCountForDate(DateTime.Now);
+                string billCode = Helper.GenerateBillCode(DateTime.Now, todayBillCount);
+
                 bill = new Bill
                 {
                     BillId = Guid.NewGuid(),
                     UserId = userId,
+                    BillCode = billCode,
                     Total = 0,
                     HistoricalCost = 0,
                     Promotion = 0,
@@ -199,22 +203,19 @@ namespace WeLearnOnine_Website.Controllers
                 MoMoRequest request = new MoMoRequest();
                 request.orderInfo = "pay with MoMo";
                 request.partnerCode = "MOMO";
-                request.redirectUrl = "";
                 request.ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
                 request.redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
                 request.amount = (long)model.TotalDiscountedPrice;
-                request.orderId = bill.BillId.ToString();
-                request.requestId = orderId + "id";
+                request.orderId = bill.BillCode;
+                request.requestId = bill.BillCode + "id";
                 request.requestType = "payWithMethod";
                 request.extraData = "";
                 request.partnerName = "MoMo Payment";
-                request.storeId = "Test Store";
                 request.autoCapture = true;
-                request.orderExpireTime = 15;
+                request.orderExpireTime = 1;
                 request.lang = "vi";
-
                 var rawSignature = "accessKey=" + accessKey + "&amount=" + request.amount + "&extraData=" + request.extraData + "&ipnUrl=" + request.ipnUrl + "&orderId=" + request.orderId + "&orderInfo=" + request.orderInfo + "&partnerCode=" + request.partnerCode + "&redirectUrl=" + request.redirectUrl + "&requestId=" + request.requestId + "&requestType=" + request.requestType;
-                request.signature = MoMoHelper.getSignature(rawSignature, secretKey);
+                request.signature = Helper.getSignature(rawSignature, secretKey);
 
                 StringContent httpContent = new StringContent(JsonSerializer.Serialize(request), System.Text.Encoding.UTF8, "application/json");
                 var quickPayResponse = await client.PostAsync("https://test-payment.momo.vn/v2/gateway/api/create", httpContent);
