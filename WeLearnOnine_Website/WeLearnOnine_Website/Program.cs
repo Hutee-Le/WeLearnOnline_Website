@@ -32,6 +32,7 @@ builder.Services.AddTransient<ICommentRepository, CommentRepository>();
 builder.Services.AddTransient<ILessonRepository, LessonRepository>();
 builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<ICategoryCourseRepository, CategoryCourseRepository>();
 builder.Services.AddTransient<ILevelRepository, LevelRepository>();
 builder.Services.AddTransient<ISkillRepository, StaffRepository>();
 builder.Services.AddTransient<ITypeRepository, TypeRepository>();

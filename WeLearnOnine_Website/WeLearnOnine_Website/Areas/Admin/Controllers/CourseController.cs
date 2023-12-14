@@ -16,37 +16,26 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         private ICourseRepository _courseRepository;
         private ILessonRepository _lessonRepository;
         private ICategoryRepository _categoryRepository;
+        private ICategoryCourseRepository _categoryCourseRepository;
         private ILevelRepository _levelRepository;
         private ISkillRepository _staffRepository;
 
-        public CourseController(ICourseRepository courseRepository, ICategoryRepository categoryRepository, ILevelRepository levelRepository, ISkillRepository staffRepository, DerekmodeWeLearnSystemContext ctx)
+        public CourseController(ICourseRepository courseRepository,
+            ICategoryRepository categoryRepository,
+            ICategoryCourseRepository categoryCourseRepository,
+            ILevelRepository levelRepository,
+            ISkillRepository staffRepository,
+            DerekmodeWeLearnSystemContext ctx)
         {
             _courseRepository = courseRepository;
             _categoryRepository = categoryRepository;
+            _categoryCourseRepository = categoryCourseRepository;
             _levelRepository = levelRepository;
             _staffRepository = staffRepository;
             this.ctx = ctx;
         }
 
-        //View All Table Course
-
-        //[HttpPost]
-        //public IActionResult FilterCoursesAjax(int categoryId)
-        //{
-        //    List<Course> courses;
-
-        //    if (categoryId == 0)
-        //    {
-        //        courses = _courseRepository.GetAllCourses();
-        //    }
-        //    else
-        //    {
-        //        courses = _courseRepository.GetCoursesByCategoryId(categoryId);
-        //    }
-
-        //    return View(courses);
-        //}
-
+     
         public IActionResult ShowCourseByCategory(int? CategoryId)
         {
             CategoryId = CategoryId ?? 0;
@@ -93,11 +82,39 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
 
         // Detail
+        //public IActionResult PopupView(int id)
+        //{
+        //    var model = _courseRepository.FindCourseByID(id);
+        //    return PartialView("_PopupViewPartial", model);
+        //}
+
         public IActionResult PopupView(int id)
         {
-            var model = _courseRepository.FindCourseByID(id);
-            return PartialView("_PopupViewPartial", model);
+            try
+            {
+                var model = _courseRepository.FindCourseByID(id);
+
+                if (model == null)
+                {
+                    // Xử lý trường hợp không tìm thấy khóa học với ID cung cấp
+                    return NotFound();
+                }
+
+                // Lấy danh sách danh mục và chuyển đến view
+                var categoryList = _categoryRepository.GetAllCategories();
+                ViewBag.Categories = new MultiSelectList(categoryList, "CategoriesId", "CategoryName");
+
+                return PartialView("_PopupViewPartial", model);
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các lỗi khác nếu có
+                TempData["popupError"] = $"Error loading popup view: {ex.Message}";
+                return RedirectToAction("Index"); // Hoặc thực hiện hành động khác theo yêu cầu của bạn
+            }
         }
+
+
 
         // Create 
         [HttpPost]
@@ -116,6 +133,22 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                 }
 
                 _courseRepository.Add(course);
+
+                // Lấy danh sách các danh mục đã chọn và cập nhật vào bảng Categories_Course
+                if (course.SelectedCategories != null && course.SelectedCategories.Any())
+                {
+                    foreach (var categoryId in course.SelectedCategories)
+                    {
+                        var catCourse = new CategoriesCourse
+                        {
+                            CategoriesId = categoryId,
+                            CourseId = course.CourseId // Đảm bảo CourseID đã được tạo khi thêm vào
+                        };
+
+                        ctx.CategoriesCourses.Add(catCourse); // _context là đối tượng DbContext, thay thế bằng đối tượng DbContext của bạn
+                    }
+                    ctx.SaveChanges(); // Lưu thay đổi vào cơ sở dữ liệu
+                }
 
                 TempData["courseSuccess"] = "Course successfully saved!";
             }
@@ -139,6 +172,11 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             ViewBag.LevelId = list1.ToList();
             var stafflst = _staffRepository.GetAllStaffs();
             ViewBag.StaffId = new SelectList(stafflst, "StaffId", "StaffName");
+
+            // Lấy danh sách danh mục và chuyển đến view
+            var categoryList = _categoryRepository.GetAllCategories(); // Thay thế bằng phương thức lấy danh sách danh mục thực tế
+            ViewBag.Categories = new MultiSelectList(categoryList, "CategoriesId", "CategoryName");
+
             return View("CreateCourse", new Course());
         }
 
@@ -167,6 +205,37 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                     course.PreviewUrl = ExistingPreviewUrl;
                 }
 
+                // Lấy danh sách các category đã chọn trước đó cho khóa học
+                var selectedCategories = _courseRepository.GetSelectedCategoriesForCourse(course.CourseId);
+
+                // Xóa các category cũ không được chọn
+                var categoriesToRemove = selectedCategories.Except(course.SelectedCategories);
+                foreach (var categoryId in categoriesToRemove)
+                {
+                    // Tìm đối tượng CategoriesCourse trong cơ sở dữ liệu để xóa
+                    var catCourseToRemove = ctx.CategoriesCourses
+                        .FirstOrDefault(cc => cc.CategoriesId == categoryId && cc.CourseId == course.CourseId);
+
+                    // Xóa đối tượng nếu tìm thấy
+                    if (catCourseToRemove != null)
+                    {
+                        ctx.CategoriesCourses.Remove(catCourseToRemove);
+                    }
+                }
+
+                // Thêm các category mới được chọn
+                var categoriesToAdd = course.SelectedCategories.Except(selectedCategories);
+                foreach (var categoryId in categoriesToAdd)
+                {
+                    var catCourseToAdd = new CategoriesCourse
+                    {
+                        CategoriesId = categoryId,
+                        CourseId = course.CourseId
+                    };
+                    ctx.CategoriesCourses.Add(catCourseToAdd);
+                }
+
+                // Cập nhật thông tin khóa học
                 _courseRepository.Update(course);
 
                 TempData["courseSuccess"] = "Course successfully saved!";
@@ -179,14 +248,46 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        //public IActionResult EditCourse(int id)
+        //{
+        //    var levellst = _levelRepository.GetAllLevels();
+        //    var stafflst = _staffRepository.GetAllStaffs();
+        //    ViewBag.LevelId = new SelectList(levellst, "LevelId", "Name");
+        //    ViewBag.StaffId = new SelectList(stafflst, "StaffId", "StaffName");
+
+        //    
+        //    var categoryList = _categoryRepository.GetAllCategories();
+        //    ViewBag.Categories = new MultiSelectList(categoryList, "CategoriesId", "CategoryName");
+
+        //    return View("EditCourse", _courseRepository.FindCourseByID(id));
+        //}
+
         public IActionResult EditCourse(int id)
         {
             var levellst = _levelRepository.GetAllLevels();
             var stafflst = _staffRepository.GetAllStaffs();
             ViewBag.LevelId = new SelectList(levellst, "LevelId", "Name");
             ViewBag.StaffId = new SelectList(stafflst, "StaffId", "StaffName");
-            return View("EditCourse", _courseRepository.FindCourseByID(id));
+
+            // Lấy danh sách danh mục và chuyển đến view
+            var categoryList = _categoryRepository.GetAllCategories(); // Thay thế bằng phương thức lấy danh sách danh mục thực tế
+
+            // Lấy danh sách các category đã chọn trước đó cho khóa học có ID là 'id'
+            var selectedCategories = _courseRepository.GetSelectedCategoriesForCourse(id);
+
+            // Khởi tạo model Course với các giá trị cần thiết
+            var course = _courseRepository.FindCourseByID(id);
+
+            // Gán danh sách các category đã chọn vào thuộc tính SelectedCategories của model
+            course.SelectedCategories = selectedCategories;
+
+            ViewBag.Categories = new MultiSelectList(categoryList, "CategoriesId", "CategoryName", course.SelectedCategories);
+
+            return View("EditCourse", course);
         }
+
+
+
 
         // Delete
         public IActionResult Delete(int id)
@@ -220,8 +321,6 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             if (courses.Count == 0)
             {
                 ViewBag.SearchMessage = "Không tìm thấy khóa học.";
-                // Chuyển hướng về trang Index
-                return RedirectToAction("Index");
             }
 
             // Chuyển hướng về trang Index với trang hiện tại

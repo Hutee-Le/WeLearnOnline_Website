@@ -41,7 +41,28 @@
                             <span class="card-text me-2"><small class="text-muted fs-6">@Model.TimeTotal mins</small></span>
                             <span class="card-text me-2"><small class="text-muted fs-6">@Model.Language</small></span>
                             <span class="card-text me-2"><small class="text-muted fs-6">@Model.Staff.StaffName</small></span>
-                            <h5 class="card-text mt-2">Rating: @Model.Rating</h5>
+                            <h5 class="card-text mt-2">Rating: <span>@Model.Rating</span></h5>
+                            <h5 class="card-text mt-2">
+                                @{
+                                    var categories = ViewBag.Categories as IEnumerable<SelectListItem>;
+                                    if (Model.SelectedCategories != null && categories != null)
+                                    {
+                                        foreach (var categoryId in Model.SelectedCategories)
+                                        {
+                                            var categoryName = categories
+                                            .Where(c => c.Value == categoryId.ToString())
+                                            .Select(c => c.Text)
+                                            .FirstOrDefault();
+
+                                            if (categoryName != null)
+                                            {
+                                                <span>@categoryName</span>
+                                            }
+                                        }
+                                    }
+                                }
+                            </h5>
+
                             <p class="card-text">Level: <span class="@levelClass fs-5">@Model.Level.Name</span></p>
                             <span class="card-text">Total user buy: @Model.Count</span>
 

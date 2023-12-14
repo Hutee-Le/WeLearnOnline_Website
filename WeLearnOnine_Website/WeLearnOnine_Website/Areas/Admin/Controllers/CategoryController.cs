@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Firebase.Auth;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
 using System;
@@ -15,95 +16,89 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         private ICourseRepository _courseRepository;
         private ILevelRepository _levelRepository;
         private ICategoryRepository _categoryRepository;
+        DerekmodeWeLearnSystemContext ctx;
 
-        public CategoryController(ISkillRepository staffRepository, ICourseRepository courseRepository, ILevelRepository levelRepository, ICategoryRepository categoryRepository)
+        public CategoryController(ISkillRepository staffRepository, 
+            ICourseRepository courseRepository, 
+            ILevelRepository levelRepository, 
+            ICategoryRepository categoryRepository,
+            DerekmodeWeLearnSystemContext ctx)
         {
             _staffRepository = staffRepository;
             _courseRepository = courseRepository;
             _levelRepository = levelRepository;
             _categoryRepository = categoryRepository;
+            this.ctx = ctx;
         }
 
         //View All Table Staff
         public IActionResult Index(int? page)
         {
-            int pageSize = 4; // Số lượng mục trên mỗi trang
-            int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
 
-            var paginatedCourses = _categoryRepository.GetRootCategories().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            var paginatedCourses = _categoryRepository.GetAllCategories().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)_categoryRepository.GetRootCategories().Count() / pageSize);
+            ViewBag.TotalPages = (int)Math.Ceiling((double)_categoryRepository.GetAllCategories().Count() / pageSize);
 
 
             return View("Index", paginatedCourses);
         }
-        //public IActionResult Index2(int categoriesId)
+        //public IActionResult Index()
         //{
-        //    var lst2 = _categoryRepository.GetSecondLevelCategories(categoriesId);
-        //    return View("Index2", lst2);
+        //    var categories = _categoryRepository.GetAllCategories();
+
+        //    return View("Index", categories);
         //}
+
         // Create 
         [HttpPost]
         public IActionResult SaveCategory(Category category)
         {
-            _categoryRepository.Create(category);
-            if (category.CategoriesId == 0)
+            var parentID = category.ParentCategories;
+            // Kiểm tra xem CategoryName có giá trị hay không
+            if (!string.IsNullOrEmpty(category.CategoryName))
             {
-                TempData["categoryError"] = "Category not saved!";
+                _categoryRepository.Create(category);
+
+                if (category.CategoriesId == 0)
+                {
+                    TempData["categoryError"] = "Category not saved!";
+                }
+                else
+                {
+                    TempData["categorySuccess"] = "Category successfully saved!";
+                }
             }
             else
             {
-                TempData["categorySuccess"] = "Category successfully saved!";
+                TempData["categoryError"] = "CategoryName cannot be null or empty!";
             }
+
             return RedirectToAction("Index");
         }
 
-        //public IActionResult CreateCategory()
-        //{
-        //    var level1 = _categoryRepository.GetRootCategories();
-        //    foreach (var catelevel in level1)
-        //    {
-        //        ViewBag.level1 = new SelectList(level1, "CategoriesId", "CategoryName");
-        //        var level2 = _categoryRepository.GetSecondLevelCategories(catelevel);
-        //        foreach (var catelevel2 in level2)
-        //        {
-        //            ViewBag.level2 = new SelectList(level2, "CategoriesId", "CategoryName");
-        //            var level3 = _categoryRepository.GetThirdLevelCategories(catelevel2);
-        //            foreach (var catelevel3 in level3)
-        //            {
-        //                ViewBag.level3 = new SelectList(level3, "CategoriesId", "CategoryName");
-        //            }
-        //        }
-        //    }
-        //    //// Chọn một CategoriesId từ level1 để truyền vào GetSecondLevelCategories
-        //    //int selectedId = (level1.Count > 0) ? level1[0].CategoriesId : 0;
-
-        //    //var level2 = _categoryRepository.GetSecondLevelCategories(selectedId);
-        //    //ViewBag.level2 = new SelectList(level2, "CategoriesId", "CategoryName");
-
-        //    //// Chọn một CategoriesId từ level2 để truyền vào GetThirdLevelCategories
-        //    //int selectedIdLevel2 = (level2.Count > 0) ? level2[0].CategoriesId : 0;
-
-        //    //var level3 = _categoryRepository.GetThirdLevelCategories(selectedIdLevel2);
-        //    //ViewBag.level3 = new SelectList(level3, "CategoriesId", "CategoryName");
-
-        //    return View("CreateCategory", new Category());
-        //}
-
-
-        public IActionResult CreateCourse()
+        public IActionResult CreateCategory()
         {
-            var levelTop = from c in _categoryRepository.GetRootCategories()
-                        select new SelectListItem()
-                        {
-                            Text = c.CategoryName,
-
-                            Value = c.CategoriesId.ToString(),
-                        };
-            ViewBag.LevelId = levelTop.ToList();
-            return View("CreateCourse", new Category());
+            var catelst = _categoryRepository.GetAllCategories();
+            ViewBag.CategoriesId = new SelectList(catelst, "CategoriesId", "CategoryName");
+            return View("CreateCategory", new Category());
         }
+
+
+        //public IActionResult CreateCourse()
+        //{
+        //    var levelTop = from c in _categoryRepository.GetRootCategories()
+        //                select new SelectListItem()
+        //                {
+        //                    Text = c.CategoryName,
+
+        //                    Value = c.CategoriesId.ToString(),
+        //                };
+        //    ViewBag.LevelId = levelTop.ToList();
+        //    return View("CreateCourse", new Category());
+        //}
 
 
         //[HttpPost]
@@ -133,20 +128,33 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         // Edit
         public IActionResult UpdateCategory(Category category)
         {
-            _categoryRepository.Update(category);
-            if (category.CategoriesId == 0)
+            var parentID = category.ParentCategories;
+            // Kiểm tra xem CategoryName có giá trị hay không
+            if (!string.IsNullOrEmpty(category.CategoryName))
             {
-                TempData["categoryError"] = "Category not saved!";
+                _categoryRepository.Update(category);
+
+                if (category.CategoriesId == 0)
+                {
+                    TempData["categoryError"] = "Category not saved!";
+                }
+                else
+                {
+                    TempData["categorySuccess"] = "Category successfully saved!";
+                }
             }
             else
             {
-                TempData["categorySuccess"] = "Category successfully saved!";
+                TempData["categoryError"] = "CategoryName cannot be null or empty!";
             }
+
             return RedirectToAction("Index");
         }
 
         public IActionResult EditCategory(int id)
         {
+            var catelst = _categoryRepository.GetAllCategories();
+            ViewBag.CategoriesId = new SelectList(catelst, "CategoriesId", "CategoryName");
             return View("EditCategory", _categoryRepository.GetById(id));
         }
 
@@ -157,5 +165,38 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public IActionResult PopupView(int id)
+        {
+            var model = _categoryRepository.GetById(id);
+            //var viewModel = new MyLearnViewModel
+            //{
+            //    CategoryId = model,
+            //    SubCategories = _categoryRepository.GetSubCategories(id)
+            //};
+            return PartialView("_CategoryPopupViewPartial", model);
+        }
+
+        public IActionResult Search(string keyword)
+        {
+            List<Category> categories;
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                categories = ctx.Categories.ToList();
+            }
+            else
+            {
+                categories = ctx.Categories.Where(p => p.CategoryName.Contains(keyword)).ToList();
+            }
+
+            if (categories.Count == 0)
+            {
+                ViewBag.SearchMessage = "Không tìm thấy thể loại này.";
+            }
+
+            // Chuyển hướng về trang Index với trang hiện tại
+            return View("Index", categories);
+        }
     }
 }

@@ -7,7 +7,7 @@
 
 <div class="container-fuild flex-grow-1 container-p-y">
     <h4 class="py-3 mb-4"><span class="text-muted fw-light">Staff/</span>Edit</h4>
-    <form asp-action="UpdateStaff" method="post" enctype="multipart/form-data">
+    <form asp-action="UpdateCategory" method="post" enctype="multipart/form-data">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -17,13 +17,74 @@
                             document.getElementById("i-input").style.display = "none";
                         </script>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon11">Name</span>
-                            <input type="text" class="form-control" placeholder="Nguyen Van A" aria-label="Username" aria-describedby="basic-addon11" asp-for="CategoryName">
+                        <div>
+                            <label for="defaultFormControlInput" class="form-label">Name</label>
+                            <input asp-for="CategoryName" type="text" class="form-control" id="defaultFormControlInput" placeholder="ASP.net Developer">
+                            <div id="defaultFormControlHelp" class="form-text alert alert-warning mt-1">
+                                Note: Entering a category name without selecting the categories below will default to the first category.
+                            </div>
+                        </div>
+
+                        <div class="input-group my-3">
+                            <style>
+                                select {
+                                    padding: 10px 15px;
+                                    outline: none;
+                                    border: 1px solid #ccc;
+                                }
+                            </style>
+
+                            <div class="input-group my-3">
+                                <label class="input-group-text" asp-for="ParentCategories">Category</label>
+                                <select asp-for="ParentCategories" asp-items="ViewBag.CategoriesId" class="form-select">
+                                    <option asp-for="ParentCategories" value="null">Default</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="mt-3 d-flex justify-content-end">
+                            @*  <input class="btn btn-primary mx-3" value="Update" type="submit"> *@
+
+                         @*    <a data-bs-toggle="modal" data-bs-target="#smallModal-update" style="cursor: pointer;">
+                                <span class="btn btn-primary">
+                                    <i class="bx bx-edit-alt"></i> Update
+                                </span>
+                            </a> *@
+
+                            <input class="btn btn-primary mx-3" value="Update" type="submit">
+
+                            <a asp-action="Index" class="btn btn-outline-secondary ms-2">
+                                <span>Cancel</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+      @*   <div class="modal fade" id="smallModal-update" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <h3>Are you sure you want to Update?</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+
+                        <input class="btn btn-success mx-3" value="Confirm" type="submit">
+                    </div>
+                </div>
+            </div>
+        </div> *@
     </form>
 </div>

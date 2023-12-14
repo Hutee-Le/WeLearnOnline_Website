@@ -1,6 +1,30 @@
 ﻿@model IEnumerable<WeLearnOnine_Website.Models.Category>
 @inject WeLearnOnine_Website.Repositories.ICategoryRepository service
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+<script>
+    @if (!string.IsNullOrEmpty(ViewBag.SearchMessage))
+    {
+        <text>
+                        // Chuyển giá trị từ ViewBag.SearchMessage sang biến JavaScript
+                        var searchMessage = "@Html.Raw(ViewBag.SearchMessage)";
+
+        // Hiển thị thông báo pop-up
+        Swal.fire({
+            icon: 'info',
+            title: 'Thông báo',
+            text: searchMessage,
+            willClose: () => {
+                // Chuyển hướng về trang Index
+                window.location.href = '@Url.Action("Index", "Category")';
+            }
+        });
+        </text>
+    }
+</script>
+
 @{
     ViewData["Title"] = "ListCategory";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -8,7 +32,7 @@
 
 @if (TempData["categoryError"] != null)
 {
-    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
             <div class="me-auto fw-medium">Notification</div>
@@ -33,9 +57,7 @@
 <h4 class="py-3 mb-4"><span class="text-muted fw-light">Category /</span> Category Table</h4>
 
 <p>
-    <a asp-action="CreateCategory" class="btn rounded-pill btn-primary text-white">
-        Create New
-    </a>
+   
 </p>
 <style>
     tbody td {
@@ -43,6 +65,18 @@
     }
 </style>
 <div class="card">
+    <div class="col-md-12 mt-3 d-flex justify-content-end  align-items-center create-zone">
+        <form asp-controller="Category" asp-action="Search" method="post">
+            <label class="d-flex align-items-center me-5">
+                Search:
+                <input type="search" class="form-control ms-2" placeholder="" name="keyword"><button class="btn btn-primary">Tìm</button>
+            </label>
+        </form>
+
+        <a asp-action="CreateCategory" class="btn rounded-pill btn-primary text-white">
+            Create New
+        </a>
+    </div>
     <div class="card-body">
         <div class="table-responsive text-nowrap">
             <table class="table table-bordered">
@@ -61,13 +95,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <style>
-                        p:not(p:last-child) {
-                            border-bottom: 1px solid #ccc;
-                            padding-bottom: 5px;
-                        }
-                    </style>
-                    @foreach (var item in service.GetRootCategories())
+                    @foreach (var item in Model)
                     {
                         <tr>
                             <td>
@@ -93,15 +121,24 @@
                             </td> *@
 
                             <td>
-                                <a class="dropdown-item mb-2" asp-action="EditCategory" asp-route-id="@item.CategoriesId" 
-                                    style="cursor:pointer;">
-                                    <span class="badge bg-label-danger"><i class="bx bx-trash me-1"></i> Edit</span>
-                                    </a>
-                                <a class="dropdown-item mb-2" data-bs-toggle="modal" data-bs-target="#smallModal" 
-                                    style="cursor:pointer">
-                                    <span class="badge bg-label-info"><i class="bx bx-edit-alt me-1"></i> Delete</span>
-                                </a>
-                                <a asp-action="index2" asp-route-CategoriesId="@item.CategoriesId">Show cate level 2</a>
+                               @*  <a asp-action="index2" asp-route-CategoriesId="@item.CategoriesId">Show cate level 2</a> *@
+
+                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                    <a class="me-2" asp-action="EditCategory" asp-route-id="@item.CategoriesId">
+                                        <span class="badge bg-label-info me-1">
+                                            <i class="bx bx-edit-alt"></i>
+                                        </span>
+                                    </a> |
+                                    <a class="mx-2" data-bs-toggle="modal" data-bs-target="#smallModal-@item.CategoriesId" style="cursor: pointer">
+                                        <span class="badge bg-label-danger">
+                                            <i class="bx bx-trash"></i>
+                                        </span>
+                                    </a> 
+                                    @if(service.GetSubCategories(item.CategoriesId).Count > 1)
+                                    {   <span> | </span>
+                                        <a class="btn btn-sm btn-primary btn-show ms-2" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.CategoriesId">Show</a>
+                                    }
+                                </div>
                             </td>
                         </tr>
 
@@ -129,6 +166,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade" id="myModal-@item.CategoriesId">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-body" id="modal-content-@item.CategoriesId">
+                                        @await Html.PartialAsync("_CategoryPopupViewPartial", item)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 </tbody>
 
@@ -142,6 +189,7 @@
 
         select * from Categories
         where  CategoriesID = 15 OR ParentCategories = 15 *@
+
         <!-- Hiển thị phân trang -->
         <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
             <ul class="pagination">
