@@ -1,10 +1,16 @@
 ﻿using Firebase.Auth;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Core.Types;
+using System.Data;
+using System.Drawing.Printing;
+using System.Text;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 using WeLearnOnine_Website.ViewModels;
+
 
 
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
@@ -248,20 +254,6 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        //public IActionResult EditCourse(int id)
-        //{
-        //    var levellst = _levelRepository.GetAllLevels();
-        //    var stafflst = _staffRepository.GetAllStaffs();
-        //    ViewBag.LevelId = new SelectList(levellst, "LevelId", "Name");
-        //    ViewBag.StaffId = new SelectList(stafflst, "StaffId", "StaffName");
-
-        //    
-        //    var categoryList = _categoryRepository.GetAllCategories();
-        //    ViewBag.Categories = new MultiSelectList(categoryList, "CategoriesId", "CategoryName");
-
-        //    return View("EditCourse", _courseRepository.FindCourseByID(id));
-        //}
-
         public IActionResult EditCourse(int id)
         {
             var levellst = _levelRepository.GetAllLevels();
@@ -285,9 +277,6 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             return View("EditCourse", course);
         }
-
-
-
 
         // Delete
         public IActionResult Delete(int id)
@@ -315,7 +304,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             }
             else
             {
-                courses = ctx.Courses.Where(p => p.Title.Contains(keyword)).Include(x => x.Level).Include(x => x.Staff).ToList();
+                courses = ctx.Courses.Where(p => p.Title.Contains(keyword) || p.Level.Name.Contains(keyword) || p.Staff.StaffName.Contains(keyword)).Include(x => x.Level).Include(x => x.Staff).ToList();
             }
 
             if (courses.Count == 0)
@@ -325,6 +314,44 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             // Chuyển hướng về trang Index với trang hiện tại
             return View("Index", courses);
+        }
+
+        [HttpGet]
+        public ActionResult ExportCsv()
+        {
+            // Lấy danh sách các khoá học từ database
+            var courses = _courseRepository.GetAllCourses();
+
+            // Tạo một StringBuilder để lưu trữ dữ liệu CSV
+            StringBuilder csvContent = new StringBuilder();
+
+            // Thêm tiêu đề cột
+            csvContent.AppendLine("CourseID,Title,Level,Staff,Price,Discount Price,Count,Rating,Language,Time Total");
+
+            // Thêm dữ liệu từ danh sách khoá học
+            foreach (var course in courses)
+            {
+                // Kiểm tra null trước khi truy cập các thuộc tính
+                string courseId = course.CourseId.ToString() ?? "";
+                string title = course.Title ?? "";
+                string level = course.Level.Name.ToString();
+                string staff = course.Staff.StaffName.ToString();
+                string price = course.Price.ToString() ?? "";
+                string discountPrice = course.DiscountPrice?.ToString() ?? "";
+                string count = course.Count?.ToString() ?? "";
+                string rating = course.Rating?.ToString() ?? "";
+                string language = course.Language ?? "";
+                string timeTotal = course.TimeTotal?.ToString() ?? "";
+
+                language = language.Replace(",", ";");
+                csvContent.AppendLine($"{courseId},{title},{level},{staff},{price},{discountPrice},{count},{rating},{language},{timeTotal}");
+                // Thêm dữ liệu cho các cột khác tùy thuộc vào các trường bạn muốn xuất
+            }
+
+            // Chuyển đổi StringBuilder thành mảng byte và trả về file CSV
+            byte[] fileContents = Encoding.UTF8.GetBytes(csvContent.ToString());
+
+            return File(fileContents, "text/csv", "Courses.csv");
         }
 
     }

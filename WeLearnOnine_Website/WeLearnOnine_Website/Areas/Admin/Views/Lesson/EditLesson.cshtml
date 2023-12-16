@@ -58,14 +58,15 @@
                         </div> *@
 
                         <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md-10">
+                            <div class="row justify-content-between">
+                                <div class="col-md-9">
                                     <label asp-for="ImageLessonUrl" class="form-label">Image Lesson</label>
                                     <input type="file" class="form-control" id="ImageLessonUrl" name="ImageLessonUrl" onchange="checkFileSize(this, 50)">
                                     <label id="ImageLessonUrl-error" class="text-danger"></label>
 
                                     @* Add a hidden input field to store the current AvatarUrl value *@
-                                    <input type="hidden" id="CurrentAvatarUrl" value="@Model.ImageLessonUrl" />
+                                    <input type="hidden" name="ExistingImageLessonUrl" id="ExistingImageLessonUrl" value="@Model.ImageLessonUrl" />
+                                    <label id="CurrentAvatarUrl-error" class="text-danger"></label>
                                 </div>
                                 <div class="col-md-2">
                                     <div id="imagePreview" style="display: none;">
@@ -73,13 +74,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
 
                         <script>
                             const fileInput = document.getElementById('ImageLessonUrl');
                             const imagePreview = document.getElementById('imagePreview');
                             const selectedImage = document.getElementById('selectedImage');
-                            const currentAvatarUrl = document.getElementById('CurrentAvatarUrl').value;
+                            const currentAvatarUrl = document.getElementById('ExistingImageLessonUrl').value;
 
                             // Display the current image if it exists
                             if (currentAvatarUrl) {
@@ -118,7 +119,7 @@
                                     <label id="UrlVideo-error" class="text-danger"></label>
 
                                     @* Add a hidden input field to store the current UrlVideo value *@
-                                    <input type="hidden" id="CurrentUrlVideo" value="@Model.UrlVideo" />
+                                    <input type="hidden" id="CurrentUrlVideo" name="ExistingUrlVideo" value="@Model.UrlVideo" />
                                 </div>
                                 <div class="col-md">
                                     <div id="videoPreview" style="display: none;">

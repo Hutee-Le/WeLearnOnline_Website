@@ -31,9 +31,30 @@
 
 <h4 class="py-3 mb-4"><span class="text-muted fw-light">Bill /</span> Bill Table</h4>
 <div class="card"> 
+    <div class="card-header">
+        <div class="d-flex justify-content-around align-items-center">
+            <h5 class="card-title mb-0">DataTable Category</h5>
+                <h6 class="text-muted mt-2 d-flex justify-content-center">Payment Status</h6>
+            <div class="dropdown">
+                <button class="dropdown-btn badge bg-label-primary align-items-center"><i class="bx bx-export me-sm-1"></i> Export <i class="bi bi-chevron-down fs-6"></i></button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="bx bxs-file-pdf me-2"></i> PDF</a>
+                    <a href="#">
+                        @using (Html.BeginForm("ExportCsv", "Bill", FormMethod.Get))
+                        {
+
+                            <i class="bx bx-file me-1"></i>
+                            <button type="submit" style="outline:none; border: none; background-color: transparent">Csv</button>
+                        }
+                    </a>
+                    <a href="#"><i class="bx bx-printer me-2"></i> Print</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
         <div class="col-md-12">
             <div class="nav-align-top mb-4">
-            <h6 class="text-muted mt-2 d-flex justify-content-center">Payment Status</h6>
             <ul class="nav nav-pills justify-content-center" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-All" aria-controls="navs-pills-top-All" aria-selected="true" tabindex="-1">
@@ -100,7 +121,7 @@
                                         {
                                             statusClass = "bg-label-primary";
                                         }
-                                        else if (item.Status == "Payment Fail")
+                                        else if (item.Status == "Fail")
                                         {
                                             statusClass = "bg-label-danger";
                                         }
@@ -127,9 +148,39 @@
                                             <span class="badge me-1 @statusClass">@item.Status</span>
                                         </td>
                                         <td>
-                                            <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-All-@item.BillId">Show</a>
+                                            <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-All-@item.BillId">Show</a> 
+                                            <a class="ms-2" data-bs-toggle="modal" data-bs-target="#smallModal-All-@item.BillId" style="cursor: pointer">
+                                                <span class="badge bg-label-danger">
+                                                    <i class="bx bx-trash"></i>
+                                                </span>
+                                            </a>
                                         </td>
                                     </tr>
+
+                                @* Small Model Delete *@
+                                <div class="modal fade" id="smallModal-All-@item.BillId" tabindex="-1" style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <h3>Do you want to delete?</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BillId">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                     <div class="modal fade" id="myModal-All-@item.BillId">
                                         <div class="modal-dialog modal-xl">
@@ -187,7 +238,7 @@
                                         {
                                             statusClass = "bg-label-primary";
                                         }
-                                        else if (item.Status == "Payment Fail")
+                                        else if (item.Status == "Fail")
                                         {
                                             statusClass = "bg-label-danger";
                                         }
@@ -203,8 +254,38 @@
                                         </td>
                                     <td>
                                         <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-Successful-@item.BillId">Show</a>
+                                        <a class="ms-2" data-bs-toggle="modal" data-bs-target="#smallModal-Successful-@item.BillId" style="cursor: pointer">
+                                            <span class="badge bg-label-danger">
+                                                <i class="bx bx-trash"></i>
+                                            </span>
+                                        </a>
                                     </td>
                                 </tr>
+
+                                @* Small Model Delete *@
+                                <div class="modal fade" id="smallModal-Successful-@item.BillId" tabindex="-1" style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <h3>Do you want to delete?</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BillId">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 @* Small Model Details *@
                                 <div class="modal fade" id="myModal-Successful-@item.BillId">
@@ -263,7 +344,7 @@
                                         {
                                             statusClass = "bg-label-primary";
                                         }
-                                        else if (item.Status == "Payment Fail")
+                                        else if (item.Status == "Fail")
                                         {
                                             statusClass = "bg-label-danger";
                                         }
@@ -290,8 +371,38 @@
                                         </td>
                                     <td>
                                         <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-Pending-@item.BillId">Show</a>
+                                        <a class="ms-2" data-bs-toggle="modal" data-bs-target="#smallModal-Pending-@item.BillId" style="cursor: pointer">
+                                            <span class="badge bg-label-danger">
+                                                <i class="bx bx-trash"></i>
+                                            </span>
+                                        </a>
                                     </td>
                                 </tr>
+
+                                @* Small Model Delete *@
+                                <div class="modal fade" id="smallModal-Pending-@item.BillId" tabindex="-1" style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <h3>Do you want to delete?</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BillId">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 @* Small Model Details *@
                                 <div class="modal fade" id="myModal-Pending-@item.BillId">
@@ -336,7 +447,7 @@
                                 </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model.Where(m => m.Status == "Payment Fail"))
+                            @foreach (var item in Model.Where(m => m.Status == "Fail"))
                             {
                                 <tr style="text-align: center">
                                     @{
@@ -350,7 +461,7 @@
                                         {
                                             statusClass = "bg-label-primary";
                                         }
-                                        else if (item.Status == "Payment Fail")
+                                        else if (item.Status == "Fail")
                                         {
                                             statusClass = "bg-label-danger";
                                         }
@@ -366,8 +477,38 @@
                                         </td>
                                     <td>
                                         <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-Fail-@item.BillId">Show</a>
+                                        <a class="ms-2" data-bs-toggle="modal" data-bs-target="#smallModal-Fail-@item.BillId" style="cursor: pointer">
+                                            <span class="badge bg-label-danger">
+                                                <i class="bx bx-trash"></i>
+                                            </span>
+                                        </a>
                                     </td>
                                 </tr>
+
+                                @* Small Model Delete *@
+                                <div class="modal fade" id="smallModal-Fail-@item.BillId" tabindex="-1" style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <h3>Do you want to delete?</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BillId">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 @* Small Model Details *@
                                 <div class="modal fade" id="myModal-Fail-@item.BillId">
@@ -386,180 +527,47 @@
                 </div>
             </div>
         </div>
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
+        .dropdown-btn {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-       @*  <div class="col-xl-6">
-            <h6 class="text-muted">Payment</h6>
-            <div class="nav-align-top mb-4">
-                <ul class="nav nav-pills mb-3" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-All" aria-controls="navs-pills-top-All" aria-selected="false" tabindex="-1">
-                            All
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-Successful" aria-controls="navs-pills-top-Successful" aria-selected="false" tabindex="-1">
-                            Successful
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-Pending" aria-controls="navs-pills-top-Pending" aria-selected="true">
-                            Pending
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-Fail" aria-controls="navs-pills-top-Fail" aria-selected="true">
-                            Fail
-                        </button>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade" id="navs-pills-top-All" role="tabpanel">
-                        //for each table in here
-                    </div>
-                    <div class="tab-pane fade" id="navs-pills-top-Successful" role="tabpanel">
-                        //for each table in here
-                    </div>
-                    <div class="tab-pane fade" id="navs-pills-top-Pending" role="tabpanel">
-                        //for each table in here
-                    </div>
-                    <div class="tab-pane fade active show" id="navs-pills-top-Fail" role="tabpanel">
-                        //for each table in here
-                    </div>
-                </div>
-            </div>
-        </div> *@
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 130px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 100;
+            border-radius: 0px 5px 5px;
+        }
 
-
-   @*  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".btn-show").click(function () {
-                // Lấy ID của Bill từ data attribute
-                var billId = $(this).data("bill-id");
-
-                // Đặt giá trị ID vào modal để có thể sử dụng trong modal
-                $("#myModal").data("bill-id", billId);
-
-                // Gọi hàm hiển thị nội dung modal
-                showBillDetailsModal();
-            });
-
-            function showBillDetailsModal() {
-                // Lấy ID của Bill từ data attribute của modal
-                var billId = $("#myModal").data("bill-id");
-
-                // Sử dụng AJAX để tải nội dung chi tiết Bill
-                $.ajax({
-                    url: "/Bill/BillDetailsView", // Thay đổi đường dẫn tương ứng
-                    type: "GET",
-                    data: { id: billId },
-                    success: function (data) {
-                        // Hiển thị nội dung chi tiết trong modal
-                        $("#modal-content").html(data);
-
-                        // Hiển thị modal
-                        $("#myModal").modal("show");
-                    },
-                    error: function () {
-                        alert("Failed to retrieve Bill details.");
-                    }
-                });
+            .dropdown-content a {
+                color: #333;
+                text-decoration: none;
+                padding: 5px 8px;
+                display: block;
+                width: 100%;
+                transition: .3s ease;
             }
-        });
-    </script> *@
 
-
-        <!-- Hiển thị phân trang -->
-        @* <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
-            <ul class="pagination">
-                @if (ViewBag.CurrentPage > 1)
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
+                .dropdown-content a:hover {
+                    background-color: #ddd;
                 }
 
-                @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                {
-                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-                    </li>
-                }
-
-                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                }
-            </ul>
-        </nav> *@
-        <!-- Hiển thị phân trang -->
-
-    </div>
-
-
-@* 
-<h5 class="card-header">Staffs Table</h5>
-<div class="card-body">
-    <div class="table-responsive text-nowrap">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>
-                        User
-                    </th>
-                    <th>
-                        Total Cost (VNĐ)
-                    </th>
-                    <th>
-                        Create At
-                    </th>
-                    <th>
-                        Card Holder
-                    </th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr style="text-align: center">
-
-                        <td><span>@item.User.UserName</span></td>
-                        <td>
-                    <span class="badge me-1 @staffClass">
-                    @item.Role
-                    </span>
-                    </td>
-                        <td>@item.Total.ToString("#,##0")</td>
-                        <td>@item.CreateAt</td>
-                        <td>@item.CardHolderName</td>
-                         <td>@item.Status</td>
-                        <td class="hidetext">
-                    <p>@item.Experience</p>
-                    <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
-                    </td>
-                        <td>
-                            <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.BillId">Show</a>
-                        </td>
-                    </tr>
-                    <div class="modal fade" id="myModal-@item.BillId">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-body" id="modal-content-@item.BillId">
-                                    @await Html.PartialAsync("_BillDetailsViewPartial", item)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </tbody>
-        </table>
-    </div>
- *@
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</div>
+    
