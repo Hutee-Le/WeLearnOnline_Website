@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 
@@ -187,6 +188,73 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        // Search
+        public IActionResult Search(string keyword)
+        {
+            List<Lesson> lessonsItem;
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                lessonsItem = ctx.Lessons.Include(x => x.Course).Include(x => x.Type).ToList();
+            }
+            else
+            {
+                lessonsItem = ctx.Lessons.Where(p => p.Title.Contains(keyword) || p.Type.Title.Contains(keyword)|| p.Course.Title.Contains(keyword)).Include(x => x.Course).Include(x => x.Type).ToList();
+            }
+
+            if (lessonsItem.Count == 0)
+            {
+                ViewBag.SearchMessage = "Không tìm thấy bài học nào.";
+            }
+
+            // Chuyển hướng về trang Index với trang hiện tại
+            return View("Index", lessonsItem);
+        }
+
+        [HttpGet]
+        public ActionResult ExportCsv()
+        {
+            // Lấy danh sách các bài học từ database
+            var lessons = _lessonRepository.GetAllBaiHoc();
+
+            // Tạo một StringBuilder để lưu trữ dữ liệu CSV
+            StringBuilder csvContent = new StringBuilder();
+
+            // Thêm tiêu đề cột
+            csvContent.AppendLine("LessonID,Title,Course,Type,PosInList,Time");
+
+            // Thêm dữ liệu từ danh sách bài học
+            foreach (var lesson in lessons)
+            {
+                // Kiểm tra null trước khi truy cập các thuộc tính
+                string courseId = lesson.LessonId.ToString() ?? "";
+                string title = EscapeCsvField(lesson.Title);
+                string course = EscapeCsvField(lesson.Course.Title.ToString());
+                string type = EscapeCsvField(lesson.Type.Title.ToString());
+                string stt = lesson.Stt?.ToString() ?? "";
+                string time = lesson.Time?.ToString() ?? "";
+
+                csvContent.AppendLine($"{courseId},{title},{course},{type},{stt},{time}");
+                // Thêm dữ liệu cho các cột khác tùy thuộc vào các trường bạn muốn xuất
+            }
+
+            // Chuyển đổi StringBuilder thành mảng byte và trả về file CSV
+            byte[] fileContents = Encoding.UTF8.GetBytes(csvContent.ToString());
+
+            return File(fileContents, "text/csv", "Lesson.csv");
+        }
+
+        private string EscapeCsvField(string field)
+        {
+            // Hàm này đặt giá trị trong dấu ngoặc kép nếu nó chứa dấu phẩy, ký tự đặc biệt, hoặc dấu cách
+            if (field.Contains(",") || field.Contains("\"") || field.Contains(" ") || field.Contains("'"))
+            {
+                return $"\"{field}\"";
+            }
+            return field;
+        }
+
 
     }
 }

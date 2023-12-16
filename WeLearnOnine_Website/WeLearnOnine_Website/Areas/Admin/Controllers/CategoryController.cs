@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
 using System;
+using System.Text;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 using WeLearnOnine_Website.ViewModels;
@@ -87,43 +88,6 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
 
-        //public IActionResult CreateCourse()
-        //{
-        //    var levelTop = from c in _categoryRepository.GetRootCategories()
-        //                select new SelectListItem()
-        //                {
-        //                    Text = c.CategoryName,
-
-        //                    Value = c.CategoriesId.ToString(),
-        //                };
-        //    ViewBag.LevelId = levelTop.ToList();
-        //    return View("CreateCourse", new Category());
-        //}
-
-
-        //[HttpPost]
-        //public IActionResult CreateCategory(Category model)
-        //{
-        //    // Your create category logic here...
-
-        //    return RedirectToAction("Index"); // Redirect to the appropriate action after creating the category
-        //}
-
-        //[HttpGet]
-        //public IActionResult GetLevel2Categories(int id)
-        //{
-        //    var level2 = _categoryRepository.GetSecondLevelCategories(id);
-        //    return Json(level2.Select(c => new { c.CategoriesId, c.CategoryName }));
-        //}
-
-        //[HttpGet]
-        //public IActionResult GetLevel3Categories(int id)
-        //{
-        //    var level3 = _categoryRepository.GetThirdLevelCategories(id);
-        //    return Json(level3.Select(c => new { c.CategoriesId, c.CategoryName }));
-        //}
-
-
         [HttpPost]
         // Edit
         public IActionResult UpdateCategory(Category category)
@@ -197,6 +161,46 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             // Chuyển hướng về trang Index với trang hiện tại
             return View("Index", categories);
+        }
+
+        [HttpGet]
+        public ActionResult ExportCsv()
+        {
+            // Lấy danh sách các bài học từ database
+            var categories = _categoryRepository.GetAllCategories();
+
+            // Tạo một StringBuilder để lưu trữ dữ liệu CSV
+            StringBuilder csvContent = new StringBuilder();
+
+            // Thêm tiêu đề cột
+            csvContent.AppendLine("CategoriesId,CategoryName,ParentCategories");
+
+            // Thêm dữ liệu từ danh sách bài học
+            foreach (var category in categories)
+            {
+                // Kiểm tra null trước khi truy cập các thuộc tính
+                string categoriesId = category.CategoriesId.ToString() ?? "";
+                string categoryName = EscapeCsvField(category.CategoryName.ToString());
+                string parentCategories = EscapeCsvField(category.ParentCategories?.ToString() ?? "Default");
+
+                csvContent.AppendLine($"{categoriesId},{categoryName},{parentCategories}");
+                // Thêm dữ liệu cho các cột khác tùy thuộc vào các trường bạn muốn xuất
+            }
+
+            // Chuyển đổi StringBuilder thành mảng byte và trả về file CSV
+            byte[] fileContents = Encoding.UTF8.GetBytes(csvContent.ToString());
+
+            return File(fileContents, "text/csv", "Category.csv");
+        }
+
+        private string EscapeCsvField(string field)
+        {
+            // Hàm này đặt giá trị trong dấu ngoặc kép nếu nó chứa dấu phẩy, ký tự đặc biệt, hoặc dấu cách
+            if (field.Contains(",") || field.Contains("\"") || field.Contains(" ") || field.Contains("'"))
+            {
+                return $"\"{field}\"";
+            }
+            return field;
         }
     }
 }

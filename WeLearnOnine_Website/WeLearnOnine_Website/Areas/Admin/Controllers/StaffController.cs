@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 
@@ -9,10 +10,12 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
     public class StaffController : Controller
     {
         private ISkillRepository _staffRepository;
+        DerekmodeWeLearnSystemContext ctx;
 
-        public StaffController(ISkillRepository staffRepository)
+        public StaffController(ISkillRepository staffRepository, DerekmodeWeLearnSystemContext ctx)
         {
             _staffRepository = staffRepository;
+            this.ctx = ctx;
         }
 
         //View All Table Staff
@@ -102,6 +105,82 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                 TempData["staffError"] = $"Error delete course: {ex.Message}";
             }
             return RedirectToAction("Index");
+        }
+
+        // Search
+        public IActionResult Search(string keyword)
+        {
+            List<Staff> staffs;
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                staffs = ctx.Staff.ToList();
+            }
+            else
+            {
+                staffs = ctx.Staff
+            .Where(p =>
+                p.StaffName.Contains(keyword) ||
+                p.PhoneNumber.Contains(keyword) ||
+                p.Email.Contains(keyword) ||
+                p.Desciption.Contains(keyword)
+            ).ToList();
+
+            }
+
+            if (staffs.Count == 0)
+            {
+                ViewBag.SearchMessage = "Không tìm thấy Staff nào!";
+            }
+
+            // Chuyển hướng về trang Index với trang hiện tại
+            return View("Index", staffs);
+        }
+        [HttpGet]
+        public ActionResult ExportCsv()
+        {
+            // Lấy danh sách các bài học từ database
+            var staffs = _staffRepository.GetAllStaffs();
+
+            // Tạo một StringBuilder để lưu trữ dữ liệu CSV
+            StringBuilder csvContent = new StringBuilder();
+
+            // Thêm tiêu đề cột
+            csvContent.AppendLine("StaffId,StaffName,Desciption,Experience,Role,PhoneNumber,Email,Password,Rating,Address");
+
+            // Thêm dữ liệu từ danh sách bài học
+            foreach (var staff in staffs)
+            {
+                // Kiểm tra null trước khi truy cập các thuộc tính
+                string staffId = staff.StaffId.ToString() ?? "";
+                string staffName = EscapeCsvField(staff.StaffName?.ToString() ?? "");
+                string desciption = EscapeCsvField(staff.Desciption?.ToString() ?? "");
+                string experience = EscapeCsvField(staff.Experience?.ToString() ?? "");
+                string role = staff.Role?.ToString() ?? "";
+                string phoneNumber = staff.PhoneNumber?.ToString() ?? "";
+                string email = staff.Email?.ToString() ?? "";
+                string password = staff.Password?.ToString() ?? "";
+                string rating = staff.Rating?.ToString() ?? "";
+                string address = staff.Address?.ToString() ?? "";
+
+                csvContent.AppendLine($"{staffId},{staffName},{desciption},{experience},{role},{phoneNumber},{email},{password},{rating},{address}");
+                // Thêm dữ liệu cho các cột khác tùy thuộc vào các trường bạn muốn xuất
+            }
+
+            // Chuyển đổi StringBuilder thành mảng byte và trả về file CSV
+            byte[] fileContents = Encoding.UTF8.GetBytes(csvContent.ToString());
+
+            return File(fileContents, "text/csv", "Staff.csv");
+        }
+
+        private string EscapeCsvField(string field)
+        {
+            // Hàm này đặt giá trị trong dấu ngoặc kép nếu nó chứa dấu phẩy, ký tự đặc biệt, hoặc dấu cách
+            if (field.Contains(",") || field.Contains("\"") || field.Contains(" ") || field.Contains("'"))
+            {
+                return $"\"{field}\"";
+            }
+            return field;
         }
 
     }
