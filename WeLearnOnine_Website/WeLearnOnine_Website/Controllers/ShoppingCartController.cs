@@ -159,7 +159,7 @@ namespace WeLearnOnine_Website.Controllers
                 var cartCount = bill.BillDetails.Count;
 
                 bill.HistoricalCost = totalOriginalPrice;
-                bill.Promotion = totalDiscountedPrice;
+                bill.Promotion = totalSaving;
 
                 // Lưu các thay đổi vào cơ sở dữ liệu
                 _billRepository.UpdateBill(bill);
@@ -212,7 +212,7 @@ namespace WeLearnOnine_Website.Controllers
                 request.extraData = "";
                 request.partnerName = "MoMo Payment";
                 request.autoCapture = true;
-                request.orderExpireTime = 1;
+                request.orderExpireTime = 800;
                 request.lang = "vi";
                 var rawSignature = "accessKey=" + accessKey + "&amount=" + request.amount + "&extraData=" + request.extraData + "&ipnUrl=" + request.ipnUrl + "&orderId=" + request.orderId + "&orderInfo=" + request.orderInfo + "&partnerCode=" + request.partnerCode + "&redirectUrl=" + request.redirectUrl + "&requestId=" + request.requestId + "&requestType=" + request.requestType;
                 request.signature = Helper.getSignature(rawSignature, secretKey);
@@ -226,23 +226,28 @@ namespace WeLearnOnine_Website.Controllers
                 bill.PayUrl = responseObject.payUrl;
             }
 
-
-
             bill.Status = "Processing";
             bill.PaymentMethod = model.SelectedPaymentMethod;
             bill.HistoricalCost = model.TotalOriginalPrice;
-            bill.Promotion = model.TotalDiscountedPrice;
-
+            bill.Promotion = model.TotalOriginalPrice -model.TotalDiscountedPrice;
+            bill.Total = model.TotalDiscountedPrice;
+            
             // Lưu các thay đổi vào cơ sở dữ liệu
             _billRepository.UpdateBill(bill);
 
-            return RedirectToAction("PaymentConfirmation" ); 
+            return RedirectToAction("PaymentConfirmation", new {billCode = bill.BillCode} ); 
         }
 
-        public IActionResult PaymentConfirmation()
+        public IActionResult PaymentConfirmation(string billCode)
         {
-
-            return View(); 
+            var bill = _billRepository.FindBillByBillCode(billCode);
+            if (bill == null)
+            {
+                // Xử lý trường hợp không tìm thấy hóa đơn
+                return View("Error"); // Trang lỗi hoặc thông báo phù hợp
+            }
+            // Truyền bill đến view
+            return View(bill);
         }
 
         public IActionResult EmptyCart()

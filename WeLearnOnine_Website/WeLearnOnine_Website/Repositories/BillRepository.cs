@@ -121,5 +121,13 @@ namespace WeLearnOnine_Website.Repositories
             return _context.Bills
                            .Count(b => b.CreateAt >= startDate && b.CreateAt < endDate);
         }
+
+        public Bill FindBillByBillCode(string billCode)
+        {
+            return _context.Bills
+                .Include(bd => bd.BillDetails)
+                .ThenInclude(c => c.Course)
+                .FirstOrDefault(bill => bill.BillCode == billCode);
+        }
     }
 }
