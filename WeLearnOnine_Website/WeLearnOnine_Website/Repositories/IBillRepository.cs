@@ -9,6 +9,7 @@ namespace WeLearnOnine_Website.Repositories
         Bill GetPendingBillByUserId(int userId);
 
         Bill GetBillById(Guid billId);
+        Bill FindBillByBillCode(string billCode);
         Task<int> GetCartCountAsync(int userId);
 
         Task<BillDetail> GetBillDetailByCourseAndUser(int courseId, int userId, Guid billId);
