@@ -12,11 +12,15 @@ namespace WeLearnOnine_Website.Controllers
     {
         private readonly IBillRepository _billRepository;
         private readonly ICourseRepository _courseRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IConfiguration _configuration;
         private readonly HttpClient client = new HttpClient();
-        public ShoppingCartController(IBillRepository billRepository, ICourseRepository courseRepository)
+        public ShoppingCartController(IBillRepository billRepository, ICourseRepository courseRepository, IUserRepository userRepository, IConfiguration configuration)
         {
             _billRepository = billRepository;
             _courseRepository = courseRepository;
+            _userRepository = userRepository;
+            _configuration = configuration;
         }
         public IActionResult Index()
         {
@@ -27,6 +31,7 @@ namespace WeLearnOnine_Website.Controllers
             //}
             var userId = 4;
             var bill = _billRepository.GetPendingBillByUserId(userId);
+            var user = _userRepository.GetById(userId);
             if (bill == null)
             {
                 return View("EmptyCart"); // Hiển thị giỏ hàng trống nếu không có bill nào
@@ -45,7 +50,10 @@ namespace WeLearnOnine_Website.Controllers
                 Bill = bill,
                 TotalDiscountedPrice = totalDiscountedPrice,
                 TotalOriginalPrice = totalOriginalPrice,
-                TotalSaving = totalOriginalPrice - totalDiscountedPrice
+                TotalSaving = totalOriginalPrice - totalDiscountedPrice,
+                UserName = user.UserName,
+                UserEmail = user.Email
+                
             };
 
             return View(viewModel);
@@ -197,28 +205,36 @@ namespace WeLearnOnine_Website.Controllers
             {
                 var orderId = DateTime.Now.Ticks.ToString();
 
-                string accessKey = "F8BBA842ECF85";
-                string secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz";
+                var accessKey = _configuration["MoMoSettings:AccessKey"];
+                var secretKey = _configuration["MoMoSettings:SecretKey"];
+                var partnerCode = _configuration["MoMoSettings:PartnerCode"];
+                var orderInfo = _configuration["MoMoSettings:OrderInfo"];
+                var requestType = _configuration["MoMoSettings:RequestType"];
+                var payGate = _configuration["MoMoSettings:PayGate"];
+                var partnerName = _configuration["MoMoSettings:PartnerName"];
+                var autoCapture = bool.Parse(_configuration["MoMoSettings:AutoCapture"]);
+                var orderExpireTime = int.Parse(_configuration["MoMoSettings:OrderExpireTime"]);
+                var lang = _configuration["MoMoSettings:Lang"];
 
                 MoMoRequest request = new MoMoRequest();
-                request.orderInfo = "pay with MoMo";
-                request.partnerCode = "MOMO";
+                request.orderInfo = orderInfo;
+                request.partnerCode = partnerCode;
                 request.ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
-                request.redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+                request.redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b" + "/ShoppingCart/PaymentConfirmation?billCode=" + bill.BillCode;
                 request.amount = (long)model.TotalDiscountedPrice;
                 request.orderId = bill.BillCode;
                 request.requestId = bill.BillCode + "id";
-                request.requestType = "payWithMethod";
+                request.requestType = requestType;
                 request.extraData = "";
-                request.partnerName = "MoMo Payment";
-                request.autoCapture = true;
-                request.orderExpireTime = 800;
-                request.lang = "vi";
+                request.partnerName = partnerName;
+                request.autoCapture = autoCapture;
+                request.orderExpireTime = orderExpireTime;
+                request.lang = lang;
                 var rawSignature = "accessKey=" + accessKey + "&amount=" + request.amount + "&extraData=" + request.extraData + "&ipnUrl=" + request.ipnUrl + "&orderId=" + request.orderId + "&orderInfo=" + request.orderInfo + "&partnerCode=" + request.partnerCode + "&redirectUrl=" + request.redirectUrl + "&requestId=" + request.requestId + "&requestType=" + request.requestType;
                 request.signature = Helper.getSignature(rawSignature, secretKey);
 
                 StringContent httpContent = new StringContent(JsonSerializer.Serialize(request), System.Text.Encoding.UTF8, "application/json");
-                var quickPayResponse = await client.PostAsync("https://test-payment.momo.vn/v2/gateway/api/create", httpContent);
+                var quickPayResponse = await client.PostAsync(payGate, httpContent);
 
                 var responseContent = await quickPayResponse.Content.ReadAsStringAsync();
                 var responseObject = JsonSerializer.Deserialize<MoMoResponse>(responseContent);
@@ -240,14 +256,24 @@ namespace WeLearnOnine_Website.Controllers
 
         public IActionResult PaymentConfirmation(string billCode)
         {
+            var userId = 4;
             var bill = _billRepository.FindBillByBillCode(billCode);
-            if (bill == null)
+            var user = _userRepository.GetById(userId);
+            if (bill == null || user == null)
             {
-                // Xử lý trường hợp không tìm thấy hóa đơn
-                return View("Error"); // Trang lỗi hoặc thông báo phù hợp
+                // Xử lý trường hợp không tìm thấy hóa đơn hoặc thông tin người dùng
+                return View("Error");
             }
+
+            var viewModel = new ShoppingCartViewModel
+            {
+                Bill = bill,
+                UserEmail = user.Email,
+                UserName = user.UserName,
+            };
+
             // Truyền bill đến view
-            return View(bill);
+            return View(viewModel);
         }
 
         public IActionResult EmptyCart()
