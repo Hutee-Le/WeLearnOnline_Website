@@ -56,20 +56,107 @@
             <div class="col-xl">
                 <div class="card">
                     <div class="card-body">
-                        <div class="mb-3">
+                       @*  <div class="mb-3">
                             <label asp-for="ImageCourseUrl" class="form-label">Course Image</label>
                             <input type="file" class="form-control" id="ImageCourseUrl" name="ImageCourseUrl" onchange="checkFileSize(this, 200)">
                             <input type="hidden" name="ExistingImageCourseUrl" value="@Model.ImageCourseUrl" />
 
                             <label id="ImageCourseUrl-error" class="text-danger"></label>
-                        </div>
-
+                        </div> *@
                         <div class="mb-3">
+                            <div class="row justify-content-between">
+                                <div class="col-md-9">
+                                    <label asp-for="ImageCourseUrl" class="form-label">Course Image</label>
+                                    <input type="file" class="form-control" id="ImageCourseUrl" name="ImageCourseUrl" onchange="checkFileSize(this, 200)">
+                                    <label id="ImageCourseUrl-error" class="text-danger"></label>
+
+                                    <input type="hidden" name="ExistingImageCourseUrl" value="@Model.ImageCourseUrl" id="ExistingImageCourseUrl" />
+                                    <label id="CurrentAvatarUrl-error" class="text-danger"></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="imagePreview" style="display: none; width: 100%">
+                                        <img id="selectedImage" src="" alt="Selected Image" height="100" style="width: 100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            const fileInput = document.getElementById('ImageCourseUrl');
+                            const imagePreview = document.getElementById('imagePreview');
+                            const selectedImage = document.getElementById('selectedImage');
+                            const currentAvatarUrl = document.getElementById('ExistingImageCourseUrl').value;
+
+                            // Display the current image if it exists
+                            if (currentAvatarUrl) {
+                                selectedImage.src = currentAvatarUrl;
+                                imagePreview.style.display = 'inline-block';
+                            }
+
+                            fileInput.addEventListener('change', function () {
+                                const file = fileInput.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        selectedImage.src = e.target.result;
+                                        imagePreview.style.display = 'inline-block';
+                                    };
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    selectedImage.src = '';
+                                    imagePreview.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                       @*  <div class="mb-3">
                             <label asp-for="PreviewUrl" class="form-label">Course Video</label>
                             <input type="file" class="form-control" id="PreviewUrl" name="PreviewUrl" onchange="checkFileSize(this, 200)">
                             <input type="hidden" name="ExistingPreviewUrl" value="@Model.PreviewUrl" />
                             <label id="PreviewUrl-error" class="text-danger"></label>
+                        </div> *@
+                        <div class="mb-3">
+                            <label asp-for="PreviewUrl" class="form-label">Course Video</label>
+                            <input type="file" class="form-control" id="PreviewUrl" name="PreviewUrl" onchange="updateTotalTimeAndHeight(this, 200)">
+                            <input type="hidden" name="ExistingPreviewUrl" value="@Model.PreviewUrl" />
+                            <label id="PreviewUrl-error" class="text-danger"></label>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="defaultInput" class="form-label" asp-for="TimeTotal">Total course time (s)</label>
+                            <input id="defaultInput" class="form-control" type="number" placeholder="120" asp-for="TimeTotal">
+                        </div>
+
+                        <video controls id="videoPreview" style="max-height: 300px; display: none;"></video>
+
+                        <script>
+                            function updateTotalTimeAndHeight(input, maxHeight) {
+                                const file = input.files[0];
+
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        const video = document.createElement('video');
+                                        video.src = e.target.result;
+
+                                        video.onloadedmetadata = function () {
+                                            const totalSeconds = Math.round(video.duration);
+                                            const timeInput = document.getElementById('defaultInput');
+                                            timeInput.value = totalSeconds; // Cập nhật tổng thời gian vào trường TimeTotal
+
+                                            const videoPreview = document.getElementById('videoPreview');
+                                            videoPreview.src = e.target.result;
+                                            videoPreview.style.display = 'block';
+                                        };
+                                    };
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    const videoPreview = document.getElementById('videoPreview');
+                                    videoPreview.style.display = 'none';
+                                    const timeInput = document.getElementById('defaultInput');
+                                    timeInput.value = ''; // Reset giá trị thời gian khi không có video
+                                }
+                            }
+                        </script>
 
                         <div class="input-group input-group-merge my-3">
                             <label class="input-group-text" asp-for="Price">Price</label>
@@ -79,9 +166,45 @@
 
                         <div class="input-group input-group-merge my-3">
                             <label class="input-group-text" asp-for="DiscountPrice">Discount Price</label>
-                            <input type="text" class="form-control" placeholder="999,000" aria-label="Amount (to the nearest dollar)" asp-for="DiscountPrice" value="@Model.Price.ToString("#,##0")">
+                            <input type="text" class="form-control" placeholder="999,000" aria-label="Amount (to the nearest dollar)" asp-for="DiscountPrice" value="@String.Format("{0:#,##0}", Model.DiscountPrice)">
                             <span class="input-group-text">VND</span>
                         </div>
+                        <div class="text-danger" id="discountPriceWarning"></div>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                var discountPriceInput = document.querySelector("[name='DiscountPrice']");
+                                var priceInput = document.querySelector("[name='Price']");
+                                var discountPriceWarning = document.getElementById("discountPriceWarning");
+
+                                discountPriceInput.addEventListener("input", function (e) {
+                                    var discountPriceValue = e.target.value.replace(/[^0-9,]/g, '');
+                                    discountPriceValue = discountPriceValue.replace(/,/g, "");
+                                    discountPriceValue = addCommas(discountPriceValue);
+
+                                    if (parseInt(discountPriceValue.replace(/,/g, '')) >= parseInt(priceInput.value.replace(/,/g, ''))) {
+                                        discountPriceWarning.textContent = "DiscountPrice must be lower than Price!!";
+                                    } else {
+                                        discountPriceWarning.textContent = "";
+                                        e.target.value = discountPriceValue;
+                                    }
+                                });
+
+                                discountPriceInput.addEventListener("keydown", function (e) {
+                                    var key = e.key;
+                                    var discountPriceValue = discountPriceInput.value.replace(/[^0-9,]/g, '');
+
+                                    if (key >= '0' && key <= '9' && parseInt(discountPriceValue.replace(/,/g, '')) === parseInt(priceInput.value.replace(/,/g, ''))) {
+                                        e.preventDefault();
+                                        discountPriceWarning.textContent = "DiscountPrice must be lower than Price!!";
+                                    }
+                                });
+
+                                function addCommas(value) {
+                                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
+                            });
+                        </script>
 
                         <div class="form-check form-switch my-3">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" asp-for="Status" style="width: 70px;height:30px;"> Status
@@ -98,10 +221,10 @@
                             <input id="defaultInput" class="form-control" type="text" placeholder="English" asp-for="Language">
                         </div>
 
-                        <div class="mb-3">
+                       @*  <div class="mb-3">
                             <label for="defaultInput" class="form-label" asp-for="TimeTotal">Total course time (mins)</label>
                             <input id="defaultInput" class="form-control" type="number" placeholder="120" asp-for="TimeTotal">
-                        </div>
+                        </div> *@
 
                         <div class="input-group my-3">
                             <label class="input-group-text" asp-for="LevelId">Level</label>

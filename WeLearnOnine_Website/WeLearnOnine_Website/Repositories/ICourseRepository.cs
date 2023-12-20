@@ -20,6 +20,7 @@ namespace WeLearnOnine_Website.Models
 
         Task<bool> RemoveFromFavorites(int userId, int courseId);
         List<Course> GetAllCourses();
+        List<CourseViewModel> GetAllCourseWithMany();
 
         // Retrieve all courses by category id
         List<Course> GetCoursesByCategoryId(int categoryId);
@@ -31,5 +32,7 @@ namespace WeLearnOnine_Website.Models
         List<Course> Search(string keyword);
         List<int> GetSelectedCategoriesForCourse(int courseId);
 
+        //public List<string> GetCategoriesForCourse(int courseId);
+        CourseViewModel GetCategoryViewModelById(int courseId);
     }
 }

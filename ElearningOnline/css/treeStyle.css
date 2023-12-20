@@ -20,7 +20,9 @@ ul.tree details summary {
 ul.tree details summary::-webkit-details-marker {
     display: none;
 }
-
+span:first-child {
+    display:none;
+}
 ul.tree li {
     position: relative;
     /* outline: 1px solid green; */

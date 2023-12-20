@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WeLearnOnine_Website.Models.Course>
+﻿@* @model IEnumerable<WeLearnOnine_Website.Models.Course> *@
+@model List<WeLearnOnine_Website.ViewModels.CourseViewModel>
 @* @model WeLearnOnine_Website.ViewModels.CategoryCourseViewModel *@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
@@ -153,15 +154,15 @@
                             @{
                                 string levelClass = "bg-label-info";
 
-                                if (item.Level.Name == "Beginner")
+                                if (item.LevelName  == "Beginner")
                                 {
                                     levelClass = "bg-label-secondary";
                                 }
-                                else if (item.Level.Name == "Intermediate")
+                                else if (item.LevelName  == "Intermediate")
                                 {
                                     levelClass = "bg-label-primary";
                                 }
-                                else if (item.Level.Name == "Expert")
+                                else if (item.LevelName  == "Expert")
                                 {
                                     levelClass = "bg-label-danger";
                                 }
@@ -169,10 +170,10 @@
                             <td>
                                 <img src="@item.ImageCourseUrl" width="150" height="100" />
                             </td>
-                            <td><span>@item.Staff.StaffName</span></td>
+                            <td><span>@item.StaffName</span></td>
                             <td>
                                 <span class="badge me-1 @levelClass">
-                                    @item.Level.Name
+                                    @item.LevelName 
                                 </span>
                             </td>
 
@@ -187,14 +188,56 @@
                                 </span>
                             </td>
                             <td>@item.Count</td>
-                            <td>@item.TimeTotal</td>
+                            <td class="time-cell" data-seconds="@item.TimeTotal"></td>
+                            <!-- Đoạn mã JavaScript để chuyển đổi giây thành giờ, phút và giây -->
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const timeCells = document.querySelectorAll('.time-cell');
+
+                                    timeCells.forEach(function (cell) {
+                                        const totalSeconds = parseInt(cell.dataset.seconds, 10);
+
+                                        // Kiểm tra xem có dữ liệu hay không
+                                        if (!isNaN(totalSeconds) && totalSeconds !== 0) {
+                                            const hours = Math.floor(totalSeconds / 3600);
+                                            const remainingSeconds = totalSeconds % 3600;
+                                            const minutes = Math.floor(remainingSeconds / 60);
+                                            const seconds = remainingSeconds % 60;
+
+                                            // Tạo một mảng để lưu trữ các phần của thời gian
+                                            const timeParts = [];
+
+                                            // Thêm giờ vào mảng nếu giờ khác 0
+                                            if (hours > 0) {
+                                                timeParts.push(`${hours}h`);
+                                            }
+
+                                            // Thêm phút vào mảng nếu phút khác 0 hoặc không có giờ
+                                            if (minutes > 0 || timeParts.length === 0) {
+                                                timeParts.push(`${minutes}m`);
+                                            }
+
+                                            // Thêm giây vào mảng nếu giây khác 0 hoặc không có giờ và phút
+                                            if (seconds > 0 || timeParts.length === 0) {
+                                                timeParts.push(`${seconds}s`);
+                                            }
+
+                                            // Hiển thị giá trị giờ, phút và giây trong ô cell
+                                            cell.textContent = timeParts.join(' ');
+                                        } else {
+                                            // Nếu không có dữ liệu, hiển thị chuỗi trống
+                                            cell.textContent = '';
+                                        }
+                                    });
+                                });
+                            </script>
                             <td>
                                 <div class="d-flex align-item mb-2">
                                     <a class="dropdown-item" asp-action="EditCourse" asp-route-id="@item.CourseId">
                                         <span class="badge bg-label-info me-1">
                                             <i class="bx bx-edit-alt"></i>
                                         </span>
-                                    </a> |
+                                    </a> 
                                     <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#smallModal-@item.CourseId" style="cursor: pointer">
                                         <span class="badge bg-label-danger">
                                             <i class="bx bx-trash"></i>
@@ -224,7 +267,7 @@
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                             Close
                                         </button>
-                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CourseId">@item.CourseId Delete</a>
+                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
                                     </div>
                                 </div>
                             </div>

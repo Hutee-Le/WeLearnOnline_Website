@@ -62,18 +62,24 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
         public IActionResult CreateStaff()
         {
+            ViewBag.Rolelst = new SelectList(new List<string>() { "Admin", "Instructor", "Đào Tạo" });
             return View("CreateStaff", new Staff());
         }
 
         // Edit
         [HttpPost]
-        public async Task<IActionResult> UpdateStaff(Staff staff, IFormFile ImageAvartarFile)
+        public async Task<IActionResult> UpdateStaff(Staff staff, IFormFile ImageAvartarFile, string ExistingImageAvartarFile)
         {
             try
             {
                 if (ImageAvartarFile != null)
                 {
                     staff.AvatarUrl = await _staffRepository.UploadImageAsync(ImageAvartarFile);
+                }
+                else
+                {
+                    // Sử dụng giá trị hiện tại nếu không có file mới
+                    staff.AvatarUrl = ExistingImageAvartarFile;
                 }
 
                 _staffRepository.Update(staff);
@@ -84,11 +90,15 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             {
                 TempData["staffError"] = $"Error updating staff: {ex.Message}";
             }
+
+          
+
             return RedirectToAction("Index");
         }
 
         public IActionResult EditStaff(string id)
         {
+            ViewBag.Rolelst = new SelectList(new List<string>() { "Admin", "Instructor", "Đào Tạo" });
             return View("EditStaff", _staffRepository.FindStaffByID(id));
         }
 
@@ -102,7 +112,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-                TempData["staffError"] = $"Error delete course: {ex.Message}";
+                TempData["staffError"] = $"Error delete Staff: {ex.Message}";
             }
             return RedirectToAction("Index");
         }

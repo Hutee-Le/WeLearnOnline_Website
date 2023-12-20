@@ -1,17 +1,17 @@
-﻿@model WeLearnOnine_Website.Models.Course
+﻿@model WeLearnOnine_Website.ViewModels.CourseViewModel
 
 @{
     string levelClass = "bg-label-info";
 
-    if (Model.Level.Name == "Beginner")
+    if (Model.LevelName == "Beginner")
     {
         levelClass = "bg-label-secondary";
     }
-    else if (Model.Level.Name == "Intermediate")
+    else if (Model.LevelName == "Intermediate")
     {
         levelClass = "bg-label-primary";
     }
-    else if (Model.Level.Name == "Expert")
+    else if (Model.LevelName == "Expert")
     {
         levelClass = "bg-label-danger";
     }
@@ -38,38 +38,50 @@
                             <p class="card-text">
                                 @Model.ShortDescription
                             </p>
-                            <span class="card-text me-2"><small class="text-muted fs-6">@Model.TimeTotal mins</small></span>
-                            <span class="card-text me-2"><small class="text-muted fs-6">@Model.Language</small></span>
-                            <span class="card-text me-2"><small class="text-muted fs-6">@Model.Staff.StaffName</small></span>
-                            <h5 class="card-text mt-2">Rating: <span>@Model.Rating</span></h5>
-                            <h5 class="card-text mt-2">
-                                @{
-                                    var categories = ViewBag.Categories as IEnumerable<SelectListItem>;
-                                    if (Model.SelectedCategories != null && categories != null)
-                                    {
-                                        foreach (var categoryId in Model.SelectedCategories)
-                                        {
-                                            var categoryName = categories
-                                            .Where(c => c.Value == categoryId.ToString())
-                                            .Select(c => c.Text)
-                                            .FirstOrDefault();
+                                <p class="card-text me-2">Preview vid Time: <small class="text-muted fs-6 time-cell" data-seconds="@Model.TimeTotal"></small></p>
+                                <!-- Đoạn mã JavaScript để chuyển đổi giây thành giờ, phút và giây -->
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const timeCells = document.querySelectorAll('.time-cell');
 
-                                            if (categoryName != null)
-                                            {
-                                                <span>@categoryName</span>
+                                        timeCells.forEach(function (cell) {
+                                            const totalSeconds = parseInt(cell.dataset.seconds, 10);
+
+                                            if (!isNaN(totalSeconds) && totalSeconds !== 0) {
+                                                const hours = Math.floor(totalSeconds / 3600);
+                                                const remainingSeconds = totalSeconds % 3600;
+                                                const minutes = Math.floor(remainingSeconds / 60);
+                                                const seconds = remainingSeconds % 60;
+
+                                                const timeParts = [];
+
+                                                if (hours > 0) {
+                                                    timeParts.push(`${hours}h`);
+                                                }
+
+                                                if (minutes > 0 || timeParts.length === 0) {
+                                                    timeParts.push(`${minutes}m`);
+                                                }
+
+                                                if (seconds > 0 || timeParts.length === 0) {
+                                                    timeParts.push(`${seconds}s`);
+                                                }
+
+                                                cell.textContent = timeParts.join(' ');
+                                            } else {
+                                                cell.textContent = '';
                                             }
-                                        }
-                                    }
-                                }
-                            </h5>
+                                        });
+                                    });
+                                </script>
+                                <p class="card-text">Tutor: <small class="text-muted fs-6">@Model.StaffName</small></p>
+                            @* <p class="card-text">Level: <span class="@levelClass fs-5">@Model.LevelName</span></p> *@
+                            <p class="card-text me-2">Totals buy: <small class="text-muted fs-6">@Model.Count</small></p>
 
-                            <p class="card-text">Level: <span class="@levelClass fs-5">@Model.Level.Name</span></p>
-                            <span class="card-text">Total user buy: @Model.Count</span>
-
-                            <p class="card-text me-2 mt-2">
+                            <p class="card-text me-2">
                                 Price: <span class="text-muted fs-6">@Model.Price.ToString("#,##0") VND</span>
                             </p>
-                            <p class="card-text me-2">
+                            <p class="card-text">
                                 Discount Price:
                                 @if (Model.DiscountPrice.HasValue)
                                 {
@@ -95,6 +107,35 @@
         <div class="divider">
             <div class="divider-text">More (About)</div>
         </div>
+        <dl class="row">
+            <dt class="col-sm-3">Language</dt>
+            <dd class="col-sm-9">@Model.Language</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">Level</dt>
+            <dd class="col-sm-9"><span class="@levelClass">@Model.LevelName</span></dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Category</dt>
+            <dd class="col-sm-9">
+                @{
+                    var categoryCount = Model.CategoriesCourses.Count();
+                }
+
+                @foreach (var categoryName in Model.CategoriesCourses)
+                {
+                    <span>@categoryName.CategoryName</span>
+                    @if (--categoryCount > 0)
+                    {
+                        <span class="me-1">,</span>
+                    }
+                }
+            </dd>
+        </dl>
+        @* <dl class="row mt-2">
+            <dt class="col-sm-3">Rating</dt>
+            <dd class="col-sm-9">@Model.Rating</dd>
+        </dl> *@
         <dl class="row mt-2">
             <dt class="col-sm-3">Required</dt>
             <dd class="col-sm-9">@Model.Required</dd>

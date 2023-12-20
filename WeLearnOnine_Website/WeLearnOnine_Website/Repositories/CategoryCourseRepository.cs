@@ -16,15 +16,25 @@ namespace WeLearnOnine_Website.Repositories
             return _ctx.CategoriesCourses.ToList();
         }
 
-        public List<Category> GetCoursesByCategoryId(int categoryId)
+        public List<Category> GetCategoriesForCourse(int courseId)
         {
-            // Sử dụng LINQ để lấy danh sách Course dựa trên CategoryID
             var categories = _ctx.CategoriesCourses
-                .Where(cc => cc.CourseId == categoryId)
-                .Select(cc => cc.Categories)
+                .Where(cc => cc.CourseId == courseId)
+                .Join(
+                    _ctx.Categories,
+                    cc => cc.CategoriesId,
+                    c => c.CategoriesId,
+                    (cc, c) => new Category
+                    {
+                        CategoriesId = c.CategoriesId,
+                        CategoryName = c.CategoryName,
+                        // Các thuộc tính khác của Category bạn muốn lấy
+                    }
+                )
                 .ToList();
 
             return categories;
         }
+
     }
 }

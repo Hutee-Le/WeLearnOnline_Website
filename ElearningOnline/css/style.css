@@ -2559,3 +2559,50 @@ main.container-playlist {
     color: var(--WHITE);
     font-weight: 600;
 }
+
+
+/* account-profile */
+.account-profile {
+  height: 80vh;
+}
+.account-profile input, .account-profile textarea {
+  border: 1px solid var(--black-70);
+}
+.account-profile-inner {
+  border: 1px solid #ccc;
+  padding: 20px 0;
+  border-radius: 10px;
+}
+.account-profile-inner .nav {
+  border-right: 1px solid #ccc;
+  height: 100%;
+}
+.account-profile .tab-content {
+  height: fit-content;
+  color: var(--black-90);
+  /* border: 1px solid blue !important; */
+}
+
+.ui-w-80 {
+  width : 100px !important;
+  height: auto;
+}
+.account-profile .nav-link {
+  margin-bottom: 20px;
+  text-align: start;
+  color: var(--black-90);
+}
+.account-profile .nav-link.active {
+  color: var(--main-color);
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.btn-main-white {
+  background-color: var(--main-color);
+  color: var(--WHITE);
+}
+.btn-cancel,
+.btn-cancel:hover {
+  color: var(--black-90);
+}

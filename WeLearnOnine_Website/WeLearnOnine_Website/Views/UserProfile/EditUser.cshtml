@@ -1,0 +1,186 @@
+﻿@model WeLearnOnine_Website.Models.User
+
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <div class="container light-style flex-grow-1 container-p-y account-profile">
+      <h3 class="fw-bold fs-1 py-3 mb-4 mt-3 text-center">
+        Edit Profile
+      </h3>
+      <form asp-action="UpdateUser" method="post" enctype="multipart/form-data">
+      <div class="row account-profile-inner">
+            <input type="text" class="form-control" id="i-input" asp-for="UserId">
+            <script>
+                document.getElementById("i-input").style.display = "none";
+            </script>
+
+            <div class="d-flex align-items-start">
+              <div class="nav flex-column nav-pills me-3 col-md-2" id="v-pills-tab" role="tablist"
+                aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
+                  data-bs-target="#v-pills-general" type="button" role="tab" aria-controls="v-pills-general"
+                  aria-selected="true">General</button>
+                @* <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-password"
+                  type="button" role="tab" aria-controls="v-pills-password" aria-selected="false">Change password</button> *@
+                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-info"
+                  type="button" role="tab" aria-controls="v-pills-info" aria-selected="false">Info</button>
+              </div>
+
+        
+                <div class="tab-content col-md-10" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel"
+                      aria-labelledby="v-pills-general-tab">
+                                    <div class="card-body media d-flex align-items-center">
+                                   @*  @if(Model.Avatar != null)
+                                    {
+                                        <div id="imagePreview">
+                                            <img id="selectedImage" src="@Model.Avatar" alt="@Model.Avatar" class="d-block ui-w-80">
+                                        </div>
+                                    } else
+                                    {
+                                        <div id="imagePreview">
+                                            <img id="selectedImage2" src="https://i.stack.imgur.com/bl1g5.png?s=192&g=1" alt="@Model.Avatar" class="d-block ui-w-80">
+                                        </div>
+                                    } *@
+                                    <div id="imagePreview">
+                                <img id="selectedImage" src="@Model.Avatar" alt="@Model.Avatar" class="d-block ui-w-80" style="max-height: 100px !important;max-width: 200px !important;">
+                                        </div>
+                                    <div class="media-body ms-3">
+                                            <label class="btn btn-outline-primary">
+                                                Upload new photo
+                                            <input type="file" class="account-settings-fileinput" id="ImageAvartarFile" name="ImageAvartarFile" onchange="checkFileSize(this, 200)">
+                                            <input type="hidden" name="ExistingImageAvartarFile" value="@Model.Avatar" id="ExistingImageAvartarFile" />
+                                            </label> &nbsp;
+                                        </div>
+                                    </div>
+
+                        <script>
+                            const fileInput = document.getElementById('ImageAvartarFile');
+                            const imagePreview = document.getElementById('imagePreview');
+                            const selectedImage = document.getElementById('selectedImage');
+                            const existingImageUrl = document.getElementById('ExistingImageAvartarFile').value;
+
+                            // Store the current image URL
+                            let currentImageUrl = existingImageUrl;
+
+                            // Display the current image if it exists
+                            if (currentImageUrl) {
+                                selectedImage.src = currentImageUrl;
+                                imagePreview.style.display = 'inline-block';
+                            }
+
+                            fileInput.addEventListener('change', function () {
+                                const file = fileInput.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        selectedImage.src = e.target.result;
+                                        imagePreview.style.display = 'inline-block';
+
+                                        // Update the current image URL
+                                        currentImageUrl = e.target.result;
+                                    };
+                                    reader.readAsDataURL(file);
+                                } else {
+                                    // Restore the previously selected image URL
+                                    selectedImage.src = currentImageUrl;
+                                    imagePreview.style.display = currentImageUrl ? 'inline-block' : 'none';
+                                }
+                            });
+                        </script>
+
+
+                      <hr class="border-light m-0">
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label class="form-label">Username</label>
+                          <input type="text" class="form-control mb-1" value="@Model.UserName" asp-for="UserName">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label">E-mail</label>
+                          <input type="text" class="form-control mb-1" value="@Model.Email" asp-for="Email" disabled id="disabledInput">
+                          <input type="hidden" class="form-control mb-1" value="@Model.Email" asp-for="Email">
+                          <div class="alert alert-warning mt-3">
+                            Your email <b>can not change</b>. Please contact to us via admin@gmail.com<br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+      
+                    <div class="tab-pane fade" id="v-pills-info" role="tabpanel" aria-labelledby="v-pills-info-tab">
+                  <div class="card-body pb-2">
+                    <div class="form-group">
+                      <label class="form-label">Bio</label>
+                      <textarea class="form-control" style="height: 100px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis
+                      </textarea>
+                    </div>
+
+                            <div class="form-group">
+                                <label class="form-label">CreateAt</label>
+                                <input type="hidden" class="form-control" asp-for="CreateAt"/>
+                                <input class="form-control" asp-for="CreateAt" disabled id="disabledInput" />
+                            </div>
+                    <div class="form-group">
+                      <label class="form-label">Address</label>
+                      <input type="text" class="form-control" value="@Model.Address" asp-for="Address">
+                    </div>
+                            <input type="hidden" class="form-control" value="@Model.UserAsp" asp-for="UserAsp">
+                            <input type="hidden" class="form-control" value="@Model.Password" asp-for="Password">
+
+
+
+                        </div>
+                  <hr class="border-light m-0">
+                  <div class="card-body pb-2">
+                    <h6 class="mb-4">Contacts</h6>
+                    <div class="form-group">
+                      <label class="form-label">Phone</label>
+                      <input type="text" class="form-control" value="@Model.PhoneNumber" asp-for="PhoneNumber">
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <div class="text-right mt-3 d-flex justify-content-end">
+            @*   <button type="button" class="btn btn-main-white">Save changes</button>&nbsp;
+              <button type="button" class="btn btn-default btn-cancel">Cancel</button> *@
+
+                @* <a data-bs-toggle="modal" data-bs-target="#smallModal-update" style="cursor: pointer;">
+                    <span class="btn btn-main-white">
+                        <i class="bx bx-edit-alt"></i> Update
+                    </span>
+                </a> *@
+                <button type="button" class="btn btn-main-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <i class="bx bx-edit-alt"></i> Update
+                </button>
+
+                <a asp-action="Index" asp-controller="UserProfile" class="btn btn-outline-secondary ms-2">
+                    <span>Cancel</span>
+                </a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-black" id="staticBackdropLabel">Notification</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col mb-3">
+                                <h3 class="text-black">Are you sure want to Update?</h3>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input class="btn" value="Save changes" type="submit" style="background-color: #198754 !important; color: #fff">
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      </form>
+</div>

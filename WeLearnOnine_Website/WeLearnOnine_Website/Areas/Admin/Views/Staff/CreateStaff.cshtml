@@ -22,9 +22,10 @@
                             <input type="text" class="form-control" placeholder="Nguyen Van A" aria-label="Username" aria-describedby="basic-addon11" asp-for="StaffName">
                         </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon11">Role</span>
-                            <input type="text" class="form-control" placeholder="Staff" aria-label="Username" aria-describedby="basic-addon11" asp-for="Role">
+                        <div class="input-group my-3">
+                            <label class="input-group-text" asp-for="Role">Role</label>
+                            <select asp-for="Role" asp-items="ViewBag.Rolelst" class="form-select">
+                            </select>
                         </div>
 
                         <div class="mb-3">

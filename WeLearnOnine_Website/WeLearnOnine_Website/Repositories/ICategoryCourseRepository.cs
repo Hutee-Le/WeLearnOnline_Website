@@ -10,6 +10,6 @@ namespace WeLearnOnine_Website.Repositories
         List<CategoriesCourse> GetAllCategories();
 
         //Retrieve a category by its id
-        List<Category> GetCoursesByCategoryId(int categoryId);
+        List<Category> GetCategoriesForCourse(int courseId);
     }
 }

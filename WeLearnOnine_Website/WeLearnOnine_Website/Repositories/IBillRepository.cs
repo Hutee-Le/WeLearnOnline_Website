@@ -1,15 +1,16 @@
 ﻿using WeLearnOnine_Website.Models;
+using WeLearnOnine_Website.ViewModels;
 
 namespace WeLearnOnine_Website.Repositories
 {
     public interface IBillRepository
     {
         List<Bill> GetAllBills();
-        IEnumerable<Bill> GetAllBillsWithUser();
+        List<BillViewModel> GetAllBillsWithUser();
         Bill GetPendingBillByUserId(int userId);
-
-        Bill GetBillById(Guid billId);
+        BillViewModel GetBillViewModelById(Guid billId);
         Bill FindBillByBillCode(string billCode);
+        Bill GetBillById(Guid billId);
         Task<int> GetCartCountAsync(int userId);
 
         Task<BillDetail> GetBillDetailByCourseAndUser(int courseId, int userId, Guid billId);
@@ -24,6 +25,6 @@ namespace WeLearnOnine_Website.Repositories
         void RemoveBillDetail(Guid billDetailId);
 
         int GetBillCountForDate(DateTime date);
-
+        bool UpdateBillStatus(Bill bill);
     }
 }

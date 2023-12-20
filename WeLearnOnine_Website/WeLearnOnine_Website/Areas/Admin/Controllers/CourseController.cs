@@ -20,7 +20,8 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
     {
         DerekmodeWeLearnSystemContext ctx;
         private ICourseRepository _courseRepository;
-        private ILessonRepository _lessonRepository;
+        private ILessonRepository 
+            _lessonRepository;
         private ICategoryRepository _categoryRepository;
         private ICategoryCourseRepository _categoryCourseRepository;
         private ILevelRepository _levelRepository;
@@ -63,10 +64,10 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             int pageSize = 4; // Số lượng mục trên mỗi trang
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị
 
-            var paginatedCourses = _courseRepository.GetAllCourses().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            var paginatedCourses = _courseRepository.GetAllCourseWithMany().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)_courseRepository.GetAllCourses().Count() / pageSize);
+            ViewBag.TotalPages = (int)Math.Ceiling((double)_courseRepository.GetAllCourseWithMany().Count() / pageSize);
 
             //var viewModel = new CategoryCourseViewModel
             //{
@@ -88,38 +89,15 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
 
         // Detail
-        //public IActionResult PopupView(int id)
-        //{
-        //    var model = _courseRepository.FindCourseByID(id);
-        //    return PartialView("_PopupViewPartial", model);
-        //}
-
-        public IActionResult PopupView(int id)
+       public IActionResult PopupView(int id)
         {
-            try
-            {
-                var model = _courseRepository.FindCourseByID(id);
+            var model = _courseRepository.GetCategoryViewModelById(id);
+            //var categoryNames = _courseRepository.GetCategoriesForCourse(model.CourseId);
 
-                if (model == null)
-                {
-                    // Xử lý trường hợp không tìm thấy khóa học với ID cung cấp
-                    return NotFound();
-                }
+            //ViewBag.Categories = categoryNames;
 
-                // Lấy danh sách danh mục và chuyển đến view
-                var categoryList = _categoryRepository.GetAllCategories();
-                ViewBag.Categories = new MultiSelectList(categoryList, "CategoriesId", "CategoryName");
-
-                return PartialView("_PopupViewPartial", model);
-            }
-            catch (Exception ex)
-            {
-                // Xử lý các lỗi khác nếu có
-                TempData["popupError"] = $"Error loading popup view: {ex.Message}";
-                return RedirectToAction("Index"); // Hoặc thực hiện hành động khác theo yêu cầu của bạn
-            }
+            return PartialView("_PopupViewPartial", model);
         }
-
 
 
         // Create 
@@ -211,35 +189,58 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                     course.PreviewUrl = ExistingPreviewUrl;
                 }
 
-                // Lấy danh sách các category đã chọn trước đó cho khóa học
-                var selectedCategories = _courseRepository.GetSelectedCategoriesForCourse(course.CourseId);
-
-                // Xóa các category cũ không được chọn
-                var categoriesToRemove = selectedCategories.Except(course.SelectedCategories);
-                foreach (var categoryId in categoriesToRemove)
+                // Kiểm tra xem danh sách các category đã chọn có rỗng hay không
+                if (course.SelectedCategories != null && course.SelectedCategories.Any())
                 {
-                    // Tìm đối tượng CategoriesCourse trong cơ sở dữ liệu để xóa
-                    var catCourseToRemove = ctx.CategoriesCourses
-                        .FirstOrDefault(cc => cc.CategoriesId == categoryId && cc.CourseId == course.CourseId);
+                    // Lấy danh sách các category đã chọn trước đó cho khóa học
+                    var selectedCategories = _courseRepository.GetSelectedCategoriesForCourse(course.CourseId);
 
-                    // Xóa đối tượng nếu tìm thấy
-                    if (catCourseToRemove != null)
+                    // Xóa các category cũ không được chọn
+                    var categoriesToRemove = selectedCategories.Except(course.SelectedCategories);
+                    foreach (var categoryId in categoriesToRemove)
                     {
-                        ctx.CategoriesCourses.Remove(catCourseToRemove);
+                        // Tìm đối tượng CategoriesCourse trong cơ sở dữ liệu để xóa
+                        var catCourseToRemove = ctx.CategoriesCourses
+                            .FirstOrDefault(cc => cc.CategoriesId == categoryId && cc.CourseId == course.CourseId);
+
+                        // Xóa đối tượng nếu tìm thấy
+                        if (catCourseToRemove != null)
+                        {
+                            ctx.CategoriesCourses.Remove(catCourseToRemove);
+                        }
+                    }
+
+                    // Thêm các category mới được chọn
+                    var categoriesToAdd = course.SelectedCategories.Except(selectedCategories);
+                    foreach (var categoryId in categoriesToAdd)
+                    {
+                        var catCourseToAdd = new CategoriesCourse
+                        {
+                            CategoriesId = categoryId,
+                            CourseId = course.CourseId
+                        };
+                        ctx.CategoriesCourses.Add(catCourseToAdd);
+                    }
+                }
+                else
+                {
+                    // Hành động khi không có category được chọn
+                    // Ví dụ: Xóa tất cả các category đã chọn trước đó
+                    var selectedCategories = _courseRepository.GetSelectedCategoriesForCourse(course.CourseId);
+                    foreach (var categoryId in selectedCategories)
+                    {
+                        var catCourseToRemove = ctx.CategoriesCourses
+                            .FirstOrDefault(cc => cc.CategoriesId == categoryId && cc.CourseId == course.CourseId);
+
+                        if (catCourseToRemove != null)
+                        {
+                            ctx.CategoriesCourses.Remove(catCourseToRemove);
+                        }
                     }
                 }
 
-                // Thêm các category mới được chọn
-                var categoriesToAdd = course.SelectedCategories.Except(selectedCategories);
-                foreach (var categoryId in categoriesToAdd)
-                {
-                    var catCourseToAdd = new CategoriesCourse
-                    {
-                        CategoriesId = categoryId,
-                        CourseId = course.CourseId
-                    };
-                    ctx.CategoriesCourses.Add(catCourseToAdd);
-                }
+                // Kiểm tra và gán giá trị mặc định cho TimeTotal nếu nó là null
+                course.TimeTotal ??= 0;
 
                 // Cập nhật thông tin khóa học
                 _courseRepository.Update(course);
@@ -253,6 +254,8 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+
 
         public IActionResult EditCourse(int id)
         {

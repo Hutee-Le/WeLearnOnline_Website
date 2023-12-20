@@ -22,9 +22,10 @@
                             <input type="text" class="form-control" placeholder="Nguyen Van A" aria-label="Username" aria-describedby="basic-addon11" asp-for="StaffName">
                         </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon11">Role</span>
-                            <input type="text" class="form-control" placeholder="Staff" aria-label="Username" aria-describedby="basic-addon11" asp-for="Role">
+                        <div class="input-group my-3">
+                            <label class="input-group-text" asp-for="Role">Role</label>
+                            <select asp-for="Role" asp-items="ViewBag.Rolelst" class="form-select">
+                            </select>
                         </div>
 
                         <div class="mb-3">
@@ -48,28 +49,27 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <label asp-for="AvatarUrl" class="form-label">Image Avatar</label>
-                                    <input type="file" class="form-control" id="AvatarUrl" name="ImageAvartarFile" onchange="checkFileSize(this, 50)">
-                                    <label id="AvatarUrl-error" class="text-danger"></label>
+                            <div class="row justify-content-between">
+                                <div class="col-md-9">
+                                    <label asp-for="AvatarUrl" class="form-label">Course Image</label>
+                                    <input type="file" class="form-control" id="ImageAvartarFile" name="ImageAvartarFile" onchange="checkFileSize(this, 200)">
+                                    <label id="ImageAvartarFile-error" class="text-danger"></label>
 
-                                    @* Add a hidden input field to store the current AvatarUrl value *@
-                                    <input type="hidden" id="CurrentAvatarUrl" value="@Model.AvatarUrl" />
+                                    <input type="hidden" name="ExistingImageAvartarFile" value="@Model.AvatarUrl" id="ExistingImageAvartarFile" />
+                                    <label id="CurrentAvatarUrl-error" class="text-danger"></label>
                                 </div>
-                                <div class="col-md-2">
-                                    <div id="imagePreview" style="display: none;">
-                                        <img id="selectedImage" src="" alt="Selected Image" width="100" height="100">
+                                <div class="col-md-3">
+                                    <div id="imagePreview" style="display: none; width: 100%">
+                                        <img id="selectedImage" src="" alt="Selected Image" height="100" style="width: 100%">
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <script>
-                            const fileInput = document.getElementById('AvatarUrl');
+                            const fileInput = document.getElementById('ImageAvartarFile');
                             const imagePreview = document.getElementById('imagePreview');
                             const selectedImage = document.getElementById('selectedImage');
-                            const currentAvatarUrl = document.getElementById('CurrentAvatarUrl').value;
+                            const currentAvatarUrl = document.getElementById('ExistingImageAvartarFile').value;
 
                             // Display the current image if it exists
                             if (currentAvatarUrl) {
