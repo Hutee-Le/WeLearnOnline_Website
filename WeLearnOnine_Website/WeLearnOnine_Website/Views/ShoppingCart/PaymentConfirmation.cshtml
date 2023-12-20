@@ -1,4 +1,4 @@
-﻿@model WeLearnOnine_Website.Models.Bill
+﻿@model WeLearnOnine_Website.ViewModels.ShoppingCartViewModel
 
 <!-- breadcrumb start -->
 <div class="breadcrumb-nav">
@@ -18,32 +18,54 @@
 <div class="checkout-container">
     <div class="container-xxl">
         <div class="page__container">
-            <h2 class="checkout-page-heading fs-2 fw-bold mb-5">Hướng dẫn thanh toán cho đơn hàng <span class="text-main-color"> @(Model.BillCode)</span></h2>
+            <h2 class="checkout-page-heading fs-2 fw-bold mb-5">Hướng dẫn thanh toán cho đơn hàng <span class="text-main-color"> @(Model.Bill.BillCode)</span></h2>
             <div class="checkout-container d-flex">
-                @foreach (var detail in Model.BillDetails)
+                @if (Model.Bill.Status == "Successful")
                 {
                     <div class="checkout-left col-6">
                         <div class="checkout-left-box">
                             <div class="order order-success order-done d-flex flex-column align-items-center">
                                 <img src="https://kt.city/static/ads-success-icon.png" alt="order success"
-                                     class="order-success-image">
+                                class="order-success-image">
                                 <h4 class="checkout-title text-main-color">Thanh toán thành công!</h4>
                                 <p>Đơn hàng này đã được thanh toán. Truy cập vào khu vực học tập để bắt đầu học.</p>
                                 <a asp-action="Index" asp-controller="Mylearn" class="checkout-action">Khu vực học tập</a>
                             </div>
                         </div>
                     </div>
+                }
+                else if (Model.Bill.Status == "Processing")
+                {
+                    <div class="checkout-left col-6 p-4">
+                        <div class="checkout-left-box">
+                            <div class="order order-checkout d-flex flex-column align-items-center">
+                                <h3 class="checkout-heading text-main-color">
+                                    <i class="bi bi-clock-history"></i> Vui 
+                                    lòng thanh toán để hoàn tất
+                                </h3>
+                                <p class="checkout-notice">
+                                    Nhấn vào nút dưới đây để bắt đầu thanh toán bằng MoMo:
+                                </p>
+                                <button class="checkout-action checkout-action--momo" onclick="location.href='@Model.Bill.PayUrl'">Thanh toán bằng MoMo</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.Bill.Status == "Fail")
+                {
+                    
+                }
                     <div class="checkout-right col-6">
                         <div class="review-header d-flex">
                             <div class="review-header-item col-6">
                                 <span class="checkout-label">
                                     Xem lại đơn hàng
                                 </span>
-                                <h4 class="checkout-text text-main-color">@(Model.BillCode)</h4>
+                                <h4 class="checkout-text text-main-color">@(Model.Bill.BillCode)</h4>
                             </div>
                             <div class="review-header-item">
                                 <span class="checkout-label hidden-mb">Phương thức thanh toán</span>
-                                <h5 class="checkout-text">@detail.Bill.PaymentMethod</h5>
+                                <h5 class="checkout-text">@Model.Bill.PaymentMethod</h5>
                             </div>
                             <div class="review-header-item">
                                 <h3 class="checkout-text"></h3>
@@ -51,10 +73,12 @@
                         </div>
                         <div class="review-user p-4 mb-3">
                             <span class="checkout-label">Khách hàng</span>
-                            <h4 class="review-user-name fw-bold">Quoc Nguyen @detail.Bill.UserId</h4>
-                            <p class="checkout-text">ngocquocnguyen692002@gmail.com</p>
+                            <h4 class="review-user-name fw-bold">@Model.UserName</h4>
+                            <p class="checkout-text">@Model.UserEmail</p>
                         </div>
-                        <div class="review-order">
+                    @foreach (var detail in Model.Bill.BillDetails)
+                    {
+                        <div class="review-order mb-2">
                             <div class="review-order-item d-flex">
                                 <img src="@detail.Course.ImageCourseUrl"
                                      alt="@detail.Course.Title"
@@ -64,21 +88,21 @@
                                     <h5 class="review-order-name">
                                         @detail.Course.Title
                                     </h5><span class="review-order-price">
-                                        @detail.Course.Price.ToString("#,##0")đ
-                                        @if (detail.Course.DiscountPrice.HasValue)
+                                        @detail.Price.ToString("#,##0")đ
+                                        @if (detail.DiscountPrice.HasValue)
                                         {
-                                            <span class="price-sale text-decoration-line-through ps-3">@String.Format("{0:#,##0}", detail.Course.DiscountPrice)</span>
+                                            <span class="price-sale text-decoration-line-through ps-3">@String.Format("{0:#,##0}", detail.DiscountPrice)</span>
                                         }
                                     </span>
                                 </div>
                             </div>
                         </div>
+                    }
                         <div class="review-total d-flex justify-content-center fs-4 fw-bold p-3 mt-3">
                             Tổng cộng:
-                            @detail.Course.Price.ToString("#,##0")đ
+                            @Model.Bill.Total.ToString("#,##0")đ
                         </div>
                     </div>
-                }
             </div>
         </div>
     </div>
