@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+        <div class="menu-item user-profile">
+            <div class="img-user-profile">
+                <img src="~/img/instructor/1.png" alt="img profile" class="user-pic" onclick="menuToggle()">
+            </div>
+
+            <div class="sub-menu-box" id="subMenuUser">
+                <div class="sub-menu-user">
+                    <div class="user-info">
+                        <img src="~/img/instructor/1.png">
+                        <div class="info-name">
+        <li class="nav-item">
+            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        </div>
+        </div>
+        <hr>
+        <a href="user-profile.html" class="sub-menu-links">
+            <i class="bi bi-person-circle"></i>
+            <p>Edit Profile</p><span>></span>
+        </a>
+        <a asp-action="FavList" asp-controller="Home" class="sub-menu-links">
+            <i class="bi bi-heart"></i>
+            <p>My Favorites</p><span>></span>
+        </a>
+        <a href="#" class="sub-menu-links">
+            <i class="bi bi-gear"></i>
+            <p>Setting</p><span>></span>
+        </a>
+        <a href="#" class="sub-menu-links">
+            <i class="bi bi-question-circle"></i>
+            <p>Help</p><span>></span>
+        </a>
+        <a href="#" class="sub-menu-links">
+            <i class="bi bi-door-open"></i>
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </a>
+        </div>
+        </div>
+        </div>
+}
+else
+{
+        <div class="menu-item btn-login overflow-hidden"><a class="fw-bold" asp-action="Login" asp-controller="User">Login</a></div>
+        <div class="menu-item btn-signup overflow-hidden"><a class="fw-bold" asp-action="Register" asp-controller="User">Sign Up</a></div>
+}
+</ul>

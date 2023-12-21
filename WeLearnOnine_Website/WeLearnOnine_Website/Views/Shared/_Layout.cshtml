@@ -1,4 +1,5 @@
 ﻿@inject WeLearnOnine_Website.Repositories.ICategoryRepository service
+@RenderSection("scripts", required: false)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,8 +122,9 @@
 
                     <!-- <div class="menu-item btn-login overflow-hidden"><a class="fw-bold" href="log-in.html ">Login</a></div>
                     <div class="menu-item btn-signup overflow-hidden"><a class="fw-bold" href="sign-up.html">Sign Up</a></div> -->
+                    <partial name="_LoginPartial" />
 
-                    <div class="menu-item user-profile">
+                  @*   <div class="menu-item user-profile">
                         <div class="img-user-profile">
                             <img src="~/img/instructor/1.png" alt="img profile" class="user-pic" onclick="menuToggle()">
                         </div>
@@ -158,7 +160,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> *@
 
                 </div>
             </div>
