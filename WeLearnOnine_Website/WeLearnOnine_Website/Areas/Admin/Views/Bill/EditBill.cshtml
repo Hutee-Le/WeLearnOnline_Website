@@ -1,0 +1,148 @@
+﻿@model WeLearnOnine_Website.Models.Bill
+
+@{
+    ViewData["Title"] = "EditBill";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-fuild flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Bill/</span> Status</h4>
+    <form asp-action="UpdateBill" method="post" enctype="multipart/form-data">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <input id="i-input" asp-for="BillId" />
+
+                        <div>
+                            <div class="input-group my-3">
+                                <label class="input-group-text" asp-for="Status">Status</label>
+                                <select asp-for="Status" asp-items="ViewBag.Status" class="form-select" id="statusSelect">
+                                </select>
+                            </div>
+                            <div id="defaultFormControlHelp" class="form-text alert alert-warning mt-1">
+                                Note: Set the validation order status to "Successful" or "Fail".
+                            </div>
+                        </div>
+
+                        <div id="billForm">
+                            <input type="hidden" asp-for="BillId" />
+                            <input asp-for="UserId" class="form-control" />
+                            <input asp-for="BillCode" class="form-control" />
+                            <input asp-for="Total" class="form-control" />
+                            <input asp-for="HistoricalCost" class="form-control" />
+                            <input asp-for="Promotion" class="form-control" />
+                            <input asp-for="Email" class="form-control" />
+                            <input asp-for="CreateAt" class="form-control" />
+                            <input asp-for="PaymentMethod" class="form-control" />
+                            <input asp-for="CardHolderName" class="form-control" />
+                            <input asp-for="ExpirationDate" class="form-control" />
+                            <input asp-for="PayUrl" class="form-control" />
+                        </div>
+
+                        <div class="mt-3 d-flex justify-content-end">
+                            @*  <input class="btn btn-primary mx-3" value="Update" type="submit"> *@
+
+                            <a data-bs-toggle="modal" data-bs-target="#smallModal-update" style="cursor: pointer;">
+                                <span class="btn btn-primary">
+                                    <i class="bi bi-check2-square pe-2"></i> Confirm
+                                </span>
+                            </a>
+
+                            <a asp-action="Index" class="btn btn-outline-secondary ms-2">
+                                <span>Cancel</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            select {
+                padding: 10px 15px;
+                outline: none;
+                border: 1px solid #ccc;
+            }
+        </style>
+        <script>
+            document.getElementById("i-input").style.display = "none";
+            // Lấy ra tất cả các input fields trong form
+            var inputFields = document.querySelectorAll('#billForm input');
+            // Ẩn tất cả các input fields
+            inputFields.forEach(function (input) {
+                input.style.display = 'none';
+            });
+        </script>
+        <div class="modal fade" id="smallModal-update" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <h3 id="confirmationMessage">
+                                    Are you sure you will set the status "<span id="statusSpan" class="text"></span>" for this invoice?
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+
+                        <input id="submitButton" class="btn mx-3" type="submit" value="Accept" disabled>
+
+                        <script>
+                            var statusSelect = document.getElementById('statusSelect');
+                            var submitButton = document.getElementById('submitButton');
+                            var confirmationMessage = document.getElementById('confirmationMessage');
+                            var statusSpan = document.getElementById('statusSpan');
+
+                            function updateConfirmationMessage(selectedStatus) {
+                                var statusClass = (selectedStatus.toLowerCase() === 'successful') ? '-success' : (selectedStatus.toLowerCase() === 'fail') ? '-danger' : '';
+
+                                // Cập nhật nội dung và class của thẻ span
+                                statusSpan.textContent = selectedStatus;
+                                statusSpan.className = 'text' + statusClass;
+                            }
+
+                            function updateSubmitButton(selectedStatus) {
+                                if (selectedStatus.toLowerCase() === 'successful') {
+                                    submitButton.className = 'btn btn-success mx-3';
+                                    submitButton.value = 'Accept';
+                                    submitButton.removeAttribute('disabled');
+                                } else if (selectedStatus.toLowerCase() === 'fail') {
+                                    submitButton.className = 'btn btn-danger mx-3';
+                                    submitButton.value = 'Deny';
+                                    submitButton.removeAttribute('disabled');
+                                } else {
+                                    submitButton.className = 'btn mx-3';
+                                    submitButton.value = 'Accept';
+                                    submitButton.setAttribute('disabled', true);
+                                }
+                            }
+
+                            // Lắng nghe sự kiện thay đổi của dropdown
+                            statusSelect.addEventListener('change', function () {
+                                var selectedStatus = this.value;
+
+                                // Gọi hàm cập nhật nội dung và class của confirmationMessage và submitButton
+                                updateConfirmationMessage(selectedStatus);
+                                updateSubmitButton(selectedStatus);
+                            });
+
+                            // Kích thước sự kiện một lần để kiểm tra trạng thái ban đầu của dropdown
+                            statusSelect.dispatchEvent(new Event('change'));
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

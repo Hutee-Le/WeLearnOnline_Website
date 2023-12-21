@@ -14,7 +14,7 @@ body {
     color       : #4E5155;
 }
 
-label.btn-suer {
+label.btn {
     margin-bottom: 0;
 }
 
@@ -24,7 +24,7 @@ label.btn-suer {
     color       : #26B4FF;
 }
 
-.btn-user {
+.btn {
     cursor: pointer;
 }
 

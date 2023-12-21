@@ -59,8 +59,26 @@
             <dd class="col-sm-9"><span class="@typeClass fs-5">@Model.Type.Title</span></dd>
         </dl>
         <dl class="row mt-2">
-            <dt class="col-sm-3">Time</dt>
-            <dd class="col-sm-9">@Model.Time mins</dd>
+            <dt class="col-sm-3">Time (mins, s)</dt>
+            <!-- Dòng trong file HTML để hiển thị giá trị thời gian -->
+            <dd class="col-sm-9 time-display" data-seconds="@Model.Time"></dd>
+
+            <!-- Đoạn mã JavaScript để chuyển đổi giây thành phút và giây -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const timeDisplays = document.querySelectorAll('.time-display');
+
+                    timeDisplays.forEach(function (display) {
+                        const totalSeconds = parseInt(display.dataset.seconds, 10);
+                        const minutes = Math.floor(totalSeconds / 60);
+                        const seconds = totalSeconds % 60;
+
+                        // Hiển thị giá trị phút và giây trong đối tượng display
+                        display.textContent = `${minutes}m ${seconds}s`;
+                    });
+                });
+            </script>
+
         </dl>
         <dl class="row mt-2">
             <dt class="col-sm-3">Course</dt>

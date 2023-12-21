@@ -1,11 +1,22 @@
-﻿@model IEnumerable<WeLearnOnine_Website.Models.Bill>
+﻿@model List<WeLearnOnine_Website.ViewModels.BillViewModel>
 
 @{
     ViewData["Title"] = "ListStaff";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@if (TempData["staffError"] != null)
+@if (TempData["billError"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["billError"]</div>
+    </div>
+}
+@if (TempData["billSuccess"] != null)
 {
     <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
@@ -13,23 +24,12 @@
             <div class="me-auto fw-medium">Notification</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <div class="toast-body">@TempData["staffError"]</div>
+        <div class="toast-body">@TempData["billSuccess"]</div>
     </div>
 }
-@if (TempData["staffSuccess"] != null)
-{
-    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
-            <div class="me-auto fw-medium">Notification</div>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">@TempData["staffSuccess"]</div>
-    </div>
-}
-
 
 <h4 class="py-3 mb-4"><span class="text-muted fw-light">Bill /</span> Bill Table</h4>
+<p>@TempData["Message"]</p>
 <div class="card"> 
     <div class="card-header">
         <div class="d-flex justify-content-around align-items-center">
@@ -62,13 +62,13 @@
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-Successful" aria-controls="navs-pills-top-Successful" aria-selected="false" tabindex="-1">
-                            Successful
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-Processing" aria-controls="navs-pills-top-Processing" aria-selected="false">
+                            Processing
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-Pending" aria-controls="navs-pills-top-Pending" aria-selected="false">
-                            Pending
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-Successful" aria-controls="navs-pills-top-Successful" aria-selected="false" tabindex="-1">
+                            Successful
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -113,11 +113,11 @@
                                     @{
                                         string statusClass = "bg-label-info";
 
-                                        if (item.Status == "Payment Successful")
+                                        if (item.Status == "Successful")
                                         {
                                             statusClass = "bg-label-success";
                                         }
-                                        else if (item.Status == "Pending")
+                                        else if (item.Status == "Processing")
                                         {
                                             statusClass = "bg-label-primary";
                                         }
@@ -139,7 +139,7 @@
                                 }*@
 
                                         <td>@(item.BillId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</td>
-                                        <td>@item.UserId</td>
+                                        <td>@item.UserName</td>
                                         <td>@item.CreateAt</td>
                                         <td>@item.ExpirationDate</td>
                                         <td>@item.PaymentMethod</td>
@@ -195,6 +195,128 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="tab-pane fade" id="navs-pills-top-Processing" role="tabpanel">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    User Name
+                                </th>
+                                <th>
+                                    Bill Date
+                                </th>
+                                <th>
+                                    Due Date
+                                </th>
+                                <th>
+                                    Payment
+                                </th>
+                                <th>
+                                    Total Amount (VNĐ)
+                                </th>
+                                <th>
+                                    Status Payment
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Where(m => m.Status == "Processing"))
+                            {
+                                <tr style="text-align: center">
+                                    @{
+                                        string statusClass = "bg-label-info";
+
+                                        if (item.Status == "Successful")
+                                        {
+                                            statusClass = "bg-label-success";
+                                        }
+                                        else if (item.Status == "Processing")
+                                        {
+                                            statusClass = "bg-label-primary";
+                                        }
+                                        else if (item.Status == "Fail")
+                                        {
+                                            statusClass = "bg-label-danger";
+                                        }
+                                    }
+                                    @*  <td><span>@GetUserName(item.UserId)</span></td>
+                                <!-- Các phần khác của view -->
+                                @functions {
+                                // Hàm để lấy tên người dùng từ danh sách UserNames
+                                public string GetUserName(int? userId)
+                                {
+                                var userNames = (IEnumerable<User>)((SelectList)ViewBag.UserNames).Items;
+                                var user = userNames.FirstOrDefault(u => u.UserId == userId);
+                                return user?.UserName ?? "Unknown";
+                                }
+                                }*@
+                                    <td>@(item.BillId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</td>
+                                    <td>@item.UserName</td>
+                                    <td>@item.CreateAt</td>
+                                    <td>@item.ExpirationDate</td>
+                                    <td>@item.PaymentMethod</td>
+                                    <td>@item.Total.ToString("#,##0")</td>
+                                    <td>
+                                        <span class="badge me-1 @statusClass">@item.Status</span>
+                                    </td>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-Processing-@item.BillId">Show</a>
+                                        <a class="ms-2" asp-action="EditBill" asp-route-id="@item.BillId">
+                                            <span class="badge bg-label-success me-1 fs-6">
+                                                <i class="bi bi-check2-square"></i>
+                                            </span>
+                                        </a>
+                                        <a class="ms-2" data-bs-toggle="modal" data-bs-target="#smallModal-Processing-@item.BillId" style="cursor: pointer">
+                                            <span class="badge bg-label-danger">
+                                                <i class="bx bx-trash"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                @* Small Model Delete *@
+                                <div class="modal fade" id="smallModal-Processing-@item.BillId" tabindex="-1" style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col mb-3">
+                                                        <h3>Do you want to delete?</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BillId">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* Small Model Details *@
+                                <div class="modal fade" id="myModal-Processing-@item.BillId">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-body" id="modal-content-@item.BillId">
+                                                @await Html.PartialAsync("_BillDetailsViewPartial", item)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
                     <div class="tab-pane fade" id="navs-pills-top-Successful" role="tabpanel">
                     <table class="table table-bordered">
                         <thead>
@@ -224,17 +346,17 @@
                                 </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model.Where(m => m.Status == "Payment Successful"))
+                            @foreach (var item in Model.Where(m => m.Status == "Successful"))
                             {
                                 <tr style="text-align: center">
                                     @{
                                         string statusClass = "bg-label-info";
 
-                                        if (item.Status == "Payment Successful")
+                                        if (item.Status == "Successful")
                                         {
                                             statusClass = "bg-label-success";
                                         }
-                                        else if (item.Status == "Pending")
+                                        else if (item.Status == "Processing")
                                         {
                                             statusClass = "bg-label-primary";
                                         }
@@ -244,7 +366,7 @@
                                         }
                                     }
                                      <td>@(item.BillId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</td>
-                                        <td>@item.UserId</td>
+                                        <td>@item.UserName</td>
                                         <td>@item.CreateAt</td>
                                         <td>@item.ExpirationDate</td>
                                         <td>@item.PaymentMethod</td>
@@ -301,123 +423,6 @@
                         </tbody>
                     </table>
                     </div>
-                    <div class="tab-pane fade" id="navs-pills-top-Pending" role="tabpanel">
-                        <table class="table table-bordered">
-                        <thead>
-                           <tr>
-                                    <th>
-                                        ID 
-                                    </th>
-                                    <th>
-                                        User Name
-                                    </th>
-                                    <th>
-                                        Bill Date
-                                    </th>
-                                    <th>
-                                        Due Date
-                                    </th>
-                                     <th>
-                                        Payment
-                                    </th>
-                                    <th>
-                                        Total Amount (VNĐ)
-                                    </th>
-                                    <th>
-                                        Status Payment
-                                    </th>
-                                    <th>Actions</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Where(m => m.Status == "Pending"))
-                            {
-                                <tr style="text-align: center">
-                                    @{
-                                        string statusClass = "bg-label-info";
-
-                                        if (item.Status == "Payment Successful")
-                                        {
-                                            statusClass = "bg-label-success";
-                                        }
-                                        else if (item.Status == "Pending")
-                                        {
-                                            statusClass = "bg-label-primary";
-                                        }
-                                        else if (item.Status == "Fail")
-                                        {
-                                            statusClass = "bg-label-danger";
-                                        }
-                                    }
-                                  @*  <td><span>@GetUserName(item.UserId)</span></td>
-                                    <!-- Các phần khác của view -->
-                                    @functions {
-                                    // Hàm để lấy tên người dùng từ danh sách UserNames
-                                    public string GetUserName(int? userId)
-                                    {
-                                        var userNames = (IEnumerable<User>)((SelectList)ViewBag.UserNames).Items;
-                                        var user = userNames.FirstOrDefault(u => u.UserId == userId);
-                                        return user?.UserName ?? "Unknown";
-                                    }
-                                }*@
-                                      <td>@(item.BillId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</td>
-                                        <td>@item.UserId</td>
-                                        <td>@item.CreateAt</td>
-                                        <td>@item.ExpirationDate</td>
-                                        <td>@item.PaymentMethod</td>
-                                        <td>@item.Total.ToString("#,##0")</td>
-                                        <td>
-                                            <span class="badge me-1 @statusClass">@item.Status</span>
-                                        </td>
-                                    <td>
-                                        <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-Pending-@item.BillId">Show</a>
-                                        <a class="ms-2" data-bs-toggle="modal" data-bs-target="#smallModal-Pending-@item.BillId" style="cursor: pointer">
-                                            <span class="badge bg-label-danger">
-                                                <i class="bx bx-trash"></i>
-                                            </span>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                @* Small Model Delete *@
-                                <div class="modal fade" id="smallModal-Pending-@item.BillId" tabindex="-1" style="display: none;" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                        <h3>Do you want to delete?</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BillId">Delete</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                @* Small Model Details *@
-                                <div class="modal fade" id="myModal-Pending-@item.BillId">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-body" id="modal-content-@item.BillId">
-                                                @await Html.PartialAsync("_BillDetailsViewPartial", item)
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </tbody>
-                    </table>
-                    </div>
                     <div class="tab-pane fade" id="navs-pills-top-Fail" role="tabpanel">
                         <table class="table table-bordered">
                         <thead>
@@ -453,11 +458,11 @@
                                     @{
                                         string statusClass = "bg-label-info";
 
-                                        if (item.Status == "Payment Successful")
+                                        if (item.Status == "Successful")
                                         {
                                             statusClass = "bg-label-success";
                                         }
-                                        else if (item.Status == "Pending")
+                                        else if (item.Status == "Processing")
                                         {
                                             statusClass = "bg-label-primary";
                                         }
@@ -467,7 +472,7 @@
                                         }
                                     }
                                     <td>@(item.BillId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</td>
-                                        <td>@item.UserId</td>
+                                        <td>@item.UserName</td>
                                         <td>@item.CreateAt</td>
                                         <td>@item.ExpirationDate</td>
                                         <td>@item.PaymentMethod</td>

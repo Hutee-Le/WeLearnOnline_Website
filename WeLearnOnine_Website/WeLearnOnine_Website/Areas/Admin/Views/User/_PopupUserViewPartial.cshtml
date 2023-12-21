@@ -1,0 +1,36 @@
+﻿@model WeLearnOnine_Website.Models.User
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h3 class="modal-title">Detail</h3>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    <div class="card-body">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="card-img card-img-left" src="@Model.Avatar" alt="@Model.Avatar">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">@Model.UserName</h4>
+                            <p class="card-text me-2">Email: <small class="text-muted fs-6">@Model.Email</small></p>
+                            <p class="card-text me-2">Phone: <small class="text-muted fs-6">@Model.PhoneNumber</small></p>
+                            <p class="card-text me-2">CreateAt: <small class="text-muted fs-6">@Model.CreateAt</small></p>
+                            <p class="card-text me-2">Address: <small class="text-muted fs-6">@Model.Address</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal footer -->
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+</div>

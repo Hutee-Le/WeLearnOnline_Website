@@ -1,16 +1,16 @@
-﻿@model WeLearnOnine_Website.Models.Bill
+﻿@model WeLearnOnine_Website.ViewModels.BillViewModel
 @{
     string statusClass = "bg-label-info";
 
-    if (Model.Status == "Payment Successful")
+    if (Model.Status == "Successful")
     {
         statusClass = "bg-label-success";
     }
-    else if (Model.Status == "Pending")
+    else if (Model.Status == "Processing")
     {
         statusClass = "bg-label-primary";
     }
-    else if (Model.Status == "Payment Fail")
+    else if (Model.Status == "Fail")
     {
         statusClass = "bg-label-danger";
     }
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-xl-6">
                         <h6 class="pb-2">Invoice To:</h6>
-                        <p class="mb-1">UserID: @Model.UserId</p>
+                        <p class="mb-1">User: @Model.UserName</p>
                         <p class="mb-1">718-986-6062</p>
                         <p class="mb-0">peakyFBlinders@gmail.com</p>
                     </div>
@@ -67,7 +67,7 @@
                         <div class="d-flex">
                             <div class="col-left" style="width: 120px;">
                                 <p class="mb-1">Total Due:</p>
-                                <p class="mb-1">Bank name:</p>
+                                <p class="mb-1">Payment Method:</p>
                             </div>
                             <div class="col-right">
                                 <p class="mb-1">@Model.Total.ToString("#,##0") đ</p>
@@ -81,21 +81,21 @@
 
     <div class="card-body">
         <div class="col-12">
-                <div class="row p-2" style="border-top: 1px solid #d9dee3">
-                    <span class="col-3">Item</span>
-                    <span class ="col-3">Description</span>
-                    <span class ="col-2">Cost</span>
-                    <span class="col-2">Qty</span>
-                    <span class="col-2">Price</span>
+                <div class="row p-2 text-center align-items-center" style="border-top: 1px solid #d9dee3">
+                    <span class="col-5">Image</span>
+                    <span class ="col-7">Title</span>
                 </div>
-                <div class="row p-2" style="border-top: 1px solid #d9dee3">
-                    <span class="col-3">Frest Admin Template</span>
-                    <span class="col-3">Angular Admin Template</span>
-                    <span class="col-2">$22</span>
-                    <span class="col-2">1</span>
-                    <span class="col-2">$22.00</span>
-                </div>
-            </div>
+            @foreach(var item_course in Model.BillDetails)
+            {
+                
+                <div class="row p-2 text-center align-items-center" style="border-top: 1px solid #d9dee3">
+                        <span class="col-5">
+                            <img  src="@item_course.ImageCourseUrl" style="object-fit:cover; min-width: 145px" height="80"/>
+                        </span>
+                    <span class="col-7">@item_course.Title</span>
+                    </div>
+            }
+        </div>
     </div>
     <div class="card-body">
         <div class="col-12">

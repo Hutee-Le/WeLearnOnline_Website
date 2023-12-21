@@ -7,7 +7,7 @@
 
 @if (TempData["staffError"] != null)
 {
-    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
             <div class="me-auto fw-medium">Notification</div>
@@ -148,7 +148,7 @@
                                         <span class="badge bg-label-info me-1">
                                             <i class="bx bx-edit-alt"></i>
                                         </span>
-                                    </a> |
+                                    </a> 
                                     <a class="dropdown-item ms-1" data-bs-toggle="modal" data-bs-target="#smallModal-@item.StaffId" style="cursor: pointer">
                                         <span class="badge bg-label-danger">
                                             <i class="bx bx-trash"></i>

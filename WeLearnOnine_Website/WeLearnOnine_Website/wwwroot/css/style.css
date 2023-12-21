@@ -32,14 +32,14 @@
     28. =videoPlaylist
     29. =Empty Cart & checkout
     30. =Purchase-history
+    31. =UserProfile
 
 ---------------------------------------------------------------------------------------------*/
-
 
 /*---------------------------------------------
 01. =google fonts
 -----------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /*---------------------------------------------
 02. =variables
@@ -96,7 +96,7 @@ body.t-dark {
 
 body {
     background-color: var(--body-bg-color);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 16px;
     font-weight: 300;
     color: var(--black-70);
@@ -142,7 +142,6 @@ h6 {
     background-color: var(--main-color);
 }
 
-
 /*---------------------------------------------
 05. =box
 -----------------------------------------------*/
@@ -177,6 +176,7 @@ h6 {
         transform: rotate(360deg);
     }
 }
+
 @keyframes loader {
     0% {
         transform: rotate(0deg);
@@ -223,7 +223,6 @@ h6 {
         color: var(--black-90);
     }
 
-
 /*---------------------------------------------
 09. =buttons
 -----------------------------------------------*/
@@ -234,7 +233,7 @@ h6 {
     text-transform: capitalize;
     font-weight: 500;
     padding: 8px 20px;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 }
 
     .btn-theme:hover {
@@ -253,7 +252,6 @@ h6 {
 .btn-form {
     height: 48px;
 }
-
 
 /*---------------------------------------------
 10. =page leader
@@ -283,7 +281,7 @@ h6 {
     }
 
         .page-loader div::before {
-            content: '';
+            content: "";
             position: absolute;
             height: 100%;
             width: 100%;
@@ -454,7 +452,7 @@ select.form-control:focus option {
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, .6);
+        background-color: rgba(0, 0, 0, 0.6);
     }
 
 /*---------------------------------------------
@@ -485,7 +483,6 @@ select.form-control:focus option {
 17. =bubble animation
 -----------------------------------------------*/
 
-
 /*---------------------------------------------
 18. =style switcher
 -----------------------------------------------*/
@@ -499,7 +496,7 @@ select.form-control:focus option {
     z-index: 10;
     padding: 30px;
     box-shadow: var(--shadow);
-    transition: right .3s ease;
+    transition: right 0.3s ease;
 }
 
     .style-switcher.open {
@@ -550,11 +547,11 @@ select.form-control:focus option {
 
 .theme-colors button::before {
     content: "\f00c";
-    font-family: 'Font Awesome 5 Free';
+    font-family: "Font Awesome 5 Free";
     font-weight: 900;
     font-size: 12px;
     color: var(--WHITE);
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -595,7 +592,6 @@ select.form-control:focus option {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-
 .header-logo a {
     font-size: 26px;
     text-transform: uppercase;
@@ -607,14 +603,14 @@ select.form-control:focus option {
     display: flex;
     flex: 1;
     border-radius: 150px;
-    border: .2px solid var(--black-90);
+    border: 0.2px solid var(--black-90);
     overflow: hidden;
 }
 
     .search-input > span {
         width: 20px;
         align-items: center;
-        padding: .6rem 2rem .8rem 1rem;
+        padding: 0.6rem 2rem 0.8rem 1rem;
         font-size: 1.2em;
         color: var(--black-90);
     }
@@ -670,7 +666,7 @@ select.form-control:focus option {
     width: 200px;
     border-radius: 5px;
     box-shadow: var(--shadow);
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     z-index: 2;
     visibility: hidden;
     opacity: 0;
@@ -679,7 +675,7 @@ select.form-control:focus option {
 
 .header-main div.menu-item {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    transition: .1s ease;
+    transition: 0.1s ease;
 }
 
     .header-main div.menu-item a {
@@ -700,14 +696,12 @@ select.form-control:focus option {
 
 .header-main div.menu-item:first-child a {
     color: var(--black-70);
-    transition: .2s ease;
+    transition: 0.2s ease;
 }
-
-
 
 .header-main div.menu-item:last-child a {
     color: var(--white);
-    transition: .1s ease;
+    transition: 0.1s ease;
 }
 
 .menu-item .fas.fa-shopping-cart {
@@ -731,12 +725,11 @@ select.form-control:focus option {
     text-align: center;
 }
 
-
 /* .header-main div.menu-item:hover a:last-child{
     background-color: var(--button-hover-color);
 } */
 
-@media(min-width: 992px) {
+@media (min-width: 992px) {
     .header .menu-item:hover > .sub-menu {
         visibility: visible;
         opacity: 1;
@@ -782,7 +775,7 @@ select.form-control:focus option {
     right: -50%;
     width: 300px;
     border-radius: 5px;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     z-index: 20;
     visibility: hidden;
     opacity: 0;
@@ -792,7 +785,7 @@ select.form-control:focus option {
 }
 
     .sub-menu-box::before {
-        content: '';
+        content: "";
         position: absolute;
         /* transform: rotate(45deg); */
         /* width: 22px; */
@@ -812,7 +805,7 @@ select.form-control:focus option {
     max-height: 350px;
 } */
 
-@media(min-width: 992px) {
+@media (min-width: 992px) {
     .header .menu-item:hover .sub-menu-box {
         visibility: visible;
         opacity: 1;
@@ -820,12 +813,10 @@ select.form-control:focus option {
     }
 }
 
-
 .sub-menu-user {
     padding: 5px;
     margin: 10px;
 }
-
 
 .user-info {
     display: flex;
@@ -868,7 +859,7 @@ select.form-control:focus option {
     width: 100%;
     margin: 0;
     color: var(--black-70);
-    transition: font-weight .5s ease;
+    transition: font-weight 0.5s ease;
     letter-spacing: 1px;
 }
 
@@ -880,12 +871,12 @@ select.form-control:focus option {
     font-size: 24px;
     border-radius: 50%;
     color: var(--white);
-    transition: .3s ease;
+    transition: 0.3s ease;
 }
 
 .sub-menu-links span {
     font-size: 22px;
-    transition: transform .5s;
+    transition: transform 0.5s;
     color: var(--black-90);
 }
 
@@ -927,7 +918,7 @@ select.form-control:focus option {
     visibility: hidden;
     opacity: 0;
     transform: translateY(10px);
-    transition: .5s ease;
+    transition: 0.5s ease;
     border-radius: 5px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
     /* border: 1px solid red; */
@@ -994,7 +985,6 @@ select.form-control:focus option {
     border-radius: 5px;
 }
 
-
 /*---------------------------------------------
 20. =footer
 -----------------------------------------------*/
@@ -1056,14 +1046,14 @@ footer {
         }
 
         .footer-item ul a::before {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             bottom: 0;
             width: 0%;
             height: 1px;
             background-color: var(--main-color);
-            transition: width .3s ease;
+            transition: width 0.3s ease;
         }
 
         .footer-item ul a:hover::before {
@@ -1182,17 +1172,17 @@ footer {
     position: relative;
 }
 
-.course-popover:hover .card-popover {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(100%);
-}
+    .course-popover:hover .card-popover {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(100%);
+    }
 
-.course-popover:last-child:hover .card-popover {
+    .course-popover:last-child:hover .card-popover {
         visibility: visible;
         opacity: 1;
         transform: translateX(-100%);
-}
+    }
 
 .card-popover {
     position: absolute;
@@ -1272,7 +1262,7 @@ footer {
 
         .card-popover .btn-favor:hover,
         .card-popover .btn-addCart:hover {
-            opacity: .73;
+            opacity: 0.73;
         }
 /* end Popover card */
 
@@ -1315,7 +1305,7 @@ footer {
 .courses-item .title {
     text-transform: capitalize;
     margin: 15px 0;
-    transition: color .3s ease;
+    transition: color 0.3s ease;
 }
 
 .courses-item:hover .title {
@@ -1396,7 +1386,7 @@ footer {
 
     .testimonials-section .img-box::before,
     .testimonials-section .img-box::after {
-        content: '';
+        content: "";
         position: absolute;
         border-radius: 50%;
         border: 1px solid var(--red-light);
@@ -1442,7 +1432,7 @@ footer {
 .testimonials-section .decoration-circles-item {
     position: absolute;
     border-radius: 50%;
-    opacity: .4;
+    opacity: 0.4;
 }
 
     .testimonials-section .decoration-circles-item:nth-child(1) {
@@ -1519,7 +1509,6 @@ section.course-details {
     /* Đảm bảo sidebar luôn nằm trên phần tử dưới */
 }
 
-
 .course-header h2 {
     font-style: 30px;
     margin: 0 0 15px;
@@ -1572,7 +1561,7 @@ section.course-details {
 
 .course-curriculum .accordion-button::after {
     content: "\f077";
-    font-family: 'Font Awesome 5 Free';
+    font-family: "Font Awesome 5 Free";
     font-weight: 900;
     background-image: none;
     position: absolute;
@@ -1722,7 +1711,7 @@ section.course-details {
         font-weight: 500;
         text-transform: capitalize;
         margin: 0 0 5px;
-        color: var(--black-90)
+        color: var(--black-90);
     }
 
     .reviews-item .stars-rating i {
@@ -1749,7 +1738,7 @@ section.course-details {
 }
 
     .course-sidebar .img-box::before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         top: 0;
@@ -1812,7 +1801,7 @@ section.course-details {
     }
 
         .course-sidebar .features-list li::before {
-            content: '';
+            content: "";
             height: 6px;
             width: 6px;
             background-color: var(--main-color);
@@ -1837,8 +1826,6 @@ section.course-details {
 27. =contact section
 -----------------------------------------------*/
 
-
-
 /*---------------------------------------------
 27. =user profile
 -----------------------------------------------*/
@@ -1850,18 +1837,17 @@ section.course-details {
 .btn-default {
     border-color: rgba(24, 28, 33, 0.1);
     background: rgba(0, 0, 0, 0);
-    color: #4E5155;
+    color: #4e5155;
 }
-
 
 label.btn-suer {
     margin-bottom: 0;
 }
 
 .btn-outline-primary {
-    border-color: #26B4FF;
+    border-color: #26b4ff;
     background: transparent;
-    color: #26B4FF;
+    color: #26b4ff;
 }
 
 .btn-user {
@@ -1874,7 +1860,7 @@ label.btn-suer {
 
 .btn-facebook {
     border-color: rgba(0, 0, 0, 0);
-    background: #3B5998;
+    background: #3b5998;
     color: #fff;
 }
 
@@ -1975,7 +1961,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     align-items: center;
     /* transform: translateY(10%); */
     gap: 1rem;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     text-transform: capitalize;
 }
 
@@ -2024,13 +2010,13 @@ main.container-playlist {
 }
 
     .video-playlist .videos::-webkit-scrollbar {
-        width: .4rem;
-        border-radius: .4rem;
+        width: 0.4rem;
+        border-radius: 0.4rem;
         background-color: #0005;
     }
 
     .video-playlist .videos::-webkit-scrollbar-thumb {
-        border-radius: .4rem;
+        border-radius: 0.4rem;
         background-color: var(--main-color);
     }
 
@@ -2042,9 +2028,9 @@ main.container-playlist {
         justify-content: center;
         align-items: center;
         padding: 0 1rem;
-        margin-top: .1rem;
+        margin-top: 0.1rem;
         cursor: pointer;
-        border-radius: .5rem;
+        border-radius: 0.5rem;
     }
 
         .video-playlist .videos .video:hover {
@@ -2061,7 +2047,6 @@ main.container-playlist {
                 color: var(--main-color);
                 font-weight: bold;
             }
-
 
 .main-video video {
     max-height: 550px !important;
@@ -2096,10 +2081,9 @@ main.container-playlist {
     overflow: hidden;
     text-overflow: ellipsis;
     font: 100 1rem sans-serif;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     margin: 0;
 }
-
 
 /*---------------------
   Helper CSS
@@ -2116,21 +2100,21 @@ Shop Cart
 /* Typography */
 .ud-heading-md {
     font-weight: 700;
-    letter-spacing: -.02rem;
+    letter-spacing: -0.02rem;
     font-size: 1.12rem;
 }
 
 .ud-heading-sm {
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: -.02rem;
+    letter-spacing: -0.02rem;
     font-size: 1rem;
 }
 
 .ud-heading-xs {
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: -.02rem;
+    letter-spacing: -0.02rem;
     font-size: 0.9rem;
 }
 
@@ -2229,7 +2213,7 @@ Shop Cart
 }
 
 .ud-btn-xsmall {
-    height: 2rem
+    height: 2rem;
 }
 
 .ud-btn-ghost {
@@ -2270,7 +2254,7 @@ Shop Cart
 .shopping-item--container {
     position: relative;
     display: grid;
-    grid: 'image header header actions price' auto 'image badges badges actions price' auto 'image rating rating actions price' auto 'image meta meta actions price' auto/auto auto 1fr auto auto;
+    grid: "image header header actions price" auto "image badges badges actions price" auto "image rating rating actions price" auto "image meta meta actions price" auto/auto auto 1fr auto auto;
 }
 
     .shopping-item--container .shopping-item--image {
@@ -2421,7 +2405,7 @@ Shop Cart
 
 .ud-heading-xxl {
     font-weight: 700;
-    letter-spacing: -.02rem;
+    letter-spacing: -0.02rem;
     font-size: 3.2rem;
 }
 
@@ -2462,7 +2446,7 @@ Shop Cart
 }
 
 .redeem-coupon--title--GmLKT {
-    margin-bottom: 1.0rem;
+    margin-bottom: 1rem;
 }
 
 .redeem-coupon--codes--yrm-S {
@@ -2612,9 +2596,8 @@ List Course
     margin: 2% auto;
     position: absolute;
     transform: translateX(100%);
-    transition: .3s;
+    transition: 0.3s;
 }
-
 
 #CateSlide,
 #topjsc {
@@ -2723,6 +2706,7 @@ List Course
     box-sizing: border-box;
     /* background-color: #ccc; */
 }
+
     #filter-course .course-card {
         height: 200px;
         border-bottom: 1px solid #ccc;
@@ -2745,38 +2729,37 @@ List Course
             width: 250px;
         }
 
-        #filter-course .course-card-content .desc--headline span {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-        }
+    #filter-course .course-card-content .desc--headline span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
 
     #filter-course .card-content--desc .desc--auth,
     #filter-course .card-content--desc .reviews,
     #filter-course .card-content--desc .desc--details {
         font-size: 13px;
-        opacity: .93;
+        opacity: 0.93;
         font-weight: 500;
     }
 
-#filter-course .card-content--desc .average-stars,
-.average-stars {
-    color: #b4690e;
-    font-size: 14px;
-}
+    #filter-course .card-content--desc .average-stars,
+    .average-stars {
+        color: #b4690e;
+        font-size: 14px;
+    }
 
-#filter-course .card-content--desc .desc--details span {
-    padding-right: 10px;
-}
+    #filter-course .card-content--desc .desc--details span {
+        padding-right: 10px;
+    }
 
-#filter-course .card-content-price {
-    font-weight: bold;
-    font-size: 20px;
-    color: var(--main-color);
-}
-
+    #filter-course .card-content-price {
+        font-weight: bold;
+        font-size: 20px;
+        color: var(--main-color);
+    }
 
 .checkrating p {
     color: var(--black-90);
@@ -2817,7 +2800,7 @@ button.clearfilter {
 
             #sortitem > div > div > div > div {
                 display: flex;
-                align-items: center
+                align-items: center;
             }
 
             #sortitem > div > div > img {
@@ -2874,18 +2857,18 @@ button.clearfilter {
                 text-decoration: none;
                 display: block;
                 line-height: 60px;
-                border-bottom: 1px solid rgba(0, 0, 0, .2);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
             }
 
             .side-bar-filter .menu-filter .item .title {
                 font-size: 17px !important;
             }
 
-                .side-bar-filter .menu-filter .item .sub-item input {
-                    margin-right: 15px;
-                    width: 20px;
-                    height: 20px;
-                }
+            .side-bar-filter .menu-filter .item .sub-item input {
+                margin-right: 15px;
+                width: 20px;
+                height: 20px;
+            }
 
             .side-bar-filter .menu-filter .item .title {
                 font-size: 24px;
@@ -2894,7 +2877,7 @@ button.clearfilter {
 
             .side-bar-filter .menu-filter .item a:hover {
                 color: var(--main-color);
-                transition: .3s ease;
+                transition: 0.3s ease;
             }
 
             /* .side-bar-filter .menu-filter .item i {
@@ -2904,7 +2887,7 @@ button.clearfilter {
                 position: absolute;
                 right: 0;
                 margin: 20px;
-                transition: .3s ease;
+                transition: 0.3s ease;
             }
 
             .side-bar-filter .menu-filter .item .sub-menu {
@@ -2919,7 +2902,6 @@ button.clearfilter {
 .rotate {
     transform: rotate(180deg);
 }
-
 
 .course-card {
     position: relative;
@@ -2943,7 +2925,7 @@ button.clearfilter {
 .course-card:hover .popover-course {
     visibility: visible;
     opacity: 1;
-    transform: translateY(-100%); /* Dịch chuyển lên -100px để tạo hiệu ứng dịch chuyển từ dưới lên */
+    transform: translateY( -100% ); /* Dịch chuyển lên -100px để tạo hiệu ứng dịch chuyển từ dưới lên */
 }
 
 .popover-course::before {
@@ -2980,11 +2962,9 @@ button.clearfilter {
     margin-right: 10px;
 }
 
-
 .inline-form {
     display: inline-block;
 }
-
 
 .popover-course .btn-addCart {
     background-color: var(--main-color);
@@ -3013,9 +2993,8 @@ button.clearfilter {
 
     .popover-course .btn-favor:hover,
     .popover-course .btn-addCart:hover {
-        opacity: .73;
+        opacity: 0.73;
     }
-
 
 /* Empty Cart & checkout */
 
@@ -3048,20 +3027,20 @@ button.clearfilter {
 }
 
 .payment__desc {
-    position: relative
+    position: relative;
 }
 
-.payment__desc::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 1rem;
-    background-color: rgb(35, 194, 127);
-    position: absolute;
-    top: 50%;
-    left: -5%;
-    transform: translateY(-50%);
-}
+    .payment__desc::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 1rem;
+        background-color: rgb(35, 194, 127);
+        position: absolute;
+        top: 50%;
+        left: -5%;
+        transform: translateY(-50%);
+    }
 /* Checkout */
 .checkout-container {
     margin-bottom: 30vh;
@@ -3125,7 +3104,8 @@ button.clearfilter {
 }
 
 /* checkout check */
-.order-item__content .price, .order-price .price {
+.order-item__content .price,
+.order-price .price {
     color: rgb(70, 181, 161);
 }
 
@@ -3220,31 +3200,30 @@ button.clearfilter {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-.payment__check:checked {
-    background-color: #C04141; 
-    border-color: #C04141; 
-}
+    .payment__check:checked {
+        background-color: #c04141;
+        border-color: #c04141;
+    }
 
-.payment__check:checked::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 8px;
-    height: 8px;
-    background-color: #E55252;
-    border-radius: 50%;
-}
+        .payment__check:checked::before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 8px;
+            height: 8px;
+            background-color: #e55252;
+            border-radius: 50%;
+        }
 
-.payment__check:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(229, 82, 82, 0.25);
-}
+    .payment__check:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(229, 82, 82, 0.25);
+    }
 
-.payment__check::-ms-check {
-    display: none;
-}
-
+    .payment__check::-ms-check {
+        display: none;
+    }
 
 .checkout-right .btn-complete {
     width: 100%;
@@ -3267,7 +3246,7 @@ button.clearfilter {
     }
 
     .order-price-all .order-price .price-sale {
-        font-size: .95rem !important;
+        font-size: 0.95rem !important;
     }
 
     .order-price-all .order-saving {
@@ -3283,9 +3262,11 @@ button.clearfilter {
 .order-item__inner {
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
-.order-item__inner:not(div:first-child) {
+
+    .order-item__inner:not(div:first-child) {
         margin-top: 1rem;
-}
+    }
+
 .user-info__item i {
     color: var(--main-color);
 }
@@ -3293,6 +3274,7 @@ button.clearfilter {
 .user-info__item span {
     font-weight: 500;
 }
+
 .Checkout-empty {
     height: 90vh;
 }
@@ -3325,3 +3307,61 @@ button.clearfilter {
         color: var(--WHITE);
         font-weight: 600;
     }
+
+/* 31. =UserProfile */
+.account-profile {
+    height: 90vh;
+}
+
+    .account-profile input, textarea {
+        border: 1px solid var(--black-70);
+        background-color: var(--white) !important;
+    }
+p.form-control {
+        background-color: var(--white) !important;
+}
+
+.account-profile-inner {
+    border: 1px solid #ccc;
+    padding: 20px 0;
+    border-radius: 10px;
+}
+
+    .account-profile-inner .nav {
+        border-right: 1px solid #ccc;
+        height: 100%;
+    }
+
+.account-profile .tab-content {
+    height: fit-content;
+    color: var(--black-90);
+    /* border: 1px solid blue !important; */
+}
+
+.ui-w-80 {
+    width: auto !important;
+    height: auto !important;
+    object-fit: cover;
+}
+
+.account-profile .nav-link {
+    margin-bottom: 20px;
+    text-align: start;
+    color: var(--black-90);
+}
+
+    .account-profile .nav-link.active {
+        color: var(--main-color);
+        background-color: transparent;
+        font-weight: bold;
+    }
+
+.btn-main-white {
+    background-color: var(--main-color);
+    color: var(--WHITE);
+}
+
+.btn-cancel,
+.btn-cancel:hover {
+    color: var(--black-90);
+}

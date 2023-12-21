@@ -9,9 +9,8 @@ setTimeout(function () {
 
 
 
-// Tự thêm phẩy sau 3 số theo đơn vị tiền Việt Nam - Create, Edit
 document.querySelector("[name='Price'], [name='DiscountPrice']").addEventListener("input", function (e) {
-                                var priceInput = e.target;
+    var priceInput = e.target;
     var priceValue = priceInput.value;
 
     // Loại bỏ tất cả các ký tự không phải là số và dấu phẩy
@@ -23,9 +22,16 @@ document.querySelector("[name='Price'], [name='DiscountPrice']").addEventListene
 
     // Cập nhật giá trị trên input
     priceInput.value = priceValue;
-                            });
 
-    // Hàm thêm dấu phẩy sau mỗi 3 số
-    function addCommas(value) {
-                                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                            }
+    // Nếu là DiscountPrice, cập nhật giá trị model để không có dấu phẩy
+    if (priceInput.name === 'DiscountPrice') {
+        var modelProperty = priceInput.getAttribute('asp-for');
+        var modelValue = priceValue.replace(/,/g, '');
+        document.querySelector("[asp-for='" + modelProperty + "']").value = modelValue;
+    }
+});
+
+// Hàm thêm dấu phẩy sau mỗi 3 số
+function addCommas(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

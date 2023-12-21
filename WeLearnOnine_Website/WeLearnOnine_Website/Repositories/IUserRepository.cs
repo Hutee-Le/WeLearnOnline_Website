@@ -9,5 +9,7 @@ namespace WeLearnOnine_Website.Repositories
         void Add(User user);
         void Update(User user);
         void Delete(int id);
+        User GetByID(int id);
+        Task<string> UploadImageAsync(IFormFile imageFile);
     }
 }

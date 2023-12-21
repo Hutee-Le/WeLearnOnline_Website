@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 
@@ -9,10 +10,12 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private IUserRepository _userRepository;
+        DerekmodeWeLearnSystemContext ctx;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository, DerekmodeWeLearnSystemContext ctx)
         {
             _userRepository = userRepository;
+            this.ctx = ctx;
         }
 
         //View All Table Staff
@@ -28,81 +31,95 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             return View("Index", paginatedCourses);
         }
+        // Detail
+        public IActionResult PopupView(int id)
+        {
+            var model = _userRepository.GetByID(id);
+            return PartialView("_PopupUserViewPartial", model);
+        }
+        public IActionResult Search(string keyword)
+        {
+            List<User> users;
 
-        //// Detail
-        //public IActionResult PopupView(string id)
-        //{
-        //    var model = _staffRepository.FindStaffByID(id);
-        //    return PartialView("_PopupViewPartial", model);
-        //}
+            if (string.IsNullOrEmpty(keyword))
+            {
+                users = ctx.Users.ToList();
+            }
+            else
+            {
+                users = ctx.Users
+            .Where(p =>
+                p.UserName.Contains(keyword) ||
+                p.PhoneNumber.Contains(keyword) ||
+                p.Email.Contains(keyword)).ToList();
+            }
 
-        // Create 
-        //[HttpPost]
-        //public async Task<IActionResult> SaveStaff(Staff staff, IFormFile AvatarUrl)
-        //{
-        //    try {
-        //        if (AvatarUrl != null)
-        //        {
-        //            staff.AvatarUrl = await _staffRepository.UploadImageAsync(AvatarUrl);
-        //        }
+            if (users.Count == 0)
+            {
+                ViewBag.SearchMessage = "Không tìm thấy Staff nào!";
+            }
 
-        //        _staffRepository.Add(staff);
-
-        //        TempData["staffSuccess"] = "Create staff successfully saved!";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        TempData["staffError"] = $"Error create staff: {ex.Message}";
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-
-        //public IActionResult CreateStaff()
-        //{
-        //    return View("CreateStaff", new Staff());
-        //}
-
-        // Edit
-        //[HttpPost]
-        //public async Task<IActionResult> UpdateStaff(Staff staff, IFormFile ImageAvartarFile)
-        //{
-        //    try
-        //    {
-        //        if (ImageAvartarFile != null)
-        //        {
-        //            staff.AvatarUrl = await _staffRepository.UploadImageAsync(ImageAvartarFile);
-        //        }
-
-        //        _staffRepository.Update(staff);
-
-        //        TempData["staffSuccess"] = "Update Staff successfully saved!";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        TempData["staffError"] = $"Error updating staff: {ex.Message}";
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-
-        //public IActionResult EditStaff(string id)
-        //{
-        //    return View("EditStaff", _staffRepository.FindStaffByID(id));
-        //}
-
+            // Chuyển hướng về trang Index với trang hiện tại
+            return View("Index", users);
+        }
         // Delete
-        //public IActionResult Delete(string id)
-        //{
-        //    try
-        //    {
-        //        _staffRepository.Delete(id);
-        //        TempData["staffSuccess"] = "Delete successfully saved!";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        TempData["staffError"] = $"Error delete course: {ex.Message}";
-        //    }
-        //    return RedirectToAction("Index");
-        //}
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _userRepository.Delete(id);
+                TempData["userSuccess"] = "Delete successfully saved!";
+            }
+            catch (Exception ex)
+            {
+                TempData["userError"] = $"Error delete User: {ex.Message}";
+            }
+            return RedirectToAction("Index");
+        }
 
+        [HttpGet]
+        public ActionResult ExportCsv()
+        {
+            // Lấy danh sách các bài học từ database
+            var users = _userRepository.GetAll();
+
+            // Tạo một StringBuilder để lưu trữ dữ liệu CSV
+            StringBuilder csvContent = new StringBuilder();
+
+            // Thêm tiêu đề cột
+            csvContent.AppendLine("UserId,UserName,Email,Address,CreateAt,PhoneNumber,Password,UserAsp");
+
+            // Thêm dữ liệu từ danh sách bài học
+            foreach (var user in users)
+            {
+                // Kiểm tra null trước khi truy cập các thuộc tính
+                string userId = user.UserId.ToString() ?? "";
+                string userName = EscapeCsvField(user.UserName?.ToString() ?? "");
+                string email = EscapeCsvField(user.Email?.ToString() ?? "");
+                string address = EscapeCsvField(user.Address?.ToString() ?? "");
+                string userAsp = EscapeCsvField(user.UserAsp?.ToString() ?? "");
+                string createAt = EscapeCsvField(user.CreateAt?.ToString() ?? "");
+                string phoneNumber = user.PhoneNumber?.ToString() ?? "";
+                string password = user.Password?.ToString() ?? "";
+
+                csvContent.AppendLine($"{userId},{userName},{email},{address},{createAt},{phoneNumber},{password},{userAsp}");
+                // Thêm dữ liệu cho các cột khác tùy thuộc vào các trường bạn muốn xuất
+            }
+
+            // Chuyển đổi StringBuilder thành mảng byte và trả về file CSV
+            byte[] fileContents = Encoding.UTF8.GetBytes(csvContent.ToString());
+
+            return File(fileContents, "text/csv", "User.csv");
+        }
+
+        private string EscapeCsvField(string field)
+        {
+            // Hàm này đặt giá trị trong dấu ngoặc kép nếu nó chứa dấu phẩy, ký tự đặc biệt, hoặc dấu cách
+            if (field.Contains(",") || field.Contains("\"") || field.Contains(" ") || field.Contains("'"))
+            {
+                return $"\"{field}\"";
+            }
+            return field;
+        }
     }
 }

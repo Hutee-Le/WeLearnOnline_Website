@@ -1,21 +1,43 @@
 ﻿@model IEnumerable<WeLearnOnine_Website.Models.User>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+<script>
+    @if (!string.IsNullOrEmpty(ViewBag.SearchMessage))
+    {
+        <text>
+                        // Chuyển giá trị từ ViewBag.SearchMessage sang biến JavaScript
+                        var searchMessage = "@Html.Raw(ViewBag.SearchMessage)";
 
+        // Hiển thị thông báo pop-up
+        Swal.fire({
+            icon: 'info',
+            title: 'Thông báo',
+            text: searchMessage,
+            willClose: () => {
+                // Chuyển hướng về trang Index
+                window.location.href = '@Url.Action("Index", "User")';
+            }
+        });
+        </text>
+    }
+</script>
 @{
     ViewData["Title"] = "ListLesson";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 @if (TempData["lessonError"] != null)
 {
-    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
             <div class="me-auto fw-medium">Notification</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <div class="toast-body">@TempData["lessonError"]</div>
+        <div class="toast-body">@TempData["userError"]</div>
     </div>
 }
-@if (TempData["lessonSuccess"] != null)
+@if (TempData["userSuccess"] != null)
 {
     <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
@@ -30,43 +52,51 @@
 <h4 class="py-3 mb-4"><span class="text-muted fw-light">User /</span> List User</h4>
 
 <div class="card">
-    <div class="col-md-12 d-flex justify-content-between align-items-center table-responsive">
-        <!-- Dropdown List for Categories -->
-       @*  <div class="form-group">
-            <label class="d-flex align-items-center">
-                Course: *@
-                @*  <select id="categorySelect" asp-for="SelectedCategoryId">
-                <option value="0">-- Chọn danh mục --</option>
-                @foreach (var category in Model.Categories)
-                {
-                <option value="@category.CategoriesId">@category.CategoryName</option>
-                }
-                </select> *@
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">DataTable User</h5>
+            <div>
+                <div class="dropdown">
+                    <button class="dropdown-btn badge bg-label-primary align-items-center"><i class="bx bx-export me-sm-1"></i> Export <i class="bi bi-chevron-down fs-6"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#"><i class="bx bxs-file-pdf me-2"></i> PDF</a>
+                        <a href="#">
+                            @using (Html.BeginForm("ExportCsv", "User", FormMethod.Get))
+                            {
 
-             @*    <form asp-action="ShowLessonByCourse" method="get" class="form-inline">
-                    <select asp-items="ViewBag.CourseId" name="CourseId" onchange="forms[0].submit()"></select>
+                                <i class="bx bx-file me-1"></i>
+                                <button type="submit" style="outline:none; border: none; background-color: transparent">Csv</button>
+                            }
+                        </a>
+                        <a href="#"><i class="bx bx-printer me-2"></i> Print</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between  align-items-center mt-3">
+            <!-- Dropdown List for Categories -->
+            <div class="form-group">
+            </div>
+
+            <div id="DataTables_Table_0_filter" class="dataTables_filter d-flex">
+                <form asp-controller="User" asp-action="Search" method="post">
+                    <label class="d-flex align-items-center">
+                        Search:
+                        <input type="search" class="form-control ms-2" placeholder="" name="keyword"><button class="btn btn-primary">Tìm</button>
+                    </label>
                 </form>
-            </label>
-        </div>  *@
-
-       @*  <div id="DataTables_Table_0_filter" class="dataTables_filter d-flex">
-            <form asp-controller="Lesson" asp-action="Search" method="post">
-                <label class="d-flex align-items-center me-5">
-                    Search:
-                    <input type="search" class="form-control ms-2" placeholder="" name="keyword"><button>Tìm</button>
-                </label>
-            </form> *@
-       
-           @*  <a asp-action="CreateLesson" class="btn rounded-pill btn-primary text-white">Create New</a> *@
-        <@* /div> *@
+            </div>
+        </div>
     </div>
-
     
     <div class="card-body">
         <div class="table-responsive text-nowrap">
             <table class="table table-bordered">
                 <thead>
                     <tr>
+                        <th>
+                            Avatar
+                        </th>
                         <th>
                             User Name
                         </th>
@@ -82,30 +112,35 @@
                         <th>
                             Create date
                         </th>
-                        @* <th>Actions</th> *@
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr style="text-align: center">
-                           @*  <td>
-                                <img src="@item.ImageLessonUrl" width="150" height="100" />
-                            </td> *@
+                            <td>
+                                <img src="@item.Avatar" width="100" height="100" style="border-radius: 100%; object-fit:cover;" />
+                            </td>
                             <td><span>@item.UserName</span></td>
                             <td>@item.Email</td>
                             <td>@item.Address</td>
                             <td>@item.PhoneNumber</td>
                             <td>@item.CreateAt</td>
-                          @*   <td>
-                                <a class="dropdown-item mb-2" asp-action="EditLesson" asp-route-id="@item.LessonId" style="color: #03c3ec; background-color:#d7f5fc; border-color: #b3edf9; padding: 5px 6px; border-radius: 5px;cursor:pointer"><i class="bx bx-trash me-1"></i> Edit</a>
-                                <a class="dropdown-item mb-2" data-bs-toggle="modal" data-bs-target="#smallModal-@item.LessonId" style="color: #ff3e1d; background-color:#ffe0db; border-color: #ffc5bb; padding: 5px 6px; border-radius: 5px; cursor:pointer"><i class="bx bx-edit-alt me-1"></i> Delete</a>
-                                <a class="btn btn-info btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.LessonId">Show</a>
-                            </td> *@
+                            <td>
+                                <div class="d-flex align-item justify-content-center">
+                                    <a class="btn btn-sm btn-primary btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.UserId">Show</a>
+                                    <a class="ms-2" data-bs-toggle="modal" data-bs-target="#smallModal-@item.UserId" style="cursor: pointer">
+                                        <span class="badge bg-label-danger">
+                                            <i class="bx bx-trash"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
 
                         @* Small Model Delete *@
-                       @*  <div class="modal fade" id="smallModal-@item.LessonId" tabindex="-1" style="display: none;" aria-hidden="true">
+                        <div class="modal fade" id="smallModal-@item.UserId" tabindex="-1" style="display: none;" aria-hidden="true">
                             <div class="modal-dialog modal-sm" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -123,21 +158,21 @@
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                             Close
                                         </button>
-                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.LessonId">@item.LessonId Delete</a>
+                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="modal fade" id="myModal-@item.LessonId">
+                        <div class="modal fade" id="myModal-@item.UserId">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
-                                    <div class="modal-body" id="modal-content-@item.LessonId">
-                                        @await Html.PartialAsync("_LessonDetailsViewPartial", item)
+                                    <div class="modal-body" id="modal-content-@item.UserId">
+                                        @await Html.PartialAsync("_PopupUserViewPartial", item)
                                     </div>
                                 </div>
                             </div>
-                        </div> *@
+                        </div>
                     }
                 </tbody>
             </table>
@@ -174,6 +209,47 @@
         </ul>
     </nav>
     <!-- Hiển thị phân trang -->
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
+        .dropdown-btn {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 130px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0px 5px 5px;
+        }
+
+            .dropdown-content a {
+                color: #333;
+                text-decoration: none;
+                padding: 5px 8px;
+                display: block;
+                width: 100%;
+                transition: .3s ease;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </div>
 

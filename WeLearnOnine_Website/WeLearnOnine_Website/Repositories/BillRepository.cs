@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WeLearnOnine_Website.Models;
+using WeLearnOnine_Website.ViewModels;
 
 namespace WeLearnOnine_Website.Repositories
 {
@@ -27,10 +28,16 @@ namespace WeLearnOnine_Website.Repositories
         public void DeleteBill(Guid billId)
         {
             // Thực hiện logic để xóa Bill theo ID
-            var billToDelete = _context.Bills.FirstOrDefault(b => b.BillId == billId);
+            var billToDelete = _context.Bills.Include(b => b.BillDetails).FirstOrDefault(b => b.BillId == billId);
+
             if (billToDelete != null)
             {
+                // Remove related BillDetails
+                _context.BillDetails.RemoveRange(billToDelete.BillDetails);
+
+                // Remove the Bill
                 _context.Bills.Remove(billToDelete);
+
                 _context.SaveChanges();
             }
         }
@@ -39,6 +46,40 @@ namespace WeLearnOnine_Website.Repositories
         {
             // Thực hiện logic để lấy Bill theo ID
             return _context.Bills.FirstOrDefault(b => b.BillId == billId);
+        }
+
+        public BillViewModel GetBillViewModelById(Guid billId)
+        {
+            var billViewModel = (from b in _context.Bills
+                                 join user in _context.Users on b.UserId equals user.UserId
+                                 where b.BillId == billId
+                                 select new BillViewModel
+                                 {
+                                     BillId = b.BillId,
+                                     UserName = user.UserName,
+                                     Total = b.Total,
+                                     Promotion = b.Promotion,
+                                     HistoricalCost = b.HistoricalCost,
+                                     Status = b.Status,
+                                     CreateAt = b.CreateAt.GetValueOrDefault(),
+                                     ExpirationDate = b.ExpirationDate.GetValueOrDefault(),
+                                     PaymentMethod = b.PaymentMethod,
+                                     CardHolderName = b.CardHolderName,
+                                     BillDetails = (from detail in _context.BillDetails
+                                                    join course in _context.Courses on detail.CourseId equals course.CourseId
+                                                    where detail.BillId == b.BillId
+                                                    select new BillDetailViewModel
+                                                    {
+                                                        BillDetailId = detail.BillDetailId,
+                                                        CourseId = course.CourseId,
+                                                        Title = course.Title,
+                                                        ImageCourseUrl = course.ImageCourseUrl
+                                                        // Các thuộc tính khác...
+                                                    }).ToList()
+                                 })
+                                .FirstOrDefault();
+
+            return billViewModel;
         }
 
         public Bill GetPendingBillByUserId(int userId)
@@ -62,26 +103,40 @@ namespace WeLearnOnine_Website.Repositories
         }
 
         // Trong BillRepository.cs
-        public IEnumerable<Bill> GetAllBillsWithUser()
+        public List<BillViewModel> GetAllBillsWithUser()
         {
-            var billsWithUsers = from bill in _context.Bills
-                                 join user in _context.Users on bill.UserId equals user.UserId
-                                 select new Bill
-                                 {
-                                     BillId = bill.BillId,
-                                     Total = bill.Total,
-                                     UserId = bill.UserId,
-                                     HistoricalCost = bill.HistoricalCost,
-                                     Promotion = bill.Promotion,
-                                     Email = user.Email,
-                                     Status = bill.Status,
-                                     CreateAt = bill.CreateAt,
-                                     PaymentMethod = bill.PaymentMethod,
-                                     CardHolderName = bill.CardHolderName,
-                                     ExpirationDate = bill.ExpirationDate
-                                 };
-            return billsWithUsers.ToList();
+            var billQuery = from bill in _context.Bills
+                            join user in _context.Users on bill.UserId equals user.UserId
+                            select new BillViewModel
+                            {
+                                BillId = bill.BillId,
+                                UserName = user.UserName,
+                                Total = bill.Total,
+                                Status = bill.Status,
+                                CreateAt = bill.CreateAt.GetValueOrDefault(),
+                                ExpirationDate = bill.ExpirationDate.GetValueOrDefault(),
+                                PaymentMethod = bill.PaymentMethod,
+                                Promotion = bill.Promotion,
+                                HistoricalCost = bill.HistoricalCost,
+                                CardHolderName = bill.CardHolderName,
+                                // Các thuộc tính khác...
+                                BillDetails = (from detail in _context.BillDetails
+                                               join course in _context.Courses on detail.CourseId equals course.CourseId
+                                               where detail.BillId == bill.BillId
+                                               select new BillDetailViewModel
+                                               {
+                                                   BillDetailId = detail.BillDetailId,
+                                                   CourseId = course.CourseId,
+                                                   Title = course.Title,
+                                                   ImageCourseUrl = course.ImageCourseUrl
+                                               }).ToList()
+                            };
+
+            var billsWithDetails = billQuery.ToList();
+            return billsWithDetails;
         }
+
+        public List<Bill> GetAllBills() => _context.Bills.ToList();
 
         public void UpdateBill(Bill bill)
         {
@@ -108,9 +163,6 @@ namespace WeLearnOnine_Website.Repositories
                                       bd.Bill.Status == "Pending")
                          .FirstOrDefaultAsync();
         }
-
-        public List<Bill> GetAllBills() => _context.Bills.ToList();
-
         public int GetBillCountForDate(DateTime date)
         {
             // Lấy ngày bắt đầu và kết thúc của ngày đang xét
@@ -128,6 +180,18 @@ namespace WeLearnOnine_Website.Repositories
                 .Include(bd => bd.BillDetails)
                 .ThenInclude(c => c.Course)
                 .FirstOrDefault(bill => bill.BillCode == billCode);
+        }
+
+        public bool UpdateBillStatus(Bill bill)
+        {
+            Bill? b = _context.Bills.Find(bill.BillId);
+            if (b != null)
+            {
+                _context.Entry(b).CurrentValues.SetValues(bill);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

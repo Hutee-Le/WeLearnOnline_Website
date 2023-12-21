@@ -88,7 +88,7 @@ namespace WeLearnOnine_Website.Repositories
                 });
 
             var imageFileName = Path.GetFileName(imageFile.FileName);
-            var imageChild = imageStorage.Child("staff").Child(imageFileName);
+            var imageChild = imageStorage.Child("staff").Child("avatar").Child(imageFileName);
 
             using (var imageStream = imageFile.OpenReadStream())
             {

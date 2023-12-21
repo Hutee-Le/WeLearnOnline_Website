@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon11">Time (mins, s)</span>
+                            <span class="input-group-text" id="basic-addon11">Total Time (s)</span>
                             <input type="text" class="form-control" placeholder="10s" aria-label="Time" aria-describedby="basic-addon11" asp-for="Time">
                         </div>
 
@@ -49,14 +49,6 @@
             <div class="col-xl">
                 <div class="card">
                     <div class="card-body">
-                        @*      <div class="mb-3">
-                        <label asp-for="ImageLessonUrl" class="form-label">Course Image</label>
-                        <input type="file" class="form-control" id="ImageCourseUrl" name="ImageCourseUrl" onchange="checkFileSize(this, 200)">
-                        <input type="hidden" name="ExistingImageCourseUrl" value="@Model.ImageLessonUrl" />
-
-                        <label id="ImageCourseUrl-error" class="text-danger"></label>
-                        </div> *@
-
                         <div class="mb-3">
                             <div class="row justify-content-between">
                                 <div class="col-md-9">
@@ -104,13 +96,6 @@
                             });
                         </script>
 
-                        @*   <div class="mb-3">
-                        <label asp-for="UrlVideo" class="form-label">Course Video</label>
-                        <input type="file" class="form-control" id="PreviewUrl" name="PreviewUrl" onchange="checkFileSize(this, 200)">
-                        <input type="hidden" name="ExistingPreviewUrl" value="@Model.UrlVideo" />
-                        <label id="PreviewUrl-error" class="text-danger"></label>
-                        </div> *@
-
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-12">
@@ -135,12 +120,14 @@
                             const urlVideoInput = document.getElementById('UrlVideo');
                             const videoPreview = document.getElementById('videoPreview');
                             const selectedVideo = document.getElementById('selectedVideo');
+                            const timeInput = document.getElementById('Time'); // ID của input thời gian
                             const currentUrlVideo = document.getElementById('CurrentUrlVideo').value;
 
                             // Display the current video if it exists
                             if (currentUrlVideo) {
                                 selectedVideo.src = currentUrlVideo;
                                 videoPreview.style.display = 'inline-block';
+                                updateTotalTime(currentUrlVideo);
                             }
 
                             function displaySelectedVideo(input) {
@@ -150,16 +137,25 @@
                                     reader.onload = function (e) {
                                         selectedVideo.src = e.target.result;
                                         videoPreview.style.display = 'inline-block';
+                                        updateTotalTime(e.target.result);
                                     };
                                     reader.readAsDataURL(file);
                                 } else {
                                     selectedVideo.src = '';
                                     videoPreview.style.display = 'none';
+                                    timeInput.value = ''; // Reset thời gian khi không có video
                                 }
                             }
+
+                            function updateTotalTime(videoUrl) {
+                                const video = document.createElement('video');
+                                video.src = videoUrl;
+                                video.onloadedmetadata = function () {
+                                    const totalSeconds = Math.round(video.duration);
+                                    timeInput.value = totalSeconds; // Đưa tổng số giây vào input
+                                };
+                            }
                         </script>
-
-
 
                         <div class="input-group mt-3 d-flex justify-content-end">
                             <a data-bs-toggle="modal" data-bs-target="#smallModal-update" style="cursor: pointer;">
