@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {}
+    "D:\\1221\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {}
   },
   "projects": {
-    "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {
+    "D:\\1221\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
+        "projectUniqueName": "D:\\1221\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
         "projectName": "WeLearnOnine_Website",
-        "projectPath": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
-        "packagesPath": "C:\\Users\\ngocq\\.nuget\\packages\\",
-        "outputPath": "E:\\DACNA - GIT KRAREN\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\",
+        "projectPath": "D:\\1221\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\WeLearnOnine_Website.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "D:\\1221\\WeLearnOnline_Website\\WeLearnOnine_Website\\WeLearnOnine_Website\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ngocq\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -56,6 +51,14 @@
             "MailKit": {
               "target": "Package",
               "version": "[4.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.23, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -95,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
