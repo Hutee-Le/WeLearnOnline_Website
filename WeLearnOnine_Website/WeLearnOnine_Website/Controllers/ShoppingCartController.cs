@@ -42,7 +42,7 @@ namespace WeLearnOnine_Website.Controllers
             foreach (var detail in bill.BillDetails)
             {
                 totalDiscountedPrice += detail.DiscountPrice ?? detail.Price;
-                totalOriginalPrice += detail.Price; 
+                totalOriginalPrice += detail.Price;
             }
 
             var viewModel = new ShoppingCartViewModel
@@ -53,7 +53,7 @@ namespace WeLearnOnine_Website.Controllers
                 TotalSaving = totalOriginalPrice - totalDiscountedPrice,
                 UserName = user.UserName,
                 UserEmail = user.Email
-                
+
             };
 
             return View(viewModel);
@@ -201,13 +201,13 @@ namespace WeLearnOnine_Website.Controllers
                 // Xử lý trường hợp không tìm thấy hóa đơn
                 return View("Error"); // Trang lỗi hoặc thông báo phù hợp
             }
-            if(model.SelectedPaymentMethod == "MOMO")
+            if (model.SelectedPaymentMethod == "MOMO")
             {
-                var orderId = DateTime.Now.Ticks.ToString();
-
                 var accessKey = _configuration["MoMoSettings:AccessKey"];
                 var secretKey = _configuration["MoMoSettings:SecretKey"];
                 var partnerCode = _configuration["MoMoSettings:PartnerCode"];
+                var ipnUrl = _configuration["MoMoSettings:ipnUrl"];
+                var redirectUrl = _configuration["MoMoSettings:redirectUrl"];
                 var orderInfo = _configuration["MoMoSettings:OrderInfo"];
                 var requestType = _configuration["MoMoSettings:RequestType"];
                 var payGate = _configuration["MoMoSettings:PayGate"];
@@ -216,11 +216,12 @@ namespace WeLearnOnine_Website.Controllers
                 var orderExpireTime = int.Parse(_configuration["MoMoSettings:OrderExpireTime"]);
                 var lang = _configuration["MoMoSettings:Lang"];
 
+
                 MoMoRequest request = new MoMoRequest();
                 request.orderInfo = orderInfo;
                 request.partnerCode = partnerCode;
-                request.ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
-                request.redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b" + "/ShoppingCart/PaymentConfirmation?billCode=" + bill.BillCode;
+                request.ipnUrl = ipnUrl + "/ShoppingCart/UpdatePaymentStatus";
+                request.redirectUrl = redirectUrl + "/ShoppingCart/PaymentConfirmation?billCode=" + bill.BillCode;
                 request.amount = (long)model.TotalDiscountedPrice;
                 request.orderId = bill.BillCode;
                 request.requestId = bill.BillCode + "id";
@@ -245,13 +246,39 @@ namespace WeLearnOnine_Website.Controllers
             bill.Status = "Processing";
             bill.PaymentMethod = model.SelectedPaymentMethod;
             bill.HistoricalCost = model.TotalOriginalPrice;
-            bill.Promotion = model.TotalOriginalPrice -model.TotalDiscountedPrice;
+            bill.Promotion = model.TotalOriginalPrice - model.TotalDiscountedPrice;
             bill.Total = model.TotalDiscountedPrice;
-            
+
             // Lưu các thay đổi vào cơ sở dữ liệu
             _billRepository.UpdateBill(bill);
 
-            return RedirectToAction("PaymentConfirmation", new {billCode = bill.BillCode} ); 
+            return RedirectToAction("PaymentConfirmation", new { billCode = bill.BillCode });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePaymentStatus([FromBody] MoMoResponse ipnResponse)
+        {
+            var bill = _billRepository.FindBillByBillCode(ipnResponse.orderId);
+            if (bill == null)
+            {
+                return NotFound("Bill not found.");
+            }
+
+            if (ipnResponse.resultCode == 0 || ipnResponse.resultCode == 9000)
+            {
+                bill.Status = "Successful";
+                //bill.PayType = ipnResponse.PayType;
+            }
+            else
+            {
+                bill.Status = "Fail";
+               // bill.PayType = ipnResponse.PayType;
+            }
+
+            // Cập nhật thông tin thanh toán vào cơ sở dữ liệu
+            _billRepository.UpdateBill(bill);
+
+            return Ok();
         }
 
         public IActionResult PaymentConfirmation(string billCode)

@@ -1416,3 +1416,11 @@ D:\1221\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debu
 D:\1221\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 D:\1221\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 D:\1221\WeLearnOnline_Website\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net6.0\WeLearnOnine_Website.MvcApplicationPartsAssemblyInfo.cs
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+E:\WeLearnOnline_Project\WeLearnOnine_Website\WeLearnOnine_Website\obj\Debug\net6.0\WeLearnOnine_Website.MvcApplicationPartsAssemblyInfo.cs

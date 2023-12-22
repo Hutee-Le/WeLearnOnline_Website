@@ -23,6 +23,8 @@ public partial class Bill
 
     public string PaymentMethod { get; set; } = null!;
 
+    public string? PayType { get; set; }
+
     public string? CardHolderName { get; set; }
 
     public DateTime? ExpirationDate { get; set; }
