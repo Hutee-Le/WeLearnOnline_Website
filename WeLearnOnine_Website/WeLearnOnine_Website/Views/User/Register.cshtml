@@ -3,12 +3,13 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
+@* <h1>@ViewData["Title"]</h1> *@
 
-<div class="row">
-    <div class="col-md-4">
+<div class="row my-lg-5">
+    <div class="col-md-12 d-flex justify-content-center flex-column align-items-center container-form">
+    <h1 class="fs-1 fw-bold mb-3">@ViewData["Title"]</h1>
         <form id="registerForm" asp-route-returnUrl="" method="post">
-            <h2>Create a new account.</h2>
+            <h3 class="text-center">Create a new account.</h3>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
@@ -16,28 +17,28 @@
                 <label asp-for="Email"></label>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating mt-3">
                 <input asp-for="UserName" class="form-control" autocomplete="username" aria-required="false" />
                 <label asp-for="UserName"></label>
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating mt-3">
                 <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Password"></label>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating mt-3">
                 <input asp-for="ConfirmPassword" class="form-control" autocomplete="confirm-password" aria-required="true" />
                 <label asp-for="ConfirmPassword"></label>
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating my-3">
                 <input asp-for="Address" class="form-control" autocomplete="address" aria-required="false" />
                 <label asp-for="Address"></label>
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
 
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mt-3 btn-main-whtie">Register</button>
         </form>
     </div>
     @* <div class="col-md-6 col-md-offset-2">

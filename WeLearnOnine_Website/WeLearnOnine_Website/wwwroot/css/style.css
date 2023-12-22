@@ -33,6 +33,8 @@
     29. =Empty Cart & checkout
     30. =Purchase-history
     31. =UserProfile
+    32. =Login, SignUp
+    33. =Custom Slider Item
 
 ---------------------------------------------------------------------------------------------*/
 
@@ -140,6 +142,36 @@ h6 {
 ::selection {
     color: var(--WHITE);
     background-color: var(--main-color);
+}
+.text-black-90 {
+    color: var(--black-90) !important;
+}
+.text-main {
+    color: var(--main-color);
+}
+.btn-main-whtie {
+    color: var(--WHITE);
+    background-color: var(--main-color);
+    outline: none;
+    border: none;
+    transition: .25s ease;
+}
+    .btn-main-whtie:hover {
+        background-color: var(--main-color);
+        opacity: 0.85;
+    }
+
+    .menu-item-btn {
+        margin-left: 15px !important;
+    }
+
+.container-xxl {
+    max-width: 1500px !important;
+}
+@media only screen and (max-width: 1400px) {
+    .container-xxl {
+        max-width: 1400px !important;
+    }
 }
 
 /*---------------------------------------------
@@ -674,7 +706,7 @@ select.form-control:focus option {
 }
 
 .header-main div.menu-item {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    /*box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;*/
     transition: 0.1s ease;
 }
 
@@ -684,23 +716,25 @@ select.form-control:focus option {
 
 .btn-login {
     border: 2px solid var(--main-color);
-    border-radius: 5px;
-    color: var(--black-90);
+    border-radius: 7px;
+    /*color: var(--black-90) !important;*/
+    padding: 0px 25px !important;
+    line-height: 44px;
+    margin-right: 20px;
+    background-color: transparent;
 }
 
 .btn-signup {
     background-color: var(--main-color);
     border: none;
-    border-radius: 5px;
-}
-
-.header-main div.menu-item:first-child a {
-    color: var(--black-70);
-    transition: 0.2s ease;
+    border-radius: 7px;
+    line-height: 44px;
+    /*color: var(--white) !important;*/
+    padding: 0px 25px !important;
 }
 
 .header-main div.menu-item:last-child a {
-    color: var(--white);
+    /*color: var(--black-70);*/
     transition: 0.1s ease;
 }
 
@@ -859,7 +893,7 @@ select.form-control:focus option {
     width: 100%;
     margin: 0;
     color: var(--black-70);
-    transition: font-weight 0.5s ease;
+    transition: .25s ease;
     letter-spacing: 1px;
 }
 
@@ -869,16 +903,18 @@ select.form-control:focus option {
     text-align: center;
     margin-right: 15px;
     font-size: 24px;
-    border-radius: 50%;
+    border-radius: 50px;
     color: var(--white);
-    transition: 0.3s ease;
+    transition: .25s ease;
 }
-
-.sub-menu-links span {
-    font-size: 22px;
-    transition: transform 0.5s;
-    color: var(--black-90);
-}
+    .sub-menu-links:last-child i {
+        width: 36px!important;
+    }
+    .sub-menu-links span {
+        font-size: 22px;
+        transition: transform 0.5s;
+        color: var(--black-90);
+    }
 
 .sub-menu-links:hover span {
     transform: translateX(5px);
@@ -890,9 +926,15 @@ select.form-control:focus option {
     /* background-color: var(--red-light); */
 }
 
-.sub-menu-links > p:hover {
+.sub-menu-links > p:hover,
+.sub-menu-links > button#logout:hover {
     color: var(--main-color);
-    font-weight: 600;
+    /*font-weight: 500;*/
+}
+button#logout {
+    margin: 0;
+    padding: 0;
+    font-weight: bolder;
 }
 
 /* sub-menu-multi-categories*/
@@ -3365,3 +3407,35 @@ p.form-control {
 .btn-cancel:hover {
     color: var(--black-90);
 }
+
+
+/*---------------------------------------------
+    32. =Login, SignUp
+-----------------------------------------------*/
+.container-form {
+    height: 60vh;
+}
+form#account, form#registerForm {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    width: 35%;
+}
+
+
+/*---------------------------------------------
+   33. =Custom Slider Item
+-----------------------------------------------*/
+/*.cards-wrapper {
+    display: flex;
+}
+.card-cus {
+    margin: 0.5em;
+}
+
+.cards-wrappers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    align-items:center;
+}*/
