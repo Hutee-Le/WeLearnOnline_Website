@@ -316,39 +316,6 @@ var swiper = new Swiper(".content", {
 //    }
 //});
 
-let content1 = document.getElementById("content1");
-let content2 = document.getElementById("content2");
-let content3 = document.getElementById("content3");
-let btn1 = document.getElementById("btn1");
-let btn2 = document.getElementById("btn2");
-let btn3 = document.getElementById("btn3");
-
-function openSlide1() {
-    content1.style.transform = "translateX(0)";
-    content2.style.transform = "translateX(100%)";
-    content3.style.transform = "translateX(100%)";
-    btn1.style.color = "var(--main-color)";
-    btn2.style.color = "var(--black-90)";
-    btn3.style.color = "var(--black-90)";
-}
-function openSlide2() {
-    content1.style.transform = "translateX(100%)";
-    content2.style.transform = "translateX(0)";
-    content3.style.transform = "translateX(100%)";
-    btn1.style.color = "var(--black-90)";
-    btn2.style.color = "var(--main-color)";
-    btn3.style.color = "var(--black-90)";
-}
-function openSlide3() {
-    content1.style.transform = "translateX(100%)";
-    content2.style.transform = "translateX(100%)";
-    content3.style.transform = "translateX(0)";
-    btn1.style.color = "var(--black-90)";
-    btn2.style.color = "var(--black-90)";
-    btn3.style.color = "var(--main-color)";
-}
-
-
 ///*--------------------------------------------------------------------
 //        ********** Testimonial slider
 //---------------------------------------------------------------------- */
@@ -409,4 +376,8 @@ function openSlide3() {
 //        clickable: true,
 //    },
 //});
-
+//// -----------------------------------------------------------------------------------\
+///*--------------------------------------------------------------------
+//        ********** Slick slider: COURSES
+//---------------------------------------------------------------------- */
+//// -----------------------------------------------------------------------------------/

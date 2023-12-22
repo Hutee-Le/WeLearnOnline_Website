@@ -3,7 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<div class="d-flex">
 @if (SignInManager.IsSignedIn(User))
 {
         <div class="menu-item user-profile">
@@ -16,8 +16,13 @@
                     <div class="user-info">
                         <img src="~/img/instructor/1.png">
                         <div class="info-name">
-        <li class="nav-item">
-            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        <li class="nav-item" style="list-style: none;">
+                <a id="manage" class="nav-link text-black-90" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                    Hello <br>
+                                    <span class="fw-bold text-main">
+                    @UserManager.GetUserName(User)!
+                </span>
+            </a>
         </li>
         </div>
         </div>
@@ -41,7 +46,7 @@
         <a href="#" class="sub-menu-links">
             <i class="bi bi-door-open"></i>
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                <button id="logout" type="submit" class="btn text-black-90 fw-bolder">Logout</button>
             </form>
         </a>
         </div>
@@ -50,7 +55,7 @@
 }
 else
 {
-        <div class="menu-item btn-login overflow-hidden"><a class="fw-bold" asp-action="Login" asp-controller="User">Login</a></div>
-        <div class="menu-item btn-signup overflow-hidden"><a class="fw-bold" asp-action="Register" asp-controller="User">Sign Up</a></div>
+        <div class="overflow-hidden btn-login ms-5"><a class="fw-bold" asp-action="Login" asp-controller="User">Login</a></div>
+        <div class="overflow-hidden btn-signup"><a class="fw-bold text-white" asp-action="Register" asp-controller="User">Sign Up</a></div>
 }
-</ul>
+</div>

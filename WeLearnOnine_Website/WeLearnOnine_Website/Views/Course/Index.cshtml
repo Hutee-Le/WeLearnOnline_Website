@@ -14,27 +14,29 @@
     </div>
     <h2>Courses to get you started</h2>
 
-    <div class="row">
-        <div class="switch-tab-demo">
-            <div class="btn-box">
-                <button id="btn1" style="color: var(--black-90);" onclick="openSlide1()">Most popular</button>
-                <button id="btn2" style="color: var(--black-90);" onclick="openSlide2()">New</button>
-                <button id="btn3" style="color: var(--black-90);" onclick="openSlide3()">beginner Favorites</button>
+@*     <div class="row">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-popular" type="button" role="tab" aria-controls="nav-popular" aria-selected="true">Most popular</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-new" type="button" role="tab" aria-controls="nav-new" aria-selected="false">New</button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-beginner" type="button" role="tab" aria-controls="nav-beginner" aria-selected="false">Beginner Favorites</button>
             </div>
-            <div class="group">
-                <div class="content" id="content1">
-                    <div class="card-wrapper swiper-wrapper">
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab">
+                <div class="row d-flex">
+                @foreach (var item_Course in Model)
+                {
+                        <div class="courses-item col-md-3">
+                            <a asp-action="Details" asp-controller="Course" asp-route-id="@item_Course.Course.CourseId" class="link">
                                 <div class="courses-item-inner">
                                     <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
+                                        <img src="@item_Course.Course.ImageCourseUrl" alt="course img">
                                     </div>
-                                    <h3 class="title">HTML for beginner</h3>
+                                    <h3 class="title">@item_Course.Course.Title</h3>
                                     <div class="instructor">
                                         <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
+                                        <span class="instructor-name">@item_Course.Course.Staff.StaffName</span>
                                     </div>
                                     <div class="rating">
                                         <span class="average-rating">(4.5)</span>
@@ -47,359 +49,31 @@
                                         </span>
                                         <span class="reviews">(230)</span>
                                     </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
+                                    @if (item_Course.Course.DiscountPrice > 0)
+                                    {
+                                        <div class="price-discount d-flex align-items-center">
+                                            @item_Course.Course.Price.ToString("#,##0") đ
+                                        </div>
+                                        <div class="price d-flex align-items-center">
+                                            <p>@String.Format("{0:#,##0}", item_Course.Course.DiscountPrice) đ</p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="price d-flex align-items-center">
+                                            @item_Course.Course.Price.ToString("#,##0") đ
+                                        </div>
+                                    }
                                 </div>
                             </a>
                         </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-                <div class="content" id="content2">
-                    <div class="card-wrapper swiper-wrapper">
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-                        <!-- courses item start -->
-                        <div class="courses-item swiper-slide">
-                            <a href="course-details.html" class="link">
-                                <div class="courses-item-inner">
-                                    <div class="img-box">
-                                        <img src="~/img/courses/web-development/learnpython.jpg" alt="course img">
-                                    </div>
-                                    <h3 class="title">HTML for beginner</h3>
-                                    <div class="instructor">
-                                        <img src="~/img/instructor/1.png" alt="instructor img">
-                                        <span class="instructor-name">Joe Doe</span>
-                                    </div>
-                                    <div class="rating">
-                                        <span class="average-rating">(4.5)</span>
-                                        <span class="average-stars">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="reviews">(230)</span>
-                                    </div>
-                                    <div class="price-discount d-flex align-items-center"><span>&#8363;</span> 1,999,000</div>
-                                    <div class="price d-flex align-items-center"><span>&#8363;</span> 1,690,000</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- courses item end -->
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-                <div class="content" id="content3">
-                    <div class="content-left">
-                        <h1>Learn Reactjs</h1>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, atque unde quae reiciendis eaque
-                            ad
-                            nobis quo? Natus numquam rerum quibusdam, repudiandae, nobis dolorem nulla nihil dicta omnis ut
-                            consectetur.
-                        </p>
-                    </div>
-                    <div class="content-right">
-                        xin chao 3
-                    </div>
+                }
                 </div>
             </div>
+            <div class="tab-pane fade" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">...</div>
+            <div class="tab-pane fade" id="nav-beginner" role="tabpanel" aria-labelledby="nav-beginner-tab">...</div>
         </div>
-    </div>
+    </div> *@
 </section>
 
 <div id="CateSlide">
@@ -423,13 +97,6 @@
 
 <div id="topjsc" class="mt-5">
     <h2>Top courses in Javascript and <span style="color:var(--main-color)">Front End Development</span></h2>
-    <div id="jstop">
-        <div id="topjsslider">
-            <div id="prev4"><i class="fa-solid fa-circle-chevron-left"></i></div>
-            <div id=topjssliderbox></div>
-            <div id="next4"><i class="fa-solid fa-circle-chevron-right"></i></div>
-        </div>
-    </div>
     <div>
         <h2>All JavaScript courses</h2>
         <p>
