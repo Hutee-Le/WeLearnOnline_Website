@@ -53,7 +53,25 @@
                 }
                 else if (Model.Bill.Status == "Fail")
                 {
-                    
+                    <div class="checkout-left col-6">
+                        <div class="checkout-left-box">
+                            <div class="order order-success order-done d-flex flex-column align-items-center">
+                                <img src="~/img/mimochai_failure.gif" alt="order failure"
+                                     class="order-success-image" height="250">
+                                <!-- <img src="img/remove.png" alt="order failure"
+                                    class="order-success-image" height="150"> -->
+                                <!-- <img src="img/cancel.png" alt="order failure"
+                                    class="order-success-image" height="150"> -->
+                                <!-- <img src="img/cancelX.png" alt="order failure"
+                                    class="order-success-image" height="150"> -->
+                                <!-- <img src="img/close.png" alt="order failure"
+                                    class="order-success-image" height="150"> -->
+                                <h4 class="checkout-title text-main-color mt-5">Thanh toán Thất Bại!</h4>
+                                <p>Đơn hàng này đã chưa được thanh toán. Vui lòng ....</p>
+                                <a href="/myclass" class="checkout-action">Khu vực học tập</a>
+                            </div>
+                        </div>
+                    </div>
                 }
                     <div class="checkout-right col-6">
                         <div class="review-header d-flex">
@@ -87,11 +105,14 @@
                                 <div class="review-order-info">
                                     <h5 class="review-order-name">
                                         @detail.Course.Title
-                                    </h5><span class="review-order-price">
-                                        @detail.Price.ToString("#,##0")đ
+                                    </h5>
+                                    <span class="review-order-price">
                                         @if (detail.DiscountPrice.HasValue)
                                         {
-                                            <span class="price-sale text-decoration-line-through ps-3">@String.Format("{0:#,##0}", detail.DiscountPrice)</span>
+                                            @String.Format("{0:#,##0}đ", detail.DiscountPrice)
+                                            <span class="price-sale text-decoration-line-through ps-3">@String.Format("{0:#,##0}", detail.Price)</span>
+                                        }else{
+                                            @String.Format("{0:#,##0}đ", detail.Price)
                                         }
                                     </span>
                                 </div>
