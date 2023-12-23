@@ -47,6 +47,7 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 //DI
+builder.Services.AddTransient<Helper>();
 builder.Services.AddTransient<IFavListRepository, FavListRepository>();
 builder.Services.AddTransient<ICommentRepository, CommentRepository>();
 builder.Services.AddTransient<ILessonRepository, LessonRepository>();

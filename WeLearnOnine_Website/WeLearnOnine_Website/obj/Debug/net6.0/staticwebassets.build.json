@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x5SMjnEA8Aw7vN3kI16g0bri6JAMAIXC/WOLbBB5P14=",
+  "Hash": "102ev9CtQlvGwq9cDSkWTZfsYbyjyzzGIpxOfLeGoyM=",
   "Source": "WeLearnOnine_Website",
   "BasePath": "_content/WeLearnOnine_Website",
   "Mode": "Default",
@@ -1782,6 +1782,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\logoWeLearn.png"
+    },
+    {
+      "Identity": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\mimochai_failure.gif",
+      "SourceId": "WeLearnOnine_Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\",
+      "BasePath": "_content/WeLearnOnine_Website",
+      "RelativePath": "img/mimochai_failure.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\mimochai_failure.gif"
     },
     {
       "Identity": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\online-education.png",

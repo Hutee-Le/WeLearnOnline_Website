@@ -989,6 +989,10 @@
       "PackagePath": "staticwebassets\\img\\logoWeLearn.png"
     },
     {
+      "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\mimochai_failure.gif",
+      "PackagePath": "staticwebassets\\img\\mimochai_failure.gif"
+    },
+    {
       "Id": "E:\\WeLearnOnline_Project\\WeLearnOnine_Website\\WeLearnOnine_Website\\wwwroot\\img\\online-education.png",
       "PackagePath": "staticwebassets\\img\\online-education.png"
     },

@@ -135,7 +135,7 @@ namespace WeLearnOnine_Website.Repositories
         {
             // Lấy danh sách ID các khóa học đã mua với điều kiện hóa đơn đã được thanh toán
             var purchasedCourseIds = _ctx.BillDetails
-                .Where(bd => bd.Bill.UserId == userId && bd.Bill.Status == "Paid") 
+                .Where(bd => bd.Bill.UserId == userId && bd.Bill.Status == "Successful") 
                 .Select(bd => bd.CourseId)
                 .ToHashSet();
 
