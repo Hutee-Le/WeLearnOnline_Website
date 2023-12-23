@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
+using System.Security.Claims;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 using WeLearnOnine_Website.ViewModels;
@@ -11,19 +13,27 @@ namespace WeLearnOnine_Website.Controllers
         private readonly ICourseRepository _courseRepository;
         private readonly DerekmodeWeLearnSystemContext _context;
         private readonly ICommentRepository _commentRepository;
+        private readonly UserManager<IdentityUser> _userManager;
+        private Helper _helper;
 
 
-        public CourseController(ICourseRepository courseRepository, DerekmodeWeLearnSystemContext context, ICommentRepository commentRepository)
+
+        public CourseController(ICourseRepository courseRepository, DerekmodeWeLearnSystemContext context, ICommentRepository commentRepository, UserManager<IdentityUser> userManager, Helper helper)
         {
             _courseRepository = courseRepository;
             _context = context;
             _commentRepository = commentRepository;
+            _userManager = userManager;
+            _helper = helper;
         }
 
-        public IActionResult Index(int? page, int pageSize = 4)
+        public async Task<IActionResult> Index(int? page, int pageSize = 4)
         {
+            int userId = await _helper.GetUserId(User);
+
+
             
-            int userId = 4; 
+            // var email = user.Result.Email
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 
             List<CourseViewModel> courses;

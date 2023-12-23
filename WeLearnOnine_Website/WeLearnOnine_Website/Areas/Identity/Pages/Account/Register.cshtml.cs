@@ -118,6 +118,8 @@ namespace WeLearnOnine_Website.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
+                var user1 = _userManager.GetUserAsync(User);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

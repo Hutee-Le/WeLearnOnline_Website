@@ -267,12 +267,12 @@ namespace WeLearnOnine_Website.Controllers
             if (ipnResponse.resultCode == 0 || ipnResponse.resultCode == 9000)
             {
                 bill.Status = "Successful";
-                //bill.PayType = ipnResponse.PayType;
+                bill.PayType = ipnResponse.payType;
             }
             else
             {
                 bill.Status = "Fail";
-               // bill.PayType = ipnResponse.PayType;
+               bill.PayType = ipnResponse.payType;
             }
 
             // Cập nhật thông tin thanh toán vào cơ sở dữ liệu
