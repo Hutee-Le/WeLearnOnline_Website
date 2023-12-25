@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
@@ -27,6 +28,7 @@ namespace WeLearnOnine_Website.Controllers
 
         }
 
+        [Authorize(Roles = "Member")]
         public IActionResult Privacy()
         {
             return View();

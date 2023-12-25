@@ -4,6 +4,7 @@ using WeLearnOnine_Website.Repositories;
 using WeLearnOnine_Website.Services;
 using Microsoft.AspNetCore.Identity;
 using WeLearnOnine_Website.Data;
+using System.Net.WebSockets;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ST_Welearn");
@@ -40,6 +41,11 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireLowercase = false;
     options.Password.RequireUppercase = false;
 });
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/User/Login";
+    options.AccessDeniedPath = "/User/AccessDenied"; 
+});
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.Limits.MaxRequestBodySize = 250 * 1024 * 1024; // 250 MB
@@ -73,7 +79,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthentication();;
-
 app.UseAuthorization();
 
 app.MapAreaControllerRoute(
@@ -86,5 +91,6 @@ app.MapAreaControllerRoute(
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 app.Run();

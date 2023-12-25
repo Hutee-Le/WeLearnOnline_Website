@@ -22,10 +22,11 @@ namespace WeLearnOnine_Website.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
         public UserController(DerekmodeWeLearnSystemContext context,
            ILogger<LoginViewModel> logger, IUserRepository userRepository, IEmailSender emailSender,
            UserManager<IdentityUser> userManager, IUserStore<IdentityUser> userStore,
-           SignInManager<IdentityUser> signInManager)
+           SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
 
             _context = context;
@@ -38,6 +39,7 @@ namespace WeLearnOnine_Website.Controllers
             _signInManager = signInManager;
 
             _emailStore = GetEmailStore();
+            _roleManager = roleManager;
         }
 
         private IUserEmailStore<IdentityUser> GetEmailStore()
@@ -69,6 +71,7 @@ namespace WeLearnOnine_Website.Controllers
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+                
 
                 await _userStore.SetUserNameAsync(user, model.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, model.Email, CancellationToken.None);
@@ -76,6 +79,8 @@ namespace WeLearnOnine_Website.Controllers
 
                 if (result.Succeeded)
                 {
+                    
+                    await _userManager.AddToRoleAsync(user, "Member");
                     //_logger.LogInformation("User created a new account with password.");
                     //insert
                     WeLearnOnine_Website.Models.User u = new User()
