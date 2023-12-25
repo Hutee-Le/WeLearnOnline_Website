@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Text.Json;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
@@ -14,55 +15,72 @@ namespace WeLearnOnine_Website.Controllers
         private readonly ICourseRepository _courseRepository;
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
+        private readonly Helper _helper;
         private readonly HttpClient client = new HttpClient();
-        public ShoppingCartController(IBillRepository billRepository, ICourseRepository courseRepository, IUserRepository userRepository, IConfiguration configuration)
+        public ShoppingCartController(IBillRepository billRepository,
+            ICourseRepository courseRepository
+            , IUserRepository userRepository,
+            IConfiguration configuration,
+            Helper helper)
         {
             _billRepository = billRepository;
             _courseRepository = courseRepository;
             _userRepository = userRepository;
             _configuration = configuration;
+            _helper = helper;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
             // Kiểm tra xem người dùng đã đăng nhập chưa
             //if (!User.Identity.IsAuthenticated)
             //{
             //    return RedirectToAction("Login", "Account"); // Redirect đến trang đăng nhập
             //}
-            var userId = 4;
-            var bill = _billRepository.GetPendingBillByUserId(userId);
-            var user = _userRepository.GetById(userId);
-            if (bill == null)
+            var claimsPrincipal = HttpContext.User;
+            if (User.Identity.IsAuthenticated)
             {
-                return View("EmptyCart"); // Hiển thị giỏ hàng trống nếu không có bill nào
+                //var userId = 4;
+                int userId = await _helper.GetUserId(claimsPrincipal);
+                var bill = _billRepository.GetPendingBillByUserId(userId);
+                var user = _userRepository.GetById(userId);
+                if (bill == null)
+                {
+                    return View("EmptyCart"); // Hiển thị giỏ hàng trống nếu không có bill nào
+                }
+
+                decimal totalDiscountedPrice = 0;
+                decimal totalOriginalPrice = 0;
+                foreach (var detail in bill.BillDetails)
+                {
+                    totalDiscountedPrice += detail.DiscountPrice ?? detail.Price;
+                    totalOriginalPrice += detail.Price;
+                }
+
+                var viewModel = new ShoppingCartViewModel
+                {
+                    Bill = bill,
+                    TotalDiscountedPrice = totalDiscountedPrice,
+                    TotalOriginalPrice = totalOriginalPrice,
+                    TotalSaving = totalOriginalPrice - totalDiscountedPrice,
+                    UserName = user.UserName,
+                    UserEmail = user.Email
+
+                };
+
+                return View(viewModel);
             }
-
-            decimal totalDiscountedPrice = 0;
-            decimal totalOriginalPrice = 0;
-            foreach (var detail in bill.BillDetails)
-            {
-                totalDiscountedPrice += detail.DiscountPrice ?? detail.Price;
-                totalOriginalPrice += detail.Price;
-            }
-
-            var viewModel = new ShoppingCartViewModel
-            {
-                Bill = bill,
-                TotalDiscountedPrice = totalDiscountedPrice,
-                TotalOriginalPrice = totalOriginalPrice,
-                TotalSaving = totalOriginalPrice - totalDiscountedPrice,
-                UserName = user.UserName,
-                UserEmail = user.Email
-
-            };
-
-            return View(viewModel);
+                return RedirectToAction("Login", "User");
+            
         }
 
-        public IActionResult PurchaseHistory()
+        public async Task<IActionResult> PurchaseHistoryAsync()
         {
-            var userId = 4;
-            var bill = _billRepository.GetPendingBillByUserId(userId);
+            var claimsPrincipal = HttpContext.User;
+            if (User.Identity.IsAuthenticated)
+            {
+                // var userId = 4;
+                int userId = await _helper.GetUserId(claimsPrincipal);
+                var bill = _billRepository.GetPendingBillByUserId(userId);
             if (bill.Status == "Payment Successful")
             {
                 return View("DetailBillSuccess"); // Hiển thị Details Bill khi có trạng thái "Payment Successful"
@@ -74,13 +92,16 @@ namespace WeLearnOnine_Website.Controllers
             };
 
             return View(viewModel);
+            }
+            return RedirectToAction("Login", "User");
         }
 
         [HttpPost]
         public async Task<IActionResult> AddToCartAsync(int courseId)
         {
-            var userId = 4;
-
+            //ar userId = 4;
+            var claimsPrincipal = HttpContext.User;
+            int userId = await _helper.GetUserId(claimsPrincipal);
             // Kiểm tra xem khóa học có tồn tại không
             var course = _courseRepository.FindCourseByID(courseId);
             if (course == null)
@@ -135,10 +156,11 @@ namespace WeLearnOnine_Website.Controllers
         }
 
         [HttpPost]
-        public IActionResult RemoveFromCart(int courseId)
+        public async Task<IActionResult> RemoveFromCartAsync(int courseId)
         {
-            var userId = 4;
-
+            // var userId = 4;
+            var claimsPrincipal = HttpContext.User;
+            int userId = await _helper.GetUserId(claimsPrincipal);
             try
             {
                 var bill = _billRepository.GetPendingBillByUserId(userId);
@@ -193,7 +215,9 @@ namespace WeLearnOnine_Website.Controllers
         [HttpPost]
         public async Task<IActionResult> Checkout(ShoppingCartViewModel model)
         {
-            var userId = 4;
+            //var userId = 4;
+            var claimsPrincipal = HttpContext.User;
+            int userId = await _helper.GetUserId(claimsPrincipal);
             var bill = _billRepository.GetPendingBillByUserId(userId);
 
             if (bill == null)
@@ -281,9 +305,11 @@ namespace WeLearnOnine_Website.Controllers
             return Ok();
         }
 
-        public IActionResult PaymentConfirmation(string billCode)
+        public async Task<IActionResult> PaymentConfirmationAsync(string billCode)
         {
-            var userId = 4;
+            // var userId = 4;
+            var claimsPrincipal = HttpContext.User;
+            int userId = await _helper.GetUserId(claimsPrincipal);
             var bill = _billRepository.FindBillByBillCode(billCode);
             var user = _userRepository.GetById(userId);
             if (bill == null || user == null)
