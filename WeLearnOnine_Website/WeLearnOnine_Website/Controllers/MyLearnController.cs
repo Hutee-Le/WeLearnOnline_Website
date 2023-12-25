@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 using WeLearnOnine_Website.ViewModels;
@@ -14,41 +15,57 @@ namespace WeLearnOnine_Website.Controllers
         private readonly ICommentRepository _commentRepository;
         private ILessonRepository _lessonRepository;
         private IUserCourseRatingRepository _userCourseRatingRepository;
-        public MyLearnController(IFavListRepository favListRepository, ICourseRepository courseRepository, ICommentRepository commentRepository, ILessonRepository lessonRepository, IUserCourseRatingRepository userCourseRatingRepository)
+        private readonly Helper _helper;
+        public MyLearnController(IFavListRepository favListRepository,
+            ICourseRepository courseRepository,
+            ICommentRepository commentRepository,
+            ILessonRepository lessonRepository,
+            IUserCourseRatingRepository userCourseRatingRepository,
+            Helper helper)
         {
             _favListRepository = favListRepository;
             _courseRepository = courseRepository;
             _commentRepository = commentRepository;
             _lessonRepository = lessonRepository;
             _userCourseRatingRepository = userCourseRatingRepository;
+            _helper = helper;
         }
-        public IActionResult Index(int? page)
+
+        public async Task<IActionResult> Index(int? page)
         {
-            int userId = 2;
-            int pageSize = 2; // Số lượng mục trên mỗi trang
-            int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
-
-            List<Bill> MyCourses = _courseRepository.MyCourses(userId);
-            int totalCourses = MyCourses.SelectMany(b => b.BillDetails.Select(d => d.Course)).Count();
-
-            var paginatedDetails = MyCourses
-                .SelectMany(b => b.BillDetails)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-
-            ViewBag.CurrentPage = pageNumber;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)totalCourses / pageSize);
-
-            var viewModel = new MyLearnViewModel
+            var claimsPrincipal = HttpContext.User;
+            if (User.Identity.IsAuthenticated)
             {
-                MyCourses = MyCourses, // Assuming MyCourses is a list of Bill objects
-                PaginatedDetails = paginatedDetails, // Add this property to your view model
-                WishList = _favListRepository.GetAllByUserId(userId),
-            };
+                int userId = await _helper.GetUserId(claimsPrincipal);
+                int pageSize = 2; // Số lượng mục trên mỗi trang
+                int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 
-            return View(viewModel);
+                List<Bill> MyCourses = _courseRepository.MyCourses(userId);
+                int totalCourses = MyCourses.SelectMany(b => b.BillDetails.Select(d => d.Course)).Count();
+
+                var paginatedDetails = MyCourses
+                    .SelectMany(b => b.BillDetails)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                ViewBag.CurrentPage = pageNumber;
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalCourses / pageSize);
+
+                var viewModel = new MyLearnViewModel
+                {
+                    MyCourses = MyCourses, // Assuming MyCourses is a list of Bill objects
+                    PaginatedDetails = paginatedDetails, // Add this property to your view model
+                    WishList = _favListRepository.GetAllByUserId(userId),
+                };
+
+                return View(viewModel);
+            }
+
+            // Handle the case where the user is not authenticated, for example, redirect to the login page
+            return RedirectToAction("Login", "User");
         }
+
         public IActionResult MyLearningLessons(int courseid, int? page)
         {
             int pageSize = 5; // Số lượng comment trên mỗi trang
@@ -81,9 +98,11 @@ namespace WeLearnOnine_Website.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult PostComment(DetailCourseViewModel model)
+        public async Task<IActionResult> PostComment(DetailCourseViewModel model)
         {
-            int UserId = 2;
+            //int UserId = 2;
+            var claimsPrincipal = HttpContext.User;
+            int UserId = await _helper.GetUserId(claimsPrincipal);
             var CourseId = model.CourseId;
             if (ModelState.IsValid)
             {
