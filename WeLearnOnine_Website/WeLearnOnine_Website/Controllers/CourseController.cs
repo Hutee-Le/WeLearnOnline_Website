@@ -31,8 +31,6 @@ namespace WeLearnOnine_Website.Controllers
         {
             int userId = await _helper.GetUserId(User);
 
-
-            
             // var email = user.Result.Email
             int pageNumber = page ?? 1; // Số trang hiện tại (mặc định là 1 nếu không có giá trị)
 

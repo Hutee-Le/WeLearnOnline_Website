@@ -465,7 +465,10 @@
             type: 'POST',
             data: { courseId: courseId },
             success: function (response) {
-                if (response.success) {
+                if (response.needAuthentication) {
+                    // Redirect to login page
+                    window.location.href = '/User/Login';
+                }else if(response.success) {
                     alert('Product added to cart.');
                     // Thay đổi text của button thành "Go to Cart"
                     $(`button[onclick="addToCart(${courseId})"]`).text('Go to Cart');

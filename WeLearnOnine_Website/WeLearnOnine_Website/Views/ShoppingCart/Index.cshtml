@@ -21,23 +21,22 @@
     <div class="container-xxl">
         <div class="page__container">
             <h2 class="heading text-center fs-1 fw-bold mb-5">Xem lại yêu cầu đăng ký</h2>
-            <form id ="checkoutForm" asp-controller="ShoppingCart" asp-action="Checkout" method="post">
+            <form id="checkoutForm" asp-controller="ShoppingCart" asp-action="Checkout" method="post">
                 <div class="checkout-container d-flex">
-                <div class="checkout-left col-6">
-                    <div class="order-item">
-                           @foreach (var detail in Model.Bill.BillDetails)
-                        {
-                            <div class="order-item__inner row" id="course-@detail.Course.CourseId">
-                                <div class="order-item__img col-3">
-                                    <img
-                                         alt="" class="order-item__image cover ls-is-cached lazyloaded"
-                                         style="object-fit: cover; border-radius: 10px; width: 100%;"
-                                         src="@detail.Course.ImageCourseUrl" height="120">
-                                </div>
-                                <div class="order-item__content col-9 d-flex flex-column justify-content-center">
-                                    <h5 class="order-item__title">
-                                        <a>@detail.Course.Title</a>
-                                    </h5>
+                    <div class="checkout-left col-6">
+                        <div class="order-item">
+                            @foreach (var detail in Model.Bill.BillDetails)
+                            {
+                                <div class="order-item__inner row" id="course-@detail.Course.CourseId">
+                                    <div class="order-item__img col-3">
+                                        <img alt="" class="order-item__image cover ls-is-cached lazyloaded"
+                                             style="object-fit: cover; border-radius: 10px; width: 100%;"
+                                             src="@detail.Course.ImageCourseUrl" height="120">
+                                    </div>
+                                    <div class="order-item__content col-9 d-flex flex-column justify-content-center">
+                                        <h5 class="order-item__title">
+                                            <a>@detail.Course.Title</a>
+                                        </h5>
                                         <div class="order-item__price hidden-mb d-flex justify-content-between mt-3">
                                             <div class="price-group d-flex">
                                                 @if (detail.Course.DiscountPrice.HasValue)
@@ -54,88 +53,89 @@
                                                 <span class="primary pe-xl-5">Bỏ khóa này</span>
                                             </button>
                                         </div>
+                                    </div>
                                 </div>
-                            </div>
-                        }
-                    </div>
-                    <h3 class="order-box__heading mt-4">Chọn phương thức thanh toán</h3>
-                    <div class="payment__list">
-                        <div class="payment__item d-flex align-items-center p-4" data-value="1">
-                            <div class="payment__info col-7">
-                                <img class="payment__icon" src="https://kt.city/static/icon-transfer.png"
-                                     width="40" height="40">
-                                <span class="payment__name ps-3">
-                                    Chuyển khoản <span class="hidden-mb">
-                                        ngân
-                                        hàng
+                            }
+                        </div>
+                        <h3 class="order-box__heading mt-4">Chọn phương thức thanh toán</h3>
+                        <div class="payment__list">
+                            <div class="payment__item d-flex align-items-center p-4" data-value="1">
+                                <div class="payment__info col-7">
+                                    <img class="payment__icon" src="https://kt.city/static/icon-transfer.png"
+                                         width="40" height="40">
+                                    <span class="payment__name ps-3">
+                                        Chuyển khoản <span class="hidden-mb">
+                                            ngân
+                                            hàng
+                                        </span>
                                     </span>
-                                </span>
+                                </div>
+                                <div class="payment__desc col-4">Hoàn thành ngay</div>
+                                <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="BankTransfer" data-maintenance="true" />
                             </div>
-                            <div class="payment__desc col-4">Hoàn thành ngay</div>
-                                <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="BankTransfer" />
-                        </div>
-                        <div class="payment__item d-flex align-items-center p-4" data-value="2">
-                            <div class="payment__info col-7">
-                                <img class="payment__icon" src="https://kt.city/static/icon-momo.png" width="40"
-                                     height="40">
-                                <span class="payment__name ps-3">
-                                    <span class="hidden-mb">Ví điện tử</span>
-                                    MOMO
-                                </span>
-                            </div>
-                            <div class="payment__desc col-4">Hoàn thành ngay</div>
+                            <div class="payment__item d-flex align-items-center p-4" data-value="2">
+                                <div class="payment__info col-7">
+                                    <img class="payment__icon" src="https://kt.city/static/icon-momo.png" width="40"
+                                         height="40">
+                                    <span class="payment__name ps-3">
+                                        <span class="hidden-mb">Ví điện tử</span>
+                                        MOMO
+                                    </span>
+                                </div>
+                                <div class="payment__desc col-4">Hoàn thành ngay</div>
                                 <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="MOMO" />
-                        </div>
-                        <div class="payment__item d-flex align-items-center p-4" data-value="3">
-                            <div class="payment__info col-7">
-                                <img class="payment__icon" src="https://kt.city/static/card-vnpay.png"
-                                     width="40" style="object-fit: cover;">
-                                <span class="payment__name ps-3">Quét VNpay QRcode</span>
                             </div>
-                            <div class="payment__desc col-4">Hoàn thành ngay</div>
-                                <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="VNPay" />
+                            <div class="payment__item d-flex align-items-center p-4" data-value="3">
+                                <div class="payment__info col-7">
+                                    <img class="payment__icon" src="https://kt.city/static/card-vnpay.png"
+                                         width="40" style="object-fit: cover;">
+                                    <span class="payment__name ps-3">Quét VNpay QRcode</span>
+                                </div>
+                                <div class="payment__desc col-4">Hoàn thành ngay</div>
+                                <input class="payment__check col-1" type="radio" name="SelectedPaymentMethod" value="VNPay" data-maintenance="true" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="checkout-right col-6">
-                    <div class="order-box order-total">
-                        <div class="order-total__top d-flex justify-content-between">
-                            <div class="order-price-all">
-                                <div class="order-price d-flex align-items-center">
-                                    <div class="price fs-4 me-4" id="price">@Model.TotalDiscountedPrice.ToString("#,##0")đ</div>
-                                    <div class="price-sale" id="price-sale">Giá gốc: @Model.TotalOriginalPrice.ToString("#,##0")đ</div>
+                    <div class="checkout-right col-6">
+                        <div class="order-box order-total">
+                            <div class="order-total__top d-flex justify-content-between">
+                                <div class="order-price-all">
+                                    <div class="order-price d-flex align-items-center">
+                                        <div class="price fs-4 me-4" id="price">@Model.TotalDiscountedPrice.ToString("#,##0")đ</div>
+                                        <div class="price-sale" id="price-sale">Giá gốc: @Model.TotalOriginalPrice.ToString("#,##0")đ</div>
                                         <input type="hidden" name="TotalDiscountedPrice" value="@Model.TotalDiscountedPrice" />
                                         <input type="hidden" name="TotalOriginalPrice" value="@Model.TotalOriginalPrice" />
+                                    </div>
+                                    <div class="order-saving">Tiết kiệm @String.Format("{0:F0}%", (Model.TotalOriginalPrice - Model.TotalDiscountedPrice) / Model.TotalOriginalPrice * 100) (@Model.TotalSaving.ToString("#,##0")đ)</div>
                                 </div>
-                                <div class="order-saving">Tiết kiệm @String.Format("{0:F0}%", (Model.TotalOriginalPrice - Model.TotalDiscountedPrice) / Model.TotalOriginalPrice * 100) (@Model.TotalSaving.ToString("#,##0")đ)</div>
+                                <div class="coupon">
+                                    <div class="coupon-add">
+                                        <img src="/static/gmb-coupon.png" alt="" class="icon">
+                                        <input type="text" placeholder="Nhập Mã COUPON..." />
+                                        <button class="text">Áp dụng</span></button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="coupon">
-                                <div class="coupon-add">
-                                    <img src="/static/gmb-coupon.png" alt="" class="icon">
-                                    <input type="text" placeholder="Nhập Mã COUPON..." />
-                                    <button class="text">Áp dụng</span></button>
+                            <div class="user-info d-flex flex-column align-items-start mt-4">
+                                <div class="user-info__header mt-4">
+                                    <h4 class="user-info__title purple bolder">Thông tin cá nhân</h4>
+                                </div>
+                                <div class="user-info__item mt-4 align-items-center">
+                                    <i class="bi bi-person fs-5 pe-2"></i>
+                                    <span class="user-info__text">@Model.UserName</span>
+                                </div>
+                                <div class="user-info__item mt-4">
+                                    <i class="bi bi-envelope fs-5 pe-2"></i>
+                                    <span class="user-info__text">@Model.UserEmail</span>
+                                    <input type="hidden" name="UserEmail" value="@Model.UserEmail" />
                                 </div>
                             </div>
                         </div>
-                        <div class="user-info d-flex flex-column align-items-start mt-4">
-                            <div class="user-info__header mt-4">
-                                <h4 class="user-info__title purple bolder">Thông tin cá nhân</h4>
-                            </div>
-                            <div class="user-info__item mt-4 align-items-center">
-                                <i class="bi bi-person fs-5 pe-2"></i>
-                                <span class="user-info__text">@Model.UserName</span>
-                            </div>
-                            <div class="user-info__item mt-4">
-                                <i class="bi bi-envelope fs-5 pe-2"></i>
-                                <span class="user-info__text">@Model.UserEmail</span>
-                            </div>
-                        </div>
+                        <button type="submit" class="btn-complete mt-5">
+                            <span>Hoàn tất đăng ký </span>
+                        </button>
                     </div>
-                    <button type="submit" class="btn-complete mt-5">
-                        <span>Hoàn tất đăng ký </span>
-                    </button>
                 </div>
-            </div>
             </form>
         </div>
     </div>
@@ -161,7 +161,7 @@
                         appendEmptyCartContent().insertAfter('header');
                     }
                 } else {
-                       alert(response.message);  
+                    alert(response.message);
                 }
             },
             error: function (error) {
@@ -175,6 +175,9 @@
         $('#price').text(`${totalDiscountedPrice}đ`);
         $('#price-sale').text(`Giá gốc: ${totalOriginalPrice}đ`);
         $('.order-saving').text(`Tiết kiệm ${percentageDiscount}% (${totalSaving}đ)`);
+
+        $('input[name="TotalDiscountedPrice"]').val(totalDiscountedPrice);
+        $('input[name="TotalOriginalPrice"]').val(totalOriginalPrice);
     }
 
     function updateCartCount(cartCount) {
@@ -201,14 +204,23 @@
     }
 
     document.getElementById('checkoutForm').addEventListener('submit', function (e) {
-        var paymentMethodIsChecked = document.querySelector('input[name="SelectedPaymentMethod"]:checked');
-        var paymentMethodsContainer = document.querySelector('.payment__list'); // Chọn khung chứa các phương thức thanh toán
+        var selectedPaymentMethod = document.querySelector('input[name="SelectedPaymentMethod"]:checked');
 
-        if (!paymentMethodIsChecked) {
+        // Kiểm tra nếu phương thức thanh toán được chọn đang bảo trì
+        if (selectedPaymentMethod && selectedPaymentMethod.dataset.maintenance === 'true') {
             e.preventDefault(); // Ngăn không cho form submit
-            paymentMethodsContainer.classList.add('payment-error'); // Thêm class để hiển thị khung màu đỏ
+            alert('Phương thức thanh toán này đang được bảo trì. Vui lòng chọn phương thức thanh toán khác.');
         } else {
-            paymentMethodsContainer.classList.remove('payment-error'); // Loại bỏ class nếu người dùng đã chọn phương thức thanh toán
+            // Các xử lý khác nếu phương thức thanh toán hợp lệ
+            var paymentMethodIsChecked = selectedPaymentMethod != null;
+            var paymentMethodsContainer = document.querySelector('.payment__list');
+
+            if (!paymentMethodIsChecked) {
+                e.preventDefault(); // Ngăn không cho form submit nếu không có phương thức nào được chọn
+                paymentMethodsContainer.classList.add('payment-error'); // Thêm class để hiển thị khung màu đỏ
+            } else {
+                paymentMethodsContainer.classList.remove('payment-error'); // Loại bỏ class nếu người dùng đã chọn phương thức thanh toán
+            }
         }
     });
 </script>

@@ -31,11 +31,6 @@ namespace WeLearnOnine_Website.Controllers
         }
         public async Task<IActionResult> IndexAsync()
         {
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            //if (!User.Identity.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login", "Account"); // Redirect đến trang đăng nhập
-            //}
             var claimsPrincipal = HttpContext.User;
             if (User.Identity.IsAuthenticated)
             {
@@ -81,15 +76,15 @@ namespace WeLearnOnine_Website.Controllers
                 // var userId = 4;
                 int userId = await _helper.GetUserId(claimsPrincipal);
                 var bill = _billRepository.GetPendingBillByUserId(userId);
-            if (bill.Status == "Payment Successful")
-            {
-                return View("DetailBillSuccess"); // Hiển thị Details Bill khi có trạng thái "Payment Successful"
-            }
+                if (bill.Status == "Payment Successful")
+                {
+                    return View("DetailBillSuccess"); // Hiển thị Details Bill khi có trạng thái "Payment Successful"
+                }
 
-            var viewModel = new ShoppingCartViewModel
-            {
-                Bill = bill
-            };
+                var viewModel = new ShoppingCartViewModel
+                {
+                    Bill = bill
+                };
 
             return View(viewModel);
             }
@@ -156,9 +151,7 @@ namespace WeLearnOnine_Website.Controllers
 
                 return Json(new { success = true, cartCount = cartCount, message = "Thêm vào giỏ hàng thành công!" });
             }
-                return RedirectToAction("Login", "User");
-            
-
+            return Json(new { success = false, needAuthentication = true });
         }
 
 
@@ -279,6 +272,7 @@ namespace WeLearnOnine_Website.Controllers
             bill.HistoricalCost = model.TotalOriginalPrice;
             bill.Promotion = model.TotalOriginalPrice - model.TotalDiscountedPrice;
             bill.Total = model.TotalDiscountedPrice;
+            bill.Email = model.UserEmail;
 
             // Lưu các thay đổi vào cơ sở dữ liệu
             _billRepository.UpdateBill(bill);
@@ -287,7 +281,7 @@ namespace WeLearnOnine_Website.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdatePaymentStatus([FromBody] MoMoResponse ipnResponse)
+        public IActionResult UpdatePaymentStatus([FromBody] MoMoResponse ipnResponse)
         {
             var bill = _billRepository.FindBillByBillCode(ipnResponse.orderId);
             if (bill == null)
@@ -312,9 +306,8 @@ namespace WeLearnOnine_Website.Controllers
             return Ok();
         }
 
-        public async Task<IActionResult> PaymentConfirmationAsync(string billCode)
+        public async Task<IActionResult> PaymentConfirmation(string billCode)
         {
-            // var userId = 4;
             var claimsPrincipal = HttpContext.User;
             int userId = await _helper.GetUserId(claimsPrincipal);
             var bill = _billRepository.FindBillByBillCode(billCode);
