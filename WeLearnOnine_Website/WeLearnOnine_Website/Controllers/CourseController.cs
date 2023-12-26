@@ -132,7 +132,9 @@ namespace WeLearnOnine_Website.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToFavorites(int courseId)
         {
-            int userId = 4; // Lấy ID người dùng từ session hoặc cookie
+
+            var claimsPrincipal = HttpContext.User;
+            int userId = await _helper.GetUserId(claimsPrincipal);
             if (userId == 0)
             {
                 return Json(new { success = false, message = "Bạn cần đăng nhập để thực hiện chức năng này." });
@@ -144,7 +146,8 @@ namespace WeLearnOnine_Website.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveFromFavorites(int courseId)
         {
-            int userId = 4; // Lấy ID người dùng từ session hoặc cookie
+            var claimsPrincipal = HttpContext.User;
+            int userId = await _helper.GetUserId(claimsPrincipal);
             if (userId == 0)
             {
                 return Json(new { success = false, message = "Bạn cần đăng nhập để thực hiện chức năng này." });

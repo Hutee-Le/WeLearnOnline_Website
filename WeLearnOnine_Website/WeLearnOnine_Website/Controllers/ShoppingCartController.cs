@@ -318,6 +318,12 @@ namespace WeLearnOnine_Website.Controllers
                 return View("Error");
             }
 
+            if (bill.UserId != userId)
+            {
+                // Nếu không, chuyển hướng đến trang lỗi hoặc trang không có quyền truy cập
+                return RedirectToAction("AccessDenied", "User");
+            }
+
             var viewModel = new ShoppingCartViewModel
             {
                 Bill = bill,
