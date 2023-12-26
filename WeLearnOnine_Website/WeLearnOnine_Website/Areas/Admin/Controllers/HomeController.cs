@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WeLearnOnine_Website.Models;
@@ -28,6 +29,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             _billRepository = billRepository;
             ctx = context;
         }
+        [Authorize(Roles = "Admin, Instructor, Training")]
         public IActionResult Index()
         {
             // Kiểm tra xem người dùng đã đăng nhập chưa

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
 
@@ -8,6 +9,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
     public class SkillController : Controller
     {
         private ISkillRepository _skillRepository;
+        [Authorize]
         public IActionResult Index(int? page)
         {
             int pageSize = 5; // Số hàng trên mỗi trang

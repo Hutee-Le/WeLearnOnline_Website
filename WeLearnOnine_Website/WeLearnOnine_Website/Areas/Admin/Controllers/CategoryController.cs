@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
@@ -33,6 +34,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         //View All Table Staff
+        [Authorize]
         public IActionResult Index(int? page)
         {
             int pageSize = 10;
@@ -79,7 +81,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public IActionResult CreateCategory()
         {
             var catelst = _categoryRepository.GetAllCategories();

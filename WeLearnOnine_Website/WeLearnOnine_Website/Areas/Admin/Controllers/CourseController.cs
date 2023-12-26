@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,6 +17,7 @@ using WeLearnOnine_Website.ViewModels;
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class CourseController : Controller
     {
         DerekmodeWeLearnSystemContext ctx;
@@ -43,7 +45,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             this.ctx = ctx;
         }
 
-     
+        [Authorize]
         public IActionResult ShowCourseByCategory(int? CategoryId)
         {
             CategoryId = CategoryId ?? 0;
@@ -59,7 +61,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return View("Index", courses);
         }
 
-
+        [Authorize(Roles = "Admin, Instructor, Training")]
         public IActionResult Index(int? page, int? CategoryId)
         {
             int pageSize = 4; // Số lượng mục trên mỗi trang
@@ -144,7 +146,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "Admin, Instructor")]
         public IActionResult CreateCourse()
         {
             var list1 = from c in _levelRepository.GetAllLevels()
@@ -257,7 +259,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin, Instructor")]
         public IActionResult EditCourse(int id)
         {
             var levellst = _levelRepository.GetAllLevels();
@@ -283,6 +285,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         // Delete
+        [Authorize(Roles = "Admin, Instructor, Training")]
         public IActionResult Delete(int id)
         {
             try
@@ -298,6 +301,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         // Search
+        [Authorize]
         public IActionResult Search(string keyword)
         {
             List<Course> courses;

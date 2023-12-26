@@ -101,59 +101,66 @@ namespace WeLearnOnine_Website.Controllers
         {
             //ar userId = 4;
             var claimsPrincipal = HttpContext.User;
-            int userId = await _helper.GetUserId(claimsPrincipal);
-            // Kiểm tra xem khóa học có tồn tại không
-            var course = _courseRepository.FindCourseByID(courseId);
-            if (course == null)
+            if (User.Identity.IsAuthenticated)
             {
-                return Json(new { success = false, message = "Khóa học không tồn tại." });
-            }
-
-            // Lấy Bill đang ở trạng thái "pending" của người dùng (hoặc tạo mới nếu chưa có)
-            var bill = _billRepository.GetPendingBillByUserId(userId);
-            if (bill == null)
-            {
-                var todayBillCount = _billRepository.GetBillCountForDate(DateTime.Now);
-                string billCode = Helper.GenerateBillCode(DateTime.Now, todayBillCount);
-
-                bill = new Bill
+                int userId = await _helper.GetUserId(claimsPrincipal);
+                // Kiểm tra xem khóa học có tồn tại không
+                var course = _courseRepository.FindCourseByID(courseId);
+                if (course == null)
                 {
-                    BillId = Guid.NewGuid(),
-                    UserId = userId,
-                    BillCode = billCode,
-                    Total = 0,
-                    HistoricalCost = 0,
-                    Promotion = 0,
-                    CreateAt = DateTime.Now,
-                    PaymentMethod = "Bank Transfer",
-                    Status = "Pending"
+                    return Json(new { success = false, message = "Khóa học không tồn tại." });
+                }
+
+                // Lấy Bill đang ở trạng thái "pending" của người dùng (hoặc tạo mới nếu chưa có)
+                var bill = _billRepository.GetPendingBillByUserId(userId);
+                if (bill == null)
+                {
+                    var todayBillCount = _billRepository.GetBillCountForDate(DateTime.Now);
+                    string billCode = Helper.GenerateBillCode(DateTime.Now, todayBillCount);
+
+                    bill = new Bill
+                    {
+                        BillId = Guid.NewGuid(),
+                        UserId = userId,
+                        BillCode = billCode,
+                        Total = 0,
+                        HistoricalCost = 0,
+                        Promotion = 0,
+                        CreateAt = DateTime.Now,
+                        PaymentMethod = "Bank Transfer",
+                        Status = "Pending"
+                    };
+                    _billRepository.CreateBill(bill);
+                }
+
+                // Kiểm tra xem khóa học đã có trong hóa đơn "pending" chưa
+                var existingBillDetail = await _billRepository.GetBillDetailByCourseAndUser(courseId, userId, bill.BillId);
+                if (existingBillDetail != null)
+                {
+                    return Json(new { success = false, message = "Khóa học này đã có trong giỏ hàng của bạn." });
+                }
+
+
+                var billDetail = new BillDetail
+                {
+                    BillDetailId = Guid.NewGuid(),
+                    BillId = bill.BillId,
+                    CourseId = course.CourseId,
+                    Price = course.Price,
+                    DiscountPrice = course.DiscountPrice,
+                    Date = DateTime.Now
                 };
-                _billRepository.CreateBill(bill);
+                _billRepository.AddBillDetail(billDetail);
+                // Lấy số lượng sản phẩm mới trong giỏ hàng sau khi thêm
+                var cartCount = await _billRepository.GetCartCountAsync(userId);
+
+                return Json(new { success = true, cartCount = cartCount, message = "Thêm vào giỏ hàng thành công!" });
             }
+                return RedirectToAction("Login", "User");
+            
 
-            // Kiểm tra xem khóa học đã có trong hóa đơn "pending" chưa
-            var existingBillDetail = await _billRepository.GetBillDetailByCourseAndUser(courseId, userId, bill.BillId);
-            if (existingBillDetail != null)
-            {
-                return Json(new { success = false, message = "Khóa học này đã có trong giỏ hàng của bạn." });
-            }
-
-
-            var billDetail = new BillDetail
-            {
-                BillDetailId = Guid.NewGuid(),
-                BillId = bill.BillId,
-                CourseId = course.CourseId,
-                Price = course.Price,
-                DiscountPrice = course.DiscountPrice,
-                Date = DateTime.Now
-            };
-            _billRepository.AddBillDetail(billDetail);
-            // Lấy số lượng sản phẩm mới trong giỏ hàng sau khi thêm
-            var cartCount = await _billRepository.GetCartCountAsync(userId);
-
-            return Json(new { success = true, cartCount = cartCount, message = "Thêm vào giỏ hàng thành công!" });
         }
+
 
         [HttpPost]
         public async Task<IActionResult> RemoveFromCartAsync(int courseId)
