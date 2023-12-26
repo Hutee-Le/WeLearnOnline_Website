@@ -102,7 +102,7 @@ namespace WeLearnOnine_Website.Controllers
 
                     await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
+                    await _userManager.AddToRoleAsync(user, "Member");
                     _userRepository.Add(u);
 
 
@@ -216,26 +216,39 @@ namespace WeLearnOnine_Website.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return Redirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
+                    var user = await _userManager.FindByNameAsync(model.Email);
+                    if (await _userManager.IsInRoleAsync(user, "Admin") ||
+                await _userManager.IsInRoleAsync(user, "Training") ||
+                await _userManager.IsInRoleAsync(user, "Instructor"))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    
+                    if (result.RequiresTwoFactor)
+                    {
+                        return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    }
+                    if (result.IsLockedOut)
+                    {
+                        _logger.LogWarning("User account locked out.");
+                        return RedirectToPage("./Lockout");
+                    }
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return View();
                 }
+
+
+                // If we got this far, something failed, redisplay form
+                 return RedirectToAction("Index", "Home");
+
             }
 
-            // If we got this far, something failed, redisplay form
+
+
+            //return View();
             return View();
         }
 

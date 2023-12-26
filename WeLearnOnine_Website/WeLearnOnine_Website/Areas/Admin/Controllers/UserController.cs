@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text;
 using WeLearnOnine_Website.Models;
@@ -19,6 +20,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         //View All Table Staff
+        [Authorize]
         public IActionResult Index(int? page)
         {
             int pageSize = 4; // Số lượng mục trên mỗi trang

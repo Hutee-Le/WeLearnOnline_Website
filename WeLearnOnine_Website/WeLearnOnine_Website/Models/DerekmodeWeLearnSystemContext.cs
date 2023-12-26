@@ -474,7 +474,7 @@ public partial class DerekmodeWeLearnSystemContext : DbContext
 
             entity.ToTable("User_Course_Rating", tb =>
                 {
-                    tb.HasTrigger("trg_AfterInsertUserCourseRating");
+                 
                     tb.HasTrigger("trg_CalculateCourseRating");
                 });
 

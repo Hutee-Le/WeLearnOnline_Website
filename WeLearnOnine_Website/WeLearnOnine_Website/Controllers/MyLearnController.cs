@@ -1,4 +1,5 @@
 ﻿using Azure.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -30,7 +31,7 @@ namespace WeLearnOnine_Website.Controllers
             _userCourseRatingRepository = userCourseRatingRepository;
             _helper = helper;
         }
-
+        
         public async Task<IActionResult> Index(int? page)
         {
             var claimsPrincipal = HttpContext.User;

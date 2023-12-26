@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
@@ -20,6 +21,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         //View All Table Bill
+        [Authorize]
         public IActionResult Index()
         {
             var billsWithUsers = _billRepository.GetAllBillsWithUser();
