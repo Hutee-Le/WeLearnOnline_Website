@@ -142,7 +142,7 @@
                             Total buyer
                         </th>
                         <th>
-                            TimeTotal
+                            TimeTotal lessons
                         </th>
                         <th>Actions</th>
                     </tr>
@@ -188,7 +188,16 @@
                                 </span>
                             </td>
                             <td>@item.Count</td>
-                            <td class="time-cell" data-seconds="@item.TimeTotal"></td>
+                            @* <td class="time-cell" data-seconds="@item.Lessons."></td> *@
+                            @* <td class="time-cell" data-seconds="@item.Lessons."></td> *@
+                            @{
+                                int totalSeconds = 0;
+                            }
+                            @foreach (var item_lesson in item.Lessons) {
+                                totalSeconds += item_lesson.Time ?? 0;
+                            }
+                            <td class="time-cell" data-seconds="@totalSeconds"></td>
+
                             <!-- Đoạn mã JavaScript để chuyển đổi giây thành giờ, phút và giây -->
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {

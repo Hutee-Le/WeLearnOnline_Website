@@ -1,4 +1,4 @@
-﻿@model WeLearnOnine_Website.Models.Category
+﻿@model WeLearnOnine_Website.ViewModels.UserRoleViewModel
 
 @{
     ViewData["Title"] = "CreateStaff";
@@ -6,41 +6,51 @@
 }
 
 <div class="container-fuild flex-grow-1 container-p-y">
-    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Categories/ </span>Edit</h4>
-    <form asp-action="UpdateCategory" method="post" enctype="multipart/form-data">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Roles /</span>Edit</h4>
+    <h2>Manage User Roles</h2>
+
+    <h3>User Information</h3>
+    <p><strong>User ID:</strong> @Model.UserId</p>
+    <p><strong>User Name:</strong> @Model.UserName</p>
+
+    <h3>Current Roles</h3>
+    <ul>
+        @foreach (var role in Model.UserRoles)
+        {
+            <li>@role</li>
+        }
+    </ul>
+
+    <h3>Assign Roles</h3>
+    <form method="post">
+        <div class="form-group">
+            <label for="SelectedRoles">Select Roles:</label>
+            <select class="form-control" multiple="multiple" id="SelectedRoles" name="SelectedRoles">
+                @foreach (var role in Model.AllRoles)
+                {
+                    <option value="@role.Value">@role.Text</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Roles</button>
+    </form>
+   @*  <form asp-action="UpdateRole" method="post">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <input type="text" class="form-control" id="i-input" placeholder="STF001" aria-label="Username" aria-describedby="basic-addon11" asp-for="CategoriesId">
+                        <input type="text" class="form-control" id="i-input" aria-label="Username" aria-describedby="basic-addon11" asp-for="Id">
                         <script>
                             document.getElementById("i-input").style.display = "none";
                         </script>
 
                         <div>
                             <label for="defaultFormControlInput" class="form-label">Name</label>
-                            <input asp-for="CategoryName" type="text" class="form-control" id="defaultFormControlInput" placeholder="ASP.net Developer">
+                            <input asp-for="Name" type="text" class="form-control" id="defaultFormControlInput" placeholder="ASP.net Developer">
                             <div id="defaultFormControlHelp" class="form-text alert alert-warning mt-1">
-                                Note: Entering a category name without selecting the categories below will default to the first category.
+                                Note: Creating this role is to set roles for staff in the Permissions area.
                             </div>
-                        </div>
-
-                        <div class="input-group my-3">
-                            <style>
-                                select {
-                                    padding: 10px 15px;
-                                    outline: none;
-                                    border: 1px solid #ccc;
-                                }
-                            </style>
-
-                            <div class="input-group my-3">
-                                <label class="input-group-text" asp-for="ParentCategories">Category</label>
-                                <select asp-for="ParentCategories" asp-items="ViewBag.CategoriesId" class="form-select">
-                                    <option asp-for="ParentCategories" value="null">Default</option>
-                                </select>
-                            </div>
-
                         </div>
 
                         <div class="mt-3 d-flex justify-content-end">
@@ -49,9 +59,6 @@
                                     <i class="bx bx-edit-alt"></i> Update
                                 </span>
                             </a>
-
-                            @* <input class="btn btn-primary mx-3" value="Update" type="submit"> *@
-
                             <a asp-action="Index" class="btn btn-outline-secondary ms-2">
                                 <span>Cancel</span>
                             </a>
@@ -84,5 +91,5 @@
                 </div>
             </div>
         </div>
-    </form>
+    </form> *@
 </div>

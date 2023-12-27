@@ -140,20 +140,22 @@
                         </ul>
                     </li>
 
-
+                    <!--  Roles &amp; Permissions -->
                     <li class="menu-item" style="">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-check-shield"></i>
                             <div class="text-truncate" data-i18n="Roles &amp; Permissions">Roles &amp; Permissions</div>
                         </a>
                         <ul class="menu-sub">
+                            <!--  Roles -->
                             <li class="menu-item">
-                                <a href="/admin/staff" class="menu-link">
+                                <a href="/admin/role" class="menu-link">
                                     <div class="text-truncate" data-i18n="Roles">Roles</div>
                                 </a>
                             </li>
+                            <!--  Permissions -->
                             <li class="menu-item">
-                                <a href="" class="menu-link">
+                                <a href="/admin/aspUser" class="menu-link">
                                     <div class="text-truncate" data-i18n="Permission">Permission</div>
                                 </a>
                             </li>
@@ -216,6 +218,17 @@
                            class="menu-link">
                             <i class="menu-icon tf-icons bx bx-file"></i>
                             <div data-i18n="Documentation">Documentation</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item mt-4">
+                        <a href="/admin" class="menu-link">
+                            <i class="bx bx-power-off fw-bolder"></i>
+                            <div data-i18n="LogOut" class="fw-bolder">
+                                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button id="logout" type="submit" class="btn text-black-90 fw-bolder fs-6">Logout</button>
+                                </form>
+                            </div>
                         </a>
                     </li>
                 </ul>

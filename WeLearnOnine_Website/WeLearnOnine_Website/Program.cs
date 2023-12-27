@@ -65,6 +65,7 @@ builder.Services.AddTransient<ISkillRepository, StaffRepository>();
 builder.Services.AddTransient<ITypeRepository, TypeRepository>();
 builder.Services.AddTransient<IBillRepository, BillRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<IUserCourseRatingRepository, UserCourseRatingRepository>();
 

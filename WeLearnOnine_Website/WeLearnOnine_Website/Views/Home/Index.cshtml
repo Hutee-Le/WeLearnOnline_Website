@@ -232,6 +232,28 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var counters = document.querySelectorAll('.counter');
+
+        counters.forEach(function (counter) {
+            var goal = parseInt(counter.getAttribute('data-goal'));
+            var count = 0;
+
+            var updateCounter = function () {
+                counter.innerHTML = Math.floor(count) + ' <span>k</span>';
+                count += goal / 1000; // Thay đổi tốc độ tăng giảm tùy ý
+                if (count < goal) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.innerHTML = goal + ' <span>k</span>';
+                }
+            };
+
+            updateCounter();
+        });
+    });
+</script>
 <br>
 <!-- fun fact section end -->
 <!-- testimonials section start -->

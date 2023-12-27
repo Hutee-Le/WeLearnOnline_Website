@@ -23,6 +23,7 @@ namespace WeLearnOnine_Website.Repositories
             .Where(c => c.CategoriesCourses.Any(cc => cc.CategoriesId == categoryId))
             .Include(c => c.Staff)
             .Include(c => c.Level)
+            .Include(c => c.Lessons)
             .ToList();
 
             return courses;
@@ -83,34 +84,35 @@ namespace WeLearnOnine_Website.Repositories
         public List<CourseViewModel> GetAllCourseWithMany()
         {
             var courseQuery = from b in _ctx.Courses
-                            join level in _ctx.Levels on b.LevelId equals level.LevelId
-                            join staff in _ctx.Staff on b.StaffId equals staff.StaffId
-                            select new CourseViewModel
-                            {
-                                CourseId = b.CourseId,
-                                StaffName = staff.StaffName,
-                                LevelName = level.Name,
-                                Title = b.Title,
-                                ShortDescription = b.ShortDescription,
-                                Description = b.Description,
-                                Required = b.Required,
-                                ImageCourseUrl = b.ImageCourseUrl,
-                                Price = b.Price,
-                                DiscountPrice = b.DiscountPrice,
-                                PreviewUrl = b.PreviewUrl,
-                                Count = b.Count,
-                                Language = b.Language,
-                                TimeTotal = b.TimeTotal,
-                                Rating = b.Rating,
-                                CategoriesCourses = (from cate_course in _ctx.CategoriesCourses
-                                                     join category in _ctx.Categories on cate_course.CategoriesId equals category.CategoriesId
-                                                     where cate_course.CourseId == b.CourseId
-                                                     select new CategoryCourseViewModel
-                                                     {
-                                                         CatCourseId = cate_course.CatCourseId,
-                                                         CategoriesId = category.CategoriesId,
-                                                         CategoryName = category.CategoryName,
-                                                     }).ToList()
+                              join level in _ctx.Levels on b.LevelId equals level.LevelId
+                              join staff in _ctx.Staff on b.StaffId equals staff.StaffId
+                              select new CourseViewModel
+                              {
+                                  CourseId = b.CourseId,
+                                  StaffName = staff.StaffName,
+                                  LevelName = level.Name,
+                                  Title = b.Title,
+                                  ShortDescription = b.ShortDescription,
+                                  Description = b.Description,
+                                  Required = b.Required,
+                                  ImageCourseUrl = b.ImageCourseUrl,
+                                  Price = b.Price,
+                                  DiscountPrice = b.DiscountPrice,
+                                  PreviewUrl = b.PreviewUrl,
+                                  Count = b.Count,
+                                  Language = b.Language,
+                                  TimeTotal = b.TimeTotal,
+                                  Rating = b.Rating,
+                                  CategoriesCourses = (from cate_course in _ctx.CategoriesCourses
+                                                       join category in _ctx.Categories on cate_course.CategoriesId equals category.CategoriesId
+                                                       where cate_course.CourseId == b.CourseId
+                                                       select new CategoryCourseViewModel
+                                                       {
+                                                           CatCourseId = cate_course.CatCourseId,
+                                                           CategoriesId = category.CategoriesId,
+                                                           CategoryName = category.CategoryName,
+                                                       }).ToList(),
+                                  Lessons = _ctx.Lessons.Where(lesson => lesson.CourseId == b.CourseId).ToList()
                             };
             var coursesWithDetails = courseQuery.ToList();
             return coursesWithDetails;
@@ -333,7 +335,8 @@ namespace WeLearnOnine_Website.Repositories
                                                                 CatCourseId = cate_course.CatCourseId,
                                                                 CategoriesId = category.CategoriesId,
                                                                 CategoryName = category.CategoryName,
-                                                            }).ToList()
+                                                            }).ToList(),
+                                       Lessons = _ctx.Lessons.Where(lesson => lesson.CourseId == courseId).ToList(),
                                    }).FirstOrDefault();
 
             return CourseViewModel;

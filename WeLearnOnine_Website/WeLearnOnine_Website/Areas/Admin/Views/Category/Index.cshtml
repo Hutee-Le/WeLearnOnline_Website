@@ -150,19 +150,19 @@
                                @*  <a asp-action="index2" asp-route-CategoriesId="@item.CategoriesId">Show cate level 2</a> *@
 
                                 <div class="d-flex align-items-center justify-content-center mb-2">
-                                    <a class="me-2" asp-action="EditCategory" asp-route-id="@item.CategoriesId">
+                                    <a asp-action="EditCategory" asp-route-id="@item.CategoriesId">
                                         <span class="badge bg-label-info me-1">
                                             <i class="bx bx-edit-alt"></i>
                                         </span>
-                                    </a> |
+                                    </a> 
                                     <a class="mx-2" data-bs-toggle="modal" data-bs-target="#smallModal-@item.CategoriesId" style="cursor: pointer">
                                         <span class="badge bg-label-danger">
                                             <i class="bx bx-trash"></i>
                                         </span>
                                     </a> 
                                     @if(service.GetSubCategories(item.CategoriesId).Count > 1)
-                                    {   <span> | </span>
-                                        <a class="btn btn-sm btn-primary btn-show ms-2" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.CategoriesId">Show</a>
+                                    {  
+                                        <a class="btn btn-sm btn-primary btn-show" href="#" type="button" data-bs-toggle="modal" data-bs-target="#myModal-@item.CategoriesId">Show</a>
                                     }
                                 </div>
                             </td>

@@ -1,0 +1,46 @@
+﻿@model WeLearnOnine_Website.Models.AspNetRole
+
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fuild flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Role/</span> Create New</h4>
+    <form asp-action="SaveRole" method="post">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                   @*      <div class="form-group mb-3">
+                            <label asp-for="CategoriesId" class="control-label"></label>
+                            <input asp-for="CategoriesId" class="form-control" />
+                            <span asp-validation-for="CategoriesId" class="text-danger"></span>
+                        </div> *@
+
+                     @*    <div class="input-group mb-3">
+                            <span class="input-group-text">Name</span>
+                            <textarea class="form-control" aria-label="With textarea" asp-for="CategoryName"></textarea>
+                        </div> *@
+
+                        <div>
+                            <label for="defaultFormControlInput" class="form-label">Name</label>
+                            <input asp-for="Name" type="text" class="form-control" id="defaultFormControlInput" placeholder="CO-Fouder">
+                            <div id="defaultFormControlHelp" class="form-text alert alert-warning mt-1">
+                                Note: Creating this role is to set roles for staff in the Permissions area.
+                            </div>
+                        </div>
+
+                        <div class="input-group mt-3 d-flex justify-content-end">
+                            <input class="btn btn-primary mx-3" value="Create" type="submit">
+
+                            <a asp-action="Index" class="btn btn-outline-secondary
+                                        <span class="bx me-1">Cancel</span>
+                                    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

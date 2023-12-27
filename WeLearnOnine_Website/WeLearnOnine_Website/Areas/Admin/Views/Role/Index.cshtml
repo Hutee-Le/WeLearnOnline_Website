@@ -1,0 +1,114 @@
+﻿@model IEnumerable<WeLearnOnine_Website.Models.AspNetRole>
+
+@{
+    ViewData["Title"] = "ListRole";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if (TempData["roleError"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["roleError"]</div>
+    </div>
+}
+@if (TempData["roleSuccess"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["roleSuccess"]</div>
+    </div>
+}
+
+<h4 class="py-3 mb-4"><span class="text-muted fw-light">Roles & Permissions /</span> Roles Table</h4>
+
+<style>
+    tbody td {
+        text-align: center;
+    }
+
+</style>
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">DataTable Roles</h5>
+            <div>
+                <a asp-action="CreateRole" class="btn btn-primary text-white ms-3"><i class="bx bx-plus me-sm-1 fs-4"></i> Create New Role</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            Role
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <p>@item.Name</p>
+                            </td>
+
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                    <a asp-action="EditRole" asp-route-id="@item.Id">
+                                        <span class="badge bg-label-info me-1">
+                                            <i class="bx bx-edit-alt"></i>
+                                        </span>
+                                    </a> 
+                                    <a class="mx-2" data-bs-toggle="modal" data-bs-target="#smallModal-@item.Id" style="cursor: pointer">
+                                        <span class="badge bg-label-danger">
+                                            <i class="bx bx-trash"></i>
+                                        </span>
+                                    </a> 
+                                </div>
+                            </td>
+                        </tr>
+
+                        @* Small Model Delete *@
+                        <div class="modal fade" id="smallModal-@item.Id" tabindex="-1" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col mb-3">
+                                                <h3>Do you want to delete?</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
