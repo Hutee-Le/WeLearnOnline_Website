@@ -337,7 +337,7 @@
                                                 <button type="submit" class="btn btn-primary">Post Reply</button>
                                             </form>
                                         </div> *@
-                                        <button class="reply-button" data-comment-id="@c.CmtId">Reply</button>
+                                        <button class="reply-button btn btn-primary" data-comment-id="@c.CmtId">Reply</button>
 
                                         <div class="reply-form" data-comment-id="@c.CmtId">
                                             <form class="hidden" asp-action="ReplyToComment" asp-controller="Comment">
@@ -345,8 +345,8 @@
                                                 <label asp-for="ContentNote"></label>
                                                 <textarea asp-for="ContentNote" placeholder="Your Reply" class="form-control py-5"></textarea>
                                                 <span asp-validation-for="ContentNote" class="text-danger"></span>
-                                       
-                                                <button type="submit">Post Reply</button>
+
+                                                <button type="submit" class="btn btn-primary">Post Reply</button>
                                             </form>
                                         </div>
                                         

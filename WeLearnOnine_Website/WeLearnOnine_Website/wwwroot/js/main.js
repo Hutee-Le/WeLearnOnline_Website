@@ -78,6 +78,26 @@ function themeColors() {
 }
 themeColors();
 
+document.addEventListener('DOMContentLoaded', function () {
+    var counters = document.querySelectorAll('.counter');
+
+    counters.forEach(function (counter) {
+        var goal = parseInt(counter.getAttribute('data-goal'));
+        var count = 0;
+
+        var updateCounter = function () {
+            counter.innerHTML = Math.floor(count) + ' <span>k</span>';
+            count += goal / 1000; // Thay đổi tốc độ tăng giảm tùy ý
+            if (count < goal) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.innerHTML = goal + ' <span>k</span>';
+            }
+        };
+
+        updateCounter();
+    });
+});
 
 /*--------------------------------------------------------------------
         ********** Theme light & dark mode
@@ -114,6 +134,7 @@ themeLightDark();
 /*--------------------------------------------------------------------
     ********** Auto increase
 ---------------------------------------------------------------------- */
+
 //let nums = document.querySelectorAll(".box .fun-facts-item .counter");
 //let section = document.querySelector(".fun-facts-section");
 //let windowHeight = window.innerHeight;

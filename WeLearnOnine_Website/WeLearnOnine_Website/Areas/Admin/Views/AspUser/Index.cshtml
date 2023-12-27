@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WeLearnOnine_Website.ViewModels.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "ListRoleForUser";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if (TempData["roleError"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["roleError"]</div>
+    </div>
+}
+@if (TempData["roleSuccess"] != null)
+{
+    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-medium">Notification</div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">@TempData["roleSuccess"]</div>
+    </div>
+}
+
+<h4 class="py-3 mb-4"><span class="text-muted fw-light">Roles & Permissions /</span> Permission Table</h4>
+
+<style>
+    tbody td {
+        text-align: center;
+    }
+
+</style>
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-center align-items-center">
+            <h3 class="card-title mb-0">Permission</h3>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            Account
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <p>@item.UserEmail</p>
+                            </td>
+                            <td>
+                                <p>@item.RoleName</p>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-primary btn-show" href="@Url.Action("ManageUserRoles", "AspUserController", new { userId = item.UserId })" type="button">Set Role</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

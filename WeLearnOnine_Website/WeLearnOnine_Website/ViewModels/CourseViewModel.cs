@@ -43,5 +43,7 @@ namespace WeLearnOnine_Website.ViewModels
         public int? TimeTotal { get; set; }
 
         public List<CategoryCourseViewModel> CategoriesCourses { get; set; }
+
+        public List<Lesson> Lessons { get; set; }
     }
 }
