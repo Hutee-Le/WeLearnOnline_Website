@@ -268,14 +268,35 @@ h6 {
     transition: all 0.3s ease;
 }
 
-    .btn-theme:hover {
+.btn-theme:hover {
+    color: var(--white);
+    background-color: var(--button-hover-color);
+}
+
+.btn-theme:focus {
+    box-shadow: 0 0 8px var(--main-color);
+}
+
+.btn-buy-now {
+    background-color: transparent;
+    color: var(--WHITE);
+    border: 2px solid var(--main-color);
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+    .btn-buy-now:hover {
         color: var(--white);
         background-color: var(--button-hover-color);
     }
 
-    .btn-theme:focus {
-        box-shadow: 0 0 8px var(--main-color);
-    }
+.btn-buy-now:focus {
+    box-shadow: 0 0 8px var(--main-color);
+}
+
 
 .btn-block {
     width: 100%;

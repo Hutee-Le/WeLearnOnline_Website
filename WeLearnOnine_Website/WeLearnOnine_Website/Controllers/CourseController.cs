@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Firebase.Auth;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
 using System.Security.Claims;
@@ -13,18 +14,20 @@ namespace WeLearnOnine_Website.Controllers
         private readonly ICourseRepository _courseRepository;
         private readonly DerekmodeWeLearnSystemContext _context;
         private readonly ICommentRepository _commentRepository;
+        private readonly IBillRepository _billRepository;
         private readonly UserManager<IdentityUser> _userManager;
         private Helper _helper;
 
 
 
-        public CourseController(ICourseRepository courseRepository, DerekmodeWeLearnSystemContext context, ICommentRepository commentRepository, UserManager<IdentityUser> userManager, Helper helper)
+        public CourseController(ICourseRepository courseRepository, DerekmodeWeLearnSystemContext context, ICommentRepository commentRepository, UserManager<IdentityUser> userManager, Helper helper, IBillRepository billRepository)
         {
             _courseRepository = courseRepository;
             _context = context;
             _commentRepository = commentRepository;
             _userManager = userManager;
             _helper = helper;
+            _billRepository = billRepository;
         }
 
         public async Task<IActionResult> Index(int? page, int pageSize = 4)
@@ -62,7 +65,7 @@ namespace WeLearnOnine_Website.Controllers
             return View(course);
         }
 
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
             var course = _courseRepository.FindCourseByID(id);
             if (course == null)
@@ -71,6 +74,11 @@ namespace WeLearnOnine_Website.Controllers
             }
 
             List<Comment> comments = _commentRepository.GetById(id);
+
+            int userId = await _helper.GetUserId(User);
+
+            bool isInCart = _courseRepository.IsCourseInCart(id, userId);
+
             DetailCourseViewModel model = new()
             {
                 CourseId = course.CourseId,
@@ -79,7 +87,8 @@ namespace WeLearnOnine_Website.Controllers
                 StaffId = course.StaffId,
                 Title = course.Title,
                 Date = DateTime.Now,
-                UserId = 2
+                UserId = userId,
+                IsInCart = isInCart,
             };
             ViewBag.Comments = comments;
             return View(model);
@@ -154,6 +163,72 @@ namespace WeLearnOnine_Website.Controllers
             }
             bool result = await _courseRepository.RemoveFromFavorites(userId, courseId);
             return Json(new { success = result });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BuyNowAsync(int courseId)
+        {
+            // Kiểm tra xem người dùng đã đăng nhập chưa
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Lấy ID người dùng từ thông tin đăng nhập
+            var userId = await _helper.GetUserId(User);
+
+            // Tìm khóa học dựa trên courseId
+            var course = _courseRepository.FindCourseByID(courseId);
+            if (course == null)
+            {
+                // Nếu không tìm thấy khóa học, hiển thị thông báo lỗi
+                TempData["ErrorMessage"] = "Khóa học không tồn tại.";
+                return RedirectToAction("Index", "Course");
+            }
+
+            // Lấy hoặc tạo Bill mới cho người dùng
+            var bill = _billRepository.GetPendingBillByUserId(userId);
+            if (bill == null)
+            {
+                bill = new Bill
+                {
+                    BillId = Guid.NewGuid(),
+                    UserId = userId,
+                    BillCode = Helper.GenerateBillCode(DateTime.Now, userId),
+                    Total = 0,
+                    HistoricalCost = 0,
+                    Promotion = 0,
+                    CreateAt = DateTime.Now,
+                    PaymentMethod = "Bank Transfer", 
+                    Status = "Pending"
+                };
+
+                _billRepository.CreateBill(bill);
+            }
+
+            // Kiểm tra xem khóa học đã nằm trong giỏ hàng chưa
+            var existingBillDetail = await _billRepository.GetBillDetailByCourseAndUser(courseId, userId, bill.BillId);
+            if (existingBillDetail != null)
+            {
+                // Khóa học đã có trong giỏ hàng, chuyển hướng đến trang thanh toán
+                return RedirectToAction("Index", "ShoppingCart");
+            }
+
+            // Thêm khóa học vào giỏ hàng nếu chưa có
+            var billDetail = new BillDetail
+            {
+                BillDetailId = Guid.NewGuid(),
+                BillId = bill.BillId,
+                CourseId = courseId,
+                Price = course.Price,
+                DiscountPrice = course.DiscountPrice,
+                Date = DateTime.Now
+            };
+
+            _billRepository.AddBillDetail(billDetail);
+
+            // Chuyển hướng đến trang thanh toán
+            return RedirectToAction("Index", "ShoppingCart");
         }
 
     }

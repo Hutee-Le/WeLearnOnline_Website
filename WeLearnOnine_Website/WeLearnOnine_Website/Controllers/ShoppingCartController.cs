@@ -140,7 +140,7 @@ namespace WeLearnOnine_Website.Controllers
                 {
                     BillDetailId = Guid.NewGuid(),
                     BillId = bill.BillId,
-                    CourseId = course.CourseId,
+                    CourseId = courseId,
                     Price = course.Price,
                     DiscountPrice = course.DiscountPrice,
                     Date = DateTime.Now

@@ -342,5 +342,17 @@ namespace WeLearnOnine_Website.Repositories
             return CourseViewModel;
         }
 
+        public bool IsCourseInCart(int courseId, int userId)
+        {
+            return _ctx.BillDetails
+                       .Any(bd => bd.CourseId == courseId &&
+                                  bd.Bill.UserId == userId &&
+                                  bd.Bill.Status == "Pending");
+        }
+
+        public bool IsCourseInFavorites(int courseId, int userId)
+        {
+            return _ctx.FavLists.Any(f => f.CourseId == courseId && f.UserId == userId);
+        }
     }
 }

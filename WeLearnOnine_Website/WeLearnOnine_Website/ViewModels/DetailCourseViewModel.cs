@@ -19,6 +19,7 @@ namespace WeLearnOnine_Website.ViewModels
         public string? UserName { get; set; }
         public int LessonId { get; set; }
         public float Star {  get; set; }
+        public bool IsInCart { get; set; }
         //public List<CommentViewModel>? Comment { get; set; }
         public class RatingViewModel
         {

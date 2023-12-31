@@ -5,8 +5,9 @@ namespace WeLearnOnine_Website.Models
     public interface ICourseRepository
     {
         bool Add(Course course);
-      
         bool Update(Course course);
+        bool IsCourseInCart(int courseId, int userId);
+        bool IsCourseInFavorites(int courseId, int userId);
         bool Delete(int id);
         void DeleteAll();
         Course FindCourseByID(int id);
