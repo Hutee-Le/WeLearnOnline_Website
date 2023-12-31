@@ -327,8 +327,18 @@
                         <li>Other feature</li>
                     </ul>
                     <div class="btn-wrap">
-                        <button type="button" class="btn btn-theme btn-block">Add to cart</button>
-                        <button type="button" class="btn btn-block">Buy now</button>
+                        @if (Model.IsInCart)
+                        {
+                            <button type="button" class="btn btn-theme btn-block" onclick="goToCartPage()">Go to Cart</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-theme btn-block btn-addCart" onclick="addToCart(@Model.Course.CourseId)">Add to cart</button>
+                        }
+                        <form method="post" asp-action="BuyNow" asp-controller="Course">
+                            <input type="hidden" name="courseId" value="@Model.Course.CourseId" />
+                            <button type="submit" class="btn btn-buy-now btn-block mt-2">Buy now</button>
+                        </form>
                     </div>
                 </div>
                 <!-- course sidebar end -->
@@ -357,3 +367,44 @@
     </div>
 </div>
 <!-- course preview modal end -->
+
+<script>
+    function addToCart(courseId) {
+        $.ajax({
+            url: '@Url.Action("AddToCart", "ShoppingCart")',
+            type: 'POST',
+            data: { courseId: courseId },
+            success: function (response) {
+                if (response.needAuthentication) {
+                    // Redirect to login page
+                    window.location.href = '/User/Login';
+                } else if (response.success) {
+                    alert('Product added to cart.');
+                    // Thay đổi text của button thành "Go to Cart"
+                    $(`button[onclick="addToCart(${courseId})"]`).text('Go to Cart');
+                    var button = $(`button[onclick="addToCart(${courseId})"]`);
+                    button.text('Go to Cart');
+                    button.attr('onclick', `goToCartPage()`);
+                    // Cập nhật số lượng sản phẩm trong giỏ hàng
+                    updateCartCount(response.cartCount);
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                console.error('Error adding to cart:', error);
+                alert('Error adding to cart. Please try again.');
+            }
+        });
+    }
+
+    function updateCartCount(cartCount) {
+        // Giả sử bạn có một phần tử để hiển thị số lượng sản phẩm trong giỏ hàng
+        $('.cart-count').text(cartCount);
+    }
+
+    function goToCartPage() {
+        // Chuyển hướng đến trang giỏ hàng
+        window.location.href = '@Url.Action("Index", "ShoppingCart")';
+    }
+</script>
