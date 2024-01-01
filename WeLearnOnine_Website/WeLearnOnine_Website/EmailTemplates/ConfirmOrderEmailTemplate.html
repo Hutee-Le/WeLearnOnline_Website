@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #555;
+            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            border-top: solid 6px #E55252;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .header,
+        .footer {
+            padding: 10px 25px;
+        }
+
+        .content {
+            padding: 20px 25px;
+            font-size: 16px;
+            line-height: 1.6
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .logo .accent {
+            color: #E55252;
+        }
+
+        .button {
+            background-color: #E55252;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 2px;
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+        }
+
+        .an1 {
+            height: 1.2em;
+            width: 1.2em;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span class="accent">WE</span>LEARN</span>
+            </div>
+        </div>
+        <div class="content">
+            <p>Hi&nbsp;{UserName},</p>
+
+            <p>Bạn đã đăng ký khóa học với đơn hàng có ID&nbsp;<strong>{BillCode}</strong>&nbsp;tại KTcity nhưng chưa
+                thanh toán.&nbsp;Hãy truy cập đường dẫn sau để xem lại yêu cầu của bạn &amp; hoàn tất.</p>
+
+            <p><a href="{ConfirmOrderLink}">https://kt.city/complete-<wbr>checkout?id=<wbr>clpxrm92h00qzr2qn350kedhe</a> </p>
+
+            <p>Sau khi thanh toán, đơn hàng sẽ được tự động hoàn thành&nbsp;&amp; bạn có thể truy cập vào học ngay
+                lập tức. Bạn cũng có thể xem lại video học tập&nbsp;bất cứ lúc nào.</p>
+
+            <p>From WeLearn Team with&nbsp;<img data-emoji="❤️" class="an1" alt="❤️" aria-label="❤️"
+                    src="https://fonts.gstatic.com/s/e/notoemoji/15.0/2764_fe0f/72.png" loading="lazy"></p>
+        </div>
+
+    </div>
+</body>
+
+</html>
