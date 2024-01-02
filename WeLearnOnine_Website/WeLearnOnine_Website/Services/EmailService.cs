@@ -43,6 +43,42 @@ namespace WeLearnOnine_Website.Services
                 await client.DisconnectAsync(true);
             }
         }
+        public async Task SendEmailVerificationAsync(string toEmail, string userName, string subject, string verificationLink)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(_mailSettings.SenderName, _mailSettings.SenderEmail));
+            message.To.Add(new MailboxAddress("", toEmail));
+
+            message.Subject = subject;
+
+            var emailBody = File.ReadAllText("EmailTemplates/RegistrationConfirmation.html");
+            emailBody = emailBody.Replace("{UserName}", userName);
+            emailBody = emailBody.Replace("{ConfirmationLink}", verificationLink);
+
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = emailBody;
+            message.Body = bodyBuilder.ToMessageBody();
+
+            using (var client = new SmtpClient())
+            {
+                try
+                {
+                    await client.ConnectAsync(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                    await client.AuthenticateAsync(_mailSettings.UserName, _mailSettings.Password);
+                    await client.SendAsync(message);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ khi gửi email thất bại
+                    throw ex;
+                }
+                finally
+                {
+                    await client.DisconnectAsync(true);
+                    client.Dispose();
+                }
+            }
+        }
 
         public async Task SendPaymentReminderEmailAsync(string toEmail, string userName, string billCode)
         {
