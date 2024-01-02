@@ -43,5 +43,46 @@ namespace WeLearnOnine_Website.Services
                 await client.DisconnectAsync(true);
             }
         }
+
+        public async Task SendPaymentReminderEmailAsync(string toEmail, string userName, string billCode)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(_mailSettings.SenderName, _mailSettings.SenderEmail));
+            message.To.Add(new MailboxAddress(userName, toEmail));
+
+            var subject = $"👋Đơn hàng {billCode} đang chờ bạn hoàn tất.";
+            message.Subject = subject;
+
+            var bodyBuilder = new BodyBuilder();
+
+            var emailBody = File.ReadAllText("EmailTemplates/ConfirmOrderEmailTemplate.html");
+            var confirmOrderLink = "https://Welearn.bsite.net/ShoppingCart/PaymentConfirmation?billCode=" + billCode;
+            emailBody = emailBody.Replace("{UserName}", userName);
+            emailBody = emailBody.Replace("{BillCode}", billCode);
+            emailBody = emailBody.Replace("{ConfirmOrderLink}", confirmOrderLink);
+
+            bodyBuilder.HtmlBody = emailBody;
+            message.Body = bodyBuilder.ToMessageBody();
+
+            using (var client = new SmtpClient())
+            {
+                try
+                {
+                    await client.ConnectAsync(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                    await client.AuthenticateAsync(_mailSettings.UserName, _mailSettings.Password);
+                    await client.SendAsync(message);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ khi gửi email thất bại
+                    throw ex;
+                }
+                finally
+                {
+                    await client.DisconnectAsync(true);
+                    client.Dispose();
+                }
+            }
+        }
     }
 }
