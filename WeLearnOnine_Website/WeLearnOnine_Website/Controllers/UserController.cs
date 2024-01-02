@@ -218,8 +218,8 @@ namespace WeLearnOnine_Website.Controllers
                 {
                     var user = await _userManager.FindByNameAsync(model.Email);
                     if (await _userManager.IsInRoleAsync(user, "Admin") ||
-                await _userManager.IsInRoleAsync(user, "Training") ||
-                await _userManager.IsInRoleAsync(user, "Instructor"))
+                        await _userManager.IsInRoleAsync(user, "Training") ||
+                        await _userManager.IsInRoleAsync(user, "Instructor"))
                     {
                         return RedirectToAction("Index", "Admin");
                     }
@@ -240,14 +240,9 @@ namespace WeLearnOnine_Website.Controllers
                     return View();
                 }
 
-
-                // If we got this far, something failed, redisplay form
-                 return RedirectToAction("Index", "Home");
+                return Redirect(returnUrl);
 
             }
-
-
-
             //return View();
             return View();
         }

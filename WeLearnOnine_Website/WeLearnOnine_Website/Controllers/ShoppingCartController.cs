@@ -1,10 +1,12 @@
 ﻿using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Text.Json;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
+using WeLearnOnine_Website.Services;
 using WeLearnOnine_Website.ViewModels;
 
 namespace WeLearnOnine_Website.Controllers
@@ -16,18 +18,20 @@ namespace WeLearnOnine_Website.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
         private readonly Helper _helper;
+        private readonly IEmailService _emailService;
         private readonly HttpClient client = new HttpClient();
         public ShoppingCartController(IBillRepository billRepository,
             ICourseRepository courseRepository
             , IUserRepository userRepository,
             IConfiguration configuration,
-            Helper helper)
+            Helper helper, IEmailService emailService)
         {
             _billRepository = billRepository;
             _courseRepository = courseRepository;
             _userRepository = userRepository;
             _configuration = configuration;
             _helper = helper;
+            _emailService = emailService;
         }
         public async Task<IActionResult> IndexAsync()
         {
@@ -277,6 +281,13 @@ namespace WeLearnOnine_Website.Controllers
             // Lưu các thay đổi vào cơ sở dữ liệu
             _billRepository.UpdateBill(bill);
 
+            // Gửi email thông báo đơn hàng cần thanh toán
+            await _emailService.SendPaymentReminderEmailAsync(
+            model.UserEmail,
+            model.UserName,
+            bill.BillCode
+            );
+
             return RedirectToAction("PaymentConfirmation", new { billCode = bill.BillCode });
         }
 
@@ -308,6 +319,13 @@ namespace WeLearnOnine_Website.Controllers
 
         public async Task<IActionResult> PaymentConfirmation(string billCode)
         {
+
+            if (!User.Identity.IsAuthenticated) 
+            {
+                string returnUrl = Url.Action("PaymentConfirmation", "ShoppingCart", new { billCode = billCode });
+                return RedirectToAction("Login", "User", new { returnUrl });
+            }
+
             var claimsPrincipal = HttpContext.User;
             int userId = await _helper.GetUserId(claimsPrincipal);
             var bill = _billRepository.FindBillByBillCode(billCode);

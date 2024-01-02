@@ -39,12 +39,14 @@ namespace WeLearnOnine_Website.Controllers
             return View(_favListRepository.GetAllByUserId(1));
         }
 
-        public IActionResult SendMail()
+        public async Task<IActionResult> SendMailAsync()
         {
             var toAddresses = new List<string> { "lenhut0929@gmail.com", "lenhut2909@gmail.com" };
 
             // Gửi email đến nhiều địa chỉ
-            _emailService.SendEmailAsync(toAddresses, "Sending test email for Project Welearn", "Đây là mail test bạn có thể bỏ qua mail này.");
+            //_emailService.SendEmailAsync(toAddresses, "Sending test email for Project Welearn", "Đây là mail test bạn có thể bỏ qua mail này.");
+
+           await _emailService.SendPaymentReminderEmailAsync("lenhut0929@gmail.com", "nhut", "ht2555");
 
             return RedirectToAction("Index");
         }
