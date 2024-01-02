@@ -7,6 +7,7 @@ using WeLearnOnine_Website.ViewModels;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text.Encodings.Web;
 using System.Text;
+using WeLearnOnine_Website.Services;
 
 namespace WeLearnOnine_Website.Controllers
 {
@@ -21,23 +22,22 @@ namespace WeLearnOnine_Website.Controllers
         private readonly ILogger<LoginViewModel> _logger;
         private readonly IUserRepository _userRepository;
         private readonly IUserEmailStore<IdentityUser> _emailStore;
+        private readonly IEmailService _emailService;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
         public UserController(DerekmodeWeLearnSystemContext context,
            ILogger<LoginViewModel> logger, IUserRepository userRepository, IEmailSender emailSender,
            UserManager<IdentityUser> userManager, IUserStore<IdentityUser> userStore,
-           SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager)
+           SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IEmailService emailService)
         {
-
             _context = context;
             _logger = logger;
             _userRepository = userRepository;
             _emailSender = emailSender;
-
+            _emailService = emailService;
             _userManager = userManager;
             _userStore = userStore;
             _signInManager = signInManager;
-
             _emailStore = GetEmailStore();
             _roleManager = roleManager;
         }
@@ -100,8 +100,11 @@ namespace WeLearnOnine_Website.Controllers
                         new { userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    await _emailService.SendEmailVerificationAsync(model.Email, model.UserName, "Xác thực tài khoản của bạn", callbackUrl);
+
                     await _userManager.AddToRoleAsync(user, "Member");
                     _userRepository.Add(u);
 
