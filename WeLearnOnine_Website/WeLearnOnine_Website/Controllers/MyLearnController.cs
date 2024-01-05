@@ -67,10 +67,13 @@ namespace WeLearnOnine_Website.Controllers
             return RedirectToAction("Login", "User");
         }
 
-        public IActionResult MyLearningLessons(int courseid, int? page)
+        public async Task<IActionResult> MyLearningLessonsAsync(int courseid, int? page)
         {
             int pageSize = 5; // Số lượng comment trên mỗi trang
+            var claimsPrincipal = HttpContext.User;
+            int UserId = await _helper.GetUserId(claimsPrincipal);
             var course = _courseRepository.FindCourseByID(courseid);
+            List<UserCourseRating> ratingbyUser = _userCourseRatingRepository.GetRatingsForCourse(courseid);
             if (course == null)
             {
                 return NotFound();
@@ -79,7 +82,7 @@ namespace WeLearnOnine_Website.Controllers
             // Phân trang
             var pageNumber = page ?? 1;
             //var commentsForPage = allComments.ToPagedList(pageNumber, pageSize);
-            var paginatedCourses = comments.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            var paginatedCourses = comments.OrderByDescending(c => c.Date).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
             ViewBag.CurrentPage = pageNumber;
             ViewBag.TotalPages = (int)Math.Ceiling((double)comments.Count / pageSize);
@@ -91,17 +94,39 @@ namespace WeLearnOnine_Website.Controllers
                 Comments = paginatedCourses,
                 //StaffId = course.StaffId,
                 //Title = course.Title,
-                UserId = 2
+                UserId = UserId
             };
 
             ViewBag.Courseid = course.CourseId;
+            ViewBag.CourseRating = ratingbyUser;
 
             return View(model);
         }
-        [HttpPost]
-        public async Task<IActionResult> PostComment(DetailCourseViewModel model)
+   
+        public IActionResult GetReplies(DetailCourseViewModel model)
         {
-            //int UserId = 2;
+
+            var CourseId = model.CourseId;
+            if (ModelState.IsValid)
+            {
+                var comment = new Comment()
+                {
+                    CourseId = CourseId,
+                    //CmtId= model.Comment,
+                    StaffId = model.StaffId,
+                    ContentNote = model.ContentNote,
+                    Date = DateTime.Now,
+                };
+                _commentRepository.AddComment(comment);
+
+                return RedirectToAction("MyLearningLessons", new { courseid = CourseId });
+            }
+            // Validation errors occurred, return errors to the client
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            return Json(new { success = false, errors = errors });
+        }
+        public async Task<IActionResult> ReplyToCommentAsync(DetailCourseViewModel model)
+        {
             var claimsPrincipal = HttpContext.User;
             int UserId = await _helper.GetUserId(claimsPrincipal);
             var CourseId = model.CourseId;
@@ -109,8 +134,10 @@ namespace WeLearnOnine_Website.Controllers
             {
                 var comment = new Comment()
                 {
-                    CourseId = model.CourseId,
+                    CourseId = CourseId,
+                    //CmtId= model.Comment,
                     UserId = UserId,
+                    StaffId = model.StaffId,
                     ContentNote = model.ContentNote,
                     Date = DateTime.Now,
                 };
@@ -143,38 +170,28 @@ namespace WeLearnOnine_Website.Controllers
 
         //    return RedirectToAction("MyLearningLessons", new { courseid = parentComment.CourseId });
         //}
-        public IActionResult ReplyToComment(DetailCourseViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> PostCommentAndRatingAsync(DetailCourseViewModel model, float stars)
         {
-
+            // Thực hiện xử lý cho việc gửi bình luận
+            // ...
+            var claimsPrincipal = HttpContext.User;
+            int UserId = await _helper.GetUserId(claimsPrincipal);
             var CourseId = model.CourseId;
             if (ModelState.IsValid)
             {
                 var comment = new Comment()
                 {
-                    CourseId = CourseId,
-                    //CmtId= model.Comment,
-                    StaffId = model.StaffId,
+                    CourseId = model.CourseId,
+                    UserId = UserId,
                     ContentNote = model.ContentNote,
                     Date = DateTime.Now,
                 };
                 _commentRepository.AddComment(comment);
-
-                return RedirectToAction("MyLearningLessons", new { courseid = CourseId });
-            }
-            // Validation errors occurred, return errors to the client
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            return Json(new { success = false, errors = errors });
-        }
-        [HttpPost]
-        public IActionResult RateCourse(int courseId, float stars)
-        {
-            var CourseId = courseId;
-            if (ModelState.IsValid)
-            {
                 var rating = new UserCourseRating
                 {
                     CourseId = CourseId,
-                    UserId=5,
+                    UserId = 5,
                     Rating = stars,
                     //Rating = model.ContentNote,
                     // Other rating-related properties
@@ -186,15 +203,11 @@ namespace WeLearnOnine_Website.Controllers
 
                 return RedirectToAction("MyLearningLessons", new { courseid = CourseId });
             }
-
             // Validation errors occurred, return errors to the client
             var errors = ModelState.Values.SelectMany(v => v.Errors);
-            return Json(new
-            {
-                success = false,
-                errors = errors
-            });
+            return Json(new { success = false, errors = errors });
 
         }
+
     }
 }
