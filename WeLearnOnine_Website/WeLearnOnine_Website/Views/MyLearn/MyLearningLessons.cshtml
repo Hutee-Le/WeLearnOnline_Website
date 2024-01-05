@@ -223,12 +223,20 @@
                                     </div>
                                 </form>
                             </div>
-                            <div>
-                                <h4>Rate this course:</h4>
-                                <form asp-action="RateCourse" asp-controller="MyLearn" method="post">
-                                    <div class="form-group">
-                                    <input type="hidden" name="courseId" value="@Model.CourseId" />
-                                        <i class="fas fa-chevron-down select-icon"></i>
+                     
+
+                            <h4>Comment and Rate this course</h4>
+                            <form asp-action="PostCommentAndRating" asp-controller="MyLearn" method="post">
+                                <input type="hidden" asp-for="CourseId" />
+
+                                <div class="form-group">
+                                    <label asp-for="ContentNote"></label>
+                                    <textarea asp-for="ContentNote" class="form-control py-5"></textarea>
+                                    <span asp-validation-for="ContentNote" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="stars">Rate this course:</label>
                                     <select name="stars">
                                         <option value="1">1 Star</option>
                                         <option value="1.5">1.5 Star</option>
@@ -240,28 +248,11 @@
                                         <option value="4.5">4.5 Stars</option>
                                         <option value="5">5 Stars</option>
                                     </select>
-                                    <button type="submit" class="btn btn-primary">Submit Rating</button>
-                                    </div>
-                                </form>
-                            </div>
-                            @if (TempData["SuccessMessage"] != null)
-                            {
-                                <div class="alert alert-success">
-                                    @TempData["SuccessMessage"]
                                 </div>
-                            }
-                            <script>
-                                // Check if the success message exists and show the popup
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    var successMessage = document.querySelector('.alert-success');
-                                    if (successMessage) {
-                                        // Show your popup (you might use a library like Bootstrap's modal)
-                                        // Example: $('#successModal').modal('show');
-                                        // Ensure to include the necessary JavaScript and CSS files for your modal library
-                                    }
-                                });
-                            </script>
-                            <!-- reviews filter end -->
+
+                                <button type="submit" class="btn btn-primary">Submit Comment and Rating</button>
+                            </form>
+
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
                             <script>
@@ -272,7 +263,7 @@
 
                                         $.ajax({
                                             type: "POST",
-                                            url: form.attr("/MyLearn/PostComment"),
+                                            url: form.attr("/MyLearn/PostCommentAndRatingAsync"),
                                             data: form.serialize(),
                                             success: function (data) {
                                                 $("#comments-container").append(data);
@@ -284,23 +275,15 @@
                                         });
                                     });
                                 });
+
                             </script>
-                            <!-- comment post zone start -->
-                            <form asp-action="PostComment" asp-controller="MyLearn" method="post">
-                                <input type="hidden" asp-for="@Model.CourseId" />
-                                <div class="form-group">
-                                    <label asp-for="ContentNote"></label>
-                                    <textarea asp-for="ContentNote" class="form-control py-5"></textarea>
-                                    <span asp-validation-for="ContentNote" class="text-danger"></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Post Comment</button>
-                            </form>
+
                             <!-- comment post zone end -->
                             <!-- reviews list start -->
                             <div class="reviews-list">
                                 <partial name="../MyLearn/PostComment.cshtml" />
                                 <!-- reviews item start -->
-                                @foreach (var c in Model.Comments)
+                                @foreach (var c in Model.Comments.OrderByDescending(c => c.Date))
                                 {
                                     <div class="reviews-item">
                                         <div class="img-box">
@@ -314,55 +297,52 @@
                                         {
                                             <h4>@c.User.UserName</h4>
                                         }
-                                        
                                         <div class="stars-rating">
-                                            @for (int i = 1; i <= 5; i++)
+                                            @foreach (var userCourseRating in ViewBag.CourseRating)
                                             {
-                                                <i class="fas fa-star @((i <= ViewBag.CourseRating) ? "rated" : "")"></i>
+                                                double rating = userCourseRating.Rating;
+
+                                                for (int i = 1; i <= 5; i++)
+                                                {
+                                                    <i class="fas fa-star @((i <= Math.Round(rating)) ? "rated" : "")"></i>
+                                                }
+
+                                                <br />
                                             }
-                                           
-
                                             <span class="date">@c.Date</span>
-                                            
                                         </div>
-                                        <p>@c.ContentNote</p>
-                                        @* <button class="reply-button" data-comment-id="@c.CmtId" data-commenter-name="@c.User.UserName">Reply</button>
-                                        <div class="reply-form" data-comment-id="@c.CmtId" style="display: none;">
-                                            <form asp-action="ReplyToComment" asp-controller="MyLearn" method="post">
-                                                <input type="hidden" name="parentCommentId" asp-for="@c.CourseId" asp-for="@c.CmtId" value="@c.CmtId" />
-                                                <div class="form-group">
-                                                    <label for="replyContent">Reply:</label>
-                                                    <textarea name="replyContent" class="form-control"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Post Reply</button>
-                                            </form>
-                                        </div> *@
-                                        <button class="reply-button btn btn-primary" data-comment-id="@c.CmtId">Reply</button>
 
-                                        <div class="reply-form" data-comment-id="@c.CmtId">
+                                        <p>@c.ContentNote</p>
+                                      
+                                        <button class="reply-button btn btn-primary" data-comment-id="@c.CmtId">Reply</button>
+                                        <div class="reply-form reply-form-@c.CmtId" data-comment-id="@c.CmtId">
                                             <form class="hidden" asp-action="ReplyToComment" asp-controller="Comment">
                                                 <input type="hidden" asp-for="@c.CmtId" />
                                                 <label asp-for="ContentNote"></label>
                                                 <textarea asp-for="ContentNote" placeholder="Your Reply" class="form-control py-5"></textarea>
                                                 <span asp-validation-for="ContentNote" class="text-danger"></span>
 
-                                                <button type="submit" class="btn btn-primary">Post Reply</button>
+                                                <button type="submit" class="btn btn-primary">Post</button>
                                             </form>
                                         </div>
                                         
                                     </div>
                                 }
+
+
+
                                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
                                 <script>
                                     $(document).ready(function () {
                                         $(".reply-button").on("click", function () {
                                             var commentId = $(this).data("comment-id");
-                                            $(".reply-form[data-comment-id='" + commentId + "']").removeClass("hidden");
+                                            $(".reply-form.reply-form-" + commentId).toggle();
 
                                             // Fetch and display existing replies
                                             $.ajax({
                                                 type: "GET",
-                                                url: "/Comment/GetReplies",
+                                                url: "/MyLearn/GetReplies",
                                                 data: { parentCommentId: commentId },
                                                 success: function (data) {
                                                     $("#replies-" + commentId).html(data);
@@ -380,11 +360,11 @@
 
                                             $.ajax({
                                                 type: "POST",
-                                                url: form.attr("action"),
+                                                url: form.attr("/MyLearn/ReplyToComment"),
                                                 data: form.serialize(),
                                                 success: function (data) {
                                                     var commentId = data.ParentCommentId;
-                                                    $(".reply-form[data-comment-id='" + commentId + "']").addClass("hidden");
+                                                    $(".reply-form.reply-form-" + commentId).hide();
 
                                                     // Append the new reply to the replies container
                                                     $("#replies-" + commentId).append(data);
@@ -395,7 +375,10 @@
                                             });
                                         });
                                     });
+
                                 </script>
+
+                            
                             </div>
                            
 

@@ -1,4 +1,5 @@
-﻿using WeLearnOnine_Website.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using WeLearnOnine_Website.Models;
 
 namespace WeLearnOnine_Website.Repositories
 {
@@ -10,6 +11,23 @@ namespace WeLearnOnine_Website.Repositories
         {
             _ctx = ctx;
         }
+
+        //public UserCourseRating GetRatingByUser(int courseid)
+        //{
+        //    var userCourseRating = _ctx.UserCourseRatings
+        //                      .Where(r => r.CourseId == courseid)
+        //                      .ToList();
+
+        //    return userCourseRating;
+        //}
+        public List<UserCourseRating> GetRatingsForCourse(int courseId)
+        {
+            List<UserCourseRating> courseRatings = _ctx.UserCourseRatings
+                                    .Where(r => r.CourseId == courseId)
+                                    .ToList();
+
+            return courseRatings;
+        }
         public UserCourseRating RatingCourse(UserCourseRating rating)
         {
             _ctx.UserCourseRatings.Add(rating);
@@ -17,5 +35,9 @@ namespace WeLearnOnine_Website.Repositories
             return rating;
         }
 
+        //UserCourseRating IUserCourseRatingRepository.GetRatingsForCourse(int courseid)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
