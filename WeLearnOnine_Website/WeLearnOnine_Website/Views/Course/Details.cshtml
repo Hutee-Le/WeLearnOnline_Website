@@ -85,13 +85,13 @@
                                 @foreach (var l in Model.Course.Lessons)
                                                 {
                                 <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading-1">
-                                        <div class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                    <h2 class="accordion-header">
+                                        <div class="accordion-button" type="button">
                                             @l.Title<span>@l.Time mins</span>
                                         </div>
+                                           
                                     </h2>
-                                   
+                                      
                                 </div>
                                 }
                               
@@ -112,9 +112,7 @@
                             </p>
                             <h4>For who is this course designed ?</h4>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
-                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
-                                cupiditate, iure quod nostrum a?
+                               @Model.Course.Required
                             </p>
                             <h4>Required</h4>
                             <p>
@@ -322,9 +320,7 @@
                     <h3 class="mb-3">Course Features</h3>
                     <ul class="features-list">
                         <li>Total 15 lessons</li>
-                        <li>Other feature</li>
-                        <li>Other feature</li>
-                        <li>Other feature</li>
+                      
                     </ul>
                     <div class="btn-wrap">
                         @if (Model.IsInCart)

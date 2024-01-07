@@ -34,7 +34,7 @@ namespace WeLearnOnine_Website.Repositories
         }
         public List<Course> Search(string keyword)
         {
-            return _ctx.Courses.Where(c => c.Title.Contains(keyword)).ToList();
+            return _ctx.Courses.Include(x => x.Staff).Where(c => c.Title.Contains(keyword)).ToList();
         }
         public bool Add(Course course)
         {
@@ -236,7 +236,8 @@ namespace WeLearnOnine_Website.Repositories
         {
             List<Bill> lst = _ctx.Bills.Where(b => b.UserId == userId)
                  .Include(c => c.BillDetails)
-                .ThenInclude(c => c.Course).ToList();
+                .ThenInclude(c => c.Course).ThenInclude(c => c.Staff)
+                .ToList();
             return lst;
         }
 

@@ -306,7 +306,7 @@
 
                                         <p>@c.ContentNote</p>
                                       
-                                        <button class="reply-button btn btn-primary" data-comment-id="@c.CmtId">Reply</button>
+                                   @*      <button class="reply-button btn btn-primary" data-comment-id="@c.CmtId">Reply</button>
                                         <div class="reply-form reply-form-@c.CmtId" data-comment-id="@c.CmtId">
                                             <form class="hidden" asp-action="ReplyToComment" asp-controller="Comment">
                                                 <input type="hidden" asp-for="@c.CmtId" />
@@ -316,7 +316,7 @@
 
                                                 <button type="submit" class="btn btn-primary">Post</button>
                                             </form>
-                                        </div>
+                                        </div> *@
                                         
                                     </div>
                                 }
@@ -450,13 +450,27 @@
             <section class="video-playlist">
                 <h3 class="title">@Model.Course.Title</h3>
                 <p>@Model.Course.Lessons.Count lessons &nbsp; . &nbsp; 50m 48s</p>
+               
+          
+                
                 <div class="videos">
+                    <table >
+                        <thead>
+                            <tr>
+                                <th style="width: 10%"></th>
+                                <th style="width: 50%">Name Lesson</th>
+                                <th style="width: 20%">Time of lesson</th>
+                            </tr>
+                        </thead>
+                       
+                    </table>
+                   
                     @foreach (var v in Model.Course.Lessons)
                     {
 
                         <div class="video" data-url="@v.UrlVideo" data-title="@v.Title" data-lessonid="@v.LessonId">
-                            <img src="@v.ImageLessonUrl" alt="">
-
+                         @*    <img src="@v.ImageLessonUrl" alt=""> *@
+                            <p >@v.Stt</p>
                             <h3 class="title">@v.Title</h3>
                             <p class="time">@v.Time</p>
                         </div>

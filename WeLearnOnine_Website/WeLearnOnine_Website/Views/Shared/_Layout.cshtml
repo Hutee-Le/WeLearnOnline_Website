@@ -101,12 +101,8 @@
                         </button>
                         <ul class="menu h-100">
                             <li class="menu-item menu-item-has-children">
-                                <a href="#" class="js-toggle-sub-menu">courses<i class="fas fa-chevron-down"></i></a>
-                                <ul class="sub-menu js-sub-menu">
-                                    <li class="sub-menu-item"><a asp-action="Index" asp-controller="Course">All Courses</a></li>
-                                    <li class="sub-menu-item"><a href="course-details.html">My courses</a></li>
-                                    <li class="sub-menu-item"><a asp-action="Details" asp-controller="Course">Details Course</a></li>
-                                </ul>
+                                <a asp-action="Index" asp-controller="Course" class="js-toggle-sub-menu">courses</a>
+                               
                             </li>
                             <li class="menu-item"><a asp-action="Index" asp-controller="Mylearn">My learning</a></li>
                             <li class="menu-item icon-color-theme"><a href="#"><i class="far fa-heart"></i></a></li>
