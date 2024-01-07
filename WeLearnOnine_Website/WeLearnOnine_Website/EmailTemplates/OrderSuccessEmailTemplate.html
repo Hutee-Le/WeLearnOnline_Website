@@ -44,7 +44,7 @@
             }
 
         .user-info {
-            display: flex;
+
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -59,6 +59,7 @@
             align-items: center;
             width: 100%;
             margin: 5px 0;
+            padding: 0 100px;
         }
 
         .user-info-label,
@@ -80,12 +81,14 @@
 
         .course-list {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
         }
 
         .course-item {
-            width: calc(40%);
+
+            width: calc(50%);
             background-color: #f9f9f9;
             padding: 15px;
             border-radius: 4px;
@@ -93,7 +96,7 @@
             margin-bottom: 20px;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
+            flex-direction: column
         }
 
             .course-item img {
@@ -129,47 +132,35 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <span class="accent">WE</span>LEARN</span>
+                <span class="accent">WE</span>LEARN
             </div>
         </div>
         <div class="content">
-            <h1>Chào mừng bạn đã đăng ký các khóa học của WeLearn</h1>
+            <h1>Bạn đã đăng ký {Status} các khóa học của WeLearn</h1>
             <div class="user-info">
                 <div class="user-info-row">
                     <div class="user-info-label">Học viên:</div>
-                    <div class="user-info-value">Lê Minh Nhựt</div>
+                    <div class="user-info-value">{UserName}</div>
                 </div>
                 <div class="user-info-row">
                     <div class="user-info-label">Email:</div>
-                    <div class="user-info-value">lenhut0929@gmail.com</div>
+                    <div class="user-info-value">{UserEmail}</div>
                 </div>
                 <div class="user-info-row">
                     <div class="user-info-label">Tổng giá trị:</div>
-                    <div class="user-info-value">398,000 VND</div>
+                    <div class="user-info-value">{PriceTotal}đ</div>
                 </div>
                 <div class="user-info-row">
                     <div class="user-info-label">Mã đơn hàng:</div>
-                    <div class="user-info-value">5CCEAA</div>
+                    <div class="user-info-value">{BillCode}</div>
                 </div>
             </div>
             <h2>Khóa học đăng ký</h2>
             <div class="course-list">
-                <div class="course-item">
-                    <img src="https://img-c.udemycdn.com/course/240x135/648826_f0e5_4.jpg" alt="MongoDB" />
-                    <p>Cơ sở dữ liệu MongoDB (NOSQL) kết hợp server ExpressJS NodeJS</p>
-                </div>
-                <div class="course-item">
-                    <img src="https://img-c.udemycdn.com/course/240x135/648826_f0e5_4.jpg" alt="MySQL" />
-                    <p>Khóa học MySQL cơ bản - tìm hiểu các chức năng cơ bản của MySQL</p>
-                </div>
-                <div class="course-item">
-                    <img src="https://img-c.udemycdn.com/course/240x135/648826_f0e5_4.jpg" alt="MySQL" />
-                    <p>Khóa học MySQL cơ bản - tìm hiểu các chức năng cơ bản của MySQL</p>
-                </div>
-
+                {CourseItems}
             </div>
             <div class="button-container">
-                <a href="https://class.nodemy.vn/order/5CCEAA" class="button">Xem đơn hàng</a>
+                <a href="{ConfirmOrder}" class="button">Xem đơn hàng</a>
             </div>
         </div>
         <div class="footer">

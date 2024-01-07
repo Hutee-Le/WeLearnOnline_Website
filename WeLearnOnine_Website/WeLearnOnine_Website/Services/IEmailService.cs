@@ -1,4 +1,7 @@
-﻿namespace WeLearnOnine_Website.Services
+﻿using System.Drawing.Drawing2D;
+using WeLearnOnine_Website.Models;
+
+namespace WeLearnOnine_Website.Services
 {
     public interface IEmailService
     {
@@ -7,5 +10,7 @@
         Task SendPaymentReminderEmailAsync(string toEmail, string userName, string billCode);
 
         Task SendEmailVerificationAsync(string toEmail, string userName, string subject, string verificationLink);
+
+        Task SendOrderStatusEmailAsync(Bill bill, string userName, string orderStatus, List<Course> courses);
     }
 }

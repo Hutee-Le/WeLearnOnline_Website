@@ -89,6 +89,11 @@ namespace WeLearnOnine_Website.Repositories
                     return await imageChild.PutAsync(imageStream);
                 }
             }
+
+        public Models.User GetUserById(int? id)
+        {
+            return _context.Users.FirstOrDefault(p => p.UserId == id);
+        }
     }
 }
 
