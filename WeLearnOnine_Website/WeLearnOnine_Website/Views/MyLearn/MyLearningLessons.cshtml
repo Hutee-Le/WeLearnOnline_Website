@@ -69,6 +69,7 @@
                                 type="button" role="tab" aria-controls="course-reviews" aria-selected="false">
                             Reviews
                         </button>
+                         <a asp-action="Index" asp-controller="MyLearn" class="link">Back My Learning</a>
                     </div>
                 </nav>
                 <!-- course tabs end -->
@@ -80,21 +81,15 @@
                         <div class="course-description box">
                             <h3 class="text-capitalize mb-4">description</h3>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
-                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
-                                cupiditate, iure quod nostrum a?
+                                @Model.Course.ShortDescription
                             </p>
                             <h4>For who is this course designed ?</h4>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
-                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
-                                cupiditate, iure quod nostrum a?
+                                @Model.Course.Required
                             </p>
                             <h4>Why should you take this course ?</h4>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, doloremque quia necessitatibus
-                                cupiditate dolorum magni culpa debitis. Fugit at recusandae porro nobis quos dolores incidunt
-                                cupiditate, iure quod nostrum a?
+                                @Model.Course.Description
                             </p>
                         </div>
                     </div>
@@ -108,11 +103,11 @@
                                 <div class="details-wrap d-flex align-items-center flex-wrap  ">
                                     <div class="left-box me-4">
                                         <div class="img-box">
-                                            <img src="~/img/instructor/1.png" class="rounded-circle" alt="instructor img">
+                                            <img src="@Model.Course.Staff.AvatarUrl" class="rounded-circle" alt="instructor img">
                                         </div>
                                     </div>
                                     <div class="right-box">
-                                        <h4>john doe <span>(web development)</span></h4>
+                                        <h4>@Model.Course.Staff.StaffName <span>web development</span></h4>
                                         <ul>
                                             <li><i class="fas fa-star"></i> 4.5 Rating</li>
                                             <li><i class="fas fa-play-circle"></i> 10 Courses</li>
@@ -122,11 +117,7 @@
                                 </div>
                                 <div class="text">
                                     <p class="mb-0">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quidem commodi
-                                        quos asperiores in voluptas officia, neque rem quisquam soluta enim fugiat dolor, illum tempore
-                                        consequuntur veritatis? Molestias, minus, maiores atque aspernatur laboriosam beatae nobis
-                                        labore corrupti quaerat alias neque reprehenderit repellendus eius pariatur, ratione repellat
-                                        blanditiis temporibus sit nihil?
+                                        @Model.Course.Staff.Desciption
                                     </p>
                                 </div>
                             </div>
@@ -298,7 +289,7 @@
                                             <h4>@c.User.UserName</h4>
                                         }
                                         <div class="stars-rating">
-                                            @foreach (var userCourseRating in ViewBag.CourseRating)
+                                           @*  @foreach (var userCourseRating in ViewBag.CourseRating)
                                             {
                                                 double rating = userCourseRating.Rating;
 
@@ -308,7 +299,8 @@
                                                 }
 
                                                 <br />
-                                            }
+                                            } *@
+                                            <i class="fas fa-star"></i>
                                             <span class="date">@c.Date</span>
                                         </div>
 

@@ -48,15 +48,15 @@
                                             <a asp-action="MyLearningLessons" asp-controller="MyLearn" asp-route-courseid="@c.Course.CourseId" class="link">
                                                 <div class="courses-item-inner">
                                                     <div class="img-box">
-                                                        <img src="~/img/courses/web-development/CSS.png" alt="course img">
+                                                    <img src="@c.Course.ImageCourseUrl" alt="course img">
                                                     </div>
                                                     <h3 class="title">@c.Course.Title</h3>
                                                     <div class="instructor">
-                                                        <img src="~/img/courses/web-development/CSS.png" alt="instructor img">
-                                                        @* <span class="instructor-name">@c.Course.Staff.StaffName</span> *@
+                                                    <img src="@c.Course.Staff.AvatarUrl" alt="instructor img">
+                                                        <span class="instructor-name">@c.Course.Staff.StaffName</span> 
                                                     </div>
                                                     <div class="rating">
-                                                        <span class="average-rating">(4.5)</span>
+                                                        <span class="average-rating">@c.Course.Rating</span>
                                                         <span class="average-stars">
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
@@ -64,7 +64,7 @@
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star-half-alt"></i>
                                                         </span>
-                                                        <span class="reviews">(230)</span>
+                                                    <span class="reviews">@c.Course.Comments.Count</span>
                                                     </div>
                                                     @* @if (item.Course.DiscountPrice.HasValue)
                                             {
@@ -120,12 +120,12 @@
                                         <a asp-action="MyLearningLessons" asp-controller="MyLearn" asp-route-courseid="@item.CourseId" class="link">
                                             <div class="courses-item-inner">
                                                 <div class="img-box">
-                                                    <img src="~/img/courses/web-development/CSS.png" alt="course img">
+                                                    <img src="@item.Course.ImageCourseUrl" alt="course img">
                                                     <i class="bi bi-heart-fill heart-icon"></i>
                                                 </div>
                                                 <h3 class="title">@item.Course.Title</h3>
                                                 <div class="instructor">
-                                                    <img src="~/img/courses/web-development/CSS.png" alt="instructor img">
+                                                    <img src="@item.Course.Staff.AvatarUrl" alt="instructor img">
                                                     <span class="instructor-name">@item.Course.Staff.StaffName</span>
                                                 </div>
                                                 <div class="rating">
