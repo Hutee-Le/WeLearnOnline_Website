@@ -2,6 +2,7 @@
 using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using WeLearnOnine_Website.Models;
 
@@ -80,6 +81,64 @@ namespace WeLearnOnine_Website.Services
             }
         }
 
+        public async Task SendOrderStatusEmailAsync(Bill bill, string userName, string orderStatus, List<Course> courses)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(_mailSettings.SenderName, _mailSettings.SenderEmail));
+            message.To.Add(new MailboxAddress("", bill.Email));
+            var subject = $"Thông báo đơn hàng {bill.BillCode}";
+
+            message.Subject = subject;
+
+            var bodyBuilder = new BodyBuilder();
+            var emailBody = File.ReadAllText("EmailTemplates/OrderSuccessEmailTemplate.html");
+            emailBody = emailBody.Replace("{UserName}", userName);
+            
+            emailBody = emailBody.Replace("{UserEmail}", bill.Email);
+            emailBody = emailBody.Replace("{BillCode}", bill.BillCode);
+            emailBody = emailBody.Replace("{Status}", orderStatus); 
+            emailBody = emailBody.Replace("{PriceTotal}", bill.Total.ToString("#,##0"));
+
+            var courseItemsHtml = "";
+            foreach (var course in courses)
+            {
+                var courseItemHtml = $@"
+                <div class='course-item'>
+                    <img src='{course.ImageCourseUrl}' alt='{course.Title}' />
+                    <p>{course.Title}</p>
+                </div>";
+
+                courseItemsHtml += courseItemHtml;
+            }
+            emailBody = emailBody.Replace("{CourseItems}", courseItemsHtml);
+
+            var confirmOrder = "http://localhost:5043/ShoppingCart/PaymentConfirmation?billCode=" + bill.BillCode;
+            emailBody = emailBody.Replace("{ConfirmOrder}", courseItemsHtml);
+
+            bodyBuilder.HtmlBody = emailBody;
+            message.Body = bodyBuilder.ToMessageBody();
+
+            using (var client = new SmtpClient())
+            {
+                try
+                {
+                    await client.ConnectAsync(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                    await client.AuthenticateAsync(_mailSettings.UserName, _mailSettings.Password);
+                    await client.SendAsync(message);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ khi gửi email thất bại
+                    throw ex;
+                }
+                finally
+                {
+                    await client.DisconnectAsync(true);
+                    client.Dispose();
+                }
+            }
+        }
+       
         public async Task SendPaymentReminderEmailAsync(string toEmail, string userName, string billCode)
         {
             var message = new MimeMessage();
@@ -92,7 +151,7 @@ namespace WeLearnOnine_Website.Services
             var bodyBuilder = new BodyBuilder();
 
             var emailBody = File.ReadAllText("EmailTemplates/ConfirmOrderEmailTemplate.html");
-            var confirmOrderLink = "https://Welearn.bsite.net/ShoppingCart/PaymentConfirmation?billCode=" + billCode;
+            var confirmOrderLink = "http://localhost:5043/ShoppingCart/PaymentConfirmation?billCode=" + billCode;
             emailBody = emailBody.Replace("{UserName}", userName);
             emailBody = emailBody.Replace("{BillCode}", billCode);
             emailBody = emailBody.Replace("{ConfirmOrderLink}", confirmOrderLink);

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Drawing2D;
 using System.Security.Claims;
 using System.Text.Json;
 using WeLearnOnine_Website.Models;
@@ -292,9 +293,12 @@ namespace WeLearnOnine_Website.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdatePaymentStatus([FromBody] MoMoResponse ipnResponse)
+        public async Task<IActionResult> UpdatePaymentStatusAsync([FromBody] MoMoResponse ipnResponse)
         {
             var bill = _billRepository.FindBillByBillCode(ipnResponse.orderId);
+            var user = _userRepository.GetUserById(bill.UserId);
+    
+            var orderStatus = "";
             if (bill == null)
             {
                 return NotFound("Bill not found.");
@@ -304,15 +308,21 @@ namespace WeLearnOnine_Website.Controllers
             {
                 bill.Status = "Successful";
                 bill.PayType = ipnResponse.payType;
+                orderStatus = "thành công";
             }
             else
             {
                 bill.Status = "Fail";
                bill.PayType = ipnResponse.payType;
+                orderStatus = "không thành công";
             }
 
             // Cập nhật thông tin thanh toán vào cơ sở dữ liệu
             _billRepository.UpdateBill(bill);
+
+            var courses = bill.BillDetails.Select(bd => bd.Course).ToList();
+
+            await _emailService.SendOrderStatusEmailAsync(bill, user.UserName, orderStatus, courses);
 
             return Ok();
         }
