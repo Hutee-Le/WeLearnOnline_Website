@@ -8,65 +8,76 @@
 
 @if (Model != null)
 {
-    @foreach (var p in Model)
-    {
-        <div class="courese-wrapper col-md-6 col-lg-3">
-            <div class="courses-item">
-                <a asp-action="Details" asp-controller="Course" asp-route-id="@p.CourseId">
+    <section class="courses-section section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="section-title text-center">
+                        <h2 class="title">All courses</h2>
+                        <p class="sub-title">Search results are by keyword</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+               
+                @foreach (var p in Model)
+                {
+                    <div class="courese-wrapper col-md-6 col-lg-3">
+                        <div class="courses-item">
+                            <a asp-controller="Course" asp-action="Details" asp-route-id="@p.CourseId" class="link">
 
 
-                    <div class="courses-item-inner">
+                                <div class="courses-item-inner">
 
-                        <div class="img-box">
-                            <img src="~/img/courses/web-development/web3.jpg" alt="course img">
+                                    <div class="img-box">
+                                        <img src="@p.ImageCourseUrl" alt="course img">
+                                    </div>
+                                    <h3 class="title">@p.Title</h3>
+                                    <div class="instructor">
+                                        <img src="@p.Staff.AvatarUrl" alt="instructor img">
+                                        <span class="instructor-name">@p.Staff.StaffName</span>
+                                    </div>
+                                    <div class="rating">
+                                        <span class="average-rating">@p.Rating</span>
+                                        <span class="average-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </span>
+                                        <span class="reviews">(1.050)</span>
+                                    </div>
+                                    @if (p.DiscountPrice > 0)
+                                    {
+                                        <div class="price-discount d-flex align-items-center">
+                                            @p.Price.ToString("#,##0") đ
+                                        </div>
+                                        <div class="price d-flex align-items-center">
+                                            <p>@String.Format("{0:#,##0}", p.DiscountPrice) đ</p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="price d-flex align-items-center">
+                                            @p.Price.ToString("#,##0") đ
+                                        </div>
+                                    }
+
+
+                                </div>
+                            </a>
+
                         </div>
-                        <h3 class="title">@p.Title</h3>
-                        <div class="instructor">
-                            <img src="~/img/instructor/1.png" alt="instructor img">
-                            <span class="instructor-name"></span>
-                        </div>
-                        <div class="rating">
-                            <span class="average-rating">@p.Rating</span>
-                            <span class="average-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </span>
-                            <span class="reviews">(1.050)</span>
-                        </div>
-                        @if (p.DiscountPrice > 0)
-                        {
-                            <div class="price-discount d-flex align-items-center">
-                                <span>&#8363;</span>
-                                @p.Price.ToString("N0")
-                            </div>
-                            <div class="price d-flex align-items-center">
-                                <span>&#8363;</span>
-                                <p>Price: @p.DiscountPrice.ToString()</p>
-
-
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="price d-flex align-items-center">
-                                <span>&#8363;</span>
-                                @p.Price.ToString("N0")
-
-                            </div>
-                        }
-
 
                     </div>
-                </a>
+                    <!-- courses item end -->
+                }
 
             </div>
-
+           
         </div>
-        <!-- courses item end -->
-    }
+    </section>
 
 }
 else
