@@ -28,7 +28,14 @@
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     data-bs-target="#panelsStayOpen-collapse-@counter" aria-expanded="true"
                     aria-controls="panelsStayOpen-collapse-@counter">
-                @(item.BillDetailId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString()) - Đã kích hoạt
+                    @(item.BillDetailId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString()) - @if(items.Status == "Successful")
+                    {
+                        <text>Đã kích hoạt</text>
+                    }
+                    else
+                    {
+                        <text>Chưa kích hoạt</text>
+                    }
             </button>
         </h2>
         <div id="panelsStayOpen-collapse-@counter" class="accordion-collapse collapse show"
