@@ -80,15 +80,15 @@ namespace WeLearnOnine_Website.Controllers
             {
                 // var userId = 4;
                 int userId = await _helper.GetUserId(claimsPrincipal);
-                var bill = _billRepository.GetPendingBillByUserId(userId);
-                if (bill.Status == "Payment Successful")
-                {
-                    return View("DetailBillSuccess"); // Hiển thị Details Bill khi có trạng thái "Payment Successful"
-                }
+                List<Bill> bill = _billRepository.GetProcessingOrSuccessfulBill(userId);
+                var user = _userRepository.GetById(userId);
 
-                var viewModel = new ShoppingCartViewModel
+                var viewModel = new PurchaseHistoryViewModel
                 {
-                    Bill = bill
+                    Bill = bill,
+                    UserEmail = user.Email,
+                    UserName = user.UserName,
+                    PhoneNumber = user.PhoneNumber
                 };
 
             return View(viewModel);

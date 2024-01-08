@@ -192,5 +192,15 @@ namespace WeLearnOnine_Website.Repositories
             }
             return false;
         }
+
+        public List<Bill> GetProcessingOrSuccessfulBill(int userId)
+        {
+            return _context.Bills
+                .Include(b => b.BillDetails)
+                .ThenInclude(bd => bd.Course)
+                .ThenInclude(c => c.Level)
+                .Where(b => b.UserId == userId &&( b.Status == "Processing" || b.Status == "Successful"))
+                .ToList();
+        }
     }
 }

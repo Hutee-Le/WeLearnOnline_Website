@@ -1,4 +1,4 @@
-﻿@model WeLearnOnine_Website.ViewModels.ShoppingCartViewModel
+﻿@model WeLearnOnine_Website.ViewModels.PurchaseHistoryViewModel
 @{
     ViewData["Title"] = "Purchase History";
 }
@@ -20,8 +20,9 @@
     int counter = 1;
 }
 
-@foreach (var item in Model.Bill.BillDetails)
+@foreach (var items in Model.Bill)
 {
+    @foreach(var item in items.BillDetails){
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-heading-@counter">
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -38,7 +39,7 @@
                         <div class="ant-col ant-col-xs-24 ant-col-md-24 ant-col-lg-24"
                              style="padding-left: 12px; padding-right: 12px;">
                             <p>code: @(item.BillDetailId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</p>
-                            <p>Account: Ngoc Quoc Nguyen - ngocquocnguyen2002@gmail.com</p>
+                                <p>Account: @Model.UserName - @Model.UserEmail</p>
                             <p>Combo</p>
                             <p>Courses:</p>
                             <ul>
@@ -59,13 +60,13 @@
                                     </span>
                                 </li>
                             </ul>
-                            <p class="mt-2">Contact: quốc - 0949272244</p>
+                            <p class="mt-2">Contact: @Model.UserName @* - @Model.PhoneNumber *@</p>
                             <p>Total Ticket: 6</p>
 
                             <p>Total Price: @item.Price.ToString("#,##0")đ</p>
                         </div>
                         <div class="btn-showDetail" style="padding-left: 12px; padding-right: 12px;">
-                            <a class="view-detail-history-payment" asp-action="PurchaseHistory" asp-controller="ShoppingCart">Xem chi tiết đơn hàng</a>
+                            <a class="view-detail-history-payment" asp-action="PaymentConfirmation" asp-controller="ShoppingCart" asp-route-billCode="@items.BillCode">Xem chi tiết đơn hàng</a>
                         </div>
                     </div>
                 </div>
@@ -73,4 +74,5 @@
         </div>
     </div>
     counter++;
+    }
 }
