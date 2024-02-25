@@ -8,6 +8,7 @@ using WeLearnOnine_Website.Repositories;
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         private IRoleRepository _roleRepository;
@@ -20,7 +21,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         //View All Table Staff
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
             var roles = _roleRepository.GetAll().ToList();
@@ -52,7 +53,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult CreateRole()
         {
             return View("CreateRole", new AspNetRole());

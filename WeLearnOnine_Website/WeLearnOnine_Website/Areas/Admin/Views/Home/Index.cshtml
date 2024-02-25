@@ -1,224 +1,315 @@
-﻿@model WeLearnOnine_Website.ViewModels.DashboardViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model WeLearnOnine_Website.ViewModels.DashboardViewModel
 
 @{
     ViewData["Title"] = "ListCourse";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-fluid flex-grow-1 container-p-y">
         <!-- Layout Demo -->
         <div class="container-fuild">
-            <div class="row">
+            @if (SignInManager.Context.User.IsInRole("Admin"))
+            {
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="row justify-content-between">
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <div class="card mb-lg-0 mb-4">
+                                    <div class="card-body">
+                                        <div class="card-title row">
+                                            <div class="col-4 d-flex align-items-center justify-content-center">
+                                                <img src="~/LayoutAdmin/assets/img/icons/unicons/online-education.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                            </div>
+                                            <div class="left-group col-8">
+                                                <span class="d-block mb-1">Courses</span>
+                                                <h3 class="card-title text-nowrap mb-2 counterSum" data-goal="@Model.courses.Count()">0 </h3>
+                                                <small class="text-danger fw-medium"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <div class="card mb-lg-0 mb-4">
+                                    <div class="card-body">
+                                        <div class="card-title row">
+                                            <div class="col-4 d-flex align-items-center justify-content-center">
+                                                <img src="~/LayoutAdmin/assets/img/icons/unicons/video-content.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                            </div>
+                                            <div class="left-group col-8">
+                                                <span class="fw-medium d-block mb-1">Lessons</span>
+                                                <h3 class="card-title mb-2 counterSum" data-goal="@Model.lessons.Count()">0</h3>
+                                                <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <div class="card mb-lg-0 mb-4">
+                                    <div class="card-body">
+                                        <div class="card-title row">
+                                            <div class="col-4 d-flex align-items-center justify-content-center">
+                                                <img src="~/LayoutAdmin/assets/img/icons/unicons/team.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                            </div>
+                                            <div class="left-group col-8">
+                                                <span class="fw-medium d-block mb-1">Staffs</span>
+                                                <h3 class="card-title mb-2 counterSum" data-goal="@Model.staffs.Count()">0</h3>
+                                                <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.60%</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8 mb-4 order-0">
+                        <div class="card">
+                            <div class="d-flex row align-items-center">
+                                <div class="col-sm-7">
+                                    <div class="card-body row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/bill.png" alt="Credit Card" class="rounded" width="70" height="70">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <span class="fw-medium d-block mb-1">Bills</span>
+                                                    <h3 class="card-title mb-2 counterSum" data-goal="@Model.bills.Count()">0</h3>
+                                                </div>
+
+                                                <div>
+                                                    <span class="fw-medium d-block mb-1">Invoice paid</span>
+                                                    <h3 class="card-title mb-2 text-success counterSum" data-goal="@ViewBag.billsQtySuccess">0</h3>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <span>
+                                                    Total amount paid:
+                                                    <p class="text-success fw-bolder fs-5 counterSumDecimal" data-goalDel="@ViewBag.TotalPrice.ToString("#,##0")">0 đ</p>
+                                                </span>
+
+                                                <script>
+                                                    var counters = document.querySelectorAll('.counterSumDecimal');
+
+                                                    counters.forEach(function (counter) {
+                                                        var goal = parseInt(counter.getAttribute('data-goalDel').replace(/,/g, '')); // Loại bỏ dấu phẩy khi chuyển đổi từ chuỗi sang số
+                                                        var count = 0;
+
+                                                        var updateCounter = function () {
+                                                            counter.innerHTML = numberWithCommas(Math.floor(count)) + '  đ'; // Gọi hàm numberWithCommas để thêm dấu phẩy
+                                                            count += goal / 300; // Thay đổi tốc độ tăng giảm tùy ý
+                                                            if (count < goal) {
+                                                                requestAnimationFrame(updateCounter);
+                                                            } else {
+                                                                counter.innerHTML = numberWithCommas(goal) + ' đ'; // Gọi hàm numberWithCommas để thêm dấu phẩy
+                                                            }
+                                                        };
+
+                                                        // Hàm thêm dấu phẩy vào số
+                                                        function numberWithCommas(x) {
+                                                            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                                                        }
+
+                                                        updateCounter();
+                                                    });
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 text-center text-sm-left">
+                                    <div class="card-body pb-0 px-0 px-md-4">
+                                        <img src="~/LayoutAdmin/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header d-flex align-items-center justify-content-between">
+                                <h5 class="card-title m-0 me-2">Transactions</h5>
+                                <div class="dropdown">
+                                    <button class="btn p-0" type="button" id="transactionID" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+                                        <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="p-0 m-0">
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/paypal.png" alt="User" class="rounded">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <small class="text-muted d-block mb-1">Paypal</small>
+                                                <h6 class="mb-0">Send money</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">+82.6</h6>
+                                                <span class="text-muted">USD</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <small class="text-muted d-block mb-1">Wallet</small>
+                                                <h6 class="mb-0">Mac'D</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">+270.69</h6>
+                                                <span class="text-muted">USD</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/chart.png" alt="User" class="rounded">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <small class="text-muted d-block mb-1">Transfer</small>
+                                                <h6 class="mb-0">Refund</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">+637.91</h6>
+                                                <span class="text-muted">USD</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/cc-success.png" alt="User" class="rounded">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <small class="text-muted d-block mb-1">Credit Card</small>
+                                                <h6 class="mb-0">Ordered Food</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">-838.71</h6>
+                                                <span class="text-muted">USD</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <small class="text-muted d-block mb-1">Wallet</small>
+                                                <h6 class="mb-0">Starbucks</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">+203.33</h6>
+                                                <span class="text-muted">USD</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded">
+                                        </div>
+                                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <small class="text-muted d-block mb-1">Mastercard</small>
+                                                <h6 class="mb-0">Ordered Food</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">-92.45</h6>
+                                                <span class="text-muted">USD</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (SignInManager.Context.User.IsInRole("Instructor") || SignInManager.Context.User.IsInRole("Training"))
+            {
                 <div class="col-12 mb-4">
-                    <div class="row justify-content-between">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="card mb-lg-0 mb-4">
                                 <div class="card-body">
                                     <div class="card-title row">
                                         <div class="col-4 d-flex align-items-center justify-content-center">
-                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/online-education.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                            <img src="/LayoutAdmin/assets/img/icons/unicons/online-education.png" alt="Credit Card" class="rounded" width="60" height="60">
                                         </div>
                                         <div class="left-group col-8">
                                             <span class="d-block mb-1">Courses</span>
-                                            <h3 class="card-title text-nowrap mb-2">@Model.courses.Count()</h3>
+                                            <h3 class="card-title text-nowrap mb-2 counterSum" data-goal="@Model.courses.Count()">0</h3>
                                             <small class="text-danger fw-medium"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                             <div class="card mb-lg-0 mb-4">
                                 <div class="card-body">
                                     <div class="card-title row">
                                         <div class="col-4 d-flex align-items-center justify-content-center">
-                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/video-content.png" alt="Credit Card" class="rounded" width="60" height="60">
+                                            <img src="/LayoutAdmin/assets/img/icons/unicons/video-content.png" alt="Credit Card" class="rounded" width="60" height="60">
                                         </div>
                                         <div class="left-group col-8">
                                             <span class="fw-medium d-block mb-1">Lessons</span>
-                                            <h3 class="card-title mb-2">@Model.lessons.Count()</h3>
+                                            <h3 class="card-title mb-2 counterSum" data-goal="@Model.lessons.Count()">0</h3>
                                             <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card mb-lg-0 mb-4">
-                                <div class="card-body">
-                                    <div class="card-title row">
-                                        <div class="col-4 d-flex align-items-center justify-content-center">
-                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/team.png" alt="Credit Card" class="rounded" width="60" height="60">
-                                        </div>
-                                        <div class="left-group col-8">
-                                            <span class="fw-medium d-block mb-1">Staffs</span>
-                                            <h3 class="card-title mb-2">@Model.staffs.Count()</h3>
-                                            <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.60%</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <div class="card mb-lg-0 mb-4">
-                                <div class="card-body">
-                                    <div class="card-title row">
-                                        <div class="col-4 d-flex align-items-center justify-content-center">
-                                            <img src="~/LayoutAdmin/assets/img/icons/unicons/bill.png" alt="Credit Card" class="rounded" width="60" height="60">
-                                        </div>
-                                        <div class="left-group col-8">
-                                            <span class="fw-medium d-block mb-1">Bills</span>
-                                            <h3 class="card-title mb-2">@Model.bills.Count()</h3>
-                                            <span>
-                                                Total: 
-                                                <small class="text-success fw-medium fs-6">@ViewBag.TotalPrice.ToString("#,##0") đ</small>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-8 mb-4 order-0">
-                    <div class="card">
-                        <div class="d-flex align-items-end row">
-                            <div class="col-sm-7">
-                                <div class="card-body">
-                                    <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                                    <p class="mb-4">
-                                        You have done <span class="fw-medium">72%</span> more sales today. Check your new badge in
-                                        your profile.
-                                    </p>
-
-                                    <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                                </div>
-                            </div>
-                            <div class="col-sm-5 text-center text-sm-left">
-                                <div class="card-body pb-0 px-0 px-md-4">
-                                    <img src="~/LayoutAdmin/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="card-title m-0 me-2">Transactions</h5>
-                            <div class="dropdown">
-                                <button class="btn p-0" type="button" id="transactionID" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <ul class="p-0 m-0">
-                                <li class="d-flex mb-4 pb-1">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="~/LayoutAdmin/assets/img/icons/unicons/paypal.png" alt="User" class="rounded">
-                                    </div>
-                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                        <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Paypal</small>
-                                            <h6 class="mb-0">Send money</h6>
-                                        </div>
-                                        <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">+82.6</h6>
-                                            <span class="text-muted">USD</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="~/LayoutAdmin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded">
-                                    </div>
-                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                        <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Wallet</small>
-                                            <h6 class="mb-0">Mac'D</h6>
-                                        </div>
-                                        <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">+270.69</h6>
-                                            <span class="text-muted">USD</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="~/LayoutAdmin/assets/img/icons/unicons/chart.png" alt="User" class="rounded">
-                                    </div>
-                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                        <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Transfer</small>
-                                            <h6 class="mb-0">Refund</h6>
-                                        </div>
-                                        <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">+637.91</h6>
-                                            <span class="text-muted">USD</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="~/LayoutAdmin/assets/img/icons/unicons/cc-success.png" alt="User" class="rounded">
-                                    </div>
-                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                        <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Credit Card</small>
-                                            <h6 class="mb-0">Ordered Food</h6>
-                                        </div>
-                                        <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">-838.71</h6>
-                                            <span class="text-muted">USD</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="~/LayoutAdmin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded">
-                                    </div>
-                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                        <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Wallet</small>
-                                            <h6 class="mb-0">Starbucks</h6>
-                                        </div>
-                                        <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">+203.33</h6>
-                                            <span class="text-muted">USD</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="~/LayoutAdmin/assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded">
-                                    </div>
-                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                        <div class="me-2">
-                                            <small class="text-muted d-block mb-1">Mastercard</small>
-                                            <h6 class="mb-0">Ordered Food</h6>
-                                        </div>
-                                        <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">-92.45</h6>
-                                            <span class="text-muted">USD</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <!--/ Layout Demo -->
     </div>
 </div>
+
+<script>
+    var counters = document.querySelectorAll('.counterSum');
+
+    counters.forEach(function (counter) {
+        var goal = parseInt(counter.getAttribute('data-goal'));
+        var count = 0;
+
+        var updateCounter = function () {
+            counter.innerHTML = Math.floor(count);
+            count += goal / 300; // Thay đổi tốc độ tăng giảm tùy ý
+            if (count < goal) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.innerHTML = goal;
+            }
+        };
+
+        updateCounter();
+    });
+</script>

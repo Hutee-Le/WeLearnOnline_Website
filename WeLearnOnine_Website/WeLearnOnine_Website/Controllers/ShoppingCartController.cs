@@ -73,28 +73,28 @@ namespace WeLearnOnine_Website.Controllers
             
         }
 
-        public async Task<IActionResult> PurchaseHistoryAsync()
-        {
-            var claimsPrincipal = HttpContext.User;
-            if (User.Identity.IsAuthenticated)
-            {
-                // var userId = 4;
-                int userId = await _helper.GetUserId(claimsPrincipal);
-                List<Bill> bill = _billRepository.GetProcessingOrSuccessfulBill(userId);
-                var user = _userRepository.GetById(userId);
+        //public async Task<IActionResult> PurchaseHistoryAsync()
+        //{
+        //    var claimsPrincipal = HttpContext.User;
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        // var userId = 4;
+        //        int userId = await _helper.GetUserId(claimsPrincipal);
+        //        List<Bill> bill = _billRepository.GetProcessingOrSuccessfulBill(userId);
+        //        var user = _userRepository.GetById(userId);
 
-                var viewModel = new PurchaseHistoryViewModel
-                {
-                    Bill = bill,
-                    UserEmail = user.Email,
-                    UserName = user.UserName,
-                    PhoneNumber = user.PhoneNumber
-                };
+        //        var viewModel = new PurchaseHistoryViewModel
+        //        {
+        //            Bill = bill,
+        //            UserEmail = user.Email,
+        //            UserName = user.UserName,
+        //            PhoneNumber = user.PhoneNumber
+        //        };
 
-            return View(viewModel);
-            }
-            return RedirectToAction("Login", "User");
-        }
+        //    return View(viewModel);
+        //    }
+        //    return RedirectToAction("Login", "User");
+        //}
 
         [HttpPost]
         public async Task<IActionResult> AddToCartAsync(int courseId)

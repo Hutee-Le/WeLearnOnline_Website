@@ -17,17 +17,68 @@ namespace WeLearnOnine_Website.Repositories
             _configuration = configuration;
         }
 
-        public List<Course> GetCoursesByCategoryId(int categoryId)
-        {
-            var courses = _ctx.Courses
-            .Where(c => c.CategoriesCourses.Any(cc => cc.CategoriesId == categoryId))
-            .Include(c => c.Staff)
-            .Include(c => c.Level)
-            .Include(c => c.Lessons)
-            .ToList();
+        //public List<Course> GetCoursesByCategoryId(int categoryId)
+        //{
+        //    var courses = _ctx.Courses
+        //    .Where(c => c.CategoriesCourses.Any(cc => cc.CategoriesId == categoryId))
+        //    .Include(c => c.Staff)
+        //    .Include(c => c.Level)
+        //    .Include(c => c.Lessons)
+        //    .ToList();
 
-            return courses;
+        //    return courses;
+        //}
+
+
+        public List<CourseViewModel> GetCoursesByCategoryId(int categoryId)
+        {
+            var courses = (from b in _ctx.Courses
+                           where b.CategoriesCourses.Any(cc => cc.CategoriesId == categoryId)
+                           join level in _ctx.Levels on b.LevelId equals level.LevelId
+                           join staff in _ctx.Staff on b.StaffId equals staff.StaffId
+                           select new
+                           {
+                               CourseId = b.CourseId,
+                               b.ImageCourseUrl,
+                               b.Title,
+                               b.Price,
+                               b.DiscountPrice,
+                               StaffName = staff.StaffName,
+                               LevelName = level.Name,
+                               // Map other properties as needed
+                           }).ToList();
+
+            var courseViewModels = courses.Select(course => new CourseViewModel
+            {
+                CourseId = course.CourseId,
+                ImageCourseUrl = course.ImageCourseUrl,
+                Title = course.Title,
+                Price = course.Price,
+                DiscountPrice = course.DiscountPrice,
+                StaffName = course.StaffName,
+                LevelName = course.LevelName,
+                // Map other properties as needed
+            }).ToList();
+
+            foreach (var courseViewModel in courseViewModels)
+            {
+                courseViewModel.CategoriesCourses = (from cate_course in _ctx.CategoriesCourses
+                                                     join category in _ctx.Categories on cate_course.CategoriesId equals category.CategoriesId
+                                                     where cate_course.CourseId == courseViewModel.CourseId
+                                                     select new CategoryCourseViewModel
+                                                     {
+                                                         CatCourseId = cate_course.CatCourseId,
+                                                         CategoriesId = category.CategoriesId,
+                                                         CategoryName = category.CategoryName,
+                                                     }).ToList();
+
+                courseViewModel.Lessons = _ctx.Lessons.Where(lesson => lesson.CourseId == courseViewModel.CourseId).ToList();
+            }
+
+            return courseViewModels;
         }
+
+
         public IEnumerable<Course> GetTopCourses(int count)
         {
             return _ctx.Courses.Include(x => x.Level).Include(x => x.Staff).Take(count).ToList();

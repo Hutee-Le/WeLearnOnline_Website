@@ -8,7 +8,6 @@ namespace WeLearnOnine_Website.Repositories
         List<Bill> GetAllBills();
         List<BillViewModel> GetAllBillsWithUser();
         Bill GetPendingBillByUserId(int userId);
-        List<Bill> GetProcessingOrSuccessfulBill(int userId);
         BillViewModel GetBillViewModelById(Guid billId);
         Bill FindBillByBillCode(string billCode);
         Bill GetBillById(Guid billId);

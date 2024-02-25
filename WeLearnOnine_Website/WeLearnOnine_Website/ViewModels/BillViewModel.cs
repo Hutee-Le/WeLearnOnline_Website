@@ -8,7 +8,10 @@ namespace WeLearnOnine_Website.ViewModels
     {
         public Guid BillId { get; set; }
 
+        public string BillCode { get; set; }
         public string UserName { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string Email { get; set; }
         public decimal Total { get; set; }
         public decimal? HistoricalCost { get; set; }
         public decimal? Promotion { get; set; }

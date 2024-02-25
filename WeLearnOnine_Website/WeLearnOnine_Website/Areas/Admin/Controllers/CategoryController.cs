@@ -48,13 +48,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
             return View("Index", paginatedCourses);
         }
-        //public IActionResult Index()
-        //{
-        //    var categories = _categoryRepository.GetAllCategories();
-
-        //    return View("Index", categories);
-        //}
-
+       
         // Create 
         [HttpPost]
         public IActionResult SaveCategory(Category category)

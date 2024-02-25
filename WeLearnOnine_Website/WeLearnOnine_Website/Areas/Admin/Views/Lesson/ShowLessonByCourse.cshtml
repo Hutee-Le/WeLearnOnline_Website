@@ -1,21 +1,14 @@
 ﻿@model IEnumerable<WeLearnOnine_Website.Models.Lesson>
 
-        <!-- Dropdown List for Categories -->
-        <div class="form-group">
-            <label class="d-flex align-items-center me-3">
-                Category:
-                @*  <select id="categorySelect" asp-for="SelectedCategoryId">
-                <option value="0">-- Chọn danh mục --</option>
-                @foreach (var category in Model.Categories)
-                {
-                <option value="@category.CategoriesId">@category.CategoryName</option>
-                }
-                </select> *@
-
-                <form asp-action="ShowLessonByCourse" method="get" class="form-inline">
-                    <select asp-items="ViewBag.CourseId" name="CourseId" onchange="forms[0].submit()"></select>
-                </form>
-            </label>
-        </div>
+<div class="form-group">
+    <label class="d-flex align-items-center">
+        Course:
+        <form asp-controller="Lesson" asp-action="ShowLessonByCourse" method="get" class="form-inline">
+            <select asp-items="ViewBag.CourseId" name="CourseId" onchange="this.form.submit()">
+                <option value="">---------- Course ----------</option>
+            </select>
+        </form>
+    </label>
+</div>
 
    

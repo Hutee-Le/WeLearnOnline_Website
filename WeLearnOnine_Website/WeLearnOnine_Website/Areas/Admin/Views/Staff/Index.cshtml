@@ -29,7 +29,7 @@
 }
 
 
-<h4 class="py-3 mb-4"><span class="text-muted fw-light">Staff /</span> Staff Table</h4>
+<h4 class="py-3 mb-4"><span class="text-muted fw-light">Permission /</span> Staff Table</h4>
 
 <div class="card">
     <div class="card-header">
@@ -96,9 +96,9 @@
                         <th>
                             Experience
                         </th>                               
-                        <th>
+                        @* <th>
                             FacebookUrl
-                        </th>
+                        </th> *@
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -138,19 +138,19 @@
                                 <p>@item.Experience</p>
                                 <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
                             </td>
-                            <td class="hidetext">
+                          @*   <td class="hidetext">
                                 <p>@item.FacebookUrl</p>
                                 <button class="expand-button" style="display: none; border: none; width: 20px; height: 20px; background-color: transparent">&#9660;</button>
-                            </td>
+                            </td> *@
                             <td>  
-                                <div class="d-flex align-item mb-2">
-                                    <a class="dropdown-item" asp-action="EditStaff" asp-route-id="@item.StaffId">
+                                <div class="d-flex align-item-center justify-content-center mb-2">
+                                    <a class="" asp-action="EditStaff" asp-route-id="@item.StaffId">
                                         <span class="badge bg-label-info me-1">
                                             <i class="bx bx-edit-alt"></i>
                                         </span>
                                     </a> 
-                                    <a class="dropdown-item ms-1" data-bs-toggle="modal" data-bs-target="#smallModal-@item.StaffId" style="cursor: pointer">
-                                        <span class="badge bg-label-danger">
+                                    <a class="" data-bs-toggle="modal" data-bs-target="#smallModal-@item.StaffId" style="cursor: pointer">
+                                        <span class="badge bg-label-danger ms-1">
                                             <i class="bx bx-trash"></i>
                                         </span>
                                     </a>

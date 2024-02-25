@@ -1,15 +1,14 @@
-﻿@model IEnumerable<WeLearnOnine_Website.Models.Course>
+﻿@model List<WeLearnOnine_Website.ViewModels.CourseViewModel>
 
-<!-- ... (các phần khác của view) -->
-
-<!-- Dropdown List for Categories -->
 <div class="form-group">
     <label class="d-flex align-items-center">
         Category:
-        <form asp-action="ShowCourseByCategory" method="get" class="form-inline">
-            <select asp-items="ViewBag.CategoryId" name="CategoryId" onchange="forms[0].submit()"></select>
+        <form asp-controller="Course" asp-action="ShowCourseByCategory" method="get" class="form-inline">
+            <select asp-items="ViewBag.CategoryId" name="CategoryId" onchange="this.form.submit()">
+                <option value="">---------- Category ----------</option>
+            </select>
         </form>
     </label>
 </div>
 
-<!-- ... (các phần khác của view) -->
+<!-- Your existing course list rendering code here -->

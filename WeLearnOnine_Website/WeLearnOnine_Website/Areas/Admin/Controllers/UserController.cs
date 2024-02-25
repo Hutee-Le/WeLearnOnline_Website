@@ -8,6 +8,7 @@ using WeLearnOnine_Website.Repositories;
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private IUserRepository _userRepository;
@@ -20,7 +21,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
         }
 
         //View All Table Staff
-        [Authorize]
+        //[Authorize]
         public IActionResult Index(int? page)
         {
             int pageSize = 4; // Số lượng mục trên mỗi trang
