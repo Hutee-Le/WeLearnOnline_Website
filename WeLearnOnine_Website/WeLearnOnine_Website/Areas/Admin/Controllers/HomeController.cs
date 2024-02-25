@@ -9,7 +9,7 @@ using WeLearnOnine_Website.ViewModels;
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize(Roles = "Admin, Instructor, Training")]
     public class HomeController : Controller
     {
         private DerekmodeWeLearnSystemContext ctx;
@@ -29,7 +29,6 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             _billRepository = billRepository;
             ctx = context;
         }
-        [Authorize(Roles = "Admin, Instructor, Training")]
         public IActionResult Index()
         {
             // Kiểm tra xem người dùng đã đăng nhập chưa
@@ -40,10 +39,12 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             var bill = _billRepository.GetAllBills();
 
             // Tính tổng giá trị các mục trong Bill
-            decimal totalPrice = ctx.Bills.Sum(item => item.Total);
+            decimal totalPrice = ctx.Bills.Where(x => x.Status == "Successful").Sum(item => item.Total);
+            int billsQtySuccess = ctx.Bills.Where(x => x.Status == "Successful").Count();
 
             // Lưu tổng giá trị vào ViewBag để truyền sang View
             ViewBag.TotalPrice = totalPrice;
+            ViewBag.billsQtySuccess = billsQtySuccess;
 
             var course = _courseRepository.GetAllCourses();
             var lesson = _lessonRepository.GetAllBaiHoc();

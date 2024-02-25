@@ -32,8 +32,15 @@
 <p>@TempData["Message"]</p>
 <div class="card"> 
     <div class="card-header">
-        <div class="d-flex justify-content-around align-items-center">
-            <h5 class="card-title mb-0">DataTable Category</h5>
+        <div class="d-flex justify-content-between align-items-center">
+          @*   <h5 class="card-title mb-0">DataTable Category</h5> *@
+            <form asp-controller="Bill" asp-action="Search" method="post">
+                <label class="d-flex align-items-center">
+                    Search:
+                    <input type="search" class="form-control ms-2" placeholder="Enter keyword" name="keyword">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </label>
+            </form>
                 <h6 class="text-muted mt-2 d-flex justify-content-center">Payment Status</h6>
             <div class="dropdown">
                 <button class="dropdown-btn badge bg-label-primary align-items-center"><i class="bx bx-export me-sm-1"></i> Export <i class="bi bi-chevron-down fs-6"></i></button>
@@ -91,9 +98,9 @@
                                     <th>
                                         Bill Date
                                     </th>
-                                    <th>
+                                   @*  <th>
                                         Due Date
-                                    </th>
+                                    </th> *@
                                      <th>
                                         Payment
                                     </th>
@@ -138,10 +145,10 @@
                                     }
                                 }*@
 
-                                        <td>@(item.BillId.ToString().Length >= 8 ? item.BillId.ToString().Substring(0, 8) : item.BillId.ToString())</td>
+                                        <td>@(item.BillCode.ToString().Length >= 8 ? item.BillCode.ToString().Substring(0, 8) : item.BillCode.ToString())</td>
                                         <td>@item.UserName</td>
                                         <td>@item.CreateAt</td>
-                                        <td>@item.ExpirationDate</td>
+                                       @*  <td>@item.ExpirationDate</td> *@
                                         <td>@item.PaymentMethod</td>
                                         <td>@item.Total.ToString("#,##0")</td>
                                         <td>
@@ -530,6 +537,36 @@
                     </table>
                     </div>
                 </div>
+            <!-- Hiển thị phân trang -->
+            <nav aria-label="..." class="d-flex justify-content-center" style="margin-top: 20px">
+                <ul class="pagination">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    }
+
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                        </li>
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+            <!-- Hiển thị phân trang -->
             </div>
         </div>
     <style>

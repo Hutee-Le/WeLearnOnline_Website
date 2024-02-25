@@ -137,6 +137,58 @@
             <dd class="col-sm-9">@Model.Rating</dd>
         </dl> *@
         <dl class="row mt-2">
+            <dt class="col-sm-3">TimeTotal lessons</dt>
+            @{
+                int totalSeconds = 0;
+            }
+            @foreach (var item_lesson in Model.Lessons)
+            {
+                totalSeconds += item_lesson.Time ?? 0;
+            }
+            <dd class="col-sm-9 time-cell" data-seconds="@totalSeconds"></dd>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const timeCells = document.querySelectorAll('.time-cell');
+
+                    timeCells.forEach(function (cell) {
+                        const totalSeconds = parseInt(cell.dataset.seconds, 10);
+
+                        // Kiểm tra xem có dữ liệu hay không
+                        if (!isNaN(totalSeconds) && totalSeconds !== 0) {
+                            const hours = Math.floor(totalSeconds / 3600);
+                            const remainingSeconds = totalSeconds % 3600;
+                            const minutes = Math.floor(remainingSeconds / 60);
+                            const seconds = remainingSeconds % 60;
+
+                            // Tạo một mảng để lưu trữ các phần của thời gian
+                            const timeParts = [];
+
+                            // Thêm giờ vào mảng nếu giờ khác 0
+                            if (hours > 0) {
+                                timeParts.push(`${hours}h`);
+                            }
+
+                            // Thêm phút vào mảng nếu phút khác 0 hoặc không có giờ
+                            if (minutes > 0 || timeParts.length === 0) {
+                                timeParts.push(`${minutes}m`);
+                            }
+
+                            // Thêm giây vào mảng nếu giây khác 0 hoặc không có giờ và phút
+                            if (seconds > 0 || timeParts.length === 0) {
+                                timeParts.push(`${seconds}s`);
+                            }
+
+                            // Hiển thị giá trị giờ, phút và giây trong ô cell
+                            cell.textContent = timeParts.join(' ');
+                        } else {
+                            // Nếu không có dữ liệu, hiển thị chuỗi trống
+                            cell.textContent = '';
+                        }
+                    });
+                });
+            </script>
+        </dl> 
+        <dl class="row mt-2">
             <dt class="col-sm-3">Required</dt>
             <dd class="col-sm-9">@Model.Required</dd>
         </dl>

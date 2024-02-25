@@ -17,6 +17,7 @@ using WeLearnOnine_Website.ViewModels;
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize(Roles = "Admin, Instructor, Training")]
 
     public class CourseController : Controller
     {
@@ -45,13 +46,11 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             this.ctx = ctx;
         }
 
-        [Authorize]
         public IActionResult ShowCourseByCategory(int? CategoryId)
         {
             CategoryId = CategoryId ?? 0;
 
             var Categories = _categoryRepository.GetAllCategories();
-
             Categories.Insert(0, new Category { CategoriesId = 0, CategoryName = "---------- Category ----------" });
 
             ViewBag.CategoryId = new SelectList(Categories, "CategoriesId", "CategoryName", CategoryId);
@@ -61,7 +60,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             return View("Index", courses);
         }
 
-        [Authorize(Roles = "Admin, Instructor, Training")]
+
         public IActionResult Index(int? page, int? CategoryId)
         {
             int pageSize = 4; // Số lượng mục trên mỗi trang
@@ -72,12 +71,7 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             ViewBag.CurrentPage = pageNumber;
             ViewBag.TotalPages = (int)Math.Ceiling((double)_courseRepository.GetAllCourseWithMany().Count() / pageSize);
 
-            //var viewModel = new CategoryCourseViewModel
-            //{
-            //    Categories = _categoryRepository.GetRootCategories(),
-            //    Courses = paginatedCourses,
-            //    SelectedCategoryId = null
-            //};
+         
 
             CategoryId = CategoryId ?? 0;
 

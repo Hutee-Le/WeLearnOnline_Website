@@ -58,9 +58,10 @@
             <!-- Dropdown List for Categories -->
             <div class="form-group">
                 <label class="d-flex align-items-center">
-                    Category:
-                    <form asp-action="ShowLessonByCourse" method="get" class="form-inline">
-                        <select asp-items="ViewBag.CourseId" name="CourseId" onchange="forms[0].submit()"></select>
+                    Course:
+                    <form asp-controller="Lesson" asp-action="ShowLessonByCourse" method="get" class="form-inline">
+                        <select asp-items="ViewBag.CourseId" name="CourseId" onchange="this.form.submit()">
+                        </select>
                     </form>
                 </label>
             </div>
@@ -114,9 +115,9 @@
                         <th>
                             Lesson 
                         </th>     
-                        <th>
+                        @* <th>
                             Status
-                        </th>
+                        </th> *@
                         <th>
                             Time (mins, s)
                         </th>
@@ -162,7 +163,7 @@
                                 <p class="content">@item.Title</p>
                             </td>
 
-                            <td>@item.Stt</td>
+                            @* <td>@item.Stt</td> *@
                             @* <td>@item.Time</td> *@
                             <!-- Dòng trong file HTML để hiển thị giá trị thời gian -->
                             <td class="time-cell" data-seconds="@item.Time"></td>
@@ -182,14 +183,14 @@
                                 });
                             </script>
                             <td>
-                                <div class="d-flex align-items-center mb-2">
-                                    <a class="dropdown-item" asp-action="EditLesson" asp-route-id="@item.LessonId">
+                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                    <a class="" asp-action="EditLesson" asp-route-id="@item.LessonId">
                                         <span class="badge bg-label-info me-1">
                                             <i class="bx bx-edit-alt"></i>
                                         </span>
-                                    </a> |
-                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#smallModal-@item.LessonId" style="cursor: pointer">
-                                        <span class="badge bg-label-danger">
+                                    </a> 
+                                    <a class="" data-bs-toggle="modal" data-bs-target="#smallModal-@item.LessonId" style="cursor: pointer">
+                                        <span class="badge bg-label-danger ms-1">
                                             <i class="bx bx-trash"></i>
                                         </span>
                                     </a>

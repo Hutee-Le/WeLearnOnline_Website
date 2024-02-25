@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 
 <html lang="en"
       class="light-style layout-menu-fixed layout-wide"
@@ -102,7 +106,16 @@
                                 </g>
                             </svg>
                         </span>
-                        <span class="app-brand-text demo menu-text fw-bold ms-2">Admin Page</span>
+                        @* <span class="app-brand-text demo menu-text fw-bold ms-2">Admin Page</span> *@
+                        @if (SignInManager.Context.User.IsInRole("Instructor") || SignInManager.Context.User.IsInRole("Training"))
+                        {
+                            <span class="app-brand-text demo menu-text fw-bold ms-2">Home Page</span>                           
+                        }
+                        @if (SignInManager.Context.User.IsInRole("Admin"))
+                        {
+                            <span class="app-brand-text demo menu-text fw-bold ms-2">Admin Page</span>
+                        }
+
                     </a>
 
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -120,88 +133,94 @@
                             <div data-i18n="Analytics">Dashboards</div>
                         </a>
                     </li>
+                     @if (SignInManager.Context.User.IsInRole("Admin"))
+                    {
+                        <!--  User -->
+                        <li class="menu-header small text-uppercase">
+                            <span class="menu-header-text">All User </span>
+                        </li>
 
-                    <!--  User -->
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">All User </span>
-                    </li>
+                        <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class='menu-icon tf-icons bx bx-user-circle'></i>
+                                <div data-i18n="Employers Settings">List Account</div>
+                            </a>
+                            <ul class="menu-sub ">
+                                <li class="menu-item">
+                                    <a href="/admin/user" class="menu-link">
+                                        <div data-i18n="Users">All Users</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class='menu-icon tf-icons bx bx-user-circle'></i>
-                            <div data-i18n="Employers Settings">List Account</div>
-                        </a>
-                        <ul class="menu-sub ">
-                            <li class="menu-item">
-                                <a href="/admin/user" class="menu-link">
-                                    <div data-i18n="Users">All Users</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!--  Roles &amp; Permissions -->
-                    <li class="menu-item" style="">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-check-shield"></i>
-                            <div class="text-truncate" data-i18n="Roles &amp; Permissions">Roles &amp; Permissions</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <!--  Roles -->
-                            <li class="menu-item">
-                                <a href="/admin/role" class="menu-link">
-                                    <div class="text-truncate" data-i18n="Roles">Roles</div>
-                                </a>
-                            </li>
-                            <!--  Permissions -->
-                            <li class="menu-item">
-                                <a href="/admin/aspUser" class="menu-link">
-                                    <div class="text-truncate" data-i18n="Permission">Permission</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
+                        <!--  Roles &amp; Permissions -->
+                        <li class="menu-item" style="">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="menu-icon tf-icons bx bx-check-shield"></i>
+                                <div class="text-truncate" data-i18n="Roles &amp; Permissions">Roles &amp; Permissions</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <!--  Roles -->
+                                <li class="menu-item">
+                                    <a href="/admin/role" class="menu-link">
+                                        <div class="text-truncate" data-i18n="Roles">Roles</div>
+                                    </a>
+                                </li>
+                                <!--  Permissions -->
+                                <li class="menu-item">
+                                    <a href="/admin/staff" class="menu-link">
+                                        <div class="text-truncate" data-i18n="Permission">Permission</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
 
                     <!-- Forms & Tables -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">MANAGEMENT</span></li>
                     <!-- Forms -->
-                    <!-- Tables: Courses -->
-                    <li class="menu-item">
+                    <!-- Courses and Lessons for Admin, Instructor, Training -->
+                    @if (SignInManager.Context.User.IsInRole("Admin") || SignInManager.Context.User.IsInRole("Instructor") || SignInManager.Context.User.IsInRole("Training"))
+                    {
+                        <li class="menu-item">
                             <a href="/admin/course" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Courses</div>
-                        </a>
-                    </li>
-                    <!-- Tables: Lessons -->
-                    <li class="menu-item">
-                        <a href="/admin/lesson" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Lessons</div>
-                        </a>
-                    </li>
-                    <!-- Tables: Categories -->
-                    <li class="menu-item">
-                        <a href="/admin/category" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Categories</div>
-                        </a>
-                    </li>
-                    <!-- Tables: Staffs -->
-                    <li class="menu-item">
+                                <i class="menu-icon tf-icons bx bx-table"></i>
+                                <div data-i18n="Tables">Courses</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/admin/lesson" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-table"></i>
+                                <div data-i18n="Tables">Lessons</div>
+                            </a>
+                        </li>
+                    }
+                     @if (SignInManager.Context.User.IsInRole("Admin"))
+                    {
+                        <!-- Tables: Categories -->
+                        <li class="menu-item">
+                            <a href="/admin/category" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-table"></i>
+                                <div data-i18n="Tables">Categories</div>
+                            </a>
+                        </li>
+                        <!-- Tables: Staffs -->
+                        @*  <li class="menu-item">
                         <a href="/admin/staff" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Staffs</div>
                         </a>
-                    </li>
+                    </li> *@
 
-                     <!-- Tables: Bill -->
-                    <li class="menu-item">
-                        <a href="/admin/bill" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Bills</div>
-                        </a>
-                    </li>
+                        <!-- Tables: Bill -->
+                        <li class="menu-item">
+                            <a href="/admin/bill" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-table"></i>
+                                <div data-i18n="Tables">Bills</div>
+                            </a>
+                        </li>
+                    } 
                     <!-- Misc -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
                     <li class="menu-item">
@@ -226,7 +245,7 @@
                             <i class="bx bx-power-off fw-bolder"></i>
                             <div data-i18n="LogOut" class="fw-bolder">
                                 <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                    <button id="logout" type="submit" class="btn text-black-90 fw-bolder fs-6">Logout</button>
+                                    <button id="logout" type="submit" class="btn text-black-90 fw-bolder fs-6" style="outline:none; border: none">Logout</button>
                                 </form>
                             </div>
                         </a>
@@ -248,77 +267,25 @@
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text"
-                                       class="form-control border-0 shadow-none ps-1 ps-sm-2"
-                                       placeholder="Search..."
-                                       aria-label="Search..." />
-                            </div>
-                        </div>
+    
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!-- Place this tag where you want the button to render. -->
-                       
                             <!-- User -->
-                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                            @{
+                                var roles = await UserManager.GetRolesAsync(await SignInManager.UserManager.GetUserAsync(User));
+                                var userRole = roles.FirstOrDefault();
+                            }
+
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown d-flex">
                                     <div class="avatar avatar-online">
                                         <img src="~/LayoutAdmin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="~/LayoutAdmin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <span class="fw-medium d-block">John Doe</span>
-                                                    <small class="text-muted">Admin</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <span class="d-flex align-items-center align-middle">
-                                                <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                                <span class="flex-grow-1 align-middle ms-1">Billing</span>
-                                                <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="javascript:void(0);">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                    <div class="d-flex flex-column ms-3">
+                                        <span class="fw-medium d-block">@UserManager.GetUserName(User)!</span>
+                                        <small class="fw-bolder">@userRole</small>
+                                    </div>
                             </li>
                             <!--/ User -->
                         </ul>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text;
@@ -8,19 +9,24 @@ using WeLearnOnine_Website.Repositories;
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class StaffController : Controller
     {
         private ISkillRepository _staffRepository;
         DerekmodeWeLearnSystemContext ctx;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public StaffController(ISkillRepository staffRepository, DerekmodeWeLearnSystemContext ctx)
+        public StaffController(ISkillRepository staffRepository,
+            DerekmodeWeLearnSystemContext ctx,
+            RoleManager<IdentityRole> roleManager)
         {
             _staffRepository = staffRepository;
             this.ctx = ctx;
+            _roleManager = roleManager;
         }
 
         //View All Table Staff
-        [Authorize]
+        //[Authorize]
         public IActionResult Index(int? page)
         {
             int pageSize = 4; // Số lượng mục trên mỗi trang
@@ -61,12 +67,18 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
-        [Authorize]
+        //[Authorize]
         public IActionResult CreateStaff()
         {
-            ViewBag.Rolelst = new SelectList(new List<string>() { "Admin", "Instructor", "Đào Tạo" });
+            // Lấy danh sách tên các vai trò từ bảng AspNetRole
+            var roles = _roleManager.Roles.Select(r => r.Name).ToList();
+
+            // Truyền danh sách vai trò vào SelectList
+            ViewBag.Rolelst = new SelectList(roles);
+
             return View("CreateStaff", new Staff());
         }
+
 
         // Edit
         [HttpPost]
@@ -100,7 +112,12 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
 
         public IActionResult EditStaff(string id)
         {
-            ViewBag.Rolelst = new SelectList(new List<string>() { "Admin", "Instructor", "Đào Tạo" });
+            //ViewBag.Rolelst = new SelectList(new List<string>() { "Admin", "Instructor", "Đào Tạo" });
+            // Lấy danh sách tên các vai trò từ bảng AspNetRole
+            var roles = _roleManager.Roles.Select(r => r.Name).ToList();
+
+            // Truyền danh sách vai trò vào SelectList
+            ViewBag.Rolelst = new SelectList(roles);
             return View("EditStaff", _staffRepository.FindStaffByID(id));
         }
 

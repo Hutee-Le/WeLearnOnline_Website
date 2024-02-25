@@ -56,7 +56,10 @@ namespace WeLearnOnine_Website.Repositories
                                  select new BillViewModel
                                  {
                                      BillId = b.BillId,
+                                     BillCode = b.BillCode,
+                                     Email = b.Email,
                                      UserName = user.UserName,
+                                     PhoneNumber = user.PhoneNumber,
                                      Total = b.Total,
                                      Promotion = b.Promotion,
                                      HistoricalCost = b.HistoricalCost,
@@ -73,7 +76,9 @@ namespace WeLearnOnine_Website.Repositories
                                                         BillDetailId = detail.BillDetailId,
                                                         CourseId = course.CourseId,
                                                         Title = course.Title,
-                                                        ImageCourseUrl = course.ImageCourseUrl
+                                                        ImageCourseUrl = course.ImageCourseUrl,
+                                                        Price = course.Price,
+                                                        DiscountPrice = course.DiscountPrice,
                                                         // Các thuộc tính khác...
                                                     }).ToList()
                                  })
@@ -110,7 +115,10 @@ namespace WeLearnOnine_Website.Repositories
                             select new BillViewModel
                             {
                                 BillId = bill.BillId,
+                                BillCode = bill.BillCode,
+                                Email = bill.Email,
                                 UserName = user.UserName,
+                                PhoneNumber = user.PhoneNumber,
                                 Total = bill.Total,
                                 Status = bill.Status,
                                 CreateAt = bill.CreateAt.GetValueOrDefault(),
@@ -128,7 +136,9 @@ namespace WeLearnOnine_Website.Repositories
                                                    BillDetailId = detail.BillDetailId,
                                                    CourseId = course.CourseId,
                                                    Title = course.Title,
-                                                   ImageCourseUrl = course.ImageCourseUrl
+                                                   ImageCourseUrl = course.ImageCourseUrl,
+                                                   Price = course.Price,
+                                                   DiscountPrice = course.DiscountPrice,
                                                }).ToList()
                             };
 
@@ -191,16 +201,6 @@ namespace WeLearnOnine_Website.Repositories
                 return true;
             }
             return false;
-        }
-
-        public List<Bill> GetProcessingOrSuccessfulBill(int userId)
-        {
-            return _context.Bills
-                .Include(b => b.BillDetails)
-                .ThenInclude(bd => bd.Course)
-                .ThenInclude(c => c.Level)
-                .Where(b => b.UserId == userId &&( b.Status == "Processing" || b.Status == "Successful"))
-                .ToList();
         }
     }
 }

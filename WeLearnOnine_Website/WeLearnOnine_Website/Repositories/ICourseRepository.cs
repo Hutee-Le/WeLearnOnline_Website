@@ -24,7 +24,8 @@ namespace WeLearnOnine_Website.Models
         List<CourseViewModel> GetAllCourseWithMany();
 
         // Retrieve all courses by category id
-        List<Course> GetCoursesByCategoryId(int categoryId);
+        //List<Course> GetCoursesByCategoryId(int categoryId);
+        List<CourseViewModel> GetCoursesByCategoryId(int categoryId);
 
         List<CourseViewModel> GetAllAvailableCourses();
 

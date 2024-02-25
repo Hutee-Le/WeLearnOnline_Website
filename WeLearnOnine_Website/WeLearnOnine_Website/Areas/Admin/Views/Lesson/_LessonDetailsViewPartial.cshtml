@@ -38,8 +38,8 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4 class="card-title">@Model.Title</h4>
-                            <span class="card-text me-2">STT: <small class="text-muted fs-6">@Model.Stt</small></span>
+                            <h4 class="card-title fw-bolder fs-3">@Model.Title</h4>
+                            @* <span class="card-text me-2">STT: <small class="text-muted fs-6">@Model.Stt</small></span> *@
                         </div>
                     </div>
                 </div>
@@ -57,6 +57,10 @@
         <dl class="row mt-2">
             <dt class="col-sm-3">Type</dt>
             <dd class="col-sm-9"><span class="@typeClass fs-5">@Model.Type.Title</span></dd>
+        </dl>
+        <dl class="row mt-2">
+            <dt class="col-sm-3">Order in playlists</dt>
+            <dd class="col-sm-9"><span>@Model.Stt</span></dd>
         </dl>
         <dl class="row mt-2">
             <dt class="col-sm-3">Time (mins, s)</dt>

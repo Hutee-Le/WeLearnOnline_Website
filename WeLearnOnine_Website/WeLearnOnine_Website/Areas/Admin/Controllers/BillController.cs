@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text;
 using WeLearnOnine_Website.Models;
 using WeLearnOnine_Website.Repositories;
+using WeLearnOnine_Website.ViewModels;
 
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
@@ -13,19 +14,34 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
     {
         private IBillRepository _billRepository;
         private IUserRepository _userRepository;
+        DerekmodeWeLearnSystemContext ctx;
 
-        public BillController(IBillRepository billRepository, IUserRepository userRepository)
+        public BillController(IBillRepository billRepository, IUserRepository userRepository, DerekmodeWeLearnSystemContext ctx)
         {
             _billRepository = billRepository;
             _userRepository = userRepository;
+            this.ctx = ctx;
         }
 
         //View All Table Bill
-        [Authorize]
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    var billsWithUsers = _billRepository.GetAllBillsWithUser();
+        //    return View("Index", billsWithUsers);
+        //}
+
+        public IActionResult Index(int? page)
         {
-            var billsWithUsers = _billRepository.GetAllBillsWithUser();
-            return View("Index", billsWithUsers);
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+
+            var paginatedCourses = _billRepository.GetAllBillsWithUser().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)_billRepository.GetAllBillsWithUser().Count() / pageSize);
+
+
+            return View("Index", paginatedCourses);
         }
 
         // Detail
@@ -75,6 +91,18 @@ namespace WeLearnOnine_Website.Areas.Admin.Controllers
                 TempData["billError"] = $"Error delete bill: {ex.Message}";
             }
             return RedirectToAction("Index");
+        }
+
+
+        // Search
+        [HttpPost]
+        public IActionResult Search(string keyword)
+        {
+            var searchResults = _billRepository.GetAllBillsWithUser()
+                .Where(bill => bill.UserName.Contains(keyword) || bill.BillCode.Contains(keyword))
+                .ToList();
+
+            return View("Index", searchResults);
         }
 
         [HttpGet]

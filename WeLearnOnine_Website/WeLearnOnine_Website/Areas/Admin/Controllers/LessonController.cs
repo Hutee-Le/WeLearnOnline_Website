@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
@@ -8,6 +9,7 @@ using WeLearnOnine_Website.Repositories;
 namespace WeLearnOnine_Website.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize(Roles = "Admin, Instructor, Training")]
     public class LessonController : Controller
     {
         private ICourseRepository _courseRepository;

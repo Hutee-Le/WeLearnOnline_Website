@@ -17,7 +17,7 @@
 }
 <!-- Modal Header -->
 <div class="modal-header">
-    <h3 class="modal-title">Detail</h3>
+    @* <h3 class="modal-title">Detail</h3> *@
     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 
@@ -30,14 +30,12 @@
                     <div class="d-flex justify-content-between">
                         <div class="mb-xl-0 mb-4">
                             <div class="d-flex mb-3 gap-2">
-                                <span class="app-brand-text demo text-body fw-bold">Sneat</span>
+                                <span class="app-brand-text demo text-body fw-bold"><b class="text-uppercase">B</b>ill  <b class="text-uppercase">D</b>etails</span>
                             </div>
-                            <p class="mb-1">Office 149, 450 South Brand Brooklyn</p>
-                            <p class="mb-1">San Diego County, CA 91905, USA</p>
-                            <p class="mb-0">+1 (123) 456 7891, +44 (876) 543 2198</p>
                         </div>
                         <div>
-                            <h4>Invoice #@(Model.BillId.ToString().Length >= 8 ? Model.BillId.ToString().Substring(0, 8) : Model.BillId.ToString())</h4>
+                            @* <h4>Invoice #@(Model.BillId.ToString().Length >= 8 ? Model.BillId.ToString().Substring(0, 8) : Model.BillId.ToString())</h4> *@
+                            <h4>Invoice #@Model.BillCode</h4>
                             <div class="mb-2">
                                 <span class="me-1">Date Issues:</span>
                                 <span class="fw-medium">@Model.CreateAt</span>
@@ -59,8 +57,8 @@
                     <div class="col-xl-6">
                         <h6 class="pb-2">Invoice To:</h6>
                         <p class="mb-1">User: @Model.UserName</p>
-                        <p class="mb-1">718-986-6062</p>
-                        <p class="mb-0">peakyFBlinders@gmail.com</p>
+                        <p class="mb-1">Phone: @Model.PhoneNumber</p>
+                        <p class="mb-0">Email: @Model.Email</p>
                     </div>
                     <div class="col-xl-6">
                         <h6 class="pb-2">Bill To:</h6>
@@ -82,18 +80,30 @@
     <div class="card-body">
         <div class="col-12">
                 <div class="row p-2 text-center align-items-center" style="border-top: 1px solid #d9dee3">
-                    <span class="col-5">Image</span>
-                    <span class ="col-7">Title</span>
+                    <span class="col-md-2">Image</span>
+                    <span class ="col-md-4">Title</span>
+                    <span class="col-md-3">Price</span>
+                    <span class="col-md-3">DiscountPrice</span>
                 </div>
             @foreach(var item_course in Model.BillDetails)
             {
                 
                 <div class="row p-2 text-center align-items-center" style="border-top: 1px solid #d9dee3">
-                        <span class="col-5">
+                        <span class="col-md-2">
                             <img  src="@item_course.ImageCourseUrl" style="object-fit:cover; min-width: 145px" height="80"/>
                         </span>
-                    <span class="col-7">@item_course.Title</span>
-                    </div>
+                    <span class="col-md-4">@item_course.Title</span>
+                    @if (item_course.DiscountPrice != null && item_course.DiscountPrice != 0)
+                    {
+                        <small class="col-md-3"><del>@string.Format("{0:N0}", item_course.Price)</del></small>
+                        <span class="col-md-3">@string.Format("{0:N0}", item_course.DiscountPrice)</span>
+                    }
+                    else
+                    {
+                        <span class="col-md-3">@string.Format("{0:N0}", item_course.Price)</span>
+                    }
+
+                </div>
             }
         </div>
     </div>
